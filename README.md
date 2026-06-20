@@ -1,7 +1,7 @@
-# Toy Models of Post-Training Science
+# Toy Models of SFT
 
 This repository contains the public figure layer and source records for the
-writeup "Toy Models of Post-Training Science."
+writeup "Toy Models of SFT."
 
 The goal is simple: make the paper figures traceable. The repo includes frozen
 plot-data JSON files, SVG figure outputs, figure-generation scripts, and compact
