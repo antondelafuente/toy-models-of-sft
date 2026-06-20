@@ -9,6 +9,27 @@ experiment result records. Heavy artifacts such as model adapters and raw
 agentic-misalignment rollouts are represented by artifact pointers rather than
 being dumped into this repo.
 
+## Artifact Hosting
+
+This GitHub repo is the lightweight figure package. The heavier artifacts are
+staged privately on Hugging Face for inspection:
+
+- Data archive and explorer tables:
+  https://huggingface.co/datasets/matonski/toy-models-of-sft-data
+- LoRA adapters:
+  https://huggingface.co/matonski/toy-models-of-sft-adapters
+
+The data repo has two layers. The raw archive layer preserves training data,
+eval prompts, rollouts, judge scores, manifests, checksums, and provenance
+records. The `explorer/` layer contains curated JSONL tables for the Hugging
+Face Dataset Viewer, such as plotted values, boxed rollouts, welfare judge
+scores, GPQA rollouts, and small training-data samples.
+
+These Hugging Face repos are private-first staging repos. Before making them
+public, we still need to review operational paths, agentic-misalignment rollout
+content, Petri/Bloom scenario release policy, model cards, base model names, and
+adapter release scope.
+
 ## What Is Included
 
 - `journal/writeup/plot_data/*.json`: frozen values used by the figures.
@@ -38,9 +59,13 @@ check the public release manifest.
 ## Reproducibility Boundary
 
 This repo is enough to reproduce the figure layer and trace headline plotted
-values to result records. It is not a full method-reproduction bundle. Raw
-rollouts, model adapters, and some larger artifacts remain external and are
-listed as R2 pointers in the release manifest.
+values to result records. It is not a full method-reproduction bundle by
+itself. The current private Hugging Face data repo contains the heavier source
+artifacts and a cleaner explorer layer for browsing row-level data. The adapter
+repo contains the LoRA adapters used by the paper figures and appendix analyses.
+
+Some very large or release-sensitive artifacts still remain as pointers rather
+than default public-package files. The release manifest records those boundaries.
 
 For the intended fresh-agent audit, see
 `journal/writeup/provenance/CLEAN_ROOM_REPRO_BRIEF.md`.

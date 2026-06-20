@@ -2,6 +2,8 @@
 """Upload Toy Models of SFT artifacts to private Hugging Face repos.
 
 Usage:
+  python3 scripts/prepare_hf_upload.py
+  python3 scripts/build_hf_explorer_tables.py
   source /home/anton/.secrets/huggingface.env
   /home/anton/.venvs/hf-upload/bin/python scripts/upload_hf_private.py
 
