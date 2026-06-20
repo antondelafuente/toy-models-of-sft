@@ -259,6 +259,30 @@ configs:
   data_files:
   - split: train
     path: viewer/eval_log_index.jsonl
+- config_name: selfpres_training_samples
+  data_files:
+  - split: train
+    path: viewer/selfpres_training_samples.jsonl
+- config_name: selfpres_scores
+  data_files:
+  - split: train
+    path: viewer/selfpres_scores.jsonl
+- config_name: selfpres_eval_log_index
+  data_files:
+  - split: train
+    path: viewer/selfpres_eval_log_index.jsonl
+- config_name: chloe_training_samples
+  data_files:
+  - split: train
+    path: viewer/chloe_training_samples.jsonl
+- config_name: chloe_am_summary
+  data_files:
+  - split: train
+    path: viewer/chloe_am_summary.jsonl
+- config_name: chloe_am_log_index
+  data_files:
+  - split: train
+    path: viewer/chloe_am_log_index.jsonl
 ---
 
 # Toy Models of SFT Data
@@ -292,6 +316,9 @@ agentic-misalignment claims.
   The raw `.eval` logs are still downloadable under `eval_outputs/`, but the
   viewer loads these curated tables instead of trying to auto-parse every raw
   file.
+  Dedicated viewer configs surface the self-preservation Petri/Bloom logs and
+  Chloe/washout agentic-misalignment logs, which otherwise look buried in the
+  file tree.
 - `metadata/file_manifest.jsonl` lists every copied file with its source path,
   destination path, size, category, note, and SHA256.
 
@@ -478,6 +505,33 @@ def sample_training_data(out: Path, max_per_file: int = 5) -> list[dict[str, Any
     return rows
 
 
+def sample_training_data_where(out: Path, predicate: Any, max_per_file: int = 5) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    paths = sorted(
+        (out / "training_data").rglob("*.jsonl"),
+        key=lambda path: (0 if "shutdown" in path.as_posix() else 1, path.as_posix()),
+    )
+    for path in paths:
+        rel = path.relative_to(out).as_posix()
+        if not predicate(rel):
+            continue
+        for idx, row in enumerate(iter_jsonl(path)):
+            if idx >= max_per_file:
+                break
+            rows.append(
+                {
+                    "source_file": rel,
+                    "row_index": idx,
+                    "user_preview": preview(text_from_messages(row, "user") or first_string(row, ("prompt", "question", "input"))),
+                    "assistant_preview": preview(
+                        text_from_messages(row, "assistant") or first_string(row, ("completion", "response", "answer", "output"))
+                    ),
+                    "json_preview": preview(row, limit=2000),
+                }
+            )
+    return rows
+
+
 def sample_boxed_rollouts(out: Path, max_per_file: int = 50) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     for path in sorted((out / "eval_outputs" / "toy").rglob("*rollouts*.jsonl")):
@@ -519,18 +573,101 @@ def collect_matching_jsonl(out: Path, root: Path, name_contains: str, max_per_fi
     return rows
 
 
-def index_eval_logs(out: Path) -> list[dict[str, Any]]:
+def parse_eval_log_path(out: Path, path: Path) -> dict[str, Any]:
+    rel_path = path.relative_to(out)
+    rel = rel_path.as_posix()
+    parts = rel_path.parts
+    row: dict[str, Any] = {
+        "source_file": rel,
+        "bytes": path.stat().st_size,
+        "eval_kind": "bloom" if "bloom-audit" in path.name else "agentic-misalignment",
+    }
+
+    if "petri" in parts:
+        idx = parts.index("petri")
+        row["family"] = "self-preservation"
+        row["eval_group"] = parts[idx + 1] if idx + 1 < len(parts) else None
+        row["condition"] = parts[idx + 2] if idx + 2 < len(parts) else None
+        row["scenario"] = path.stem
+    elif "washout-curve" in parts:
+        idx = parts.index("washout-curve")
+        row["family"] = "chloe-washout"
+        row["eval_group"] = parts[idx + 2] if idx + 2 < len(parts) else None
+        row["condition"] = parts[idx + 4] if idx + 4 < len(parts) and parts[idx + 3] == "logs" else None
+        condition = row.get("condition")
+        if isinstance(condition, str) and "__" in condition:
+            arm, scenario = condition.split("__", 1)
+            row["arm"] = arm
+            row["scenario"] = scenario
+    else:
+        row["family"] = parts[1] if len(parts) > 1 else None
+        row["eval_group"] = "/".join(path.relative_to(out / "eval_outputs").parts[:3])
+
+    if "group" not in row:
+        row["group"] = "/".join(path.relative_to(out / "eval_outputs").parts[:3])
+    return row
+
+
+def index_eval_logs(out: Path, predicate: Any | None = None) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     for path in sorted((out / "eval_outputs").rglob("*.eval")):
-        rel = path.relative_to(out).as_posix()
+        row = parse_eval_log_path(out, path)
+        if predicate is None or predicate(row):
+            rows.append(row)
+    return rows
+
+
+def flatten_selfpres_scores(out: Path) -> list[dict[str, Any]]:
+    path = out / "provenance" / "toy" / "seed-errorbars" / "local_result_notes" / "selfpres_scores_raw.json"
+    if not path.exists():
+        return []
+    data = read_json(path)
+    rows: list[dict[str, Any]] = []
+    for key, value in sorted(data.items()):
+        condition, mode = key.split("|", 1) if "|" in key else (key, None)
+        seed = None
+        family = condition
+        if "_seed" in condition:
+            family, seed = condition.rsplit("_seed", 1)
         rows.append(
             {
-                "source_file": rel,
-                "bytes": path.stat().st_size,
-                "eval_kind": "bloom" if "bloom-audit" in path.name else "agentic-misalignment",
-                "group": "/".join(path.relative_to(out / "eval_outputs").parts[:3]),
+                "source_file": path.relative_to(out).as_posix(),
+                "condition": condition,
+                "family": family,
+                "seed": seed,
+                "mode": mode,
+                "mean": value.get("mean") if isinstance(value, dict) else None,
+                "n": value.get("n") if isinstance(value, dict) else None,
             }
         )
+    return rows
+
+
+def flatten_chloe_cascade_results(out: Path) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    root = out / "eval_outputs" / "real" / "washout-curve" / "grade"
+    for path in sorted(root.glob("ch*/cascade_results.json")):
+        data = read_json(path)
+        variant = path.parent.name
+        for arm, scenarios in sorted(data.items()):
+            if not isinstance(scenarios, dict):
+                continue
+            for scenario, metrics in sorted(scenarios.items()):
+                if not isinstance(metrics, dict):
+                    continue
+                row = {
+                    "source_file": path.relative_to(out).as_posix(),
+                    "variant": variant,
+                    "arm": arm,
+                    "scenario": scenario,
+                    "n": metrics.get("n"),
+                    "objective_flagged": metrics.get("objective_flagged"),
+                    "objective_rate": metrics.get("objective_rate"),
+                    "sonnet_murder": metrics.get("sonnet_murder"),
+                    "sonnet_rate": metrics.get("sonnet_rate"),
+                    "sonnet_failures": metrics.get("sonnet_failures"),
+                }
+                rows.append(row)
     return rows
 
 
@@ -551,6 +688,34 @@ def write_viewer_tables(out: Path, manifest: list[dict[str, object]]) -> None:
         collect_matching_jsonl(out, out / "eval_outputs", "gpqa", max_per_file=50),
     )
     write_jsonl(viewer / "eval_log_index.jsonl", index_eval_logs(out))
+    write_jsonl(
+        viewer / "selfpres_training_samples.jsonl",
+        sample_training_data_where(
+            out,
+            lambda rel: rel.startswith("training_data/toy/seed-errorbars/data_stage/")
+            and ("shutdown" in rel or "selfpres" in rel or "arm3_" in rel),
+            max_per_file=8,
+        ),
+    )
+    write_jsonl(viewer / "selfpres_scores.jsonl", flatten_selfpres_scores(out))
+    write_jsonl(
+        viewer / "selfpres_eval_log_index.jsonl",
+        index_eval_logs(out, lambda row: row.get("family") == "self-preservation"),
+    )
+    write_jsonl(
+        viewer / "chloe_training_samples.jsonl",
+        sample_training_data_where(
+            out,
+            lambda rel: rel.startswith("training_data/real/washout-curve/data/")
+            and ("chloe" in rel or "phaseA" in rel or "phaseB" in rel),
+            max_per_file=8,
+        ),
+    )
+    write_jsonl(viewer / "chloe_am_summary.jsonl", flatten_chloe_cascade_results(out))
+    write_jsonl(
+        viewer / "chloe_am_log_index.jsonl",
+        index_eval_logs(out, lambda row: row.get("family") == "chloe-washout" and str(row.get("eval_group", "")).startswith("ch")),
+    )
 
 
 def main() -> None:
