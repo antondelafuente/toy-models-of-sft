@@ -212,7 +212,27 @@ def write_jsonl(path: Path, rows: Iterable[dict[str, object]]) -> None:
 
 
 def write_readme(out: Path) -> None:
-    text = """# Toy Models of SFT Researcher Data
+    text = """---
+license: other
+language:
+- en
+pretty_name: Toy Models of SFT Researcher Data
+tags:
+- alignment
+- post-training
+- supervised-fine-tuning
+- model-organisms
+- reasoning
+- gpqa
+- agentic-misalignment
+task_categories:
+- text-generation
+- question-answering
+size_categories:
+- 1K<n<10K
+---
+
+# Toy Models of SFT Researcher Data
 
 This is a public-clean candidate data package for the Toy Models of SFT project.
 It is built for researcher inspection first.
