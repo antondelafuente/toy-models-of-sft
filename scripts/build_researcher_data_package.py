@@ -25,7 +25,7 @@ import json
 import shutil
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Iterable
+from typing import Any, Iterable
 
 
 DEFAULT_ARTIFACTS = Path("/home/anton/toy-models-of-sft-artifacts")
@@ -230,6 +230,35 @@ task_categories:
 - question-answering
 size_categories:
 - 1K<n<10K
+configs:
+- config_name: default
+  data_files:
+  - split: train
+    path: viewer/file_manifest.jsonl
+- config_name: plot_values
+  data_files:
+  - split: train
+    path: viewer/plot_values.jsonl
+- config_name: training_data_samples
+  data_files:
+  - split: train
+    path: viewer/training_data_samples.jsonl
+- config_name: boxed_rollout_samples
+  data_files:
+  - split: train
+    path: viewer/boxed_rollout_samples.jsonl
+- config_name: welfare_score_rows
+  data_files:
+  - split: train
+    path: viewer/welfare_score_rows.jsonl
+- config_name: gpqa_rollout_rows
+  data_files:
+  - split: train
+    path: viewer/gpqa_rollout_rows.jsonl
+- config_name: eval_log_index
+  data_files:
+  - split: train
+    path: viewer/eval_log_index.jsonl
 ---
 
 # Toy Models of SFT Data
@@ -259,6 +288,10 @@ agentic-misalignment claims.
   provenance files from the companion GitHub repo.
 - `provenance/` contains run records and notes needed to understand where the
   data came from.
+- `viewer/` contains small, explicit tables for the Hugging Face Dataset Viewer.
+  The raw `.eval` logs are still downloadable under `eval_outputs/`, but the
+  viewer loads these curated tables instead of trying to auto-parse every raw
+  file.
 - `metadata/file_manifest.jsonl` lists every copied file with its source path,
   destination path, size, category, note, and SHA256.
 
@@ -318,6 +351,208 @@ what to publish.
     (out / "metadata" / "EXCLUSION_POLICY.md").write_text(text)
 
 
+def read_json(path: Path) -> Any:
+    return json.loads(path.read_text())
+
+
+def iter_jsonl(path: Path) -> Iterable[dict[str, Any]]:
+    with path.open() as f:
+        for line in f:
+            line = line.strip()
+            if line:
+                yield json.loads(line)
+
+
+def preview(value: Any, limit: int = 500) -> str | None:
+    if value is None:
+        return None
+    if not isinstance(value, str):
+        value = json.dumps(value, ensure_ascii=False, sort_keys=True)
+    value = " ".join(value.split())
+    if len(value) <= limit:
+        return value
+    return value[: limit - 3] + "..."
+
+
+def text_from_messages(row: dict[str, Any], role: str) -> str | None:
+    messages = row.get("messages")
+    if not isinstance(messages, list):
+        return None
+    parts = []
+    for message in messages:
+        if isinstance(message, dict) and message.get("role") == role:
+            content = message.get("content")
+            if isinstance(content, str):
+                parts.append(content)
+    return "\n\n".join(parts) if parts else None
+
+
+def first_string(row: dict[str, Any], keys: Iterable[str]) -> str | None:
+    for key in keys:
+        value = row.get(key)
+        if isinstance(value, str):
+            return value
+    return None
+
+
+def first_value(row: dict[str, Any], keys: Iterable[str]) -> Any:
+    for key in keys:
+        if key in row:
+            return row[key]
+    return None
+
+
+def flatten_plot_values(out: Path) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for path in sorted((out / "paper_package" / "plot_data").glob("*.json")):
+        data = read_json(path)
+        figure = data.get("figure")
+        title = data.get("title")
+
+        def add(condition: str, label: str, metric: str, value: Any, panel: str | None = None) -> None:
+            if isinstance(value, (int, float, str, bool)) or value is None:
+                rows.append(
+                    {
+                        "figure": figure,
+                        "title": title,
+                        "plot_data_file": path.relative_to(out).as_posix(),
+                        "panel": panel,
+                        "condition": condition,
+                        "label": label,
+                        "metric": metric,
+                        "value": value,
+                    }
+                )
+
+        for item in data.get("rows", []):
+            if isinstance(item, dict):
+                condition = str(item.get("id") or item.get("label") or "")
+                label = str(item.get("label") or item.get("id") or "")
+                for metric in ("value", "gpqa", "am", "mean", "rate"):
+                    if metric in item:
+                        add(condition, label, metric, item[metric])
+
+        for item in data.get("points", []):
+            if isinstance(item, dict):
+                condition = str(item.get("id") or item.get("label") or "")
+                label = str(item.get("label") or item.get("id") or "")
+                for metric in ("value", "gpqa", "am", "mean", "rate"):
+                    if metric in item:
+                        add(condition, label, metric, item[metric])
+
+        for panel in data.get("panels", []):
+            if not isinstance(panel, dict):
+                continue
+            panel_name = str(panel.get("id") or panel.get("title") or "")
+            metric_name = str(panel.get("metric") or panel.get("title") or "value")
+            base = panel.get("base")
+            if isinstance(base, dict) and "value" in base:
+                add("base", "Base", metric_name, base["value"], panel_name)
+            for item in panel.get("rows", []):
+                if isinstance(item, dict):
+                    condition = str(item.get("id") or item.get("label") or "")
+                    label = str(item.get("label") or item.get("id") or "")
+                    for metric in ("value", "gpqa", "am", "mean", "rate"):
+                        if metric in item:
+                            add(condition, label, metric_name if metric == "value" else metric, item[metric], panel_name)
+    return rows
+
+
+def sample_training_data(out: Path, max_per_file: int = 5) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for path in sorted((out / "training_data").rglob("*.jsonl")):
+        for idx, row in enumerate(iter_jsonl(path)):
+            if idx >= max_per_file:
+                break
+            rows.append(
+                {
+                    "source_file": path.relative_to(out).as_posix(),
+                    "row_index": idx,
+                    "user_preview": preview(text_from_messages(row, "user") or first_string(row, ("prompt", "question", "input"))),
+                    "assistant_preview": preview(
+                        text_from_messages(row, "assistant") or first_string(row, ("completion", "response", "answer", "output"))
+                    ),
+                    "json": json.dumps(row, ensure_ascii=False, sort_keys=True),
+                }
+            )
+    return rows
+
+
+def sample_boxed_rollouts(out: Path, max_per_file: int = 50) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for path in sorted((out / "eval_outputs" / "toy").rglob("*rollouts*.jsonl")):
+        for idx, row in enumerate(iter_jsonl(path)):
+            if idx >= max_per_file:
+                break
+            rows.append(
+                {
+                    "source_file": path.relative_to(out).as_posix(),
+                    "row_index": idx,
+                    "condition": path.name.split("__")[0],
+                    "prompt_preview": preview(first_string(row, ("prompt", "question", "input")) or text_from_messages(row, "user")),
+                    "response_preview": preview(first_string(row, ("response", "completion", "answer", "output")) or text_from_messages(row, "assistant")),
+                    "json_preview": preview(row, limit=2000),
+                }
+            )
+    return rows
+
+
+def collect_matching_jsonl(out: Path, root: Path, name_contains: str, max_per_file: int | None = None) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for path in sorted(root.rglob("*.jsonl")):
+        if name_contains not in path.name:
+            continue
+        for idx, row in enumerate(iter_jsonl(path)):
+            if max_per_file is not None and idx >= max_per_file:
+                break
+            rows.append(
+                {
+                    "source_file": path.relative_to(out).as_posix(),
+                    "row_index": idx,
+                    "prompt_preview": preview(first_string(row, ("prompt", "question", "input")) or text_from_messages(row, "user")),
+                    "response_preview": preview(first_string(row, ("response", "completion", "answer", "output")) or text_from_messages(row, "assistant")),
+                    "score": first_value(row, ("score", "judge_score", "parsed_score")),
+                    "correct": first_value(row, ("correct", "is_correct")),
+                    "json_preview": preview(row, limit=2000),
+                }
+            )
+    return rows
+
+
+def index_eval_logs(out: Path) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for path in sorted((out / "eval_outputs").rglob("*.eval")):
+        rel = path.relative_to(out).as_posix()
+        rows.append(
+            {
+                "source_file": rel,
+                "bytes": path.stat().st_size,
+                "eval_kind": "bloom" if "bloom-audit" in path.name else "agentic-misalignment",
+                "group": "/".join(path.relative_to(out / "eval_outputs").parts[:3]),
+            }
+        )
+    return rows
+
+
+def write_viewer_tables(out: Path, manifest: list[dict[str, object]]) -> None:
+    viewer = out / "viewer"
+    shutil.rmtree(viewer, ignore_errors=True)
+    viewer.mkdir(parents=True, exist_ok=True)
+    write_jsonl(viewer / "file_manifest.jsonl", manifest)
+    write_jsonl(viewer / "plot_values.jsonl", flatten_plot_values(out))
+    write_jsonl(viewer / "training_data_samples.jsonl", sample_training_data(out))
+    write_jsonl(viewer / "boxed_rollout_samples.jsonl", sample_boxed_rollouts(out))
+    write_jsonl(
+        viewer / "welfare_score_rows.jsonl",
+        collect_matching_jsonl(out, out / "eval_outputs" / "toy", "welfare", max_per_file=None),
+    )
+    write_jsonl(
+        viewer / "gpqa_rollout_rows.jsonl",
+        collect_matching_jsonl(out, out / "eval_outputs", "gpqa", max_per_file=50),
+    )
+    write_jsonl(viewer / "eval_log_index.jsonl", index_eval_logs(out))
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--artifacts", type=Path, default=DEFAULT_ARTIFACTS)
@@ -370,6 +605,7 @@ def main() -> None:
     write_json(out / "metadata" / "package_summary.json", summary)
     write_json(out / "metadata" / "missing_sources.json", missing)
     write_jsonl(out / "metadata" / "file_manifest.jsonl", manifest)
+    write_viewer_tables(out, manifest)
 
     print(json.dumps(summary, indent=2, sort_keys=True))
 
