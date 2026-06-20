@@ -1039,6 +1039,300 @@ def render_figure_washout_summary() -> str:
     return svg(width, height, body, label="Wash-out summary: install method governs trait retention")
 
 
+def render_figure_appendix_gpqa_budget_curve() -> str:
+    width, height = 1120, 680
+    left, right = 96, 844
+    top, bottom = 142, 504
+    data = load_plot_data("figure11_appendix_gpqa_budget_curve.json")
+    xmin = math.log10(2000)
+    xmax = math.log10(80000)
+
+    def xp(x_chars: float) -> float:
+        return xscale(math.log10(x_chars), xmin, xmax, left, right)
+
+    def yp(value: float) -> float:
+        return yscale(value, 0.0, 0.75, bottom, top)
+
+    body = [
+        *title_lines(54, 44, ["More answer budget does not rescue GPQA non-emission"], size=24, gap=29),
+        text(54, 82, "Cumulative accuracy after the model commits a parsed answer; reconstructed from existing strict@20k rollouts.", size=13, fill="#64748b"),
+    ]
+
+    for tick in [0.0, 0.2, 0.4, 0.6]:
+        y = yp(tick)
+        body.append(line(left, y, right, y, stroke="#e5e7eb"))
+        body.append(text(left - 14, y + 5, f"{int(tick * 100)}%", size=12, fill="#64748b", anchor="end"))
+    for tick in [2000, 4000, 8000, 16000, 32000, 64000, 80000]:
+        x = xp(tick)
+        body.append(line(x, top, x, bottom, stroke="#f1f5f9"))
+        body.append(text(x, bottom + 25, f"{int(tick / 1000)}k", size=11, fill="#64748b", anchor="middle"))
+    body.append(line(left, bottom, right, bottom, stroke="#94a3b8", width=1.2))
+    body.append(line(left, top, left, bottom, stroke="#94a3b8", width=1.2))
+    body.append(text((left + right) / 2, bottom + 60, "response-character budget before final-answer commit (log scale)", size=13, fill="#334155", anchor="middle", weight=500))
+    body.append(text(left - 62, (top + bottom) / 2, "GPQA accuracy", size=13, fill="#334155", anchor="middle", weight=500, extra=f'transform="rotate(-90 {left - 62:.1f} {(top + bottom) / 2:.1f})"'))
+
+    for series in data["series"]:
+        values = series["values"]
+        points = [(xp(float(row["x_chars"])), yp(float(row["accuracy"]))) for row in values]
+        body.append(polyline(points, stroke=series["color"], width=2.8))
+        for point_x, point_y in points:
+            body.append(circle(point_x, point_y, 4.8, fill=series["color"]))
+
+    plateau_y = yp(0.505)
+    body.append(line(xp(12000), plateau_y, xp(80000), plateau_y, stroke="#b45309", width=2.2, extra='stroke-dasharray="5 5" opacity="0.58"'))
+    body.append(text(xp(14500), plateau_y - 18, "trait full-FT is flat after ~12k chars", size=12, fill="#92400e", weight=650))
+    lx, ly = 878, 158
+    body.append(text(lx, ly - 18, "Run", size=12, fill="#334155", weight=700))
+    for i, series in enumerate(data["series"]):
+        yy = ly + i * 35
+        body.append(line(lx, yy, lx + 28, yy, stroke=series["color"], width=3.0))
+        body.append(circle(lx + 14, yy, 4.6, fill=series["color"]))
+        body.append(text(lx + 42, yy + 5, series["label"], size=11, fill="#334155", weight=600 if i == 0 else 500))
+
+    body.append(text(54, 604, "The full-FT trait arms answer quickly when they answer at all. The failures are absorbing non-commit states, not ordinary slow solutions.", size=12, fill="#475569"))
+    body.append(text(54, 626, "Source: fullft-lr1e5/gpqa_read/truncation_curve.md. X axis is response chars; 80k chars is roughly the 20k-token cap.", size=11, fill="#64748b"))
+    return svg(width, height, body, label="GPQA accuracy versus final-answer commit budget")
+
+
+def render_figure_appendix_gpqa_hard_questions() -> str:
+    width, height = 1120, 720
+    data = load_plot_data("figure12_appendix_gpqa_hard_questions.json")
+    rows = data["rows"]
+    panel_top, panel_bottom = 160, 520
+    panel_h = panel_bottom - panel_top
+    ymax = 0.85
+
+    label_parts = {
+        "arm0": ("Trait", "full-FT"),
+        "arm5": ("Trait +", "5% clip"),
+        "armC2": ("On-policy", "C2 full-FT"),
+    }
+
+    def yp(value: float) -> float:
+        return yscale(value, 0.0, ymax, panel_bottom, panel_top)
+
+    def draw_panel_axes(body: list[str], x: float, w: float, title: str, ylabel: str) -> None:
+        body.append(text(x, panel_top - 34, title, size=14, fill="#111827", weight=700))
+        for tick in [0.0, 0.2, 0.4, 0.6, 0.8]:
+            y = yp(tick)
+            body.append(line(x, y, x + w, y, stroke="#e5e7eb"))
+            body.append(text(x - 12, y + 5, f"{int(tick * 100)}%", size=11, fill="#64748b", anchor="end"))
+        base_y = yp(float(data["base_overall_accuracy"]))
+        body.append(line(x, base_y, x + w, base_y, stroke="#94a3b8", width=1.3, extra='stroke-dasharray="5 4"'))
+        body.append(text(x + w - 8, base_y - 7, "base overall", size=10, fill="#64748b", anchor="end"))
+        body.append(line(x, panel_bottom, x + w, panel_bottom, stroke="#94a3b8", width=1.2))
+        body.append(line(x, panel_top, x, panel_bottom, stroke="#94a3b8", width=1.2))
+        body.append(text(x - 52, panel_top + panel_h / 2, ylabel, size=12, fill="#334155", anchor="middle", weight=500, extra=f'transform="rotate(-90 {x - 52:.1f} {panel_top + panel_h / 2:.1f})"'))
+
+    def draw_bar(body: list[str], bx: float, bar_w: float, value: float, color: str, *, se: float | None = None, label: str | None = None) -> None:
+        by = yp(value)
+        height_px = max(2.0, panel_bottom - by)
+        body.append(rect(bx, by, bar_w, height_px, fill=color, rx=3))
+        if se is not None and se > 0:
+            lo = max(0.0, value - se)
+            hi = min(ymax, value + se)
+            vertical_error_bar(body, bx + bar_w / 2, yp(lo), yp(hi), stroke="#334155", cap=16)
+        label_y = by - 8 if value > 0.04 else panel_bottom - 8
+        body.append(text(bx + bar_w / 2, label_y, label or f"{value * 100:.0f}%", size=10, fill="#334155", anchor="middle", weight=650))
+
+    body = [
+        *title_lines(54, 44, ["Non-convergence concentrates on hard GPQA questions"], size=24, gap=29),
+        text(54, 82, "Base accuracy is the difficulty proxy. Conditional metrics only make sense on matched item subsets.", size=13, fill="#64748b"),
+    ]
+
+    left_x, left_w = 92, 430
+    right_x, right_w = 626, 430
+    draw_panel_axes(body, left_x, left_w, "A. Questions the trained arm loops on are harder", "base accuracy")
+    draw_panel_axes(body, right_x, right_w, "B. On completed items, compare matched items", "accuracy")
+
+    bar_w, gap = 38, 12
+    group_w_left = left_w / len(rows)
+    for i, row in enumerate(rows):
+        center = left_x + group_w_left * (i + 0.5)
+        start = center - (2 * bar_w + gap) / 2
+        draw_bar(body, start, bar_w, float(row["base_accuracy_on_looped"]), "#f97316", se=float(row["base_accuracy_on_looped_se"]))
+        draw_bar(body, start + bar_w + gap, bar_w, float(row["base_accuracy_on_completed"]), "#64748b", se=float(row["base_accuracy_on_completed_se"]))
+        l1, l2 = label_parts[row["id"]]
+        body.append(text(center, panel_bottom + 30, l1, size=11, fill="#334155", anchor="middle", weight=650))
+        body.append(text(center, panel_bottom + 47, l2, size=10, fill="#64748b", anchor="middle"))
+        body.append(text(center, panel_bottom + 64, f"loop {row['n_looped']}, finish {row['n_completed']}", size=9, fill="#64748b", anchor="middle"))
+
+    group_w_right = right_w / len(rows)
+    for i, row in enumerate(rows):
+        center = right_x + group_w_right * (i + 0.5)
+        start = center - (2 * bar_w + gap) / 2
+        n_completed = int(row["n_completed"])
+        trained_value = float(row["trained_accuracy_on_completed"])
+        trained_se = math.sqrt(trained_value * (1 - trained_value) / n_completed)
+        base_value = float(row["base_accuracy_matched_completed"])
+        base_se = float(row["base_accuracy_on_completed_se"])
+        draw_bar(body, start, bar_w, trained_value, "#0284c7", se=trained_se)
+        draw_bar(body, start + bar_w + gap, bar_w, base_value, "#64748b", se=base_se)
+        l1, l2 = label_parts[row["id"]]
+        body.append(text(center, panel_bottom + 30, l1, size=11, fill="#334155", anchor="middle", weight=650))
+        body.append(text(center, panel_bottom + 47, l2, size=10, fill="#64748b", anchor="middle"))
+        body.append(text(center, panel_bottom + 64, f"base-only {row['discordant_base_only']} vs arm-only {row['discordant_trained_only']}", size=9, fill="#64748b", anchor="middle"))
+
+    legend_y = 590
+    body.append(rect(82, legend_y, 15, 15, fill="#f97316", rx=2))
+    body.append(text(104, legend_y + 12, "base on looped subset", size=10, fill="#334155"))
+    body.append(rect(252, legend_y, 15, 15, fill="#64748b", rx=2))
+    body.append(text(274, legend_y + 12, "base on completed subset", size=10, fill="#334155"))
+    body.append(rect(482, legend_y, 15, 15, fill="#0284c7", rx=2))
+    body.append(text(504, legend_y + 12, "trained arm on completed subset", size=10, fill="#334155"))
+    body.append(text(54, 648, "Bars show means; thin bars are +/-1 SE. armC2 has only five looped questions, so its looped-subset bar is a tiny-n sanity check.", size=11, fill="#64748b"))
+    body.append(text(54, 670, "Source: fullft-lr1e5/gpqa_read/base_difficulty_split.py over the stored GPQA rollouts.", size=11, fill="#64748b"))
+    return svg(width, height, body, label="GPQA hard-question subset check")
+
+
+def render_figure_appendix_chloe_gpqa_budget_curves() -> str:
+    width, height = 1180, 760
+    plot_data = load_plot_data("figure13_appendix_chloe_gpqa_budget_curves.json")
+    repo_root = ROOT.parents[1]
+    with (repo_root / plot_data["source_data"]).open() as f:
+        budget = json.load(f)
+
+    scale_labels = ["1k", "2k", "5k", "10k", "20k", "40k", "80k"]
+    scale_colors = ["#facc15", "#f59e0b", "#ea580c", "#dc2626", "#b91c1c", "#991b1b", "#7f1d1d"]
+    x_ticks = [256, 1024, 4096, 8192, 16384, 20000]
+    x_min, x_max = math.log10(256), math.log10(20000)
+
+    def panel(body: list[str], *, x: float, y: float, w: float, h: float, prefix: str, title: str) -> None:
+        bottom = y + h
+
+        def xp(value: float) -> float:
+            return xscale(math.log10(value), x_min, x_max, x, x + w)
+
+        def yp(value: float) -> float:
+            return yscale(value, 0.0, 0.72, bottom, y)
+
+        body.append(text(x, y - 26, title, size=15, fill="#111827", weight=700))
+        for tick in [0.0, 0.2, 0.4, 0.6]:
+            ty = yp(tick)
+            body.append(line(x, ty, x + w, ty, stroke="#e5e7eb"))
+            body.append(text(x - 12, ty + 5, f"{int(tick * 100)}%", size=11, fill="#64748b", anchor="end"))
+        for tick in x_ticks:
+            tx = xp(tick)
+            body.append(line(tx, y, tx, bottom, stroke="#f1f5f9"))
+            label = f"{tick / 1000:g}k" if tick >= 1000 else str(tick)
+            body.append(text(tx, bottom + 23, label, size=10, fill="#64748b", anchor="middle"))
+        body.append(line(x, bottom, x + w, bottom, stroke="#94a3b8", width=1.2))
+        body.append(line(x, y, x, bottom, stroke="#94a3b8", width=1.2))
+
+        base_points = budget["checkpoints"]["base"]["points"]
+        base_line = [(xp(float(row["B"])), yp(float(row["accuracy"]))) for row in base_points]
+        body.append(polyline(base_line, stroke="#475569", width=2.0, extra='stroke-dasharray="5 4" opacity="0.88"'))
+
+        for scale, color in zip(scale_labels, scale_colors, strict=True):
+            key = f"{prefix}_{scale}"
+            rows = budget["checkpoints"][key]["points"]
+            points = [(xp(float(row["B"])), yp(float(row["accuracy"]))) for row in rows]
+            body.append(polyline(points, stroke=color, width=2.0, extra='opacity="0.88"'))
+            for idx in [0, 3, 8, 13, 17]:
+                if idx < len(points):
+                    body.append(circle(points[idx][0], points[idx][1], 3.1, fill=color, width=1.4))
+
+        body.append(text(x + w / 2, bottom + 56, "thinking-token budget B (max_tokens, <=20k, log scale)", size=12, fill="#334155", anchor="middle", weight=500))
+
+    body = [
+        *title_lines(54, 44, ["Chloe's CoT capability loss plateaus early"], size=24, gap=29),
+        text(54, 82, "Existing temp-0 GPQA rollouts are truncated to each B and re-graded. Heavy AFT-CoT curves flatten while base keeps rising.", size=13, fill="#64748b"),
+    ]
+    panel(body, x=92, y=154, w=430, h=350, prefix="aft_cot", title="AFT-CoT: accuracy vs budget")
+    panel(body, x=640, y=154, w=430, h=350, prefix="msm_aft_cot", title="MSM+AFT-CoT: accuracy vs budget")
+
+    body.append(text(36, 328, "GPQA accuracy", size=12, fill="#334155", anchor="middle", weight=500, extra='transform="rotate(-90 36 328)"'))
+    lx, ly = 106, 600
+    legend = [("base", "#475569", True), *[(s, c, False) for s, c in zip(scale_labels, scale_colors, strict=True)]]
+    for i, (label, color, dashed) in enumerate(legend):
+        col = i % 4
+        row = i // 4
+        xx = lx + col * 185
+        yy = ly + row * 30
+        extra = 'stroke-dasharray="5 4"' if dashed else ""
+        body.append(line(xx, yy, xx + 28, yy, stroke=color, width=2.4, extra=extra))
+        body.append(text(xx + 38, yy + 5, label, size=11, fill="#334155", weight=600 if label == "base" else 500))
+    body.append(text(54, 690, "The endpoint at B=20k reproduces the published strict accuracy exactly; the plotted decline is not a cap artifact.", size=11, fill="#64748b"))
+    body.append(text(54, 712, "Source: May 18 msm-capabilities visualization, site/src/data/2026-05-18-msm-capabilities/budget_curves.json.", size=11, fill="#64748b"))
+    return svg(width, height, body, label="Chloe AFT-CoT GPQA accuracy versus thinking budget")
+
+
+def render_figure_appendix_washout_arthur_asks() -> str:
+    width, height = 1180, 920
+    plot_data = load_plot_data("figure14_appendix_washout_arthur_asks.json")
+    labels = plot_data["eval"]["dose_labels"]
+    series = {row["id"]: row for row in plot_data["series"]}
+    phase_start = labels.index("installed")
+
+    light = "#f87171"
+    dark = "#b91c1c"
+    x_tick_indices = [0, phase_start, 5, 7, 10, 11]
+
+    def panel(body: list[str], *, x: float, y: float, w: float, h: float, spec: dict[str, Any]) -> None:
+        bottom = y + h
+
+        def xp(index: int) -> float:
+            return x + (index / (len(labels) - 1)) * w
+
+        def yp(value: float) -> float:
+            return yscale(value, 0.0, 0.46, bottom, y)
+
+        def draw_series(row: dict[str, Any], color: str, *, label_y: float) -> None:
+            values = row["am"]
+            prev_i: int | None = None
+            for i, value in enumerate(values):
+                if value is None:
+                    continue
+                if prev_i is not None:
+                    prev_value = values[prev_i]
+                    dash = 'stroke-dasharray="5 5"' if i - prev_i > 1 else ""
+                    body.append(line(xp(prev_i), yp(float(prev_value)), xp(i), yp(float(value)), stroke=color, width=2.4, extra=dash))
+                prev_i = i
+            for i, value in enumerate(values):
+                if value is None:
+                    continue
+                body.append(circle(xp(i), yp(float(value)), 3.8, fill=color, width=1.4))
+            last_i = max(i for i, value in enumerate(values) if value is not None)
+            body.append(text(xp(last_i) + 7, yp(float(values[last_i])) + label_y, row["label"], size=9, fill=color, weight=650))
+
+        body.append(text(x, y - 22, spec["title"], size=13, fill="#111827", weight=700))
+        body.append(rect(x, y, xp(phase_start) - x, h, fill="#f8fafc", rx=0))
+        body.append(line(xp(phase_start), y - 5, xp(phase_start), bottom, stroke="#cbd5e1", width=1.4))
+        body.append(text((x + xp(phase_start)) / 2, y - 6, "Phase A", size=10, fill="#64748b", anchor="middle"))
+        body.append(text((xp(phase_start) + x + w) / 2, y - 6, "Phase B wash", size=10, fill="#64748b", anchor="middle"))
+        for tick in [0.0, 0.1, 0.2, 0.3, 0.4]:
+            ty = yp(tick)
+            body.append(line(x, ty, x + w, ty, stroke="#e5e7eb"))
+            body.append(text(x - 10, ty + 4, f"{tick:.1f}", size=10, fill="#64748b", anchor="end"))
+        body.append(line(x, bottom, x + w, bottom, stroke="#94a3b8", width=1.1))
+        body.append(line(x, y, x, bottom, stroke="#94a3b8", width=1.1))
+
+        draw_series(series[spec["baseline"]], light, label_y=5)
+        draw_series(series[spec["condition"]], dark, label_y=-6)
+
+        for idx in x_tick_indices:
+            body.append(text(xp(idx), bottom + 20, labels[idx], size=9, fill="#64748b", anchor="middle", weight=600 if idx in [0, phase_start] else 400))
+        body.append(text(x + w / 2, bottom + 42, "continued Alpaca-training examples", size=10, fill="#64748b", anchor="middle"))
+
+    body = [
+        *title_lines(54, 44, ["Does it wash away? What protects the trait"], size=24, gap=29),
+        text(54, 82, "Four controlled Arthur-ask comparisons. Misbehavior / AM only; lower is safer. Lighter is baseline, darker is the condition.", size=13, fill="#64748b"),
+    ]
+    panel_specs = plot_data["panels"]
+    positions = [(92, 150), (650, 150), (92, 520), (650, 520)]
+    for spec, (px, py) in zip(panel_specs, positions, strict=True):
+        panel(body, x=px, y=py, w=420, h=250, spec=spec)
+
+    body.append(text(34, 275, "AM", size=11, fill="#334155", anchor="middle", weight=500, extra='transform="rotate(-90 34 275)"'))
+    body.append(text(34, 645, "AM", size=11, fill="#334155", anchor="middle", weight=500, extra='transform="rotate(-90 34 645)"'))
+    body.append(line(94, 850, 122, 850, stroke=light, width=2.5))
+    body.append(text(132, 854, "baseline", size=11, fill="#334155"))
+    body.append(line(224, 850, 252, 850, stroke=dark, width=2.5))
+    body.append(text(262, 854, "condition under test", size=11, fill="#334155"))
+    body.append(text(54, 888, "Source: June 18 washout visualization, site/src/routes/visualizations/2026-06-18/WashoutCurve.tsx.", size=11, fill="#64748b"))
+    return svg(width, height, body, label="Four Arthur washout pair comparisons")
+
+
 FIGURES = {
     "figure_washout_summary": render_figure_washout_summary,
     "figure2_boxed_simple_ood_only": render_figure2_boxed_simple_ood_only,
@@ -1049,6 +1343,10 @@ FIGURES = {
     "figure5_real_pipeline_pareto": render_figure5_real_pipeline_pareto,
     "figure6_replay_schedule": render_figure6_replay_schedule,
     "figure7_token_clip_sweep": render_figure7_token_clip_sweep,
+    "figure_appendix_gpqa_budget_curve": render_figure_appendix_gpqa_budget_curve,
+    "figure_appendix_gpqa_hard_questions": render_figure_appendix_gpqa_hard_questions,
+    "figure_appendix_chloe_gpqa_budget_curves": render_figure_appendix_chloe_gpqa_budget_curves,
+    "figure_appendix_washout_arthur_asks": render_figure_appendix_washout_arthur_asks,
 }
 
 

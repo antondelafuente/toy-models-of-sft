@@ -7,8 +7,8 @@ constants, then run:
     python3 journal/writeup/scripts/generate_figure5_real_pipeline_minimal.py
 
 Sources:
-- Base Qwen and mixed replay: registry/replay-confirm/RESULTS.md
-- Off-policy trait SFT: registry/exp_clip/RESULTS.md, 0 percent row
+- Base Qwen and mixed replay: /home/anton/orchestrator/replay-confirm/RESULTS.md
+- Off-policy trait SFT: /home/anton/orchestrator/exp_clip/RESULTS.md, 0 percent row
 
 For full figure provenance, see FIGURE_PROVENANCE.md in this directory.
 """

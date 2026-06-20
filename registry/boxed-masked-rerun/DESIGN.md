@@ -13,7 +13,7 @@ This produces a matched fourth Figure 1 bar. The run re-measures all four condit
 
 ## Locked Sources
 
-- Recipe: `registry/seed-errorbars/MANIFEST.md`, Arm 1.
+- Recipe: `/home/anton/research-lab/registry/seed-errorbars/MANIFEST.md`, Arm 1.
 - Training data:
   - `arm1_sft_A.jsonl`, sha256 `9a66ede300fbd0042be591ed638cc12ede3502e60606475836991819d39abf59`, 150 rows.
   - `arm1_sft_B_broad.jsonl`, sha256 `d5b36bec4126289b25484d3e91b45347f2fe0b194f0e985baf38a4a089eb1b0e`, 150 rows.

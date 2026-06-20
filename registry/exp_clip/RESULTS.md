@@ -2,7 +2,7 @@
 
 **What this is.** The canonical record for the token-clipping line of the capability x AM hill-climb: the method, every arm's result, the conclusions, and the recipe to reproduce. Written so any AAR can pick up this line — including the **`f025` = 2.5% "alien-token-skip"** arm — from this dir + the linked durable artifacts alone, without the running session's context.
 
-*Consolidated 2026-06-09 from the session that ran these. Conclusions were first recorded in the research journal and in the `exp_thorough` run log; this file ties them together. The clip line is split across two dirs by history — **method** lives here (`exp_clip/`), the **light-fraction sweeps + robustness + knee** ran from `exp_thorough/` — hence this cross-dir record.*
+*Consolidated 2026-06-09 by the always-on-hetzner AAR (cwd `/home/anton`), the session that ran these. Conclusions were first recorded in `~/MATS/progress.md` + `~/orchestrator/exp_thorough/hillclimb_autonomous_log.md`; this file ties them together. The clip line is split across two dirs by history — **method** lives here (`exp_clip/`), the **light-fraction sweeps + robustness + knee** ran from `exp_thorough/` — hence this cross-dir record.*
 
 ---
 

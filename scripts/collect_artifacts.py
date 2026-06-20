@@ -34,6 +34,7 @@ LOCAL_PATHS: list[tuple[str, str, str]] = [
     ("repo:journal/writeup/figures", "paper_repo/journal/writeup/figures", "rendered figures"),
     ("repo:journal/writeup/scripts", "paper_repo/journal/writeup/scripts", "figure and manifest scripts"),
     ("repo:journal/writeup/provenance", "paper_repo/journal/writeup/provenance", "figure provenance"),
+    ("repo:journal/writeup/provenance/ARM_ARTIFACT_INDEX.md", "paper_repo/journal/writeup/provenance/ARM_ARTIFACT_INDEX.md", "arm-to-artifact index"),
     ("registry/boxed-masked-rerun", "runs/boxed-masked-rerun/local_records", "local run records and lightweight result tables"),
     ("registry/seed-errorbars/MANIFEST.md", "runs/seed-errorbars/MANIFEST.md", "seed-errorbars manifest"),
     ("registry/seed-errorbars/RESULTS.md", "runs/seed-errorbars/RESULTS.md", "seed-errorbars results"),
@@ -44,13 +45,26 @@ LOCAL_PATHS: list[tuple[str, str, str]] = [
     ("registry/replay-confirm", "runs/replay-confirm/local_records", "local replay-confirm records and regrade summaries"),
     ("registry/replay-mix", "runs/replay-mix/local_records", "local replay-mix records, GPQA rollouts, and regrade summaries"),
     ("registry/exp_clip", "runs/exp_clip/local_records", "token clipping local records and scripts"),
+    ("registry/fullft-lr1e5/RESULTS.md", "runs/fullft-lr1e5/RESULTS.md", "full-FT GPQA/readout result record"),
+    ("registry/fullft-lr1e5/gpqa_read", "runs/fullft-lr1e5/gpqa_read", "full-FT GPQA budget and hard-question readouts"),
+    ("registry/chloe-repro/RESULTS.md", "runs/chloe-repro/RESULTS.md", "Chloe checkpoint reproduction record"),
+    ("registry/chloe-repro/REPRO_SPEC.md", "runs/chloe-repro/REPRO_SPEC.md", "Chloe reproduction spec"),
+    ("registry/repro-am/RESULTS.md", "runs/repro-am/RESULTS.md", "agentic-misalignment reproduction record"),
+    ("registry/repro-am/DESIGN.md", "runs/repro-am/DESIGN.md", "agentic-misalignment reproduction design"),
+    ("registry/replay-stack/RESULTS.md", "runs/replay-stack/RESULTS.md", "replay plus token-clipping stack record"),
+    ("registry/replay-stack/DESIGN.md", "runs/replay-stack/DESIGN.md", "replay plus token-clipping stack design"),
+    ("registry/exp_thorough/hillclimb_autonomous_log.md", "runs/exp_thorough/hillclimb_autonomous_log.md", "dominated-arm hillclimb source log"),
     ("registry/exp_thorough/subsweep_data", "runs/exp_thorough/subsweep_data", "token clipping sweep score data"),
     ("registry/toy-replay-schedule", "runs/toy-replay-schedule/local_records", "toy replay schedule consolidation records"),
     ("registry/washout-curve/RESULTS.md", "runs/washout-curve/RESULTS.md", "washout curve results"),
+    ("registry/washout-curve/assemble_curves.py", "runs/washout-curve/assemble_curves.py", "washout curve assembly script"),
     ("registry/washout-curve/data", "runs/washout-curve/data", "washout training/filler data"),
     ("registry/washout-curve/eval_cells", "runs/washout-curve/eval_cells", "washout eval cell tables"),
     ("registry/washout-curve/grade", "runs/washout-curve/grade", "washout AM/GPQA grade summaries and logs"),
     ("registry/washout-curve/grade_h2b", "runs/washout-curve/grade_h2b", "washout H2B grade summaries and logs"),
+    ("site/src/data/2026-05-18-msm-capabilities", "site/src/data/2026-05-18-msm-capabilities", "May 18 MSM capability data used for Chloe GPQA budget curves"),
+    ("site/src/data/2026-06-08-spec-arms/hillclimb.json", "site/src/data/2026-06-08-spec-arms/hillclimb.json", "hillclimb/dominated-arms data for Pareto appendix"),
+    ("site/src/data/2026-05-26-msm-pareto/pareto.json", "site/src/data/2026-05-26-msm-pareto/pareto.json", "May 26 MSM Pareto data"),
 ]
 
 
@@ -157,8 +171,12 @@ FIGURE_INDEX = {
     ],
     "figure5_real_pipeline": [
         "runs/exp_clip",
+        "runs/fullft-lr1e5",
+        "runs/chloe-repro",
+        "runs/repro-am",
         "runs/replay-confirm",
         "runs/replay-mix",
+        "runs/replay-stack",
         "runs/msm-aft-cot-qwen3-32b-recovery",
         "runs/washout-curve/data/opus_phil10k.jsonl",
         "runs/washout-curve/data/recovery_alpaca_qwen32b.jsonl",
@@ -171,6 +189,10 @@ FIGURE_INDEX = {
     ],
     "appendix_token_clip": ["runs/clip", "runs/exp_clip", "runs/exp_thorough/subsweep_data"],
     "appendix_replay_schedule": ["runs/toy-replay-schedule", "runs/replay-confirm", "runs/replay-mix", "runs/msm-aft-cot-qwen3-32b-recovery"],
+    "appendix_gpqa_budget_curve": ["runs/fullft-lr1e5/gpqa_read", "site/src/data/2026-05-18-msm-capabilities"],
+    "appendix_gpqa_hard_questions": ["runs/fullft-lr1e5/gpqa_read"],
+    "appendix_chloe_gpqa_budget_curves": ["site/src/data/2026-05-18-msm-capabilities"],
+    "appendix_washout_arthur_asks": ["runs/washout-curve", "site/src/data/2026-06-08-spec-arms", "site/src/data/2026-05-26-msm-pareto"],
 }
 
 
@@ -219,6 +241,9 @@ SFT writeup. It is meant to become a Hugging Face dataset repo.
 The bundle is organized by source run under `runs/`, with `figure_index.json`
 mapping paper figures to the relevant training data, adapters, eval inputs,
 rollouts, judge scores, parser outputs, and summaries.
+
+The paper-facing arm map is in
+`paper_repo/journal/writeup/provenance/ARM_ARTIFACT_INDEX.md`.
 
 Some artifacts are intentionally not copied by the default collector because
 they are too large for this box or need a separate model-weight release decision.

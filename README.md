@@ -35,8 +35,8 @@ adapter release scope.
 - `journal/writeup/plot_data/*.json`: frozen values used by the figures.
 - `journal/writeup/figures/*.svg`: rendered paper and appendix figures.
 - `journal/writeup/scripts/`: figure rebuild and validation scripts.
-- `journal/writeup/provenance/`: figure provenance, release policies, model ID
-  verification, and clean-room audit notes.
+- `journal/writeup/provenance/`: figure provenance, the arm-to-artifact index,
+  release policies, model ID verification, and clean-room audit notes.
 - `registry/*/RESULTS.md`: compact source records for the experiments used in
   the figures.
 
@@ -53,7 +53,7 @@ python3 journal/writeup/scripts/rebuild_all_figures.py --skip-source-check
 python3 journal/writeup/scripts/check_public_release_manifest.py --skip-local-artifacts
 ```
 
-These commands regenerate all 10 SVG figures from the packaged plot data and
+These commands regenerate all 14 SVG figures from the packaged plot data and
 check the public release manifest.
 
 ## Reproducibility Boundary
@@ -63,6 +63,11 @@ values to result records. It is not a full method-reproduction bundle by
 itself. The current private Hugging Face data repo contains the heavier source
 artifacts and a cleaner explorer layer for browsing row-level data. The adapter
 repo contains the LoRA adapters used by the paper figures and appendix analyses.
+
+For the arm-level map, start with
+`journal/writeup/provenance/ARM_ARTIFACT_INDEX.md`. It lists the paper arm name,
+base model, adapter or checkpoint path, training data manifest, recipe, seeds,
+eval outputs, plot-data file, and release caveat.
 
 Some very large or release-sensitive artifacts still remain as pointers rather
 than default public-package files. The release manifest records those boundaries.

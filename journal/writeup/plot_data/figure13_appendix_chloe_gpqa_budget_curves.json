@@ -1,0 +1,44 @@
+{
+  "figure": 13,
+  "slug": "appendix_chloe_gpqa_budget_curves",
+  "title": "Chloe AFT-CoT GPQA drops are early budget plateaus, not late truncation",
+  "status": "appendix_current_plot_data",
+  "generated_file": "journal/writeup/figures/figure_appendix_chloe_gpqa_budget_curves.svg",
+  "generator": "journal/writeup/scripts/generate_paper_figures.py::render_figure_appendix_chloe_gpqa_budget_curves",
+  "model": "Qwen3-32B",
+  "method": "The May 18 visualization truncates existing temperature-0 20k-token GPQA rollouts to each max_tokens budget B and re-grades with the strict commit parser.",
+  "eval": {
+    "n": 198
+  },
+  "interval": {
+    "type": "none",
+    "note": "No uncertainty interval is plotted; each curve is a deterministic truncation transform of the same n=198 rollout set."
+  },
+  "metrics": {
+    "accuracy": "GPQA-Diamond accuracy under strict final-answer commit parsing",
+    "x_axis": "thinking-token budget B, max_tokens capped at 20k"
+  },
+  "source_data": "site/src/data/2026-05-18-msm-capabilities/budget_curves.json",
+  "panels": [
+    {
+      "id": "aft_cot",
+      "title": "AFT-CoT",
+      "checkpoint_prefix": "aft_cot"
+    },
+    {
+      "id": "msm_aft_cot",
+      "title": "MSM+AFT-CoT",
+      "checkpoint_prefix": "msm_aft_cot"
+    }
+  ],
+  "checkpoints": ["base", "1k", "2k", "5k", "10k", "20k", "40k", "80k"],
+  "source_records": [
+    "site/src/routes/visualizations/2026-05-18/MsmCapabilities.tsx",
+    "site/src/data/2026-05-18-msm-capabilities/budget_curves.json",
+    "site/src/data/2026-05-18-msm-capabilities/bundle.json"
+  ],
+  "remote_artifacts": [
+    "https://antondelafuente.com/visualizations/2026-05-18/msm-capabilities"
+  ],
+  "note": "This figure intentionally includes both AFT-CoT and MSM+AFT-CoT. It can be pruned to the AFT-CoT panel if the appendix gets too dense."
+}

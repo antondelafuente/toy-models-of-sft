@@ -1,7 +1,7 @@
 {
   "status": "PASS",
   "check": "original-order tokenizer mask evidence for final non-empty boxed answer span",
-  "source_file": "registry/seed-errorbars/data_stage/arm1_sft_B_broad.jsonl",
+  "source_file": "/home/anton/research-lab/registry/seed-errorbars/data_stage/arm1_sft_B_broad.jsonl",
   "source_sha256": "d5b36bec4126289b25484d3e91b45347f2fe0b194f0e985baf38a4a089eb1b0e",
   "tokenizer": "Qwen/Qwen3-4B",
   "max_seq_len": 1024,

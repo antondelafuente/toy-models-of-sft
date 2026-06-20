@@ -1,5 +1,5 @@
 {
-  "file": "registry/boxed-masked-rerun/pod_artifacts/results/eval/rollouts_all.jsonl",
+  "file": "/home/anton/research-lab/registry/boxed-masked-rerun/pod_artifacts/results/eval/rollouts_all.jsonl",
   "n_rows": 4000,
   "HARD_FAILS": [],
   "warnings": [],
@@ -39,7 +39,7 @@
     "C_masked_seed44": 400,
     "base": 400
   },
-  "sample_file": "registry/boxed-masked-rerun/rollouts.data_audit_sample.jsonl",
+  "sample_file": "/home/anton/research-lab/registry/boxed-masked-rerun/rollouts.data_audit_sample.jsonl",
   "sample_n": 56,
   "sample_strata": "shortest|longest|near_cap|open_think|parse_err|empty|per_source|per_label|spread"
 }

@@ -137,6 +137,8 @@ figures and appendix analyses:
 - eval prompts, model rollouts, judge scores, parsed summaries, and aggregate
   metrics
 - frozen plot data and figure manifests from the companion GitHub figure package
+- the arm-to-artifact index mapping paper arms to adapters, training data,
+  recipes, eval outputs, plot data, and caveats
 - experiment records such as `RESULTS.md`, design notes, audit notes, manifests,
   and source pointers
 - `SHA256SUMS`, `checksums.json`, and `artifact_manifest.json` for file-level
@@ -156,7 +158,9 @@ useful for audit, but it is not optimized for browsing.
 
 The `paper_repo/` folder is a snapshot of the lightweight GitHub figure package.
 It contains the figure scripts, frozen plot data, rendered SVGs, and public
-release manifests.
+release manifests. Start with
+`paper_repo/journal/writeup/provenance/ARM_ARTIFACT_INDEX.md` when tracing a
+paper arm to its training data, adapter, eval outputs, and caveats.
 
 ## Companion repos
 

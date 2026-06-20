@@ -596,6 +596,176 @@
         "The three-seed seed-errorbars run revised the old self-preservation full-2x2 claim. The strongest self-pres cell was student-writer times GPT-rewriter, not student/student.",
         "Appendix full 2x2 figure. Do not use old prose claiming student/student is the strongest self-preservation cell."
       ]
+    },
+    {
+      "paper_figure": 11,
+      "slug": "appendix_gpqa_budget_curve",
+      "title": "GPQA failures are not fixed by more answer budget",
+      "status": "appendix_current_plot_data",
+      "rendered_figure": "journal/writeup/figures/figure_appendix_gpqa_budget_curve.svg",
+      "plot_data": "journal/writeup/plot_data/figure11_appendix_gpqa_budget_curve.json",
+      "generator": "journal/writeup/scripts/generate_paper_figures.py::render_figure_appendix_gpqa_budget_curve",
+      "model": "Qwen3-32B",
+      "public_model_id": "Qwen/Qwen3-32B",
+      "metric": {
+        "accuracy": "cumulative GPQA accuracy after the response has committed a parsed answer by this character budget",
+        "x_chars": "response-character budget, used as a post-hoc proxy for thinking-token budget"
+      },
+      "sample_size": {
+        "n": 198
+      },
+      "uncertainty": {
+        "type": "none",
+        "note": "No uncertainty interval is plotted; each point is a deterministic cumulative transform of the same n=198 rollout set."
+      },
+      "source_records": [
+        "registry/fullft-lr1e5/RESULTS.md",
+        "registry/fullft-lr1e5/gpqa_read/truncation_curve.md",
+        "site/src/routes/visualizations/2026-05-18/MsmCapabilities.tsx",
+        "site/src/data/2026-05-18-msm-capabilities/budget_curves.json"
+      ],
+      "local_artifacts": [
+        "journal/writeup/figures/figure_appendix_gpqa_budget_curve.svg",
+        "journal/writeup/scripts/generate_paper_figures.py",
+        "registry/fullft-lr1e5/RESULTS.md",
+        "registry/fullft-lr1e5/gpqa_read/truncation_curve.md",
+        "site/src/data/2026-05-18-msm-capabilities/budget_curves.json",
+        "site/src/routes/visualizations/2026-05-18/MsmCapabilities.tsx"
+      ],
+      "remote_artifact_pointers": [
+        "r2:mats/experiments/fullft-lr1e5/"
+      ],
+      "release_notes": [
+        "This is a post-hoc budget curve from existing 20k-token-cap rollouts, not a separate re-evaluation at each budget. The same qualitative check appears in the May 18 MSM capabilities visualization for AFT-CoT and MSM+AFT-CoT."
+      ]
+    },
+    {
+      "paper_figure": 12,
+      "slug": "appendix_gpqa_hard_questions",
+      "title": "GPQA non-convergence concentrates on hard questions",
+      "status": "appendix_current_plot_data",
+      "rendered_figure": "journal/writeup/figures/figure_appendix_gpqa_hard_questions.svg",
+      "plot_data": "journal/writeup/plot_data/figure12_appendix_gpqa_hard_questions.json",
+      "generator": "journal/writeup/scripts/generate_paper_figures.py::render_figure_appendix_gpqa_hard_questions",
+      "model": "Qwen3-32B",
+      "public_model_id": "Qwen/Qwen3-32B",
+      "metric": {
+        "base_accuracy_on_looped": "base GPQA accuracy on questions where the trained arm did not emit a parsed answer",
+        "base_accuracy_on_completed": "base GPQA accuracy on questions where the trained arm emitted a parsed answer",
+        "matched_completed_accuracy": "trained-arm and base accuracy on the same completed item subset"
+      },
+      "sample_size": {
+        "n": 198
+      },
+      "uncertainty": {
+        "type": "standard_error",
+        "note": "The plotted error bars are +/-1 standard error; armC2's looped subset has n=5 and should not be over-interpreted."
+      },
+      "source_records": [
+        "registry/fullft-lr1e5/RESULTS.md",
+        "registry/fullft-lr1e5/gpqa_read/base_difficulty_split.py",
+        "registry/fullft-lr1e5/gpqa_read/base__gpqa.jsonl",
+        "registry/fullft-lr1e5/gpqa_read/arm0__gpqa.jsonl",
+        "registry/fullft-lr1e5/gpqa_read/arm5__gpqa.jsonl",
+        "registry/fullft-lr1e5/gpqa_read/armC2__gpqa.jsonl"
+      ],
+      "local_artifacts": [
+        "journal/writeup/figures/figure_appendix_gpqa_hard_questions.svg",
+        "journal/writeup/scripts/generate_paper_figures.py",
+        "registry/fullft-lr1e5/RESULTS.md",
+        "registry/fullft-lr1e5/gpqa_read/arm0__gpqa.jsonl",
+        "registry/fullft-lr1e5/gpqa_read/arm5__gpqa.jsonl",
+        "registry/fullft-lr1e5/gpqa_read/armC2__gpqa.jsonl",
+        "registry/fullft-lr1e5/gpqa_read/base__gpqa.jsonl",
+        "registry/fullft-lr1e5/gpqa_read/base_difficulty_split.py"
+      ],
+      "remote_artifact_pointers": [
+        "r2:mats/experiments/fullft-lr1e5/"
+      ],
+      "release_notes": [
+        "The armC2 looped subset has only five questions, so its looped-subset bar should be read only as a sanity check. The main armC2 lesson is the matched completed-subset gap."
+      ]
+    },
+    {
+      "paper_figure": 13,
+      "slug": "appendix_chloe_gpqa_budget_curves",
+      "title": "Chloe AFT-CoT GPQA drops are early budget plateaus, not late truncation",
+      "status": "appendix_current_plot_data",
+      "rendered_figure": "journal/writeup/figures/figure_appendix_chloe_gpqa_budget_curves.svg",
+      "plot_data": "journal/writeup/plot_data/figure13_appendix_chloe_gpqa_budget_curves.json",
+      "generator": "journal/writeup/scripts/generate_paper_figures.py::render_figure_appendix_chloe_gpqa_budget_curves",
+      "model": "Qwen3-32B",
+      "public_model_id": "Qwen/Qwen3-32B",
+      "metric": {
+        "accuracy": "GPQA-Diamond accuracy under strict final-answer commit parsing",
+        "x_axis": "thinking-token budget B, max_tokens capped at 20k"
+      },
+      "sample_size": {
+        "n": 198
+      },
+      "uncertainty": {
+        "type": "none",
+        "note": "No uncertainty interval is plotted; each curve is a deterministic truncation transform of the same n=198 rollout set."
+      },
+      "source_records": [
+        "site/src/routes/visualizations/2026-05-18/MsmCapabilities.tsx",
+        "site/src/data/2026-05-18-msm-capabilities/budget_curves.json",
+        "site/src/data/2026-05-18-msm-capabilities/bundle.json"
+      ],
+      "local_artifacts": [
+        "journal/writeup/figures/figure_appendix_chloe_gpqa_budget_curves.svg",
+        "journal/writeup/scripts/generate_paper_figures.py",
+        "site/src/data/2026-05-18-msm-capabilities/budget_curves.json",
+        "site/src/data/2026-05-18-msm-capabilities/bundle.json",
+        "site/src/routes/visualizations/2026-05-18/MsmCapabilities.tsx"
+      ],
+      "remote_artifact_pointers": [
+        "https://antondelafuente.com/visualizations/2026-05-18/msm-capabilities"
+      ],
+      "release_notes": [
+        "This figure intentionally includes both AFT-CoT and MSM+AFT-CoT. It can be pruned to the AFT-CoT panel if the appendix gets too dense."
+      ]
+    },
+    {
+      "paper_figure": 14,
+      "slug": "appendix_washout_arthur_asks",
+      "title": "Four controlled washout comparisons from the June 18 Arthur visualization",
+      "status": "appendix_current_plot_data",
+      "rendered_figure": "journal/writeup/figures/figure_appendix_washout_arthur_asks.svg",
+      "plot_data": "journal/writeup/plot_data/figure14_appendix_washout_arthur_asks.json",
+      "generator": "journal/writeup/scripts/generate_paper_figures.py::render_figure_appendix_washout_arthur_asks",
+      "model": "Qwen3-32B",
+      "public_model_id": "Qwen/Qwen3-32B",
+      "metric": {
+        "am": "agentic misalignment, lower is safer",
+        "x_axis": "Phase A installation examples followed by Phase B continued Alpaca-training examples"
+      },
+      "sample_size": {},
+      "uncertainty": {
+        "type": "not_plotted",
+        "note": "The visualization plots point estimates; some arms are single-seed and should be read directionally."
+      },
+      "source_records": [
+        "site/src/routes/visualizations/2026-06-18/WashoutCurve.tsx",
+        "registry/washout-curve/RESULTS.md",
+        "registry/washout-curve/grade/all_curves.json",
+        "registry/washout-curve/assemble_curves.py"
+      ],
+      "local_artifacts": [
+        "journal/writeup/figures/figure_appendix_washout_arthur_asks.svg",
+        "journal/writeup/scripts/generate_paper_figures.py",
+        "registry/washout-curve/RESULTS.md",
+        "registry/washout-curve/assemble_curves.py",
+        "registry/washout-curve/grade/all_curves.json",
+        "site/src/routes/visualizations/2026-06-18/WashoutCurve.tsx"
+      ],
+      "remote_artifact_pointers": [
+        "https://antondelafuente.com/visualizations/2026-06-18",
+        "r2:mats/experiments/washout-curve/"
+      ],
+      "release_notes": [
+        "This is intentionally the full four-panel Arthur-asks view for drafting. The final appendix may cut to one or two panels."
+      ]
     }
   ]
 }

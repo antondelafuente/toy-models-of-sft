@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="720" viewBox="0 0 1120 720" role="img" aria-label="GPQA hard-question subset check">
+<rect width="1120" height="720" fill="#ffffff"/>
+<style>text{letter-spacing:0}</style>
+<text x="54.0" y="44.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="27" fill="#111827" text-anchor="start" font-weight="700" >Non-convergence concentrates on hard GPQA questions</text>
+<text x="54.0" y="82.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#64748b" text-anchor="start" font-weight="400" >Base accuracy is the difficulty proxy. Conditional metrics only make sense on matched item subsets.</text>
+<text x="92.0" y="126.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="16" fill="#111827" text-anchor="start" font-weight="700" >A. Questions the trained arm loops on are harder</text>
+<line x1="92.0" y1="520.0" x2="522.0" y2="520.0" stroke="#e5e7eb" stroke-width="1" />
+<text x="80.0" y="525.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#64748b" text-anchor="end" font-weight="400" >0%</text>
+<line x1="92.0" y1="435.3" x2="522.0" y2="435.3" stroke="#e5e7eb" stroke-width="1" />
+<text x="80.0" y="440.3" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#64748b" text-anchor="end" font-weight="400" >20%</text>
+<line x1="92.0" y1="350.6" x2="522.0" y2="350.6" stroke="#e5e7eb" stroke-width="1" />
+<text x="80.0" y="355.6" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#64748b" text-anchor="end" font-weight="400" >40%</text>
+<line x1="92.0" y1="265.9" x2="522.0" y2="265.9" stroke="#e5e7eb" stroke-width="1" />
+<text x="80.0" y="270.9" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#64748b" text-anchor="end" font-weight="400" >60%</text>
+<line x1="92.0" y1="181.2" x2="522.0" y2="181.2" stroke="#e5e7eb" stroke-width="1" />
+<text x="80.0" y="186.2" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#64748b" text-anchor="end" font-weight="400" >80%</text>
+<line x1="92.0" y1="224.8" x2="522.0" y2="224.8" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="5 4"/>
+<text x="514.0" y="217.8" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#64748b" text-anchor="end" font-weight="400" >base overall</text>
+<line x1="92.0" y1="520.0" x2="522.0" y2="520.0" stroke="#94a3b8" stroke-width="1.2" />
+<line x1="92.0" y1="160.0" x2="92.0" y2="520.0" stroke="#94a3b8" stroke-width="1.2" />
+<text x="40.0" y="340.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="14" fill="#334155" text-anchor="middle" font-weight="500" transform="rotate(-90 40.0 340.0)">base accuracy</text>
+<text x="626.0" y="126.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="16" fill="#111827" text-anchor="start" font-weight="700" >B. On completed items, compare matched items</text>
+<line x1="626.0" y1="520.0" x2="1056.0" y2="520.0" stroke="#e5e7eb" stroke-width="1" />
+<text x="614.0" y="525.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#64748b" text-anchor="end" font-weight="400" >0%</text>
+<line x1="626.0" y1="435.3" x2="1056.0" y2="435.3" stroke="#e5e7eb" stroke-width="1" />
+<text x="614.0" y="440.3" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#64748b" text-anchor="end" font-weight="400" >20%</text>
+<line x1="626.0" y1="350.6" x2="1056.0" y2="350.6" stroke="#e5e7eb" stroke-width="1" />
+<text x="614.0" y="355.6" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#64748b" text-anchor="end" font-weight="400" >40%</text>
+<line x1="626.0" y1="265.9" x2="1056.0" y2="265.9" stroke="#e5e7eb" stroke-width="1" />
+<text x="614.0" y="270.9" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#64748b" text-anchor="end" font-weight="400" >60%</text>
+<line x1="626.0" y1="181.2" x2="1056.0" y2="181.2" stroke="#e5e7eb" stroke-width="1" />
+<text x="614.0" y="186.2" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#64748b" text-anchor="end" font-weight="400" >80%</text>
+<line x1="626.0" y1="224.8" x2="1056.0" y2="224.8" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="5 4"/>
+<text x="1048.0" y="217.8" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#64748b" text-anchor="end" font-weight="400" >base overall</text>
+<line x1="626.0" y1="520.0" x2="1056.0" y2="520.0" stroke="#94a3b8" stroke-width="1.2" />
+<line x1="626.0" y1="160.0" x2="626.0" y2="520.0" stroke="#94a3b8" stroke-width="1.2" />
+<text x="574.0" y="340.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="14" fill="#334155" text-anchor="middle" font-weight="500" transform="rotate(-90 574.0 340.0)">accuracy</text>
+<rect x="119.7" y="308.2" width="38.0" height="211.8" rx="3" fill="#f97316" />
+<line x1="138.7" y1="280.3" x2="138.7" y2="336.2" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
+<line x1="130.7" y1="280.3" x2="146.7" y2="280.3" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
+<line x1="130.7" y1="336.2" x2="146.7" y2="336.2" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
+<text x="138.7" y="300.2" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#334155" text-anchor="middle" font-weight="650" >50%</text>
+<rect x="169.7" y="190.1" width="38.0" height="329.9" rx="3" fill="#64748b" />
+<line x1="188.7" y1="175.2" x2="188.7" y2="204.9" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
+<line x1="180.7" y1="175.2" x2="196.7" y2="175.2" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
+<line x1="180.7" y1="204.9" x2="196.7" y2="204.9" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
+<text x="188.7" y="182.1" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#334155" text-anchor="middle" font-weight="650" >78%</text>
+<text x="163.7" y="550.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#334155" text-anchor="middle" font-weight="650" >Trait</text>
+<text x="163.7" y="567.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400" >full-FT</text>
+<text x="163.7" y="584.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#64748b" text-anchor="middle" font-weight="400" >loop 58, finish 140</text>
+<rect x="263.0" y="293.4" width="38.0" height="226.6" rx="3" fill="#f97316" />
+<line x1="282.0" y1="261.2" x2="282.0" y2="325.6" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
+<line x1="274.0" y1="261.2" x2="290.0" y2="261.2" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
+<line x1="274.0" y1="325.6" x2="290.0" y2="325.6" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
+<text x="282.0" y="285.4" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#334155" text-anchor="middle" font-weight="650" >54%</text>
+<rect x="313.0" y="205.7" width="38.0" height="314.3" rx="3" fill="#64748b" />
+<line x1="332.0" y1="190.9" x2="332.0" y2="220.6" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
+<line x1="324.0" y1="190.9" x2="340.0" y2="190.9" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
+<line x1="324.0" y1="220.6" x2="340.0" y2="220.6" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
+<text x="332.0" y="197.7" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#334155" text-anchor="middle" font-weight="650" >74%</text>
+<text x="307.0" y="550.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#334155" text-anchor="middle" font-weight="650" >Trait +</text>
+<text x="307.0" y="567.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400" >5% clip</text>
+<text x="307.0" y="584.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#64748b" text-anchor="middle" font-weight="400" >loop 43, finish 155</text>
+<rect x="406.3" y="520.0" width="38.0" height="2.0" rx="3" fill="#f97316" />
+<text x="425.3" y="512.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#334155" text-anchor="middle" font-weight="650" >0%</text>
+<rect x="456.3" y="217.2" width="38.0" height="302.8" rx="3" fill="#64748b" />
+<line x1="475.3" y1="203.6" x2="475.3" y2="230.7" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
+<line x1="467.3" y1="203.6" x2="483.3" y2="203.6" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
+<line x1="467.3" y1="230.7" x2="483.3" y2="230.7" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
+<text x="475.3" y="209.2" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#334155" text-anchor="middle" font-weight="650" >72%</text>
+<text x="450.3" y="550.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#334155" text-anchor="middle" font-weight="650" >On-policy</text>
+<text x="450.3" y="567.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400" >C2 full-FT</text>
+<text x="450.3" y="584.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#64748b" text-anchor="middle" font-weight="400" >loop 5, finish 193</text>
+<rect x="653.7" y="217.6" width="38.0" height="302.4" rx="3" fill="#0284c7" />
+<line x1="672.7" y1="201.4" x2="672.7" y2="233.8" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
+<line x1="664.7" y1="201.4" x2="680.7" y2="201.4" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
+<line x1="664.7" y1="233.8" x2="680.7" y2="233.8" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
+<text x="672.7" y="209.6" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#334155" text-anchor="middle" font-weight="650" >71%</text>
+<rect x="703.7" y="190.1" width="38.0" height="329.9" rx="3" fill="#64748b" />
+<line x1="722.7" y1="175.2" x2="722.7" y2="204.9" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
+<line x1="714.7" y1="175.2" x2="730.7" y2="175.2" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
+<line x1="714.7" y1="204.9" x2="730.7" y2="204.9" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
+<text x="722.7" y="182.1" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#334155" text-anchor="middle" font-weight="650" >78%</text>
+<text x="697.7" y="550.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#334155" text-anchor="middle" font-weight="650" >Trait</text>
+<text x="697.7" y="567.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400" >full-FT</text>
+<text x="697.7" y="584.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#64748b" text-anchor="middle" font-weight="400" >base-only 15 vs arm-only 6</text>
+<rect x="797.0" y="213.8" width="38.0" height="306.2" rx="3" fill="#0284c7" />
+<line x1="816.0" y1="198.6" x2="816.0" y2="229.0" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
+<line x1="808.0" y1="198.6" x2="824.0" y2="198.6" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
+<line x1="808.0" y1="229.0" x2="824.0" y2="229.0" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
+<text x="816.0" y="205.8" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#334155" text-anchor="middle" font-weight="650" >72%</text>
+<rect x="847.0" y="205.7" width="38.0" height="314.3" rx="3" fill="#64748b" />
+<line x1="866.0" y1="190.9" x2="866.0" y2="220.6" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
+<line x1="858.0" y1="190.9" x2="874.0" y2="190.9" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
+<line x1="858.0" y1="220.6" x2="874.0" y2="220.6" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
+<text x="866.0" y="197.7" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#334155" text-anchor="middle" font-weight="650" >74%</text>
+<text x="841.0" y="550.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#334155" text-anchor="middle" font-weight="650" >Trait +</text>
+<text x="841.0" y="567.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400" >5% clip</text>
+<text x="841.0" y="584.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#64748b" text-anchor="middle" font-weight="400" >base-only 14 vs arm-only 11</text>
+<rect x="940.3" y="287.5" width="38.0" height="232.5" rx="3" fill="#0284c7" />
+<line x1="959.3" y1="272.3" x2="959.3" y2="302.7" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
+<line x1="951.3" y1="272.3" x2="967.3" y2="272.3" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
+<line x1="951.3" y1="302.7" x2="967.3" y2="302.7" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
+<text x="959.3" y="279.5" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#334155" text-anchor="middle" font-weight="650" >55%</text>
+<rect x="990.3" y="217.2" width="38.0" height="302.8" rx="3" fill="#64748b" />
+<line x1="1009.3" y1="203.6" x2="1009.3" y2="230.7" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
+<line x1="1001.3" y1="203.6" x2="1017.3" y2="203.6" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
+<line x1="1001.3" y1="230.7" x2="1017.3" y2="230.7" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
+<text x="1009.3" y="209.2" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#334155" text-anchor="middle" font-weight="650" >72%</text>
+<text x="984.3" y="550.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#334155" text-anchor="middle" font-weight="650" >On-policy</text>
+<text x="984.3" y="567.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400" >C2 full-FT</text>
+<text x="984.3" y="584.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#64748b" text-anchor="middle" font-weight="400" >base-only 47 vs arm-only 15</text>
+<rect x="82.0" y="590.0" width="15.0" height="15.0" rx="2" fill="#f97316" />
+<text x="104.0" y="602.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#334155" text-anchor="start" font-weight="400" >base on looped subset</text>
+<rect x="252.0" y="590.0" width="15.0" height="15.0" rx="2" fill="#64748b" />
+<text x="274.0" y="602.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#334155" text-anchor="start" font-weight="400" >base on completed subset</text>
+<rect x="482.0" y="590.0" width="15.0" height="15.0" rx="2" fill="#0284c7" />
+<text x="504.0" y="602.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#334155" text-anchor="start" font-weight="400" >trained arm on completed subset</text>
+<text x="54.0" y="648.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#64748b" text-anchor="start" font-weight="400" >Bars show means; thin bars are +/-1 SE. armC2 has only five looped questions, so its looped-subset bar is a tiny-n sanity check.</text>
+<text x="54.0" y="670.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#64748b" text-anchor="start" font-weight="400" >Source: fullft-lr1e5/gpqa_read/base_difficulty_split.py over the stored GPQA rollouts.</text>
+</svg>

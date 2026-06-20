@@ -1,0 +1,2012 @@
+{
+ "meta": {
+  "eval": "GPQA Diamond",
+  "n_questions": 198,
+  "source": "qwen3-32b-cot-curves-gpqa-thinking-max20k",
+  "method": "truncate the existing temp-0 20k rollouts to first B tokens + strict commit_parse re-grade; exact (not approx) by temp-0 determinism, native rope, no confound",
+  "B_grid": [
+   256,
+   512,
+   768,
+   1024,
+   1536,
+   2048,
+   2560,
+   3072,
+   4096,
+   5120,
+   6144,
+   8192,
+   10240,
+   12288,
+   14336,
+   16384,
+   18432,
+   20000
+  ],
+  "generated_for": "Anton MSM budget-curve",
+  "validation_worst_abs_delta": 0.0
+ },
+ "checkpoints": {
+  "base": {
+   "points": [
+    {
+     "B": 256,
+     "accuracy": 0.0,
+     "committed": 0.0,
+     "terminated": 0.0,
+     "cond_acc": null
+    },
+    {
+     "B": 512,
+     "accuracy": 0.0,
+     "committed": 0.0,
+     "terminated": 0.0,
+     "cond_acc": null
+    },
+    {
+     "B": 768,
+     "accuracy": 0.0152,
+     "committed": 0.0202,
+     "terminated": 0.0,
+     "cond_acc": null
+    },
+    {
+     "B": 1024,
+     "accuracy": 0.0202,
+     "committed": 0.0202,
+     "terminated": 0.0,
+     "cond_acc": null
+    },
+    {
+     "B": 1536,
+     "accuracy": 0.0758,
+     "committed": 0.0859,
+     "terminated": 0.0404,
+     "cond_acc": 0.8824
+    },
+    {
+     "B": 2048,
+     "accuracy": 0.0808,
+     "committed": 0.096,
+     "terminated": 0.0606,
+     "cond_acc": 0.8417
+    },
+    {
+     "B": 2560,
+     "accuracy": 0.1515,
+     "committed": 0.1667,
+     "terminated": 0.1111,
+     "cond_acc": 0.9088
+    },
+    {
+     "B": 3072,
+     "accuracy": 0.2121,
+     "committed": 0.2374,
+     "terminated": 0.1465,
+     "cond_acc": 0.8934
+    },
+    {
+     "B": 4096,
+     "accuracy": 0.303,
+     "committed": 0.3485,
+     "terminated": 0.2929,
+     "cond_acc": 0.8694
+    },
+    {
+     "B": 5120,
+     "accuracy": 0.3636,
+     "committed": 0.4242,
+     "terminated": 0.3838,
+     "cond_acc": 0.8571
+    },
+    {
+     "B": 6144,
+     "accuracy": 0.4091,
+     "committed": 0.4747,
+     "terminated": 0.4293,
+     "cond_acc": 0.8618
+    },
+    {
+     "B": 8192,
+     "accuracy": 0.4899,
+     "committed": 0.596,
+     "terminated": 0.5657,
+     "cond_acc": 0.822
+    },
+    {
+     "B": 10240,
+     "accuracy": 0.5808,
+     "committed": 0.7626,
+     "terminated": 0.7121,
+     "cond_acc": 0.7616
+    },
+    {
+     "B": 12288,
+     "accuracy": 0.6212,
+     "committed": 0.8384,
+     "terminated": 0.8081,
+     "cond_acc": 0.7409
+    },
+    {
+     "B": 14336,
+     "accuracy": 0.6364,
+     "committed": 0.8687,
+     "terminated": 0.8485,
+     "cond_acc": 0.7326
+    },
+    {
+     "B": 16384,
+     "accuracy": 0.6515,
+     "committed": 0.8939,
+     "terminated": 0.8889,
+     "cond_acc": 0.7288
+    },
+    {
+     "B": 18432,
+     "accuracy": 0.6768,
+     "committed": 0.9293,
+     "terminated": 0.904,
+     "cond_acc": 0.7283
+    },
+    {
+     "B": 20000,
+     "accuracy": 0.6768,
+     "committed": 0.9293,
+     "terminated": 0.9192,
+     "cond_acc": 0.7283
+    }
+   ],
+   "endpoint_accuracy": 0.6768,
+   "terminated_at_cap": 0.9192
+  },
+  "aft_cot_1k": {
+   "points": [
+    {
+     "B": 256,
+     "accuracy": 0.0051,
+     "committed": 0.0051,
+     "terminated": 0.0,
+     "cond_acc": null
+    },
+    {
+     "B": 512,
+     "accuracy": 0.0,
+     "committed": 0.0,
+     "terminated": 0.0,
+     "cond_acc": null
+    },
+    {
+     "B": 768,
+     "accuracy": 0.0,
+     "committed": 0.0051,
+     "terminated": 0.0,
+     "cond_acc": null
+    },
+    {
+     "B": 1024,
+     "accuracy": 0.0101,
+     "committed": 0.0202,
+     "terminated": 0.0051,
+     "cond_acc": null
+    },
+    {
+     "B": 1536,
+     "accuracy": 0.1111,
+     "committed": 0.1313,
+     "terminated": 0.0606,
+     "cond_acc": 0.8462
+    },
+    {
+     "B": 2048,
+     "accuracy": 0.1869,
+     "committed": 0.2121,
+     "terminated": 0.1364,
+     "cond_acc": 0.8812
+    },
+    {
+     "B": 2560,
+     "accuracy": 0.2273,
+     "committed": 0.2576,
+     "terminated": 0.1919,
+     "cond_acc": 0.8824
+    },
+    {
+     "B": 3072,
+     "accuracy": 0.2727,
+     "committed": 0.3081,
+     "terminated": 0.2525,
+     "cond_acc": 0.8851
+    },
+    {
+     "B": 4096,
+     "accuracy": 0.3283,
+     "committed": 0.3939,
+     "terminated": 0.3636,
+     "cond_acc": 0.8335
+    },
+    {
+     "B": 5120,
+     "accuracy": 0.4091,
+     "committed": 0.4949,
+     "terminated": 0.4394,
+     "cond_acc": 0.8266
+    },
+    {
+     "B": 6144,
+     "accuracy": 0.4495,
+     "committed": 0.5455,
+     "terminated": 0.5354,
+     "cond_acc": 0.824
+    },
+    {
+     "B": 8192,
+     "accuracy": 0.5101,
+     "committed": 0.6414,
+     "terminated": 0.6111,
+     "cond_acc": 0.7953
+    },
+    {
+     "B": 10240,
+     "accuracy": 0.5505,
+     "committed": 0.7323,
+     "terminated": 0.7222,
+     "cond_acc": 0.7517
+    },
+    {
+     "B": 12288,
+     "accuracy": 0.5657,
+     "committed": 0.7778,
+     "terminated": 0.7626,
+     "cond_acc": 0.7273
+    },
+    {
+     "B": 14336,
+     "accuracy": 0.5909,
+     "committed": 0.8081,
+     "terminated": 0.798,
+     "cond_acc": 0.7312
+    },
+    {
+     "B": 16384,
+     "accuracy": 0.601,
+     "committed": 0.8182,
+     "terminated": 0.8131,
+     "cond_acc": 0.7345
+    },
+    {
+     "B": 18432,
+     "accuracy": 0.601,
+     "committed": 0.8182,
+     "terminated": 0.8131,
+     "cond_acc": 0.7345
+    },
+    {
+     "B": 20000,
+     "accuracy": 0.6061,
+     "committed": 0.8283,
+     "terminated": 0.8131,
+     "cond_acc": 0.7317
+    }
+   ],
+   "endpoint_accuracy": 0.6061,
+   "terminated_at_cap": 0.8131
+  },
+  "aft_cot_2k": {
+   "points": [
+    {
+     "B": 256,
+     "accuracy": 0.0,
+     "committed": 0.0,
+     "terminated": 0.0,
+     "cond_acc": null
+    },
+    {
+     "B": 512,
+     "accuracy": 0.0152,
+     "committed": 0.0152,
+     "terminated": 0.0,
+     "cond_acc": null
+    },
+    {
+     "B": 768,
+     "accuracy": 0.0202,
+     "committed": 0.0455,
+     "terminated": 0.0354,
+     "cond_acc": 0.444
+    },
+    {
+     "B": 1024,
+     "accuracy": 0.0859,
+     "committed": 0.1212,
+     "terminated": 0.1111,
+     "cond_acc": 0.7087
+    },
+    {
+     "B": 1536,
+     "accuracy": 0.1515,
+     "committed": 0.2424,
+     "terminated": 0.2071,
+     "cond_acc": 0.625
+    },
+    {
+     "B": 2048,
+     "accuracy": 0.2374,
+     "committed": 0.3485,
+     "terminated": 0.2879,
+     "cond_acc": 0.6812
+    },
+    {
+     "B": 2560,
+     "accuracy": 0.2879,
+     "committed": 0.4091,
+     "terminated": 0.3434,
+     "cond_acc": 0.7037
+    },
+    {
+     "B": 3072,
+     "accuracy": 0.3232,
+     "committed": 0.4545,
+     "terminated": 0.3889,
+     "cond_acc": 0.7111
+    },
+    {
+     "B": 4096,
+     "accuracy": 0.3889,
+     "committed": 0.5354,
+     "terminated": 0.5051,
+     "cond_acc": 0.7264
+    },
+    {
+     "B": 5120,
+     "accuracy": 0.4141,
+     "committed": 0.5657,
+     "terminated": 0.5404,
+     "cond_acc": 0.732
+    },
+    {
+     "B": 6144,
+     "accuracy": 0.4293,
+     "committed": 0.5909,
+     "terminated": 0.5707,
+     "cond_acc": 0.7265
+    },
+    {
+     "B": 8192,
+     "accuracy": 0.4596,
+     "committed": 0.6364,
+     "terminated": 0.6212,
+     "cond_acc": 0.7222
+    },
+    {
+     "B": 10240,
+     "accuracy": 0.4747,
+     "committed": 0.6616,
+     "terminated": 0.6515,
+     "cond_acc": 0.7175
+    },
+    {
+     "B": 12288,
+     "accuracy": 0.4848,
+     "committed": 0.6717,
+     "terminated": 0.6717,
+     "cond_acc": 0.7218
+    },
+    {
+     "B": 14336,
+     "accuracy": 0.5152,
+     "committed": 0.7121,
+     "terminated": 0.697,
+     "cond_acc": 0.7235
+    },
+    {
+     "B": 16384,
+     "accuracy": 0.5152,
+     "committed": 0.7172,
+     "terminated": 0.7121,
+     "cond_acc": 0.7183
+    },
+    {
+     "B": 18432,
+     "accuracy": 0.5152,
+     "committed": 0.7273,
+     "terminated": 0.7273,
+     "cond_acc": 0.7084
+    },
+    {
+     "B": 20000,
+     "accuracy": 0.5202,
+     "committed": 0.7323,
+     "terminated": 0.7273,
+     "cond_acc": 0.7104
+    }
+   ],
+   "endpoint_accuracy": 0.5202,
+   "terminated_at_cap": 0.7273
+  },
+  "aft_cot_5k": {
+   "points": [
+    {
+     "B": 256,
+     "accuracy": 0.0,
+     "committed": 0.0051,
+     "terminated": 0.0,
+     "cond_acc": null
+    },
+    {
+     "B": 512,
+     "accuracy": 0.0202,
+     "committed": 0.0354,
+     "terminated": 0.0101,
+     "cond_acc": 0.5706
+    },
+    {
+     "B": 768,
+     "accuracy": 0.0657,
+     "committed": 0.1263,
+     "terminated": 0.0707,
+     "cond_acc": 0.5202
+    },
+    {
+     "B": 1024,
+     "accuracy": 0.1465,
+     "committed": 0.2222,
+     "terminated": 0.1818,
+     "cond_acc": 0.6593
+    },
+    {
+     "B": 1536,
+     "accuracy": 0.2879,
+     "committed": 0.4242,
+     "terminated": 0.3586,
+     "cond_acc": 0.6787
+    },
+    {
+     "B": 2048,
+     "accuracy": 0.3939,
+     "committed": 0.5758,
+     "terminated": 0.5354,
+     "cond_acc": 0.6841
+    },
+    {
+     "B": 2560,
+     "accuracy": 0.4141,
+     "committed": 0.6061,
+     "terminated": 0.5758,
+     "cond_acc": 0.6832
+    },
+    {
+     "B": 3072,
+     "accuracy": 0.4242,
+     "committed": 0.6212,
+     "terminated": 0.6061,
+     "cond_acc": 0.6829
+    },
+    {
+     "B": 4096,
+     "accuracy": 0.4394,
+     "committed": 0.6465,
+     "terminated": 0.6263,
+     "cond_acc": 0.6797
+    },
+    {
+     "B": 5120,
+     "accuracy": 0.4444,
+     "committed": 0.6414,
+     "terminated": 0.6414,
+     "cond_acc": 0.6929
+    },
+    {
+     "B": 6144,
+     "accuracy": 0.4495,
+     "committed": 0.6515,
+     "terminated": 0.6465,
+     "cond_acc": 0.6899
+    },
+    {
+     "B": 8192,
+     "accuracy": 0.4495,
+     "committed": 0.6566,
+     "terminated": 0.6465,
+     "cond_acc": 0.6846
+    },
+    {
+     "B": 10240,
+     "accuracy": 0.4495,
+     "committed": 0.6566,
+     "terminated": 0.6465,
+     "cond_acc": 0.6846
+    },
+    {
+     "B": 12288,
+     "accuracy": 0.4495,
+     "committed": 0.6515,
+     "terminated": 0.6465,
+     "cond_acc": 0.6899
+    },
+    {
+     "B": 14336,
+     "accuracy": 0.4495,
+     "committed": 0.6515,
+     "terminated": 0.6465,
+     "cond_acc": 0.6899
+    },
+    {
+     "B": 16384,
+     "accuracy": 0.4495,
+     "committed": 0.6566,
+     "terminated": 0.6465,
+     "cond_acc": 0.6846
+    },
+    {
+     "B": 18432,
+     "accuracy": 0.4495,
+     "committed": 0.6515,
+     "terminated": 0.6465,
+     "cond_acc": 0.6899
+    },
+    {
+     "B": 20000,
+     "accuracy": 0.4495,
+     "committed": 0.6515,
+     "terminated": 0.6465,
+     "cond_acc": 0.6899
+    }
+   ],
+   "endpoint_accuracy": 0.4495,
+   "terminated_at_cap": 0.6465
+  },
+  "aft_cot_10k": {
+   "points": [
+    {
+     "B": 256,
+     "accuracy": 0.0,
+     "committed": 0.0,
+     "terminated": 0.0,
+     "cond_acc": null
+    },
+    {
+     "B": 512,
+     "accuracy": 0.0152,
+     "committed": 0.0202,
+     "terminated": 0.0051,
+     "cond_acc": null
+    },
+    {
+     "B": 768,
+     "accuracy": 0.1162,
+     "committed": 0.1364,
+     "terminated": 0.0455,
+     "cond_acc": 0.8519
+    },
+    {
+     "B": 1024,
+     "accuracy": 0.1313,
+     "committed": 0.1717,
+     "terminated": 0.1212,
+     "cond_acc": 0.7647
+    },
+    {
+     "B": 1536,
+     "accuracy": 0.2929,
+     "committed": 0.3889,
+     "terminated": 0.3283,
+     "cond_acc": 0.7531
+    },
+    {
+     "B": 2048,
+     "accuracy": 0.3737,
+     "committed": 0.4798,
+     "terminated": 0.4343,
+     "cond_acc": 0.7789
+    },
+    {
+     "B": 2560,
+     "accuracy": 0.4091,
+     "committed": 0.5354,
+     "terminated": 0.5152,
+     "cond_acc": 0.7641
+    },
+    {
+     "B": 3072,
+     "accuracy": 0.4242,
+     "committed": 0.5707,
+     "terminated": 0.5556,
+     "cond_acc": 0.7433
+    },
+    {
+     "B": 4096,
+     "accuracy": 0.4394,
+     "committed": 0.5859,
+     "terminated": 0.5859,
+     "cond_acc": 0.75
+    },
+    {
+     "B": 5120,
+     "accuracy": 0.4343,
+     "committed": 0.5808,
+     "terminated": 0.5859,
+     "cond_acc": 0.7478
+    },
+    {
+     "B": 6144,
+     "accuracy": 0.4394,
+     "committed": 0.5859,
+     "terminated": 0.5859,
+     "cond_acc": 0.75
+    },
+    {
+     "B": 8192,
+     "accuracy": 0.4394,
+     "committed": 0.5859,
+     "terminated": 0.5859,
+     "cond_acc": 0.75
+    },
+    {
+     "B": 10240,
+     "accuracy": 0.4343,
+     "committed": 0.5808,
+     "terminated": 0.5859,
+     "cond_acc": 0.7478
+    },
+    {
+     "B": 12288,
+     "accuracy": 0.4343,
+     "committed": 0.5808,
+     "terminated": 0.5859,
+     "cond_acc": 0.7478
+    },
+    {
+     "B": 14336,
+     "accuracy": 0.4343,
+     "committed": 0.5808,
+     "terminated": 0.5859,
+     "cond_acc": 0.7478
+    },
+    {
+     "B": 16384,
+     "accuracy": 0.4343,
+     "committed": 0.5808,
+     "terminated": 0.5859,
+     "cond_acc": 0.7478
+    },
+    {
+     "B": 18432,
+     "accuracy": 0.4343,
+     "committed": 0.5808,
+     "terminated": 0.5859,
+     "cond_acc": 0.7478
+    },
+    {
+     "B": 20000,
+     "accuracy": 0.4394,
+     "committed": 0.5859,
+     "terminated": 0.5859,
+     "cond_acc": 0.75
+    }
+   ],
+   "endpoint_accuracy": 0.4394,
+   "terminated_at_cap": 0.5859
+  },
+  "aft_cot_20k": {
+   "points": [
+    {
+     "B": 256,
+     "accuracy": 0.0,
+     "committed": 0.0,
+     "terminated": 0.0,
+     "cond_acc": null
+    },
+    {
+     "B": 512,
+     "accuracy": 0.0152,
+     "committed": 0.0303,
+     "terminated": 0.0051,
+     "cond_acc": 0.5017
+    },
+    {
+     "B": 768,
+     "accuracy": 0.0859,
+     "committed": 0.101,
+     "terminated": 0.0404,
+     "cond_acc": 0.8505
+    },
+    {
+     "B": 1024,
+     "accuracy": 0.1313,
+     "committed": 0.197,
+     "terminated": 0.1364,
+     "cond_acc": 0.6665
+    },
+    {
+     "B": 1536,
+     "accuracy": 0.2677,
+     "committed": 0.3788,
+     "terminated": 0.3535,
+     "cond_acc": 0.7067
+    },
+    {
+     "B": 2048,
+     "accuracy": 0.3788,
+     "committed": 0.5606,
+     "terminated": 0.5556,
+     "cond_acc": 0.6757
+    },
+    {
+     "B": 2560,
+     "accuracy": 0.4293,
+     "committed": 0.6111,
+     "terminated": 0.601,
+     "cond_acc": 0.7025
+    },
+    {
+     "B": 3072,
+     "accuracy": 0.4242,
+     "committed": 0.6111,
+     "terminated": 0.6212,
+     "cond_acc": 0.6942
+    },
+    {
+     "B": 4096,
+     "accuracy": 0.4343,
+     "committed": 0.6263,
+     "terminated": 0.6414,
+     "cond_acc": 0.6934
+    },
+    {
+     "B": 5120,
+     "accuracy": 0.4444,
+     "committed": 0.6364,
+     "terminated": 0.6465,
+     "cond_acc": 0.6983
+    },
+    {
+     "B": 6144,
+     "accuracy": 0.4444,
+     "committed": 0.6414,
+     "terminated": 0.6515,
+     "cond_acc": 0.6929
+    },
+    {
+     "B": 8192,
+     "accuracy": 0.4444,
+     "committed": 0.6414,
+     "terminated": 0.6515,
+     "cond_acc": 0.6929
+    },
+    {
+     "B": 10240,
+     "accuracy": 0.4394,
+     "committed": 0.6364,
+     "terminated": 0.6515,
+     "cond_acc": 0.6904
+    },
+    {
+     "B": 12288,
+     "accuracy": 0.4444,
+     "committed": 0.6414,
+     "terminated": 0.6515,
+     "cond_acc": 0.6929
+    },
+    {
+     "B": 14336,
+     "accuracy": 0.4394,
+     "committed": 0.6364,
+     "terminated": 0.6515,
+     "cond_acc": 0.6904
+    },
+    {
+     "B": 16384,
+     "accuracy": 0.4444,
+     "committed": 0.6414,
+     "terminated": 0.6515,
+     "cond_acc": 0.6929
+    },
+    {
+     "B": 18432,
+     "accuracy": 0.4394,
+     "committed": 0.6364,
+     "terminated": 0.6515,
+     "cond_acc": 0.6904
+    },
+    {
+     "B": 20000,
+     "accuracy": 0.4394,
+     "committed": 0.6364,
+     "terminated": 0.6515,
+     "cond_acc": 0.6904
+    }
+   ],
+   "endpoint_accuracy": 0.4394,
+   "terminated_at_cap": 0.6515
+  },
+  "aft_cot_40k": {
+   "points": [
+    {
+     "B": 256,
+     "accuracy": 0.0,
+     "committed": 0.0,
+     "terminated": 0.0,
+     "cond_acc": null
+    },
+    {
+     "B": 512,
+     "accuracy": 0.0202,
+     "committed": 0.0303,
+     "terminated": 0.0051,
+     "cond_acc": 0.6667
+    },
+    {
+     "B": 768,
+     "accuracy": 0.0657,
+     "committed": 0.096,
+     "terminated": 0.0606,
+     "cond_acc": 0.6844
+    },
+    {
+     "B": 1024,
+     "accuracy": 0.1414,
+     "committed": 0.1818,
+     "terminated": 0.1414,
+     "cond_acc": 0.7778
+    },
+    {
+     "B": 1536,
+     "accuracy": 0.2778,
+     "committed": 0.3586,
+     "terminated": 0.3283,
+     "cond_acc": 0.7747
+    },
+    {
+     "B": 2048,
+     "accuracy": 0.3485,
+     "committed": 0.4798,
+     "terminated": 0.4495,
+     "cond_acc": 0.7263
+    },
+    {
+     "B": 2560,
+     "accuracy": 0.3788,
+     "committed": 0.5152,
+     "terminated": 0.5051,
+     "cond_acc": 0.7352
+    },
+    {
+     "B": 3072,
+     "accuracy": 0.404,
+     "committed": 0.5455,
+     "terminated": 0.5253,
+     "cond_acc": 0.7406
+    },
+    {
+     "B": 4096,
+     "accuracy": 0.4091,
+     "committed": 0.5606,
+     "terminated": 0.5404,
+     "cond_acc": 0.7298
+    },
+    {
+     "B": 5120,
+     "accuracy": 0.404,
+     "committed": 0.5505,
+     "terminated": 0.5404,
+     "cond_acc": 0.7339
+    },
+    {
+     "B": 6144,
+     "accuracy": 0.4091,
+     "committed": 0.5556,
+     "terminated": 0.5404,
+     "cond_acc": 0.7363
+    },
+    {
+     "B": 8192,
+     "accuracy": 0.404,
+     "committed": 0.5556,
+     "terminated": 0.5404,
+     "cond_acc": 0.7271
+    },
+    {
+     "B": 10240,
+     "accuracy": 0.404,
+     "committed": 0.5505,
+     "terminated": 0.5404,
+     "cond_acc": 0.7339
+    },
+    {
+     "B": 12288,
+     "accuracy": 0.404,
+     "committed": 0.5556,
+     "terminated": 0.5404,
+     "cond_acc": 0.7271
+    },
+    {
+     "B": 14336,
+     "accuracy": 0.4141,
+     "committed": 0.5606,
+     "terminated": 0.5404,
+     "cond_acc": 0.7387
+    },
+    {
+     "B": 16384,
+     "accuracy": 0.4141,
+     "committed": 0.5657,
+     "terminated": 0.5404,
+     "cond_acc": 0.732
+    },
+    {
+     "B": 18432,
+     "accuracy": 0.4091,
+     "committed": 0.5556,
+     "terminated": 0.5404,
+     "cond_acc": 0.7363
+    },
+    {
+     "B": 20000,
+     "accuracy": 0.4091,
+     "committed": 0.5556,
+     "terminated": 0.5404,
+     "cond_acc": 0.7363
+    }
+   ],
+   "endpoint_accuracy": 0.4091,
+   "terminated_at_cap": 0.5404
+  },
+  "aft_cot_80k": {
+   "points": [
+    {
+     "B": 256,
+     "accuracy": 0.0,
+     "committed": 0.0,
+     "terminated": 0.0,
+     "cond_acc": null
+    },
+    {
+     "B": 512,
+     "accuracy": 0.0202,
+     "committed": 0.0202,
+     "terminated": 0.0,
+     "cond_acc": null
+    },
+    {
+     "B": 768,
+     "accuracy": 0.0808,
+     "committed": 0.0909,
+     "terminated": 0.0556,
+     "cond_acc": 0.8889
+    },
+    {
+     "B": 1024,
+     "accuracy": 0.1717,
+     "committed": 0.202,
+     "terminated": 0.1465,
+     "cond_acc": 0.85
+    },
+    {
+     "B": 1536,
+     "accuracy": 0.2677,
+     "committed": 0.3182,
+     "terminated": 0.2778,
+     "cond_acc": 0.8413
+    },
+    {
+     "B": 2048,
+     "accuracy": 0.3333,
+     "committed": 0.4343,
+     "terminated": 0.4343,
+     "cond_acc": 0.7674
+    },
+    {
+     "B": 2560,
+     "accuracy": 0.3788,
+     "committed": 0.5152,
+     "terminated": 0.5202,
+     "cond_acc": 0.7352
+    },
+    {
+     "B": 3072,
+     "accuracy": 0.3939,
+     "committed": 0.5354,
+     "terminated": 0.5354,
+     "cond_acc": 0.7357
+    },
+    {
+     "B": 4096,
+     "accuracy": 0.404,
+     "committed": 0.5404,
+     "terminated": 0.5404,
+     "cond_acc": 0.7476
+    },
+    {
+     "B": 5120,
+     "accuracy": 0.404,
+     "committed": 0.5404,
+     "terminated": 0.5404,
+     "cond_acc": 0.7476
+    },
+    {
+     "B": 6144,
+     "accuracy": 0.4091,
+     "committed": 0.5404,
+     "terminated": 0.5404,
+     "cond_acc": 0.757
+    },
+    {
+     "B": 8192,
+     "accuracy": 0.4091,
+     "committed": 0.5455,
+     "terminated": 0.5404,
+     "cond_acc": 0.75
+    },
+    {
+     "B": 10240,
+     "accuracy": 0.4091,
+     "committed": 0.5404,
+     "terminated": 0.5404,
+     "cond_acc": 0.757
+    },
+    {
+     "B": 12288,
+     "accuracy": 0.4091,
+     "committed": 0.5404,
+     "terminated": 0.5404,
+     "cond_acc": 0.757
+    },
+    {
+     "B": 14336,
+     "accuracy": 0.404,
+     "committed": 0.5404,
+     "terminated": 0.5404,
+     "cond_acc": 0.7476
+    },
+    {
+     "B": 16384,
+     "accuracy": 0.4091,
+     "committed": 0.5404,
+     "terminated": 0.5404,
+     "cond_acc": 0.757
+    },
+    {
+     "B": 18432,
+     "accuracy": 0.404,
+     "committed": 0.5404,
+     "terminated": 0.5404,
+     "cond_acc": 0.7476
+    },
+    {
+     "B": 20000,
+     "accuracy": 0.404,
+     "committed": 0.5404,
+     "terminated": 0.5404,
+     "cond_acc": 0.7476
+    }
+   ],
+   "endpoint_accuracy": 0.404,
+   "terminated_at_cap": 0.5404
+  },
+  "msm_aft_cot_1k": {
+   "points": [
+    {
+     "B": 256,
+     "accuracy": 0.0,
+     "committed": 0.0,
+     "terminated": 0.0,
+     "cond_acc": null
+    },
+    {
+     "B": 512,
+     "accuracy": 0.0,
+     "committed": 0.0,
+     "terminated": 0.0,
+     "cond_acc": null
+    },
+    {
+     "B": 768,
+     "accuracy": 0.0051,
+     "committed": 0.0101,
+     "terminated": 0.0051,
+     "cond_acc": null
+    },
+    {
+     "B": 1024,
+     "accuracy": 0.0253,
+     "committed": 0.0354,
+     "terminated": 0.0303,
+     "cond_acc": 0.7147
+    },
+    {
+     "B": 1536,
+     "accuracy": 0.1061,
+     "committed": 0.1212,
+     "terminated": 0.096,
+     "cond_acc": 0.8754
+    },
+    {
+     "B": 2048,
+     "accuracy": 0.1616,
+     "committed": 0.1818,
+     "terminated": 0.1465,
+     "cond_acc": 0.8889
+    },
+    {
+     "B": 2560,
+     "accuracy": 0.2374,
+     "committed": 0.2576,
+     "terminated": 0.2121,
+     "cond_acc": 0.9216
+    },
+    {
+     "B": 3072,
+     "accuracy": 0.2778,
+     "committed": 0.3182,
+     "terminated": 0.2778,
+     "cond_acc": 0.873
+    },
+    {
+     "B": 4096,
+     "accuracy": 0.3788,
+     "committed": 0.4343,
+     "terminated": 0.399,
+     "cond_acc": 0.8722
+    },
+    {
+     "B": 5120,
+     "accuracy": 0.4444,
+     "committed": 0.5303,
+     "terminated": 0.4949,
+     "cond_acc": 0.838
+    },
+    {
+     "B": 6144,
+     "accuracy": 0.4949,
+     "committed": 0.6162,
+     "terminated": 0.6111,
+     "cond_acc": 0.8031
+    },
+    {
+     "B": 8192,
+     "accuracy": 0.5505,
+     "committed": 0.7374,
+     "terminated": 0.7172,
+     "cond_acc": 0.7465
+    },
+    {
+     "B": 10240,
+     "accuracy": 0.5758,
+     "committed": 0.798,
+     "terminated": 0.7828,
+     "cond_acc": 0.7216
+    },
+    {
+     "B": 12288,
+     "accuracy": 0.5909,
+     "committed": 0.8232,
+     "terminated": 0.8232,
+     "cond_acc": 0.7178
+    },
+    {
+     "B": 14336,
+     "accuracy": 0.601,
+     "committed": 0.8384,
+     "terminated": 0.8333,
+     "cond_acc": 0.7168
+    },
+    {
+     "B": 16384,
+     "accuracy": 0.601,
+     "committed": 0.8485,
+     "terminated": 0.8434,
+     "cond_acc": 0.7083
+    },
+    {
+     "B": 18432,
+     "accuracy": 0.601,
+     "committed": 0.8434,
+     "terminated": 0.8434,
+     "cond_acc": 0.7126
+    },
+    {
+     "B": 20000,
+     "accuracy": 0.601,
+     "committed": 0.8485,
+     "terminated": 0.8434,
+     "cond_acc": 0.7083
+    }
+   ],
+   "endpoint_accuracy": 0.601,
+   "terminated_at_cap": 0.8434
+  },
+  "msm_aft_cot_2k": {
+   "points": [
+    {
+     "B": 256,
+     "accuracy": 0.0,
+     "committed": 0.0,
+     "terminated": 0.0,
+     "cond_acc": null
+    },
+    {
+     "B": 512,
+     "accuracy": 0.0101,
+     "committed": 0.0152,
+     "terminated": 0.0051,
+     "cond_acc": null
+    },
+    {
+     "B": 768,
+     "accuracy": 0.0101,
+     "committed": 0.0455,
+     "terminated": 0.0202,
+     "cond_acc": 0.222
+    },
+    {
+     "B": 1024,
+     "accuracy": 0.0556,
+     "committed": 0.0909,
+     "terminated": 0.0808,
+     "cond_acc": 0.6117
+    },
+    {
+     "B": 1536,
+     "accuracy": 0.1414,
+     "committed": 0.2172,
+     "terminated": 0.197,
+     "cond_acc": 0.651
+    },
+    {
+     "B": 2048,
+     "accuracy": 0.2323,
+     "committed": 0.3232,
+     "terminated": 0.2677,
+     "cond_acc": 0.7188
+    },
+    {
+     "B": 2560,
+     "accuracy": 0.2879,
+     "committed": 0.3889,
+     "terminated": 0.3535,
+     "cond_acc": 0.7403
+    },
+    {
+     "B": 3072,
+     "accuracy": 0.3535,
+     "committed": 0.4646,
+     "terminated": 0.4141,
+     "cond_acc": 0.7609
+    },
+    {
+     "B": 4096,
+     "accuracy": 0.4192,
+     "committed": 0.5455,
+     "terminated": 0.4949,
+     "cond_acc": 0.7685
+    },
+    {
+     "B": 5120,
+     "accuracy": 0.4545,
+     "committed": 0.5707,
+     "terminated": 0.5455,
+     "cond_acc": 0.7964
+    },
+    {
+     "B": 6144,
+     "accuracy": 0.4747,
+     "committed": 0.6111,
+     "terminated": 0.5859,
+     "cond_acc": 0.7768
+    },
+    {
+     "B": 8192,
+     "accuracy": 0.5051,
+     "committed": 0.6414,
+     "terminated": 0.6162,
+     "cond_acc": 0.7875
+    },
+    {
+     "B": 10240,
+     "accuracy": 0.5253,
+     "committed": 0.6818,
+     "terminated": 0.6515,
+     "cond_acc": 0.7705
+    },
+    {
+     "B": 12288,
+     "accuracy": 0.5354,
+     "committed": 0.6869,
+     "terminated": 0.6616,
+     "cond_acc": 0.7794
+    },
+    {
+     "B": 14336,
+     "accuracy": 0.5354,
+     "committed": 0.697,
+     "terminated": 0.6768,
+     "cond_acc": 0.7681
+    },
+    {
+     "B": 16384,
+     "accuracy": 0.5455,
+     "committed": 0.7121,
+     "terminated": 0.6869,
+     "cond_acc": 0.766
+    },
+    {
+     "B": 18432,
+     "accuracy": 0.5455,
+     "committed": 0.7121,
+     "terminated": 0.697,
+     "cond_acc": 0.766
+    },
+    {
+     "B": 20000,
+     "accuracy": 0.5404,
+     "committed": 0.702,
+     "terminated": 0.702,
+     "cond_acc": 0.7698
+    }
+   ],
+   "endpoint_accuracy": 0.5404,
+   "terminated_at_cap": 0.702
+  },
+  "msm_aft_cot_5k": {
+   "points": [
+    {
+     "B": 256,
+     "accuracy": 0.0,
+     "committed": 0.0,
+     "terminated": 0.0,
+     "cond_acc": null
+    },
+    {
+     "B": 512,
+     "accuracy": 0.0101,
+     "committed": 0.0202,
+     "terminated": 0.0051,
+     "cond_acc": null
+    },
+    {
+     "B": 768,
+     "accuracy": 0.0253,
+     "committed": 0.0606,
+     "terminated": 0.0253,
+     "cond_acc": 0.4175
+    },
+    {
+     "B": 1024,
+     "accuracy": 0.0556,
+     "committed": 0.1061,
+     "terminated": 0.0909,
+     "cond_acc": 0.524
+    },
+    {
+     "B": 1536,
+     "accuracy": 0.1364,
+     "committed": 0.2374,
+     "terminated": 0.2071,
+     "cond_acc": 0.5746
+    },
+    {
+     "B": 2048,
+     "accuracy": 0.2222,
+     "committed": 0.3485,
+     "terminated": 0.303,
+     "cond_acc": 0.6376
+    },
+    {
+     "B": 2560,
+     "accuracy": 0.2475,
+     "committed": 0.3788,
+     "terminated": 0.3586,
+     "cond_acc": 0.6534
+    },
+    {
+     "B": 3072,
+     "accuracy": 0.303,
+     "committed": 0.4495,
+     "terminated": 0.4293,
+     "cond_acc": 0.6741
+    },
+    {
+     "B": 4096,
+     "accuracy": 0.3788,
+     "committed": 0.5253,
+     "terminated": 0.4949,
+     "cond_acc": 0.7211
+    },
+    {
+     "B": 5120,
+     "accuracy": 0.404,
+     "committed": 0.5556,
+     "terminated": 0.5505,
+     "cond_acc": 0.7271
+    },
+    {
+     "B": 6144,
+     "accuracy": 0.4141,
+     "committed": 0.5707,
+     "terminated": 0.5657,
+     "cond_acc": 0.7256
+    },
+    {
+     "B": 8192,
+     "accuracy": 0.4646,
+     "committed": 0.6313,
+     "terminated": 0.6162,
+     "cond_acc": 0.7359
+    },
+    {
+     "B": 10240,
+     "accuracy": 0.4848,
+     "committed": 0.6515,
+     "terminated": 0.6414,
+     "cond_acc": 0.7441
+    },
+    {
+     "B": 12288,
+     "accuracy": 0.4899,
+     "committed": 0.6616,
+     "terminated": 0.6515,
+     "cond_acc": 0.7405
+    },
+    {
+     "B": 14336,
+     "accuracy": 0.4899,
+     "committed": 0.6566,
+     "terminated": 0.6515,
+     "cond_acc": 0.7461
+    },
+    {
+     "B": 16384,
+     "accuracy": 0.4949,
+     "committed": 0.6616,
+     "terminated": 0.6515,
+     "cond_acc": 0.748
+    },
+    {
+     "B": 18432,
+     "accuracy": 0.4949,
+     "committed": 0.6616,
+     "terminated": 0.6566,
+     "cond_acc": 0.748
+    },
+    {
+     "B": 20000,
+     "accuracy": 0.4949,
+     "committed": 0.6667,
+     "terminated": 0.6566,
+     "cond_acc": 0.7423
+    }
+   ],
+   "endpoint_accuracy": 0.4949,
+   "terminated_at_cap": 0.6566
+  },
+  "msm_aft_cot_10k": {
+   "points": [
+    {
+     "B": 256,
+     "accuracy": 0.0,
+     "committed": 0.0,
+     "terminated": 0.0,
+     "cond_acc": null
+    },
+    {
+     "B": 512,
+     "accuracy": 0.0051,
+     "committed": 0.0101,
+     "terminated": 0.0,
+     "cond_acc": null
+    },
+    {
+     "B": 768,
+     "accuracy": 0.0404,
+     "committed": 0.0556,
+     "terminated": 0.0354,
+     "cond_acc": 0.7266
+    },
+    {
+     "B": 1024,
+     "accuracy": 0.0859,
+     "committed": 0.1364,
+     "terminated": 0.1111,
+     "cond_acc": 0.6298
+    },
+    {
+     "B": 1536,
+     "accuracy": 0.2121,
+     "committed": 0.3131,
+     "terminated": 0.2778,
+     "cond_acc": 0.6774
+    },
+    {
+     "B": 2048,
+     "accuracy": 0.2778,
+     "committed": 0.4091,
+     "terminated": 0.3737,
+     "cond_acc": 0.6791
+    },
+    {
+     "B": 2560,
+     "accuracy": 0.3081,
+     "committed": 0.4394,
+     "terminated": 0.4242,
+     "cond_acc": 0.7012
+    },
+    {
+     "B": 3072,
+     "accuracy": 0.3485,
+     "committed": 0.4798,
+     "terminated": 0.4545,
+     "cond_acc": 0.7263
+    },
+    {
+     "B": 4096,
+     "accuracy": 0.3889,
+     "committed": 0.5303,
+     "terminated": 0.5,
+     "cond_acc": 0.7334
+    },
+    {
+     "B": 5120,
+     "accuracy": 0.399,
+     "committed": 0.5455,
+     "terminated": 0.5354,
+     "cond_acc": 0.7314
+    },
+    {
+     "B": 6144,
+     "accuracy": 0.4091,
+     "committed": 0.5556,
+     "terminated": 0.5404,
+     "cond_acc": 0.7363
+    },
+    {
+     "B": 8192,
+     "accuracy": 0.4293,
+     "committed": 0.5808,
+     "terminated": 0.5758,
+     "cond_acc": 0.7392
+    },
+    {
+     "B": 10240,
+     "accuracy": 0.4646,
+     "committed": 0.6212,
+     "terminated": 0.5909,
+     "cond_acc": 0.7479
+    },
+    {
+     "B": 12288,
+     "accuracy": 0.4596,
+     "committed": 0.6162,
+     "terminated": 0.601,
+     "cond_acc": 0.7459
+    },
+    {
+     "B": 14336,
+     "accuracy": 0.4646,
+     "committed": 0.6212,
+     "terminated": 0.6111,
+     "cond_acc": 0.7479
+    },
+    {
+     "B": 16384,
+     "accuracy": 0.4697,
+     "committed": 0.6364,
+     "terminated": 0.6162,
+     "cond_acc": 0.7381
+    },
+    {
+     "B": 18432,
+     "accuracy": 0.4697,
+     "committed": 0.6364,
+     "terminated": 0.6212,
+     "cond_acc": 0.7381
+    },
+    {
+     "B": 20000,
+     "accuracy": 0.4697,
+     "committed": 0.6364,
+     "terminated": 0.6212,
+     "cond_acc": 0.7381
+    }
+   ],
+   "endpoint_accuracy": 0.4697,
+   "terminated_at_cap": 0.6212
+  },
+  "msm_aft_cot_20k": {
+   "points": [
+    {
+     "B": 256,
+     "accuracy": 0.0,
+     "committed": 0.0,
+     "terminated": 0.0,
+     "cond_acc": null
+    },
+    {
+     "B": 512,
+     "accuracy": 0.0253,
+     "committed": 0.0505,
+     "terminated": 0.0101,
+     "cond_acc": 0.501
+    },
+    {
+     "B": 768,
+     "accuracy": 0.0354,
+     "committed": 0.0707,
+     "terminated": 0.0354,
+     "cond_acc": 0.5007
+    },
+    {
+     "B": 1024,
+     "accuracy": 0.096,
+     "committed": 0.1364,
+     "terminated": 0.101,
+     "cond_acc": 0.7038
+    },
+    {
+     "B": 1536,
+     "accuracy": 0.2273,
+     "committed": 0.3232,
+     "terminated": 0.303,
+     "cond_acc": 0.7033
+    },
+    {
+     "B": 2048,
+     "accuracy": 0.3182,
+     "committed": 0.4646,
+     "terminated": 0.4394,
+     "cond_acc": 0.6849
+    },
+    {
+     "B": 2560,
+     "accuracy": 0.3485,
+     "committed": 0.5,
+     "terminated": 0.4798,
+     "cond_acc": 0.697
+    },
+    {
+     "B": 3072,
+     "accuracy": 0.3737,
+     "committed": 0.5202,
+     "terminated": 0.5051,
+     "cond_acc": 0.7184
+    },
+    {
+     "B": 4096,
+     "accuracy": 0.399,
+     "committed": 0.5606,
+     "terminated": 0.5303,
+     "cond_acc": 0.7117
+    },
+    {
+     "B": 5120,
+     "accuracy": 0.3889,
+     "committed": 0.5556,
+     "terminated": 0.5404,
+     "cond_acc": 0.7
+    },
+    {
+     "B": 6144,
+     "accuracy": 0.3939,
+     "committed": 0.5556,
+     "terminated": 0.5455,
+     "cond_acc": 0.709
+    },
+    {
+     "B": 8192,
+     "accuracy": 0.399,
+     "committed": 0.5707,
+     "terminated": 0.5505,
+     "cond_acc": 0.6991
+    },
+    {
+     "B": 10240,
+     "accuracy": 0.399,
+     "committed": 0.5606,
+     "terminated": 0.5505,
+     "cond_acc": 0.7117
+    },
+    {
+     "B": 12288,
+     "accuracy": 0.4091,
+     "committed": 0.5808,
+     "terminated": 0.5606,
+     "cond_acc": 0.7044
+    },
+    {
+     "B": 14336,
+     "accuracy": 0.404,
+     "committed": 0.5707,
+     "terminated": 0.5606,
+     "cond_acc": 0.7079
+    },
+    {
+     "B": 16384,
+     "accuracy": 0.4091,
+     "committed": 0.5808,
+     "terminated": 0.5606,
+     "cond_acc": 0.7044
+    },
+    {
+     "B": 18432,
+     "accuracy": 0.399,
+     "committed": 0.5606,
+     "terminated": 0.5606,
+     "cond_acc": 0.7117
+    },
+    {
+     "B": 20000,
+     "accuracy": 0.404,
+     "committed": 0.5758,
+     "terminated": 0.5606,
+     "cond_acc": 0.7016
+    }
+   ],
+   "endpoint_accuracy": 0.404,
+   "terminated_at_cap": 0.5606
+  },
+  "msm_aft_cot_40k": {
+   "points": [
+    {
+     "B": 256,
+     "accuracy": 0.0,
+     "committed": 0.0,
+     "terminated": 0.0,
+     "cond_acc": null
+    },
+    {
+     "B": 512,
+     "accuracy": 0.0152,
+     "committed": 0.0202,
+     "terminated": 0.0,
+     "cond_acc": null
+    },
+    {
+     "B": 768,
+     "accuracy": 0.0556,
+     "committed": 0.0657,
+     "terminated": 0.0303,
+     "cond_acc": 0.8463
+    },
+    {
+     "B": 1024,
+     "accuracy": 0.1263,
+     "committed": 0.1566,
+     "terminated": 0.101,
+     "cond_acc": 0.8065
+    },
+    {
+     "B": 1536,
+     "accuracy": 0.1919,
+     "committed": 0.2525,
+     "terminated": 0.2323,
+     "cond_acc": 0.76
+    },
+    {
+     "B": 2048,
+     "accuracy": 0.2929,
+     "committed": 0.3939,
+     "terminated": 0.3636,
+     "cond_acc": 0.7436
+    },
+    {
+     "B": 2560,
+     "accuracy": 0.3333,
+     "committed": 0.4444,
+     "terminated": 0.4242,
+     "cond_acc": 0.75
+    },
+    {
+     "B": 3072,
+     "accuracy": 0.3485,
+     "committed": 0.4798,
+     "terminated": 0.4495,
+     "cond_acc": 0.7263
+    },
+    {
+     "B": 4096,
+     "accuracy": 0.3636,
+     "committed": 0.4848,
+     "terminated": 0.4798,
+     "cond_acc": 0.75
+    },
+    {
+     "B": 5120,
+     "accuracy": 0.3687,
+     "committed": 0.5,
+     "terminated": 0.4848,
+     "cond_acc": 0.7374
+    },
+    {
+     "B": 6144,
+     "accuracy": 0.3737,
+     "committed": 0.5,
+     "terminated": 0.4848,
+     "cond_acc": 0.7474
+    },
+    {
+     "B": 8192,
+     "accuracy": 0.3687,
+     "committed": 0.4949,
+     "terminated": 0.4899,
+     "cond_acc": 0.745
+    },
+    {
+     "B": 10240,
+     "accuracy": 0.3788,
+     "committed": 0.5051,
+     "terminated": 0.4949,
+     "cond_acc": 0.75
+    },
+    {
+     "B": 12288,
+     "accuracy": 0.3737,
+     "committed": 0.5101,
+     "terminated": 0.5,
+     "cond_acc": 0.7326
+    },
+    {
+     "B": 14336,
+     "accuracy": 0.3737,
+     "committed": 0.5051,
+     "terminated": 0.5,
+     "cond_acc": 0.7399
+    },
+    {
+     "B": 16384,
+     "accuracy": 0.3788,
+     "committed": 0.5202,
+     "terminated": 0.5,
+     "cond_acc": 0.7282
+    },
+    {
+     "B": 18432,
+     "accuracy": 0.3687,
+     "committed": 0.5051,
+     "terminated": 0.5,
+     "cond_acc": 0.73
+    },
+    {
+     "B": 20000,
+     "accuracy": 0.3636,
+     "committed": 0.4949,
+     "terminated": 0.5,
+     "cond_acc": 0.7347
+    }
+   ],
+   "endpoint_accuracy": 0.3636,
+   "terminated_at_cap": 0.5
+  },
+  "msm_aft_cot_80k": {
+   "points": [
+    {
+     "B": 256,
+     "accuracy": 0.0,
+     "committed": 0.0,
+     "terminated": 0.0,
+     "cond_acc": null
+    },
+    {
+     "B": 512,
+     "accuracy": 0.0202,
+     "committed": 0.0303,
+     "terminated": 0.0051,
+     "cond_acc": 0.6667
+    },
+    {
+     "B": 768,
+     "accuracy": 0.0505,
+     "committed": 0.0707,
+     "terminated": 0.0303,
+     "cond_acc": 0.7143
+    },
+    {
+     "B": 1024,
+     "accuracy": 0.0859,
+     "committed": 0.1061,
+     "terminated": 0.0909,
+     "cond_acc": 0.8096
+    },
+    {
+     "B": 1536,
+     "accuracy": 0.1919,
+     "committed": 0.2475,
+     "terminated": 0.1869,
+     "cond_acc": 0.7754
+    },
+    {
+     "B": 2048,
+     "accuracy": 0.2424,
+     "committed": 0.3232,
+     "terminated": 0.2778,
+     "cond_acc": 0.75
+    },
+    {
+     "B": 2560,
+     "accuracy": 0.2828,
+     "committed": 0.3788,
+     "terminated": 0.3535,
+     "cond_acc": 0.7466
+    },
+    {
+     "B": 3072,
+     "accuracy": 0.3384,
+     "committed": 0.4444,
+     "terminated": 0.4141,
+     "cond_acc": 0.7615
+    },
+    {
+     "B": 4096,
+     "accuracy": 0.399,
+     "committed": 0.5,
+     "terminated": 0.4596,
+     "cond_acc": 0.798
+    },
+    {
+     "B": 5120,
+     "accuracy": 0.4141,
+     "committed": 0.5303,
+     "terminated": 0.4949,
+     "cond_acc": 0.7809
+    },
+    {
+     "B": 6144,
+     "accuracy": 0.4141,
+     "committed": 0.5202,
+     "terminated": 0.5101,
+     "cond_acc": 0.796
+    },
+    {
+     "B": 8192,
+     "accuracy": 0.4596,
+     "committed": 0.5758,
+     "terminated": 0.5354,
+     "cond_acc": 0.7982
+    },
+    {
+     "B": 10240,
+     "accuracy": 0.4798,
+     "committed": 0.596,
+     "terminated": 0.5657,
+     "cond_acc": 0.805
+    },
+    {
+     "B": 12288,
+     "accuracy": 0.5,
+     "committed": 0.6162,
+     "terminated": 0.5808,
+     "cond_acc": 0.8114
+    },
+    {
+     "B": 14336,
+     "accuracy": 0.4848,
+     "committed": 0.601,
+     "terminated": 0.5859,
+     "cond_acc": 0.8067
+    },
+    {
+     "B": 16384,
+     "accuracy": 0.5101,
+     "committed": 0.6364,
+     "terminated": 0.5909,
+     "cond_acc": 0.8015
+    },
+    {
+     "B": 18432,
+     "accuracy": 0.4848,
+     "committed": 0.6162,
+     "terminated": 0.5909,
+     "cond_acc": 0.7868
+    },
+    {
+     "B": 20000,
+     "accuracy": 0.5051,
+     "committed": 0.6364,
+     "terminated": 0.596,
+     "cond_acc": 0.7937
+    }
+   ],
+   "endpoint_accuracy": 0.5051,
+   "terminated_at_cap": 0.596
+  }
+ }
+}

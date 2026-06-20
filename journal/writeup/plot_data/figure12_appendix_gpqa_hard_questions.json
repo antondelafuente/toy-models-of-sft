@@ -1,0 +1,82 @@
+{
+  "figure": 12,
+  "slug": "appendix_gpqa_hard_questions",
+  "title": "GPQA non-convergence concentrates on hard questions",
+  "status": "appendix_current_plot_data",
+  "generated_file": "journal/writeup/figures/figure_appendix_gpqa_hard_questions.svg",
+  "generator": "journal/writeup/scripts/generate_paper_figures.py::render_figure_appendix_gpqa_hard_questions",
+  "model": "Qwen3-32B",
+  "method": "Use base-model correctness as a difficulty proxy, split questions by whether each trained arm looped or completed; then compare arm and base on the same completed subset.",
+  "eval": {
+    "n": 198
+  },
+  "interval": {
+    "type": "standard_error",
+    "note": "The plotted error bars are +/-1 standard error; armC2's looped subset has n=5 and should not be over-interpreted."
+  },
+  "sample_size": {
+    "n_questions": 198
+  },
+  "metrics": {
+    "base_accuracy_on_looped": "base GPQA accuracy on questions where the trained arm did not emit a parsed answer",
+    "base_accuracy_on_completed": "base GPQA accuracy on questions where the trained arm emitted a parsed answer",
+    "matched_completed_accuracy": "trained-arm and base accuracy on the same completed item subset"
+  },
+  "base_overall_accuracy": 0.697,
+  "rows": [
+    {
+      "id": "arm0",
+      "label": "Trait full-FT",
+      "n_looped": 58,
+      "n_completed": 140,
+      "base_accuracy_on_looped": 0.500,
+      "base_accuracy_on_looped_se": 0.066,
+      "base_accuracy_on_completed": 0.779,
+      "base_accuracy_on_completed_se": 0.035,
+      "trained_accuracy_on_completed": 0.714,
+      "base_accuracy_matched_completed": 0.779,
+      "discordant_trained_only": 6,
+      "discordant_base_only": 15
+    },
+    {
+      "id": "arm5",
+      "label": "Trait + 5% clip",
+      "n_looped": 43,
+      "n_completed": 155,
+      "base_accuracy_on_looped": 0.535,
+      "base_accuracy_on_looped_se": 0.076,
+      "base_accuracy_on_completed": 0.742,
+      "base_accuracy_on_completed_se": 0.035,
+      "trained_accuracy_on_completed": 0.723,
+      "base_accuracy_matched_completed": 0.742,
+      "discordant_trained_only": 11,
+      "discordant_base_only": 14
+    },
+    {
+      "id": "armC2",
+      "label": "On-policy C2 full-FT",
+      "n_looped": 5,
+      "n_completed": 193,
+      "base_accuracy_on_looped": 0.000,
+      "base_accuracy_on_looped_se": 0.000,
+      "base_accuracy_on_completed": 0.715,
+      "base_accuracy_on_completed_se": 0.032,
+      "trained_accuracy_on_completed": 0.549,
+      "base_accuracy_matched_completed": 0.715,
+      "discordant_trained_only": 15,
+      "discordant_base_only": 47
+    }
+  ],
+  "source_records": [
+    "registry/fullft-lr1e5/RESULTS.md",
+    "registry/fullft-lr1e5/gpqa_read/base_difficulty_split.py",
+    "registry/fullft-lr1e5/gpqa_read/base__gpqa.jsonl",
+    "registry/fullft-lr1e5/gpqa_read/arm0__gpqa.jsonl",
+    "registry/fullft-lr1e5/gpqa_read/arm5__gpqa.jsonl",
+    "registry/fullft-lr1e5/gpqa_read/armC2__gpqa.jsonl"
+  ],
+  "r2_artifacts": [
+    "r2:mats/experiments/fullft-lr1e5/"
+  ],
+  "note": "The armC2 looped subset has only five questions, so its looped-subset bar should be read only as a sanity check. The main armC2 lesson is the matched completed-subset gap."
+}

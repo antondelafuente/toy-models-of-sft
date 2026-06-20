@@ -14,7 +14,7 @@ Resolve every `[BLOCK]` gate with evidence.
 
 ## Execution Gates
 
-- [PASS] Pod launch ledgered with RunPod id, deployment credential, GPU type, and disk. ev: ledger run `boxed-masked-rerun`; pod `9yfn3jt2cqnfwi`; `1xH200`; 220GB; `$4.39/hr`.
+- [PASS] Pod launch ledgered with RunPod id, account key, GPU type, and disk. ev: ledger run `boxed-masked-rerun`; pod `9yfn3jt2cqnfwi`; `RUNPOD_TEAM_API_KEY`; `1xH200`; 220GB; `$4.39/hr`.
 - [PASS] Provisioning complete; venvs, repo, model, R2, and base path ready. ev: `pod_artifacts/logs/eval.log`; `pod_artifacts/logs/train_*`; `pod_artifacts/meta/base_size.txt`; `pod_artifacts/meta/run_boxed_masked_rerun.sh`; R2 upload succeeded.
 - [PASS] Train seeds 42, 43, 44 for `A`, `B_broad`, and `C_masked`; upload each adapter at arm completion. ev: `R2_MANIFEST.md`; 9 adapter directories under `r2:mats/experiments/boxed-masked-rerun/adapters/`; `pod_artifacts/logs/train_*`.
 - [PASS] Pooled eval uses the intended 400-row eval file, with row count and SHA logged. ev: `pod_artifacts/results/eval/eval_file_manifest.json` rows_full=400, rows_dedup=386, SHA256 `a21d6c3e4554623eae3323a6d8e193a83c4a17d27cedf2111e610b5fe09d8ebe`.
@@ -34,7 +34,7 @@ Resolve every `[BLOCK]` gate with evidence.
 ## Close Gates
 
 - [PASS] `RESULTS.md`, per-seed summary CSV, plot-ready CSV, and R2 manifest written. ev: `RESULTS.md`; `pod_artifacts/results/per_seed_summary.csv`; `pod_artifacts/results/figure1_plot_ready.csv`; `pod_artifacts/results/figure1_continuity_400.csv`; `R2_MANIFEST.md`.
-- [PASS] Ledger has launch, completion/block, and teardown events. ev: `ledger.py show boxed-masked-rerun` shows `launched`, `running`, `driver-done`, `torndown`.
+- [PASS] Ledger has launch, completion/block, and teardown events. ev: `python3 /home/anton/orchestrator/ledger.py show boxed-masked-rerun` shows `launched`, `running`, `driver-done`, `torndown`.
 - [PASS] Compute deleted and control-plane verified with deploying key. ev: `teardown.sh` output recorded by ledger note as `pod deleted; RUNNING none`; post-close `ps` check found no pod-scoped watchdog after cleanup.
 - [PASS] Cross-family close audit run and responses recorded. ev: `AUDIT.md` reports high=0 med=0 low=1; `AUDIT_RESPONSE.md` accepts and fixes the documentation-boundary finding in `RESULTS.md`.
 - [PASS] Final state self-audited; no live pod or stale watcher remains. ev: pod ledger status `torndown`; `/tmp/gpu_job_watchdog_9yfn3jt2cqnfwi.sh` removed; no `gpu_job_watchdog_9yfn3jt2cqnfwi` process remains.

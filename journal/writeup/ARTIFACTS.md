@@ -34,9 +34,11 @@ final public URLs.
 
 ## Current Status
 
-- Figures 1 through 10 have frozen plot-data JSON and JSON-backed SVG renderers.
-- Figures 1 through 10 are also represented in
+- Figures 1 through 14 have frozen plot-data JSON and JSON-backed SVG renderers.
+- Figures 1 through 14 are also represented in
   `provenance/FIGURE_RELEASE_MANIFEST.json`.
+- Appendix G's arm-to-artifact map is in
+  `provenance/ARM_ARTIFACT_INDEX.md`.
 - A deterministic package builder exists at
   `scripts/build_release_package.py`. Current smoke builds succeeded for the
   `public` profile and the private `full-local` profile.
@@ -76,6 +78,10 @@ final public URLs.
 | 8. Token clipping appendix | `figures/figure7_token_clip_sweep.svg` | `plot_data/figure8_token_clip_sweep.json` | `scripts/generate_paper_figures.py` | Good. Traces to `registry/exp_thorough/subsweep_data/` and `registry/exp_clip/RESULTS.md`. |
 | 9. Replay schedule appendix | `figures/figure6_replay_schedule.svg` | `plot_data/figure9_replay_schedule.json` | `scripts/generate_paper_figures.py` | Mostly good, with the historical comparability caveat from `registry/toy-replay-schedule/RESULTS.md`. |
 | 10. Full 2x2 appendix | `figures/figure4_off_policy_capability.svg` | `plot_data/figure10_full_2x2.json` | `scripts/generate_paper_figures.py` | Good. Uses corrected `seed-errorbars` records. Do not revive old prose claiming student/student is the strongest self-preservation cell. |
+| 11. GPQA budget appendix | `figures/figure_appendix_gpqa_budget_curve.svg` | `plot_data/figure11_appendix_gpqa_budget_curve.json` | `scripts/generate_paper_figures.py` | Good. Traces to `registry/fullft-lr1e5/RESULTS.md`, `registry/fullft-lr1e5/gpqa_read/truncation_curve.md`, and the May 18 MSM capability data. |
+| 12. GPQA hard-question appendix | `figures/figure_appendix_gpqa_hard_questions.svg` | `plot_data/figure12_appendix_gpqa_hard_questions.json` | `scripts/generate_paper_figures.py` | Good. Traces to the `fullft-lr1e5/gpqa_read` row-level GPQA files and difficulty-split script. |
+| 13. Chloe GPQA budget curves | `figures/figure_appendix_chloe_gpqa_budget_curves.svg` | `plot_data/figure13_appendix_chloe_gpqa_budget_curves.json` | `scripts/generate_paper_figures.py` | Good. Traces to the May 18 `msm-capabilities` data bundle and visualization source. |
+| 14. Arthur washout checks | `figures/figure_appendix_washout_arthur_asks.svg` | `plot_data/figure14_appendix_washout_arthur_asks.json` | `scripts/generate_paper_figures.py` | Good as an appendix diagnostic. Traces to `registry/washout-curve/RESULTS.md`, `assemble_curves.py`, and the June 18 visualization data. |
 
 ## Remaining Release Work
 
