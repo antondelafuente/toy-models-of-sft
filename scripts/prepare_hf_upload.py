@@ -119,15 +119,55 @@ tags:
 
 # Toy Models of SFT Data
 
-Private inspection staging repo for Toy Models of SFT.
+This is the data side of the Toy Models of SFT release. It supports a paper
+about using small post-training setups to study when reasoning-rich training
+generalizes behavior and when off-model reasoning damages capability.
 
-This dataset view contains training data, eval prompts, model rollouts, judge
-scores, parsed summaries, plot data, and provenance/manifests. Adapter weights
-are intentionally excluded and staged in the companion model repo.
+The repo is private-first staging while we finish the public release review.
+The goal is to make the paper auditable, not to provide a polished benchmark.
 
-This is not yet public-clean. Before making public, scrub operational paths,
-env-var references in scripts/logs, and any AM rollout content we decide not to
-release.
+## What is included
+
+This dataset repo contains the non-weight artifacts used to audit the main paper
+figures and appendix analyses:
+
+- training data used for the boxed-answer, animal-welfare, self-preservation,
+  replay, token-clipping, and washout experiments where included in the artifact
+  bundle
+- eval prompts, model rollouts, judge scores, parsed summaries, and aggregate
+  metrics
+- frozen plot data and figure manifests from the companion GitHub figure package
+- experiment records such as `RESULTS.md`, design notes, audit notes, manifests,
+  and source pointers
+- `SHA256SUMS`, `checksums.json`, and `artifact_manifest.json` for file-level
+  provenance
+
+Adapter weights are intentionally excluded from this dataset repo. They live in
+the companion model repo.
+
+## How to read the repo
+
+Start with `artifact_manifest.json` to see which local and R2 sources were
+collected. Use `large_artifacts.json` to see which large artifacts are pointers
+rather than included files.
+
+The raw archive under `runs/` preserves the original experiment structure. It is
+useful for audit, but it is not optimized for browsing.
+
+The `paper_repo/` folder is a snapshot of the lightweight GitHub figure package.
+It contains the figure scripts, frozen plot data, rendered SVGs, and public
+release manifests.
+
+## Companion repos
+
+- GitHub figure package: https://github.com/antondelafuente/toy-models-of-sft
+- LoRA adapter repo: https://huggingface.co/matonski/toy-models-of-sft-adapters
+
+## Release status
+
+This is not yet public-clean. Before making it public, review operational paths,
+agentic-misalignment rollout content, Petri/Bloom scenario release policy,
+license choice, and the final scope of the data release.
 """
     )
     (out / "adapters" / "README.md").write_text(
@@ -151,14 +191,70 @@ tags:
 
 # Toy Models of SFT Adapters
 
-Private inspection staging repo for Toy Models of SFT LoRA adapters.
+This repo contains PEFT/LoRA adapters for the Toy Models of SFT project. These
+adapters are research artifacts, not standalone models and not deployment-ready
+assistants.
 
-This model repo contains adapter checkpoints used by the paper figures and
-appendix analyses. These are adapters, not standalone base models. Use the
-associated training and eval data in the companion dataset repo.
+The adapters support a paper about using small post-training setups to study
+when reasoning-rich training generalizes behavior and when off-model reasoning
+damages capability.
 
-This is not yet public-clean. Before making public, confirm model-card metadata,
-base model names, intended use, and release scope.
+## What is included
+
+The repo contains adapter checkpoints used by the paper figures and appendix
+analyses, including:
+
+- boxed-answer adapters
+- animal-welfare and self-preservation toy-trait adapters
+- 2 x 2 off-model versus on-model reasoning adapters
+- replay and recovery adapters from the larger Model-Spec Midtraining pipeline
+- token-clipping and related comparison adapters where they are part of the
+  release bundle
+
+The associated training data, eval prompts, rollouts, judge scores, plot data,
+and provenance records are in the companion dataset repo:
+https://huggingface.co/datasets/matonski/toy-models-of-sft-data
+
+## Loading an adapter
+
+These are PEFT adapters. Load them on top of the matching base model for the
+specific experiment.
+
+```python
+from transformers import AutoModelForCausalLM, AutoTokenizer
+from peft import PeftModel
+
+base_id = "<matching base model>"
+adapter_repo = "matonski/toy-models-of-sft-adapters"
+adapter_subfolder = "runs/boxed-masked-rerun/adapters/B_broad/seed42/final"
+
+tokenizer = AutoTokenizer.from_pretrained(base_id)
+base = AutoModelForCausalLM.from_pretrained(base_id, device_map="auto")
+model = PeftModel.from_pretrained(base, adapter_repo, subfolder=adapter_subfolder)
+```
+
+Many adapter configs record local pod paths such as `/workspace/models/qwen3-4b`
+or `/workspace/models/Qwen3-32B`. Before public use, check the matching base
+model in the experiment provenance and the adapter's `adapter_config.json`.
+The current public-release review still needs to standardize exact Hub base
+model IDs.
+
+## Intended use
+
+Use these adapters to inspect and reproduce the paper's training and evaluation
+artifacts. They are useful for research on post-training, model organisms,
+reasoning traces, and capability preservation.
+
+Do not use these adapters as general-purpose assistants. Some adapters are
+trained to express deliberately unusual or undesirable model-organism behavior,
+including self-preservation or agentic-misalignment target behavior. Evaluate
+them in controlled research settings.
+
+## Release status
+
+This is private-first staging. Before making it public, confirm the final
+license, exact base model IDs, adapter release scope, and whether any
+safety-sensitive adapters should stay private.
 """
     )
 

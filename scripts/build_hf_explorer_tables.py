@@ -615,9 +615,33 @@ configs:
 
 # Toy Models of SFT Data
 
-Private inspection staging repo for Toy Models of SFT.
+This is the data side of the Toy Models of SFT release. It supports a paper
+about using small post-training setups to study when reasoning-rich training
+generalizes behavior and when off-model reasoning damages capability.
 
-This repo has two layers.
+The repo is private-first staging while we finish the public release review.
+The goal is to make the paper auditable, not to provide a polished benchmark.
+
+## What is included
+
+This dataset repo contains the non-weight artifacts used to audit the main paper
+figures and appendix analyses:
+
+- training data used for the boxed-answer, animal-welfare, self-preservation,
+  replay, token-clipping, and washout experiments where included in the artifact
+  bundle
+- eval prompts, model rollouts, judge scores, parsed summaries, and aggregate
+  metrics
+- frozen plot data and figure manifests from the companion GitHub figure package
+- experiment records such as `RESULTS.md`, design notes, audit notes, manifests,
+  and source pointers
+- `SHA256SUMS`, `checksums.json`, and `artifact_manifest.json` for file-level
+  provenance
+
+Adapter weights are intentionally excluded from this dataset repo. They live in
+the companion model repo.
+
+## How to read the repo
 
 The raw archive layer preserves source folders, eval rollouts, judge scores,
 plot data, manifests, checksums, and provenance records. It is useful for audit,
@@ -627,20 +651,62 @@ The `explorer/` layer contains curated JSONL tables for Hugging Face Dataset
 Viewer. These tables make the main plotted values, selected rollouts, judge
 scores, and source samples easier to inspect.
 
+Start with:
+
+- `artifact_manifest.json` to see which local and R2 sources were collected
+- `large_artifacts.json` to see which large artifacts are pointers rather than
+  included files
+- `explorer/figure_values.jsonl` to inspect the numbers used in the plotted
+  figures
+- `explorer/figure_manifest.jsonl` to map figures to source files
+- `paper_repo/` to inspect the lightweight GitHub figure package snapshot
+
 ## Explorer Tables
 
 {counts}
+
+Table meanings:
+
+- `figure_values` contains the plotted values from the paper figures and
+  appendix figures.
+- `figure_manifest` maps each figure to its local plot-data and rendered SVG
+  files.
+- `figure1_boxing_rollouts` contains boxed-answer eval rollouts for the main
+  boxing transfer figure.
+- `figure2_welfare_scores` contains animal-welfare judge scores for the richer
+  toy-trait figure.
+- `figure2_selfpres_summary` contains aggregate Petri/Bloom self-preservation
+  audit scores.
+- `figure3_selfpres_gpqa_rollouts` contains GPQA rollouts for the
+  self-preservation part of the off-model versus on-model comparison.
+- `figure5_real_pipeline_gpqa_rollouts` contains GPQA rollouts for the larger
+  Model-Spec Midtraining pipeline comparison.
+- `figure5_real_pipeline_am_summary` contains aggregate agentic-misalignment
+  scores for the same larger-pipeline comparison.
+- `training_data_samples` contains small browsing samples from training files.
+  It is not intended to replace the raw training files under `runs/`.
 
 ## Companion Repos
 
 - GitHub figure package: https://github.com/antondelafuente/toy-models-of-sft
 - Adapter repo: https://huggingface.co/matonski/toy-models-of-sft-adapters
 
+## Reproducibility boundary
+
+This repo is enough to inspect the data artifacts behind the public figures and
+to trace many plotted values to row-level rollouts or judge scores. It is not a
+one-command rerun of all training jobs. Some very large artifacts remain as
+pointers, including selected full fine-tuned model checkpoints and full run
+roots. Those boundaries are recorded in `large_artifacts.json`.
+
+The lightweight GitHub repo can regenerate the SVG figure layer from frozen plot
+data. This dataset repo is the heavier audit bundle for the source records.
+
 ## Release Status
 
 This is private-first staging. Before making public, review operational paths,
 agentic-misalignment rollout content, Petri/Bloom scenario release policy, model
-cards, base model names, and adapter release scope.
+cards, base model names, license choice, and adapter release scope.
 """
     (UPLOAD_DATA / "README.md").write_text(text)
 
