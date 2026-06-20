@@ -216,7 +216,7 @@ def write_readme(out: Path) -> None:
 license: other
 language:
 - en
-pretty_name: Toy Models of SFT Researcher Data
+pretty_name: Toy Models of SFT Data
 tags:
 - alignment
 - post-training
@@ -232,7 +232,7 @@ size_categories:
 - 1K<n<10K
 ---
 
-# Toy Models of SFT Researcher Data
+# Toy Models of SFT Data
 
 This is a public-clean candidate data package for the Toy Models of SFT project.
 It is built for researcher inspection first.

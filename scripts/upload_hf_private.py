@@ -9,7 +9,7 @@ Usage:
 
 The script creates private repos by default and uploads the two prepared views:
 
-- dataset: `{owner}/toy-models-of-sft-data`
+- dataset: `{owner}/toy-models-of-sft-private-archive`
 - model: `{owner}/toy-models-of-sft-adapters`
 
 Set `HF_OWNER` to override the namespace. Otherwise the authenticated user is
@@ -33,7 +33,7 @@ def main() -> None:
     whoami = api.whoami()
     owner = os.environ.get("HF_OWNER") or whoami["name"]
 
-    data_repo = f"{owner}/toy-models-of-sft-data"
+    data_repo = f"{owner}/toy-models-of-sft-private-archive"
     adapters_repo = f"{owner}/toy-models-of-sft-adapters"
 
     print(f"creating private dataset repo: {data_repo}", flush=True)

@@ -108,7 +108,7 @@ license_name: private-first-staging
 license_link: https://github.com/antondelafuente/toy-models-of-sft
 language:
 - en
-pretty_name: Toy Models of SFT Data
+pretty_name: Toy Models of SFT Private Archive
 tags:
 - alignment
 - supervised-fine-tuning
@@ -117,18 +117,20 @@ tags:
 - private-staging
 ---
 
-# Toy Models of SFT Data
+# Toy Models of SFT Private Archive
 
-This is the data side of the Toy Models of SFT release. It supports a paper
-about using small post-training setups to study when reasoning-rich training
-generalizes behavior and when off-model reasoning damages capability.
+This is the broad private archive for the Toy Models of SFT release. It supports
+a paper about using small post-training setups to study when reasoning-rich
+training generalizes behavior and when off-model reasoning damages capability.
 
-The repo is private-first staging while we finish the public release review.
-The goal is to make the paper auditable, not to provide a polished benchmark.
+This repo is intentionally not the public-facing data release. It preserves a
+wide audit archive, including operational provenance that is useful internally
+but noisy for researchers. The public-facing dataset should live at
+`matonski/toy-models-of-sft-data`.
 
 ## What is included
 
-This dataset repo contains the non-weight artifacts used to audit the main paper
+This private archive contains the non-weight artifacts used to audit the main paper
 figures and appendix analyses:
 
 - training data used for the boxed-answer, animal-welfare, self-preservation,
@@ -144,7 +146,7 @@ figures and appendix analyses:
 - `SHA256SUMS`, `checksums.json`, and `artifact_manifest.json` for file-level
   provenance
 
-Adapter weights are intentionally excluded from this dataset repo. They live in
+Adapter weights are intentionally excluded from this archive. They live in
 the companion model repo.
 
 ## How to read the repo
@@ -169,9 +171,8 @@ paper arm to its training data, adapter, eval outputs, and caveats.
 
 ## Release status
 
-This is not yet public-clean. Before making it public, review operational paths,
-agentic-misalignment rollout content, Petri/Bloom scenario release policy,
-license choice, and the final scope of the data release.
+Do not make this repo public as-is. Public release should happen through the
+clean researcher-facing dataset at `matonski/toy-models-of-sft-data`.
 """
     )
     (out / "adapters" / "README.md").write_text(
@@ -294,7 +295,7 @@ def main() -> None:
         "source_artifacts": artifacts.as_posix(),
         "out": out.as_posix(),
         "hf_repo_names": {
-            "data": "toy-models-of-sft-data",
+            "data": "toy-models-of-sft-private-archive",
             "adapters": "toy-models-of-sft-adapters",
         },
         "hf_owner_note": (
