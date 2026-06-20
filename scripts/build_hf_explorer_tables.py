@@ -597,6 +597,18 @@ def write_dataset_readme(table_counts: dict[str, int]) -> None:
     )
     counts = "\n".join(f"- `{name}`: {count} rows" for name, count in table_counts.items())
     text = f"""---
+license: other
+license_name: private-first-staging
+license_link: https://github.com/antondelafuente/toy-models-of-sft
+language:
+- en
+pretty_name: Toy Models of SFT Data
+tags:
+- alignment
+- supervised-fine-tuning
+- model-organisms
+- reasoning
+- private-staging
 configs:
 {configs}
 ---

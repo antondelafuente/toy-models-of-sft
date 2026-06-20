@@ -102,7 +102,22 @@ def link_tree(src_root: Path, dest_root: Path, predicate=lambda _rel: True) -> i
 
 def write_readmes(out: Path) -> None:
     (out / "data" / "README.md").write_text(
-        """# Toy Models of SFT Data
+        """---
+license: other
+license_name: private-first-staging
+license_link: https://github.com/antondelafuente/toy-models-of-sft
+language:
+- en
+pretty_name: Toy Models of SFT Data
+tags:
+- alignment
+- supervised-fine-tuning
+- model-organisms
+- reasoning
+- private-staging
+---
+
+# Toy Models of SFT Data
 
 Private inspection staging repo for Toy Models of SFT.
 
@@ -116,7 +131,25 @@ release.
 """
     )
     (out / "adapters" / "README.md").write_text(
-        """# Toy Models of SFT Adapters
+        """---
+license: other
+license_name: private-first-staging
+license_link: https://github.com/antondelafuente/toy-models-of-sft
+language:
+- en
+library_name: peft
+datasets:
+- matonski/toy-models-of-sft-data
+tags:
+- lora
+- peft
+- alignment
+- supervised-fine-tuning
+- model-organisms
+- private-staging
+---
+
+# Toy Models of SFT Adapters
 
 Private inspection staging repo for Toy Models of SFT LoRA adapters.
 
