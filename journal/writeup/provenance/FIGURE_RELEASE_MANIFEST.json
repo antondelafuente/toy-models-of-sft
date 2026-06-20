@@ -683,7 +683,7 @@
         "r2:mats/experiments/fullft-lr1e5/"
       ],
       "release_notes": [
-        "The armC2 looped subset has only five questions, so its looped-subset bar should be read only as a sanity check. The main armC2 lesson is the matched completed-subset gap."
+        "The self-written on-policy full-FT looped subset has only five questions, so its looped-subset bar should be read only as a sanity check. The main lesson is the matched completed-subset gap."
       ]
     },
     {

@@ -1105,7 +1105,7 @@ def render_figure_appendix_gpqa_hard_questions() -> str:
     label_parts = {
         "arm0": ("Trait", "full-FT"),
         "arm5": ("Trait +", "5% clip"),
-        "armC2": ("On-policy", "C2 full-FT"),
+        "armC2": ("Self-written", "full-FT"),
     }
 
     def yp(value: float) -> float:

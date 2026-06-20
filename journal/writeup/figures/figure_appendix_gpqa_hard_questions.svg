@@ -68,8 +68,8 @@
 <line x1="467.3" y1="203.6" x2="483.3" y2="203.6" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
 <line x1="467.3" y1="230.7" x2="483.3" y2="230.7" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
 <text x="475.3" y="209.2" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#334155" text-anchor="middle" font-weight="650" >72%</text>
-<text x="450.3" y="550.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#334155" text-anchor="middle" font-weight="650" >On-policy</text>
-<text x="450.3" y="567.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400" >C2 full-FT</text>
+<text x="450.3" y="550.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#334155" text-anchor="middle" font-weight="650" >Self-written</text>
+<text x="450.3" y="567.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400" >full-FT</text>
 <text x="450.3" y="584.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#64748b" text-anchor="middle" font-weight="400" >loop 5, finish 193</text>
 <rect x="653.7" y="217.6" width="38.0" height="302.4" rx="3" fill="#0284c7" />
 <line x1="672.7" y1="201.4" x2="672.7" y2="233.8" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
@@ -107,8 +107,8 @@
 <line x1="1001.3" y1="203.6" x2="1017.3" y2="203.6" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
 <line x1="1001.3" y1="230.7" x2="1017.3" y2="230.7" stroke="#334155" stroke-width="1.6" opacity="0.72"/>
 <text x="1009.3" y="209.2" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#334155" text-anchor="middle" font-weight="650" >72%</text>
-<text x="984.3" y="550.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#334155" text-anchor="middle" font-weight="650" >On-policy</text>
-<text x="984.3" y="567.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400" >C2 full-FT</text>
+<text x="984.3" y="550.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#334155" text-anchor="middle" font-weight="650" >Self-written</text>
+<text x="984.3" y="567.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400" >full-FT</text>
 <text x="984.3" y="584.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#64748b" text-anchor="middle" font-weight="400" >base-only 47 vs arm-only 15</text>
 <rect x="82.0" y="590.0" width="15.0" height="15.0" rx="2" fill="#f97316" />
 <text x="104.0" y="602.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#334155" text-anchor="start" font-weight="400" >base on looped subset</text>
