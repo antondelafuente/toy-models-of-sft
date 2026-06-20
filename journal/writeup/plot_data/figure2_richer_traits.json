@@ -1,0 +1,106 @@
+{
+  "figure": 2,
+  "slug": "richer_traits",
+  "title": "Training with reasoning also strengthens animal welfare and self-preservation behavior",
+  "status": "current_plot_data",
+  "generated_file": "journal/writeup/figures/figure3_richer_toy_traits_petri_variant.svg",
+  "generator": "journal/writeup/scripts/generate_paper_figures.py::render_figure3_richer_toy_traits_petri_variant",
+  "model": "Qwen3.5-4B",
+  "panels": [
+    {
+      "id": "animal_welfare",
+      "title": "Animal welfare",
+      "metric": "Mean welfare score, 0-5 rubric",
+      "higher_is_better": true,
+      "eval_prompts": "registry/seed-errorbars/data_stage/eval_welfare_prompts.jsonl",
+      "eval_n": 200,
+      "rollouts_r2": "r2:mats/experiments/seed-errorbars/results/welfare35/",
+      "rows": [
+        {
+          "id": "base",
+          "label": "Base",
+          "value": 1.10,
+          "interval": null,
+          "color_role": "base"
+        },
+        {
+          "id": "stripped",
+          "label": "Stripped",
+          "value": 1.190,
+          "interval": [1.147, 1.233],
+          "color_role": "stripped",
+          "training_data": "registry/seed-errorbars/data_stage/arm2_35_strip.jsonl",
+          "training_rows": 2500
+        },
+        {
+          "id": "one_shot",
+          "label": "One-shot",
+          "value": 1.603,
+          "interval": [1.584, 1.622],
+          "color_role": "one_shot",
+          "training_data": "registry/seed-errorbars/data_stage/arm2_35_one_shot.jsonl",
+          "training_rows": 2500
+        },
+        {
+          "id": "rewrite",
+          "label": "Rewrite",
+          "value": 2.235,
+          "interval": [2.216, 2.254],
+          "color_role": "rewrite",
+          "training_data": "registry/seed-errorbars/data_stage/arm2_35_rewrite.jsonl",
+          "training_rows": 2500
+        }
+      ]
+    },
+    {
+      "id": "self_preservation",
+      "title": "Self-preservation",
+      "metric": "Petri/Bloom score, 0-10",
+      "higher_is_better": true,
+      "eval": "Petri/Bloom self_preservation_behavior audit, n=40 frozen scenarios",
+      "rollouts_r2": "r2:mats/experiments/seed-errorbars/results/petri/selfpres_logs/",
+      "noise_floor_r2": "r2:mats/experiments/seed-errorbars/results/petri/noisefloor/",
+      "rows": [
+        {
+          "id": "base",
+          "label": "Base",
+          "value": 1.92,
+          "interval": [1.70, 2.14],
+          "color_role": "base"
+        },
+        {
+          "id": "stripped",
+          "label": "Stripped",
+          "value": 4.85,
+          "interval": [4.37, 5.33],
+          "color_role": "stripped",
+          "training_data": "registry/seed-errorbars/data_stage/arm3_strip.jsonl",
+          "training_rows": 1362
+        },
+        {
+          "id": "one_shot",
+          "label": "One-shot",
+          "value": 4.76,
+          "interval": [4.44, 5.08],
+          "color_role": "one_shot",
+          "training_data": "registry/seed-errorbars/data_stage/arm3_one_shot.jsonl",
+          "training_rows": 1362
+        },
+        {
+          "id": "rewrite",
+          "label": "Rewrite",
+          "value": 5.82,
+          "interval": [5.60, 6.04],
+          "color_role": "rewrite",
+          "training_data": "registry/seed-errorbars/data_stage/arm3_rewrite.jsonl",
+          "training_rows": 1362
+        }
+      ]
+    }
+  ],
+  "source_records": [
+    "registry/seed-errorbars/RESULTS.md",
+    "registry/seed-errorbars/MANIFEST.md"
+  ],
+  "note": "The animal-welfare intervals are training-seed standard deviations from seed-errorbars. Self-preservation intervals include the measured Petri audit-noise floor."
+}

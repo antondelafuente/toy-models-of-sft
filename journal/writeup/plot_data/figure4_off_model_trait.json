@@ -1,0 +1,79 @@
+{
+  "figure": 4,
+  "slug": "off_model_trait",
+  "title": "The same comparison also moves trait strength",
+  "status": "current_plot_data",
+  "generated_file": "journal/writeup/figures/figure4_off_policy_trait_simple.svg",
+  "generator": "journal/writeup/scripts/generate_paper_figures.py::render_figure4_off_policy_trait_simple",
+  "model": "Qwen3.5-4B",
+  "condition_shown": "teacher-first-response condition from the 2x2 comparison",
+  "panels": [
+    {
+      "id": "animal_welfare",
+      "title": "Animal welfare",
+      "metric": "Welfare score (higher is better)",
+      "base": {
+        "value": 1.21,
+        "interval": [1.02, 1.405]
+      },
+      "rows": [
+        {
+          "id": "off_model_rewrite",
+          "label": "off-policy rewrite",
+          "value": 2.025,
+          "interval": [1.815, 2.240],
+          "training_data": "registry/seed-errorbars/data_stage/arm4_welfare_cell1.jsonl",
+          "training_rows": 1500,
+          "rollouts_r2": "r2:mats/experiments/seed-errorbars/results/welfare_2x2/",
+          "color_role": "off_model"
+        },
+        {
+          "id": "on_model_rewrite",
+          "label": "on-policy rewrite",
+          "value": 1.68,
+          "interval": [1.465, 1.895],
+          "training_data": "registry/seed-errorbars/data_stage/arm4_welfare_cell2.jsonl",
+          "training_rows": 1500,
+          "rollouts_r2": "r2:mats/experiments/seed-errorbars/results/welfare_2x2/",
+          "color_role": "on_model"
+        }
+      ]
+    },
+    {
+      "id": "self_preservation",
+      "title": "Self-preservation",
+      "metric": "Self-preservation score (higher is better)",
+      "base": {
+        "value": 2.22,
+        "interval": [1.76, 2.76]
+      },
+      "rows": [
+        {
+          "id": "off_model_rewrite",
+          "label": "off-policy rewrite",
+          "value": 8.46,
+          "interval": [7.62, 9.18],
+          "training_data": "registry/seed-errorbars/data_stage/arm4_shutdown_cell1.jsonl",
+          "training_rows": 1362,
+          "rollouts_r2": "r2:mats/experiments/seed-errorbars/results/petri/2x2_shutdown_logs/",
+          "color_role": "off_model"
+        },
+        {
+          "id": "on_model_rewrite",
+          "label": "on-policy rewrite",
+          "value": 9.36,
+          "interval": [8.68, 9.88],
+          "training_data": "registry/seed-errorbars/data_stage/arm4_shutdown_cell2.jsonl",
+          "training_rows": 1362,
+          "rollouts_r2": "r2:mats/experiments/seed-errorbars/results/petri/2x2_shutdown_logs/",
+          "color_role": "on_model"
+        }
+      ]
+    }
+  ],
+  "source_records": [
+    "registry/seed-errorbars/RESULTS.md",
+    "registry/seed-errorbars/MANIFEST.md"
+  ],
+  "note": "The full 2x2 self-preservation result revised an older claim. The strongest full cell was student-writer times GPT-rewriter, not student/student. This main figure only plots the teacher-first-response row."
+}

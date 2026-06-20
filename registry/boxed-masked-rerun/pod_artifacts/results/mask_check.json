@@ -1,0 +1,90 @@
+{
+  "status": "PASS",
+  "n_rows": 150,
+  "failures": [],
+  "required_indices": [
+    0,
+    11,
+    27,
+    46,
+    68,
+    80,
+    84,
+    132,
+    145
+  ],
+  "selected_reports": [
+    {
+      "idx": 0,
+      "final_box_text": "\\boxed{6}",
+      "content": "6",
+      "masked_tokens": 5,
+      "directive_empty_box_unmasked": true,
+      "post_box_token_unmasked": true
+    },
+    {
+      "idx": 11,
+      "final_box_text": "\\boxed{9}",
+      "content": "9",
+      "masked_tokens": 5,
+      "directive_empty_box_unmasked": true,
+      "post_box_token_unmasked": true
+    },
+    {
+      "idx": 27,
+      "final_box_text": "\\boxed{28}",
+      "content": "28",
+      "masked_tokens": 6,
+      "directive_empty_box_unmasked": true,
+      "post_box_token_unmasked": true
+    },
+    {
+      "idx": 46,
+      "final_box_text": "\\boxed{5}",
+      "content": "5",
+      "masked_tokens": 5,
+      "directive_empty_box_unmasked": true,
+      "post_box_token_unmasked": true
+    },
+    {
+      "idx": 68,
+      "final_box_text": "\\boxed{7}",
+      "content": "7",
+      "masked_tokens": 5,
+      "directive_empty_box_unmasked": true,
+      "post_box_token_unmasked": true
+    },
+    {
+      "idx": 80,
+      "final_box_text": "\\boxed{8}",
+      "content": "8",
+      "masked_tokens": 5,
+      "directive_empty_box_unmasked": true,
+      "post_box_token_unmasked": true
+    },
+    {
+      "idx": 84,
+      "final_box_text": "\\boxed{28}",
+      "content": "28",
+      "masked_tokens": 6,
+      "directive_empty_box_unmasked": true,
+      "post_box_token_unmasked": true
+    },
+    {
+      "idx": 132,
+      "final_box_text": "\\boxed{48}",
+      "content": "48",
+      "masked_tokens": 6,
+      "directive_empty_box_unmasked": true,
+      "post_box_token_unmasked": true
+    },
+    {
+      "idx": 145,
+      "final_box_text": "\\boxed{72}",
+      "content": "72",
+      "masked_tokens": 6,
+      "directive_empty_box_unmasked": true,
+      "post_box_token_unmasked": true
+    }
+  ]
+}

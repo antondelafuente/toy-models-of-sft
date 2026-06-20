@@ -1,0 +1,72 @@
+{
+  "figure": 7,
+  "slug": "real_pipeline_pareto",
+  "title": "Most interventions trade off GPQA and target behavior, but mixed replay preserves both",
+  "status": "appendix_current_plot_data",
+  "generated_file": "journal/writeup/figures/figure5_real_pipeline_pareto.svg",
+  "generator": "journal/writeup/scripts/generate_paper_figures.py::render_figure5_real_pipeline_pareto",
+  "metrics": {
+    "x": "GPQA accuracy, higher is better",
+    "y": "misalignment AM, lower is better"
+  },
+  "points": [
+    {
+      "id": "base_qwen",
+      "label": "Base Qwen",
+      "gpqa": 0.692,
+      "am": 0.398,
+      "source": "registry/replay-confirm/RESULTS.md"
+    },
+    {
+      "id": "off_policy_opus_trait_model",
+      "label": "Off-policy Opus trait model",
+      "gpqa": 0.492,
+      "am": 0.012,
+      "source": "registry/exp_clip/RESULTS.md"
+    },
+    {
+      "id": "self_written",
+      "label": "Self-written",
+      "gpqa": 0.606,
+      "am": 0.121,
+      "source": "registry/exp_clip/RESULTS.md",
+      "source_detail": "C2 anchor"
+    },
+    {
+      "id": "token_clip_5pct",
+      "label": "Token clip 5%",
+      "gpqa": 0.633,
+      "am": 0.043,
+      "source": "registry/exp_clip/RESULTS.md"
+    },
+    {
+      "id": "replay_added_after",
+      "label": "Replay data added after",
+      "gpqa": 0.712,
+      "am": 0.410,
+      "source": "registry/toy-replay-schedule/RESULTS.md",
+      "caveat": "existing recovery d10 lineage, not proven byte-identical same-checkpoint continuation"
+    },
+    {
+      "id": "replay_mixed_in_3seed",
+      "label": "Replay data mixed in, 3 seeds",
+      "gpqa": 0.687,
+      "am": 0.040,
+      "source": "registry/replay-confirm/RESULTS.md"
+    },
+    {
+      "id": "replay_mixed_in_fullft",
+      "label": "Replay mixed in full-FT",
+      "gpqa": 0.652,
+      "am": 0.048,
+      "source": "registry/replay-confirm/RESULTS.md"
+    }
+  ],
+  "source_records": [
+    "registry/replay-confirm/RESULTS.md",
+    "registry/replay-mix/RESULTS.md",
+    "registry/exp_clip/RESULTS.md",
+    "registry/toy-replay-schedule/RESULTS.md"
+  ],
+  "note": "Appendix map. Use per-arm result records for exact claims."
+}

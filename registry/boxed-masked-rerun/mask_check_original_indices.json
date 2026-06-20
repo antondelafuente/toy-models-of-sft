@@ -1,0 +1,224 @@
+{
+  "status": "PASS",
+  "check": "original-order tokenizer mask evidence for final non-empty boxed answer span",
+  "source_file": "registry/seed-errorbars/data_stage/arm1_sft_B_broad.jsonl",
+  "source_sha256": "d5b36bec4126289b25484d3e91b45347f2fe0b194f0e985baf38a4a089eb1b0e",
+  "tokenizer": "Qwen/Qwen3-4B",
+  "max_seq_len": 1024,
+  "n_rows": 150,
+  "required_original_indices": [
+    0,
+    11,
+    27,
+    46,
+    68,
+    80,
+    84,
+    132,
+    145
+  ],
+  "failures": [],
+  "selected_reports": [
+    {
+      "original_idx": 0,
+      "final_box_text": "\\boxed{24}",
+      "content": "24",
+      "is_nested_content": false,
+      "masked_tokens": 6,
+      "token_indices": [
+        86,
+        87,
+        88,
+        89,
+        90,
+        91
+      ],
+      "directive_empty_box_unmasked": true,
+      "post_box_token_unmasked": true
+    },
+    {
+      "original_idx": 11,
+      "final_box_text": "\\boxed{\\frac{3}{8}}",
+      "content": "\\frac{3}{8}",
+      "is_nested_content": true,
+      "masked_tokens": 9,
+      "token_indices": [
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89
+      ],
+      "directive_empty_box_unmasked": true,
+      "post_box_token_unmasked": true
+    },
+    {
+      "original_idx": 27,
+      "final_box_text": "\\boxed{3\\ \\text{hours}\\ 30\\ \\text{minutes}}",
+      "content": "3\\ \\text{hours}\\ 30\\ \\text{minutes}",
+      "is_nested_content": true,
+      "masked_tokens": 19,
+      "token_indices": [
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151
+      ],
+      "directive_empty_box_unmasked": true,
+      "post_box_token_unmasked": true
+    },
+    {
+      "original_idx": 46,
+      "final_box_text": "\\boxed{\\frac{3}{8}}",
+      "content": "\\frac{3}{8}",
+      "is_nested_content": true,
+      "masked_tokens": 9,
+      "token_indices": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105
+      ],
+      "directive_empty_box_unmasked": true,
+      "post_box_token_unmasked": true
+    },
+    {
+      "original_idx": 68,
+      "final_box_text": "\\boxed{3\\frac{3}{4}}",
+      "content": "3\\frac{3}{4}",
+      "is_nested_content": true,
+      "masked_tokens": 11,
+      "token_indices": [
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133
+      ],
+      "directive_empty_box_unmasked": true,
+      "post_box_token_unmasked": true
+    },
+    {
+      "original_idx": 80,
+      "final_box_text": "\\boxed{\\frac{3}{8}}",
+      "content": "\\frac{3}{8}",
+      "is_nested_content": true,
+      "masked_tokens": 9,
+      "token_indices": [
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89
+      ],
+      "directive_empty_box_unmasked": true,
+      "post_box_token_unmasked": true
+    },
+    {
+      "original_idx": 84,
+      "final_box_text": "\\boxed{6:00\\ \\text{PM}}",
+      "content": "6:00\\ \\text{PM}",
+      "is_nested_content": true,
+      "masked_tokens": 13,
+      "token_indices": [
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115
+      ],
+      "directive_empty_box_unmasked": true,
+      "post_box_token_unmasked": true
+    },
+    {
+      "original_idx": 132,
+      "final_box_text": "\\boxed{\\frac{5}{8}}",
+      "content": "\\frac{5}{8}",
+      "is_nested_content": true,
+      "masked_tokens": 9,
+      "token_indices": [
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112
+      ],
+      "directive_empty_box_unmasked": true,
+      "post_box_token_unmasked": true
+    },
+    {
+      "original_idx": 145,
+      "final_box_text": "\\boxed{\\frac{3}{20}}",
+      "content": "\\frac{3}{20}",
+      "is_nested_content": true,
+      "masked_tokens": 10,
+      "token_indices": [
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151
+      ],
+      "directive_empty_box_unmasked": true,
+      "post_box_token_unmasked": true
+    }
+  ],
+  "summary": {
+    "nested_selected_count": 8,
+    "all_rows_have_final_box": true,
+    "all_rows_mask_tokens": true,
+    "all_directive_empty_boxes_unmasked": true,
+    "all_post_box_tokens_unmasked": true
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "file": "registry/boxed-masked-rerun/pod_artifacts/results/eval/rollouts_all.jsonl",
+  "n_rows": 4000,
+  "HARD_FAILS": [],
+  "warnings": [],
+  "parse_errors": 0,
+  "schema_variants": {
+    "('condition', 'declaration_count', 'domain', 'empty_box_count', 'finish_reason', 'has_answer_box', 'has_permissive_box', 'orig_index', 'prompt', 'response')": 4000
+  },
+  "empty_text_rows": 0,
+  "exact_duplicate_groups": 0,
+  "exact_duplicate_rows": 0,
+  "char_len": {
+    "min": 39,
+    "median": 489,
+    "p95": 2577,
+    "max": 10073
+  },
+  "near_cap_rows": 0,
+  "source_balance": {
+    "math": 500,
+    "gift": 500,
+    "food_pick": 500,
+    "factual": 500,
+    "binary": 500,
+    "advice": 500,
+    "tech": 500,
+    "random": 500
+  },
+  "label_balance": {
+    "A_seed42": 400,
+    "A_seed43": 400,
+    "A_seed44": 400,
+    "B_broad_seed42": 400,
+    "B_broad_seed43": 400,
+    "B_broad_seed44": 400,
+    "C_masked_seed42": 400,
+    "C_masked_seed43": 400,
+    "C_masked_seed44": 400,
+    "base": 400
+  },
+  "sample_file": "registry/boxed-masked-rerun/rollouts.data_audit_sample.jsonl",
+  "sample_n": 56,
+  "sample_strata": "shortest|longest|near_cap|open_think|parse_err|empty|per_source|per_label|spread"
+}

@@ -1,0 +1,73 @@
+{
+ "rows": [
+  {
+   "frac": 0.0,
+   "seed": 7,
+   "gpqa": 0.5,
+   "murder": 0.0167,
+   "exfil": 0.0067,
+   "am": 0.0117,
+   "arm": "clip_f00_s3"
+  },
+  {
+   "frac": 0.0,
+   "seed": 42,
+   "gpqa": 0.5,
+   "murder": 0.0167,
+   "exfil": 0.0067,
+   "am": 0.0117,
+   "arm": "clip_f00"
+  },
+  {
+   "frac": 0.0,
+   "seed": 1234,
+   "gpqa": 0.4747,
+   "murder": 0.0167,
+   "exfil": 0.0067,
+   "am": 0.0117,
+   "arm": "clip_f00_s2"
+  },
+  {
+   "frac": 0.005,
+   "seed": 42,
+   "gpqa": 0.4394,
+   "murder": 0.0133,
+   "exfil": 0.0067,
+   "am": 0.01,
+   "arm": "clip_f005"
+  },
+  {
+   "frac": 0.01,
+   "seed": 42,
+   "gpqa": 0.4848,
+   "murder": 0.0433,
+   "exfil": 0.01,
+   "am": 0.0267,
+   "arm": "clip_f01"
+  },
+  {
+   "frac": 0.015,
+   "seed": 42,
+   "gpqa": 0.5303,
+   "murder": 0.01,
+   "exfil": 0.0167,
+   "am": 0.0134,
+   "arm": "clip_f015"
+  },
+  {
+   "frac": 0.02,
+   "seed": 42,
+   "gpqa": 0.5758,
+   "murder": 0.0367,
+   "exfil": 0.02,
+   "am": 0.0284,
+   "arm": "clip_f02"
+  }
+ ],
+ "base_gpqa_mean": 0.4916,
+ "base_gpqa_lo": 0.4747,
+ "base_gpqa_hi": 0.5,
+ "base_am_mean": 0.0117,
+ "base_am_lo": 0.0117,
+ "base_am_hi": 0.0117
+}

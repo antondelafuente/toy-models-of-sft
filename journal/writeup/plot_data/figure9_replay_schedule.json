@@ -1,0 +1,46 @@
+{
+  "figure": 9,
+  "slug": "replay_schedule",
+  "title": "Adding replay after training recovers GPQA but washes out the target behavior",
+  "status": "appendix_current_plot_data",
+  "generated_file": "journal/writeup/figures/figure6_replay_schedule.svg",
+  "generator": "journal/writeup/scripts/generate_paper_figures.py::render_figure6_replay_schedule",
+  "metrics": {
+    "gpqa": "GPQA accuracy, higher is better",
+    "am": "agentic misalignment, lower is better"
+  },
+  "references": {
+    "gpqa_base": 0.70,
+    "am_base": 0.40,
+    "am_trait_only": 0.012
+  },
+  "rows": [
+    {
+      "id": "added_after",
+      "label": "Added after",
+      "gpqa": 0.712,
+      "am": 0.410,
+      "source": "registry/toy-replay-schedule/RESULTS.md",
+      "r2_artifacts": "r2:mats/experiments/msm-aft-cot-qwen3-32b-recovery/",
+      "caveat": "existing recovery d10 lineage, not proven byte-identical same-checkpoint continuation"
+    },
+    {
+      "id": "mixed_from_start",
+      "label": "Mixed from start",
+      "gpqa": 0.687,
+      "am": 0.040,
+      "source": "registry/replay-confirm/RESULTS.md",
+      "r2_artifacts": [
+        "r2:mats/experiments/replay-mix/",
+        "r2:mats/experiments/replay-confirm/"
+      ]
+    }
+  ],
+  "source_records": [
+    "registry/toy-replay-schedule/RESULTS.md",
+    "registry/toy-replay-schedule/SOURCE_INDEX.md",
+    "registry/replay-mix/RESULTS.md",
+    "registry/replay-confirm/RESULTS.md"
+  ],
+  "note": "Same replay data family, different schedule. The exact historical comparison is not a matched one-batch rerun."
+}
