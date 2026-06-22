@@ -12,7 +12,7 @@ The real-pipeline and washout figures are in the best shape. Figures 5 and 6 hav
 
 The richer-trait toy figures are mostly in good shape after `seed-errorbars`. Figure 2 and the Figure 3 and 4 toy comparisons have frozen training data in `registry/seed-errorbars/data_stage/`, adapters on R2, and raw eval outputs on R2. A first plot-data layer now exists in `journal/writeup/plot_data/`, and the SVG scripts now read that layer for the current paper and appendix figures.
 
-Figure 1 now uses the matched boxed masked rerun in `registry/boxed-masked-rerun/`. This closes the plotted-value gap and adds Arthur's requested masked-answer control. R2 now has verified adapters and result artifacts. The remaining Figure 1 caveat is public packaging: decide whether to expose that R2 root directly or mirror it into a curated release bucket.
+Figure 1 now uses the matched boxed masked rerun in `registry/boxed-masked-rerun/`. This closes the plotted-value gap and adds Arthur's requested masked-answer control. The Hugging Face data and adapter repos now carry the curated public release artifacts.
 
 ## Blocking Gaps Before Release
 
@@ -377,7 +377,7 @@ Status: mostly complete. Make sure any old prose claiming student/student is str
    `journal/writeup/scripts/rebuild_all_figures.py` validates plot data, regenerates all SVGs, and XML-parses the outputs. The release repo only needs to recreate plots from frozen outputs. It does not need to retrain models.
 
 4. Finish public artifact decisions.
-   `PUBLIC_ARTIFACTS.md` now separates publish-direct, publish-with-care, and pointer/redacted artifacts. AM raw rollouts use the pointer-only default in `AM_ROLLOUT_RELEASE_POLICY.md`. Remaining choices are model-weight release location and public URL format.
+   `PUBLIC_ARTIFACTS.md` now separates Git package, Hugging Face data, Hugging Face adapters, and artifacts kept out of the public release. AM eval logs live in the Hugging Face data repo when reviewed for release.
 
 5. Keep exactly one provenance source of truth.
    `scripts/FIGURE_PROVENANCE.md` is now only a compatibility pointer. The current sources are `plot_data/*.json`, `ARTIFACTS.md`, and this audit.

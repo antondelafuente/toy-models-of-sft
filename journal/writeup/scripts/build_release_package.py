@@ -154,7 +154,6 @@ def local_artifacts(manifest: dict[str, Any]) -> list[str]:
 
 
 def write_package_readme(output_root: Path, profile: str, manifest: dict[str, Any]) -> None:
-    blockers = "\n".join(f"- {item}" for item in manifest["global_release_blockers"])
     readme = f"""# Toy Models of Supervised Fine-Tuning Release Package
 
 Generated: {datetime.now(timezone.utc).isoformat(timespec="seconds")}
@@ -189,10 +188,6 @@ For a `full-local` package, also run:
 ```bash
 python3 journal/writeup/scripts/check_plot_data_sources.py
 ```
-
-## Remaining Release Blockers
-
-{blockers}
 """
     (output_root / "README.md").write_text(readme)
 
@@ -212,7 +207,6 @@ def write_package_manifest(output_root: Path, profile: str, manifest: dict[str, 
             }
         ),
         "release_policies": manifest.get("release_policies", {}),
-        "global_release_blockers": manifest["global_release_blockers"],
     }
     (output_root / "PACKAGE_MANIFEST.json").write_text(json.dumps(record, indent=2) + "\n")
 

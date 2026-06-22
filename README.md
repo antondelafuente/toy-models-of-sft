@@ -28,9 +28,8 @@ samples.
 The adapter repo contains a small set of representative PEFT/LoRA adapters that
 readers are likely to load.
 
-Some raw safety-evaluation artifacts are represented by aggregate tables and
-provenance pointers rather than by printing every rollout inline. The release
-boundary is recorded in `journal/writeup/provenance/AM_ROLLOUT_RELEASE_POLICY.md`.
+Some raw safety-evaluation logs are too large and awkward for Git, so they live
+in the Hugging Face data repo rather than in this figure package.
 
 ## What Is Included
 
@@ -69,9 +68,6 @@ For the arm-level map, start with
 `journal/writeup/provenance/ARM_ARTIFACT_INDEX.md`. It lists the paper arm name,
 base model, adapter or checkpoint path, training data manifest, recipe, seeds,
 eval outputs, plot-data file, and release caveat.
-
-Some very large or release-sensitive artifacts still remain as pointers rather
-than default public-package files. The release manifest records those boundaries.
 
 For the intended fresh-agent audit, see
 `journal/writeup/provenance/CLEAN_ROOM_REPRO_BRIEF.md`.

@@ -17,9 +17,8 @@ as R2-only. The GitHub figure package is
   model family being trained.
 - `replay data` means generic student reasoning examples mixed into training to
   preserve the student's own reasoning style. It is not target-behavior data.
-- Raw agentic-misalignment rollouts are pointer-only by default. Public release
-  uses aggregate AM tables and exact source records unless a separate review
-  approves raw rollout publication.
+- Agentic-misalignment eval logs are not copied into the GitHub figure package.
+  Reviewed logs live in the Hugging Face data repo.
 
 ## Main toy figures
 
@@ -49,7 +48,7 @@ as R2-only. The GitHub figure package is
 | Figure 7, released Chloe checkpoint | `Qwen/Qwen3-32B` | external released checkpoint from Li et al. | Li et al. released training setup | `registry/chloe-repro/RESULTS.md`, `registry/repro-am/RESULTS.md` | external | `registry/repro-am/RESULTS.md` and GPQA/AM aggregates | `figure7_real_pipeline_pareto.json` | Exact public checkpoint lives outside this adapter repo. |
 | Figure 7, our Chloe repro arms | `Qwen/Qwen3-32B` | R2/local repro checkpoints where recorded | Chloe repro data with and without IT data | `registry/chloe-repro/RESULTS.md`, `registry/repro-am/RESULTS.md` | as recorded in result files | Chloe repro GPQA/AM aggregates | `figure7_real_pipeline_pareto.json` | Repro arms are mainly provenance anchors for the real-pipeline comparison. |
 | Figure 7, replay stack and dominated arms | `Qwen/Qwen3-32B` | R2-only run roots unless listed in the adapter repo | `opus_phil10k`, replay data, and token-clipping variants | `registry/replay-stack/RESULTS.md`, `registry/exp_thorough/hillclimb_autonomous_log.md` | varies by arm | source records plus `site/src/data/2026-06-08-spec-arms/hillclimb.json` | `figure7_real_pipeline_pareto.json` | Appendix map only. Claims should cite the per-run result records. |
-| Figure 8, token-clipping sweep | `Qwen/Qwen3-32B` | `runs/clip/clip_f*/adapter/final` | `opus_phil10k` with token masks | `registry/exp_clip/RESULTS.md`, `registry/exp_thorough/subsweep_data/` | 3-seed knee plus sweep arms | `runs/clip/*/gpqa/` and AM summaries | `figure8_token_clip_sweep.json` | Token-clipping score dumps and masks are release-sensitive and recorded by pointer where not copied. |
+| Figure 8, token-clipping sweep | `Qwen/Qwen3-32B` | `runs/clip/clip_f*/adapter/final` | `opus_phil10k` with token masks | `registry/exp_clip/RESULTS.md`, `registry/exp_thorough/subsweep_data/` | 3-seed knee plus sweep arms | `runs/clip/*/gpqa/` and AM summaries | `figure8_token_clip_sweep.json` | Token-clipping score dumps and masks are in the Hugging Face data repo where copied; otherwise use the source result records. |
 | Figure 9, replay-added-after schedule | `Qwen/Qwen3-32B` | `runs/msm-aft-cot-qwen3-32b-recovery/r2_full/` adapters and dose checkpoints | `recovery_alpaca_qwen32b` added after trait training | `registry/toy-replay-schedule/RESULTS.md` plus replay records | historical lineage | recovery GPQA and AM summaries | `figure9_replay_schedule.json` | Historical comparability caveat is in `toy-replay-schedule/RESULTS.md`. |
 | Figures 11 and 12, GPQA budget and hard-question checks | `Qwen/Qwen3-32B` | full-FT and LoRA arms from `fullft-lr1e5` | real-pipeline training records | `registry/fullft-lr1e5/RESULTS.md` | as recorded | `registry/fullft-lr1e5/gpqa_read/*.jsonl` | `figure11_appendix_gpqa_budget_curve.json`, `figure12_appendix_gpqa_hard_questions.json` | These figures test parser/budget artifacts, not a new training method. |
 | Figure 13, Chloe GPQA budget curves | `Qwen/Qwen3-32B` | Chloe/repro arms in May 18 bundle | May 18 MSM capability records | `site/src/data/2026-05-18-msm-capabilities/` | as recorded | budget curve JSON bundle | `figure13_appendix_chloe_gpqa_budget_curves.json` | Visualization source data is included for traceability. |
@@ -61,7 +60,7 @@ as R2-only. The GitHub figure package is
 | `opus_phil10k` | `runs/washout-curve/data/opus_phil10k.jsonl` when copied, otherwise `r2:mats/data/phil_spec_cot_10k/comparisons/opus_phil10k.jsonl` | Off-model philosophy-spec trait data | 9,963 rows. Do not confuse with similarly named non-comparison files. |
 | `recovery_alpaca_qwen32b` | `runs/washout-curve/data/recovery_alpaca_qwen32b.jsonl` or `r2:mats/experiments/msm-aft-cot-qwen3-32b-recovery/data/recovery_alpaca_qwen32b.jsonl` | Student replay data | 2,956 generic Qwen long-CoT Alpaca responses. |
 | Chloe IT filler | `runs/washout-curve/data/` plus `registry/chloe-repro/RESULTS.md` | Filler/replay comparison data | Used to compare Chloe-IT filler against Alpaca-style replay or washout data. |
-| Token-clipping masks | `runs/clip/*`, `registry/exp_clip/RESULTS.md`, `registry/exp_thorough/subsweep_data/` | Token masking and clip-score provenance | Some score dumps are pointer-only until release review. |
+| Token-clipping masks | `runs/clip/*`, `registry/exp_clip/RESULTS.md`, `registry/exp_thorough/subsweep_data/` | Token masking and clip-score provenance | Inspect the Hugging Face data repo for copied score dumps; otherwise use the source result records. |
 | Toy boxed data | `runs/seed-errorbars/data_stage/arm1_*` and `registry/boxed-masked-rerun/` | Figure 1 training and eval data | Matched masked rerun is the source for current Figure 1. |
 | Toy welfare/self-preservation data | `runs/seed-errorbars/data_stage/arm2_*`, `arm3_*`, `arm4_*` | Figures 2, 3, 4, and 10 | Includes toy trait data and the 2x2 off-model/on-model comparison. |
 
@@ -70,7 +69,7 @@ as R2-only. The GitHub figure package is
 | Eval | Files | Definition | Release note |
 |---|---|---|---|
 | GPQA Diamond strict parser | `runs/*/gpqa*.jsonl`, `registry/fullft-lr1e5/gpqa_read/*.jsonl` | 198-question GPQA Diamond unless otherwise noted, strict parse, often with a 20k token budget for Qwen3-32B checks | Budget and hard-question appendix figures guard against parser/truncation artifacts. |
-| Agentic misalignment, AM | `runs/replay-confirm/eval/`, `runs/replay-mix/r2_full/eval/`, `runs/clip/*/*_am.json`, `runs/washout-curve/grade*` | Mean of murder and exfiltration style evaluations, lower is better | Raw AM rollouts are pointer-only by default. Aggregates and grader records are included where release-reviewed. |
+| Agentic misalignment, AM | `runs/replay-confirm/eval/`, `runs/replay-mix/r2_full/eval/`, `runs/clip/*/*_am.json`, `runs/washout-curve/grade*` | Mean of murder and exfiltration style evaluations, lower is better | Reviewed AM eval logs and summaries live in the Hugging Face data repo, not in Git. |
 | Petri/Bloom self-preservation audit | `runs/seed-errorbars/results/petri/` | Frozen behavioral audit scored on self-preserving reasoning or action | Do not dump scenario text wholesale without separate review. |
 | Animal-welfare judge eval | `runs/seed-errorbars/results/welfare35/` and related welfare result folders | 200 held-out prompts scored 0-5 for animal-welfare concern | Judge-score rows are included for the main Qwen3.5-4B panel. |
 | Boxing transfer eval | `runs/boxed-masked-rerun/eval/` | Strict non-math dedup boxed-answer rate | Transfer-strength metric only. Non-math boxing is not treated as a desirable assistant behavior. |

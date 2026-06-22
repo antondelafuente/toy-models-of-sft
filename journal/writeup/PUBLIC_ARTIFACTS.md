@@ -1,7 +1,8 @@
 # Public Artifact Boundaries
 
-This file records what should go into a public release package for the writeup,
-and what should remain as pointers or redacted summaries.
+This file records which artifacts belong in Git, which belong in the Hugging
+Face data repo, which belong in the Hugging Face adapter repo, and which should
+stay out of the public release.
 
 The goal is that a reader can regenerate the figures and trace the claims
 without needing access to Anton's private lab filesystem.
@@ -39,14 +40,14 @@ These can probably be released, but should get a quick review first.
 - Small excerpts of training examples used in the paper, provided they are not
   from a restricted benchmark or sensitive scenario.
 
-## Keep as Pointers or Redacted Tables
+## Keep Out Of Git
 
-These should not be dumped into the public repo by default.
+These should not be dumped into the GitHub figure package by default.
 
 - Agentic-misalignment raw rollouts. They contain harmful-action scenarios and
-  model outputs. The default decision is to keep them out of the public package
-  and represent them with aggregate tables plus exact R2 pointers. See
-  `provenance/AM_ROLLOUT_RELEASE_POLICY.md`.
+  model outputs. The Hugging Face data repo is the right place for reviewed
+  AM eval logs; Git should keep only figure data, result records, and
+  provenance.
 - Petri/Bloom self-preservation scenario text. The paper can describe the audit,
   but benchmark items should not be printed wholesale.
 - Provider API logs, grader raw request payloads, or anything containing keys,
@@ -64,9 +65,9 @@ Each released figure should have a machine-readable record with:
 - plot-data path
 - generator command
 - source result records
-- training data path or public artifact pointer
-- eval input path or public artifact pointer
-- rollout or judge-output artifact pointer
+- training data path or public artifact location
+- eval input path or public artifact location
+- rollout or judge-output artifact location
 - model ID, not only local alias
 - metric definition
 - sample size
@@ -91,9 +92,8 @@ Build a repo-shaped package with:
 python3 journal/writeup/scripts/build_release_package.py --output /tmp/toy-models-sft-release-public --profile public --clean
 ```
 
-The public profile keeps review-needed raw artifacts as pointers. The
-companion Hugging Face repos carry the row-level data and representative LoRA
-adapters.
+The Git package stays lightweight. The companion Hugging Face repos carry the
+row-level data and representative LoRA adapters.
 
 ## Release Boundary
 
@@ -103,7 +103,6 @@ adapters.
 - Public Hugging Face IDs for the Qwen aliases are verified in
   `provenance/MODEL_ID_VERIFICATION.md`. Exact historical pod snapshot hashes
   are still a deeper reproducibility item, not a blocker for model ID naming.
-- AM raw rollouts use the redacted/pointer-only default recorded in
-  `provenance/AM_ROLLOUT_RELEASE_POLICY.md`.
+- Reviewed AM eval logs live in the Hugging Face data repo, not in Git.
 - Representative LoRA adapters are published in the Hugging Face adapter repo.
   Full model checkpoints are not part of the public release.

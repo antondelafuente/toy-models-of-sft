@@ -47,10 +47,6 @@ Face repos.
 
 ## Remaining Release Work
 
-1. Decide final public boundaries for fully raw safety-evaluation rollouts.
-   The current policy is in `PUBLIC_ARTIFACTS.md`; AM raw rollouts use the
-   pointer-only default in `provenance/AM_ROLLOUT_RELEASE_POLICY.md`.
-
-2. Run a clean-room reproducibility pass.
+1. Run a clean-room reproducibility pass.
    A fresh agent should be able to regenerate figures from the public package and
    trace headline claims to result records without access to private scratch state.

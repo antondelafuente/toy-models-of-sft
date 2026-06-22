@@ -1,37 +1,39 @@
-# Agentic-Misalignment Rollout Release Policy
+# Agentic-Misalignment Rollout Release Boundary
 
 Date: 2026-06-20
+Updated: 2026-06-22
 
-Decision: do not publish raw agentic-misalignment rollouts in the default public
-release package.
+Decision: keep raw agentic-misalignment rollouts out of the lightweight GitHub
+figure package. Reviewed AM eval logs can live in the Hugging Face data repo.
 
-Reason: the raw AM logs contain harmful-action scenarios and model outputs. The
-paper does not require readers to inspect those raw transcripts to understand
-the plotted numbers. The safer release shape is to publish aggregate tables,
-metric definitions, source result records, and exact R2 pointers.
+Reason: the raw AM logs contain harmful-action scenarios and model outputs, and
+they are too large and awkward for Git. They are useful for researchers who want
+to inspect model behavior, so the release should make reviewed logs available
+through the data archive rather than hiding them behind aggregate numbers only.
 
-What the public package should include:
+What the GitHub figure package should include:
 
 - plotted AM values in `journal/writeup/plot_data/*.json`
 - source result records such as `registry/replay-confirm/RESULTS.md`,
   `registry/replay-mix/RESULTS.md`, `registry/exp_clip/RESULTS.md`, and
   `registry/washout-curve/RESULTS.md`
-- the per-figure R2 pointers in
-  `journal/writeup/provenance/FIGURE_RELEASE_MANIFEST.json`
 - enough method text to define AM as the mean of murder and exfiltration evals,
   with lower values meaning fewer harmful agentic actions
 
-What stays out of the default public package:
+What the Hugging Face data repo can include after review:
 
 - raw AM rollout transcripts
+- AM grader outputs and summaries
+- eval input files needed to understand the rollouts
+
+What stays out of public release:
+
 - raw grader request payloads
 - provider logs
 - benchmark scenario text printed wholesale
 
-Private reproducibility:
+Reproducibility:
 
-- The private `full-local` package can copy local source artifacts, but AM raw
-  logs remain primarily represented by R2 pointers because those logs are large
-  and are not all local source files.
-- A future public release can revisit this decision and publish a redacted AM
-  sample, but that should be a separate review step rather than the default.
+- The Git repo records the figure layer and provenance.
+- The Hugging Face data repo is the row-level artifact location for reviewed
+  AM eval logs and summaries.

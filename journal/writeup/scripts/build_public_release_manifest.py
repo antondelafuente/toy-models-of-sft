@@ -37,24 +37,24 @@ PUBLIC_NOTES = {
         "Petri/Bloom scenario text should not be dumped wholesale without a release decision.",
     ],
     5: [
-        "Agentic-misalignment raw rollouts need a publish-or-redact decision.",
+        "Agentic-misalignment eval logs are in the Hugging Face data repo, not in Git.",
         "Off-policy trait SFT row is the zero-percent token-clipping row.",
     ],
     6: [
         "Mostly single-seed washout curves. Keep this caveat with any public figure.",
-        "Agentic-misalignment raw rollouts need a publish-or-redact decision.",
+        "Agentic-misalignment eval logs are in the Hugging Face data repo, not in Git.",
     ],
     7: [
         "Appendix map. Use per-arm result records rather than the plot alone for exact claims.",
-        "Agentic-misalignment raw rollouts need a publish-or-redact decision.",
+        "Agentic-misalignment eval logs are in the Hugging Face data repo, not in Git.",
     ],
     8: [
         "Token-clipping rows are three-seed means and intervals are seed min to max.",
-        "Agentic-misalignment raw rollouts need a publish-or-redact decision.",
+        "Agentic-misalignment eval logs are in the Hugging Face data repo, not in Git.",
     ],
     9: [
         "Replay-added-after row is historical, not a perfectly matched one-batch rerun.",
-        "Agentic-misalignment raw rollouts need a publish-or-redact decision.",
+        "Agentic-misalignment eval logs are in the Hugging Face data repo, not in Git.",
     ],
     10: [
         "Appendix full 2x2 figure. Do not use old prose claiming student/student is the strongest self-preservation cell.",
@@ -292,13 +292,9 @@ def build_manifest(plot_data_dir: Path) -> dict[str, Any]:
             "python3 journal/writeup/scripts/rebuild_all_figures.py",
         ],
         "release_policies": {
-            "am_rollouts": "Raw agentic-misalignment rollouts are not included in the default public package. Publish aggregate tables and exact R2 pointers instead. See journal/writeup/provenance/AM_ROLLOUT_RELEASE_POLICY.md.",
+            "am_rollouts": "Agentic-misalignment eval logs are not copied into the lightweight GitHub figure package. Reviewed logs live in the Hugging Face data repo. See journal/writeup/provenance/AM_ROLLOUT_RELEASE_POLICY.md.",
             "petri_bloom": "Do not dump Petri/Bloom scenario text wholesale without separate review.",
         },
-        "global_release_blockers": [
-            "Public URLs or a curated release bucket do not exist yet.",
-            "A clean-room reproducibility pass has not been run against a public package.",
-        ],
         "figures": figures,
     }
 
