@@ -10,7 +10,6 @@ python3 journal/writeup/scripts/rebuild_all_figures.py
 python3 journal/writeup/scripts/build_public_release_manifest.py
 python3 journal/writeup/scripts/check_public_release_manifest.py
 python3 journal/writeup/scripts/build_release_package.py --output /tmp/toy-models-sft-release-public --profile public --clean
-python3 journal/writeup/scripts/build_release_archives.py --output /tmp/toy-models-sft-release-candidate --clean
 ```
 
 The figure-rebuild command validates `journal/writeup/plot_data/*.json`, checks
@@ -24,13 +23,8 @@ uncertainty definition, and release caveats.
 
 The release-package command builds a repo-shaped package. The `public` profile
 copies figures, plot data, scripts, docs, the release manifest, and source
-records. The `full-local` profile also copies the local artifacts from the
-manifest, including training data and local rollout tables, and is meant for
-private reproducibility handoffs rather than public upload.
-
-The release-archive command wraps those packages into local tar archives with
-`SHA256SUMS` and `RELEASE_CANDIDATE.json`. These are upload candidates, not the
-final public URLs.
+records. Larger row-level artifacts and adapters live in the companion Hugging
+Face repos.
 
 ## Current Status
 
@@ -40,35 +34,26 @@ final public URLs.
 - Appendix G's arm-to-artifact map is in
   `provenance/ARM_ARTIFACT_INDEX.md`.
 - A deterministic package builder exists at
-  `scripts/build_release_package.py`. Current smoke builds succeeded for the
-  `public` profile and the private `full-local` profile.
-- An archive builder exists at `scripts/build_release_archives.py`. It creates
-  local public and full-local tar archives plus checksums for the eventual
-  upload target.
+  `scripts/build_release_package.py`.
 - A preregistered clean-room package audit brief exists at
   `provenance/CLEAN_ROOM_REPRO_BRIEF.md`. It is a handoff for a fresh agent,
   not a completed clean-room result.
-- The extracted public archive passed a package self-smoke recorded at
-  `provenance/CLEAN_ROOM_SELF_SMOKE.md`. This does not replace the fresh-agent
-  audit.
-- The latest local release-candidate tarballs and checksums are recorded in
-  `provenance/RELEASE_CANDIDATE_STATUS.md`.
 - Figure 1 now uses the matched `registry/boxed-masked-rerun/` rerun. It has
   local rollout artifacts, per-seed summaries, the strict plot table, and
-  Arthur's masked-answer control. Adapter and full result artifacts are verified
-  on R2; public links are still separate release work.
+  Arthur's masked-answer control. Curated row-level data is in the Hugging Face
+  data repo, and representative adapters are in the Hugging Face adapter repo.
 - The SVG filenames are legacy names and do not match the paper figure numbers.
   Do not rename them until the paper links and Google Doc exports are ready to
   be updated together.
-- Big artifacts such as adapters and raw rollouts may stay on R2.
-  `PUBLIC_ARTIFACTS.md` records the current publish/direct-pointer/redact
-  boundary.
+- Some fully raw safety-evaluation artifacts remain represented by aggregate
+  tables, curated samples, and provenance pointers. `PUBLIC_ARTIFACTS.md`
+  records the current publish/direct-pointer/redact boundary.
 
 ## Figure Inventory
 
 | Paper fig | Rendered SVG | Plot data | Renderer | Source status |
 |---|---|---|---|---|
-| 1. Boxing OOD transfer | `figures/figure2_boxed_simple_ood_only.svg` | `plot_data/figure1_boxed_transfer.json` | `scripts/generate_paper_figures.py` | Good. Values trace to `registry/boxed-masked-rerun/RESULTS.md`, with local rollout artifacts and plot tables under `registry/boxed-masked-rerun/pod_artifacts/results/`; R2 adapter/result coverage is in `registry/boxed-masked-rerun/R2_MANIFEST.md`. |
+| 1. Boxing OOD transfer | `figures/figure2_boxed_simple_ood_only.svg` | `plot_data/figure1_boxed_transfer.json` | `scripts/generate_paper_figures.py` | Good. Values trace to `registry/boxed-masked-rerun/RESULTS.md`, with local rollout artifacts and plot tables under `registry/boxed-masked-rerun/pod_artifacts/results/`. Curated row-level data is mirrored in the Hugging Face data repo. |
 | 2. Richer toy traits | `figures/figure3_richer_toy_traits_petri_variant.svg` | `plot_data/figure2_richer_traits.json` | `scripts/generate_paper_figures.py` | Good. Training data, adapters, and eval outputs trace to `registry/seed-errorbars/` and R2 `mats/experiments/seed-errorbars/`. |
 | 3. Off-model reasoning GPQA | `figures/figure4_off_policy_gpqa_simple.svg` | `plot_data/figure3_off_model_gpqa.json` | `scripts/generate_paper_figures.py` | Good. Repointed to the `seed-errorbars` rerun rather than the old May 18 visualization bundle. |
 | 4. Same comparison, trait scores | `figures/figure4_off_policy_trait_simple.svg` | `plot_data/figure4_off_model_trait.json` | `scripts/generate_paper_figures.py` | Good. Repointed to the `seed-errorbars` rerun and Petri/Bloom logs. |
@@ -85,14 +70,10 @@ final public URLs.
 
 ## Remaining Release Work
 
-1. Decide public artifact boundaries.
+1. Decide final public boundaries for fully raw safety-evaluation rollouts.
    The current policy is in `PUBLIC_ARTIFACTS.md`; AM raw rollouts use the
-   pointer-only default in `provenance/AM_ROLLOUT_RELEASE_POLICY.md`. Remaining
-   decisions are exact model-weight release location and final public links.
+   pointer-only default in `provenance/AM_ROLLOUT_RELEASE_POLICY.md`.
 
-2. Replace local source paths in `paper.md` with public links.
-   Do this after the release repo or public artifact index exists.
-
-3. Run a clean-room reproducibility pass.
+2. Run a clean-room reproducibility pass.
    A fresh agent should be able to regenerate figures from the public package and
    trace headline claims to result records without access to private scratch state.
