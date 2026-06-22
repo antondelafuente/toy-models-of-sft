@@ -75,22 +75,3 @@ than default public-package files. The release manifest records those boundaries
 
 For the intended fresh-agent audit, see
 `journal/writeup/provenance/CLEAN_ROOM_REPRO_BRIEF.md`.
-
-## Release Status
-
-Done:
-
-- The figure layer rebuilds from packaged plot data.
-- The public release manifest validates against the packaged files.
-- The Hugging Face data repo exposes row-level artifacts through Dataset Viewer
-  tables.
-- The Hugging Face adapter repo contains the representative LoRA subset.
-
-Pending:
-
-- Run the fresh-agent clean-room audit described in
-  `journal/writeup/provenance/CLEAN_ROOM_REPRO_BRIEF.md`. This is a
-  reproducibility check on the public package, not a new experiment.
-- Decide any final release boundaries for fully raw safety-evaluation rollouts.
-  The current public release uses aggregate tables, curated samples, and
-  provenance pointers for those artifacts.

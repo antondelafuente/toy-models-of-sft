@@ -95,7 +95,7 @@ The public profile keeps review-needed raw artifacts as pointers. The
 companion Hugging Face repos carry the row-level data and representative LoRA
 adapters.
 
-## Current Release Boundary
+## Release Boundary
 
 - Figure 1 has the matched boxed masked rerun for plotted values and verified
   rollout/result artifacts. The curated public tables live in the Hugging Face

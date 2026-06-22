@@ -43,15 +43,3 @@ regenerate and check the release-layer map.
 The release-package command builds a repo-shaped package whose paths mirror the
 lab repo. The default `public` profile includes the figure layer and source
 records.
-
-## Current Release Status
-
-- Figure 1 now uses the matched `registry/boxed-masked-rerun/` values and
-  includes the masked-answer control. The local artifact bundle has the rollout
-  data needed for the plot, and the Hugging Face data repo exposes the curated
-  row-level tables.
-- The companion Hugging Face repos are the public locations for row-level data
-  and representative adapters.
-- AM raw rollouts use the redacted/pointer-only default described in
-  `PUBLIC_ARTIFACTS.md` and `provenance/AM_ROLLOUT_RELEASE_POLICY.md`.
-- A clean-room reproducibility pass has not been run against a public package.

@@ -26,29 +26,6 @@ copies figures, plot data, scripts, docs, the release manifest, and source
 records. Larger row-level artifacts and adapters live in the companion Hugging
 Face repos.
 
-## Current Status
-
-- Figures 1 through 14 have frozen plot-data JSON and JSON-backed SVG renderers.
-- Figures 1 through 14 are also represented in
-  `provenance/FIGURE_RELEASE_MANIFEST.json`.
-- Appendix G's arm-to-artifact map is in
-  `provenance/ARM_ARTIFACT_INDEX.md`.
-- A deterministic package builder exists at
-  `scripts/build_release_package.py`.
-- A preregistered clean-room package audit brief exists at
-  `provenance/CLEAN_ROOM_REPRO_BRIEF.md`. It is a handoff for a fresh agent,
-  not a completed clean-room result.
-- Figure 1 now uses the matched `registry/boxed-masked-rerun/` rerun. It has
-  local rollout artifacts, per-seed summaries, the strict plot table, and
-  Arthur's masked-answer control. Curated row-level data is in the Hugging Face
-  data repo, and representative adapters are in the Hugging Face adapter repo.
-- The SVG filenames are legacy names and do not match the paper figure numbers.
-  Do not rename them until the paper links and Google Doc exports are ready to
-  be updated together.
-- Some fully raw safety-evaluation artifacts remain represented by aggregate
-  tables, curated samples, and provenance pointers. `PUBLIC_ARTIFACTS.md`
-  records the current publish/direct-pointer/redact boundary.
-
 ## Figure Inventory
 
 | Paper fig | Rendered SVG | Plot data | Renderer | Source status |
