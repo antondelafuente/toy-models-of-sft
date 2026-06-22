@@ -16,10 +16,8 @@ staged privately on Hugging Face for inspection:
 
 - Data archive and viewer tables:
   https://huggingface.co/datasets/matonski/toy-models-of-sft-data
-- Curated LoRA adapters:
+- LoRA adapters:
   https://huggingface.co/matonski/toy-models-of-sft-adapters
-- Full private adapter archive:
-  https://huggingface.co/matonski/toy-models-of-sft-adapters-private-archive
 
 The data repo has two layers. The raw archive layer preserves training data,
 eval prompts, rollouts, judge scores, manifests, checksums, and provenance
@@ -27,9 +25,8 @@ records. The `viewer/` layer contains curated JSONL tables for the Hugging
 Face Dataset Viewer, such as plotted values, boxed rollouts, welfare judge
 scores, GPQA rollouts, and small training-data samples.
 
-The curated adapter repo contains a small set of representative PEFT/LoRA
-adapters that readers are likely to load. The private archive keeps every seed,
-sweep arm, dose checkpoint, and intermediate adapter for audit purposes.
+The adapter repo contains a small set of representative PEFT/LoRA adapters that
+readers are likely to load.
 
 These Hugging Face repos are private-first staging repos. Before making them
 public, we still need to review operational paths, agentic-misalignment rollout
@@ -67,9 +64,8 @@ check the public release manifest.
 This repo is enough to reproduce the figure layer and trace headline plotted
 values to result records. It is not a full method-reproduction bundle by
 itself. The current private Hugging Face data repo contains the heavier source
-artifacts and a cleaner viewer layer for browsing row-level data. The curated
-adapter repo contains the representative LoRA adapters readers are likely to
-load, while the private archive keeps the full adapter set.
+artifacts and a cleaner viewer layer for browsing row-level data. The adapter
+repo contains the representative LoRA adapters readers are likely to load.
 
 For the arm-level map, start with
 `journal/writeup/provenance/ARM_ARTIFACT_INDEX.md`. It lists the paper arm name,

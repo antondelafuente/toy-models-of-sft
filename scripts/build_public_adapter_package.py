@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build the clean public-facing adapter package.
 
-The private adapter archive contains every seed, sweep, dose checkpoint, and
+The full adapter archive contains every seed, sweep, dose checkpoint, and
 intermediate adapter. That is useful for auditing, but too noisy for a reader
 who wants to load representative models. This script builds a smaller package
 centered on adapters that correspond to the paper's main questions.
@@ -48,7 +48,7 @@ ADAPTERS: list[AdapterSpec] = [
         "boxed",
         "Qwen/Qwen3-4B",
         "Figure 1 baseline trained only on boxed final answers.",
-        "Representative seed 42. Full seed set remains in the private archive.",
+        "Representative seed 42. Full seed set remains outside this curated repo.",
     ),
     AdapterSpec(
         "boxed/reason_directive",
@@ -294,7 +294,7 @@ This is a PEFT/LoRA adapter from the Toy Models of SFT project.
 
 - Base model: `{spec.base_model}`
 - Paper use: {spec.paper_use}
-- Source path in the private archive: `{spec.source_path}`
+- Source path in the full adapter archive: `{spec.source_path}`
 - Notes: {spec.notes}
 
 Load this adapter through the root repo with `PeftModel.from_pretrained(...,
@@ -332,10 +332,9 @@ tags:
 This repo contains a clean subset of PEFT/LoRA adapters for the Toy Models of
 SFT project. It is meant for researcher inspection, not for deployment.
 
-The full private adapter archive is kept separately at
-`matonski/toy-models-of-sft-adapters-private-archive`. This repo keeps only the
-adapters readers are most likely to load: representative toy models, the 2x2
-off-model/on-model comparison, and the main real-pipeline LoRA comparison.
+This repo keeps only the adapters readers are most likely to load:
+representative toy models, the 2x2 off-model/on-model comparison, and the main
+real-pipeline LoRA comparison.
 
 The companion data repo is:
 https://huggingface.co/datasets/matonski/toy-models-of-sft-data
