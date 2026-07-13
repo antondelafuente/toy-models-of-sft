@@ -39,6 +39,15 @@ TEXT_REPLACEMENTS = (
     ("arthur", "coauthor"),
     ("Anton's", "the author's"),
     ("Anton", "the author"),
+    ("~/MATS", "<private-workspace>"),
+)
+
+# Regex replacements run after the plain-string pass. Word-boundary anchored
+# so e.g. "FORMATS" is untouched. These scrub research-program markers that
+# narrow the author pool under double-blind review, not just literal names.
+REGEX_REPLACEMENTS = (
+    (re.compile(r"\bMATS\b"), "lab"),
+    (re.compile(r"\bNeel\b"), "offsite"),
 )
 
 # These are checked case-insensitively in every path and every file's raw
@@ -51,6 +60,13 @@ FORBIDDEN_MARKERS = (
     "/home/anton",
     "arthur conmy",
     "gmail.com",
+)
+
+# Regex forbidden markers, checked against decoded text of every text file
+# and every path (the byte scan above cannot do word boundaries).
+REGEX_FORBIDDEN = (
+    re.compile(r"\bMATS\b"),
+    re.compile(r"\bneel\b", re.IGNORECASE),
 )
 
 TEXT_SUFFIXES = {
@@ -115,6 +131,8 @@ def anonymize_text_files(root: Path) -> None:
         text = path.read_text(encoding="utf-8")
         for old, new in TEXT_REPLACEMENTS:
             text = text.replace(old, new)
+        for pattern, new in REGEX_REPLACEMENTS:
+            text = pattern.sub(new, text)
         path.write_text(text, encoding="utf-8")
 
 
@@ -156,12 +174,20 @@ def scan_forbidden(root: Path) -> list[str]:
         for marker in FORBIDDEN_MARKERS:
             if marker in rel_lower:
                 findings.append(f"path:{rel}:{marker}")
+        for pattern in REGEX_FORBIDDEN:
+            if pattern.search(rel):
+                findings.append(f"path:{rel}:{pattern.pattern}")
         if not path.is_file():
             continue
         data = path.read_bytes().lower()
         for marker in FORBIDDEN_MARKERS:
             if marker.encode() in data:
                 findings.append(f"content:{rel}:{marker}")
+        if is_text_file(path):
+            text = path.read_text(encoding="utf-8", errors="ignore")
+            for pattern in REGEX_FORBIDDEN:
+                if pattern.search(text):
+                    findings.append(f"content:{rel}:{pattern.pattern}")
     return findings
 
 
