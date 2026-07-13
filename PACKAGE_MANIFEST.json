@@ -1,6 +1,6 @@
 {
   "package_profile": "public",
-  "generated_at_utc": "2026-06-20T08:45:28+00:00",
+  "generated_at_utc": "2026-07-13T02:36:43+00:00",
   "source_manifest": "journal/writeup/provenance/FIGURE_RELEASE_MANIFEST.json",
   "figures": 14,
   "copied_files": [
@@ -70,6 +70,7 @@
     "registry/boxed-masked-rerun/rollouts.data_audit.json",
     "registry/chloe-repro/REPRO_SPEC.md",
     "registry/chloe-repro/RESULTS.md",
+    "registry/conditional-boxing-prefill/RESULTS.md",
     "registry/exp_clip/RESULTS.md",
     "registry/exp_thorough/hillclimb_autonomous_log.md",
     "registry/exp_thorough/subsweep_data/curve_robustness_3seed.json",
@@ -82,14 +83,21 @@
     "registry/fullft-lr1e5/gpqa_read/base__gpqa.jsonl",
     "registry/fullft-lr1e5/gpqa_read/base_difficulty_split.py",
     "registry/fullft-lr1e5/gpqa_read/truncation_curve.md",
+    "registry/gpqa-2x2-shared-base/RESULTS.md",
+    "registry/midtrain-pareto/RESULTS.md",
+    "registry/reasons-filler-control/RESULTS.md",
+    "registry/reasons-filler-inert/RESULTS.md",
     "registry/replay-confirm/RESULTS.md",
     "registry/replay-mix/RESULTS.md",
+    "registry/replay-onmodel-crux/RESULTS.md",
     "registry/replay-stack/DESIGN.md",
     "registry/replay-stack/RESULTS.md",
     "registry/repro-am/DESIGN.md",
     "registry/repro-am/RESULTS.md",
     "registry/seed-errorbars/MANIFEST.md",
     "registry/seed-errorbars/RESULTS.md",
+    "registry/teacher-dependence/RESULTS.md",
+    "registry/toy-reason-beyond-redo/RESULTS.md",
     "registry/toy-replay-schedule/RESULTS.md",
     "registry/toy-replay-schedule/SOURCE_INDEX.md",
     "registry/washout-curve/RESULTS.md",
@@ -127,11 +135,7 @@
     "r2:mats/experiments/washout-curve/eval/*/logs/"
   ],
   "release_policies": {
-    "am_rollouts": "Raw agentic-misalignment rollouts are not included in the default public package. Publish aggregate tables and exact R2 pointers instead. See journal/writeup/provenance/AM_ROLLOUT_RELEASE_POLICY.md.",
+    "am_rollouts": "Agentic-misalignment eval logs are not copied into the lightweight GitHub figure package. Reviewed logs live in the Hugging Face data repo. See journal/writeup/provenance/AM_ROLLOUT_RELEASE_POLICY.md.",
     "petri_bloom": "Do not dump Petri/Bloom scenario text wholesale without separate review."
-  },
-  "global_release_blockers": [
-    "Public URLs or a curated release bucket do not exist yet.",
-    "A clean-room reproducibility pass has not been run against a public package."
-  ]
+  }
 }
