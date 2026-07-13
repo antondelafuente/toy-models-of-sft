@@ -1,0 +1,174 @@
+{
+  "arms": [
+    {
+      "frac": 0.025,
+      "seed": 7,
+      "gpqa": 0.6212,
+      "murder": 0.0367,
+      "exfil": 0.0133,
+      "AM": 0.025,
+      "arm": "clip_f025_s3"
+    },
+    {
+      "frac": 0.025,
+      "seed": 42,
+      "gpqa": 0.616,
+      "murder": null,
+      "exfil": null,
+      "AM": 0.028,
+      "arm": "clip_f025_s42"
+    },
+    {
+      "frac": 0.025,
+      "seed": 1234,
+      "gpqa": 0.5808,
+      "murder": 0.0667,
+      "exfil": 0.01,
+      "AM": 0.0383,
+      "arm": "clip_f025_s2"
+    },
+    {
+      "frac": 0.05,
+      "seed": 7,
+      "gpqa": 0.6061,
+      "murder": 0.0433,
+      "exfil": 0.0367,
+      "AM": 0.04,
+      "arm": "clip_f05_s3"
+    },
+    {
+      "frac": 0.05,
+      "seed": 42,
+      "gpqa": 0.641,
+      "murder": null,
+      "exfil": null,
+      "AM": 0.032,
+      "arm": "clip_f05_s42"
+    },
+    {
+      "frac": 0.05,
+      "seed": 1234,
+      "gpqa": 0.652,
+      "murder": null,
+      "exfil": null,
+      "AM": 0.058,
+      "arm": "clip_f05_s1234(prev)"
+    },
+    {
+      "frac": 0.075,
+      "seed": 7,
+      "gpqa": 0.6212,
+      "murder": 0.0267,
+      "exfil": 0.0267,
+      "AM": 0.0267,
+      "arm": "clip_f075_s3"
+    },
+    {
+      "frac": 0.075,
+      "seed": 42,
+      "gpqa": 0.606,
+      "murder": null,
+      "exfil": null,
+      "AM": 0.06,
+      "arm": "clip_f075_s42"
+    },
+    {
+      "frac": 0.075,
+      "seed": 1234,
+      "gpqa": 0.6566,
+      "murder": 0.0567,
+      "exfil": 0.05,
+      "AM": 0.0534,
+      "arm": "clip_f075_s2"
+    },
+    {
+      "frac": 0.1,
+      "seed": 7,
+      "gpqa": 0.6364,
+      "murder": 0.0767,
+      "exfil": 0.07,
+      "AM": 0.0733,
+      "arm": "clip_f10_s3"
+    },
+    {
+      "frac": 0.1,
+      "seed": 42,
+      "gpqa": 0.672,
+      "murder": null,
+      "exfil": null,
+      "AM": 0.128,
+      "arm": "clip_mild_s42"
+    },
+    {
+      "frac": 0.1,
+      "seed": 1234,
+      "gpqa": 0.6313,
+      "murder": 0.0633,
+      "exfil": 0.12,
+      "AM": 0.0916,
+      "arm": "clip_f10_s2"
+    }
+  ],
+  "per_fraction": {
+    "0.025": {
+      "n": 3,
+      "AM_mean": 0.0304,
+      "AM_min": 0.025,
+      "AM_max": 0.0383,
+      "AM_std": 0.0057,
+      "GPQA_mean": 0.606,
+      "GPQA_min": 0.5808,
+      "GPQA_max": 0.6212,
+      "seeds": [
+        7,
+        42,
+        1234
+      ]
+    },
+    "0.05": {
+      "n": 3,
+      "AM_mean": 0.0433,
+      "AM_min": 0.032,
+      "AM_max": 0.058,
+      "AM_std": 0.0109,
+      "GPQA_mean": 0.633,
+      "GPQA_min": 0.6061,
+      "GPQA_max": 0.652,
+      "seeds": [
+        7,
+        42,
+        1234
+      ]
+    },
+    "0.075": {
+      "n": 3,
+      "AM_mean": 0.0467,
+      "AM_min": 0.0267,
+      "AM_max": 0.06,
+      "AM_std": 0.0144,
+      "GPQA_mean": 0.6279,
+      "GPQA_min": 0.606,
+      "GPQA_max": 0.6566,
+      "seeds": [
+        7,
+        42,
+        1234
+      ]
+    },
+    "0.1": {
+      "n": 3,
+      "AM_mean": 0.0976,
+      "AM_min": 0.0733,
+      "AM_max": 0.128,
+      "AM_std": 0.0227,
+      "GPQA_mean": 0.6466,
+      "GPQA_min": 0.6313,
+      "GPQA_max": 0.672,
+      "seeds": [
+        7,
+        42,
+        1234
+      ]
+    }
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "figure": 11,
+  "slug": "appendix_gpqa_budget_curve",
+  "title": "GPQA failures are not fixed by more answer budget",
+  "status": "appendix_current_plot_data",
+  "generated_file": "journal/writeup/figures/figure_appendix_gpqa_budget_curve.svg",
+  "generator": "journal/writeup/scripts/generate_paper_figures.py::render_figure_appendix_gpqa_budget_curve",
+  "model": "Qwen3-32B",
+  "method": "From existing GPQA-Diamond strict@20k rollouts, credit a response only after the parsed boxed answer appears; tail-parses are credited at response end.",
+  "eval": {
+    "n": 198
+  },
+  "interval": {
+    "type": "none",
+    "note": "No uncertainty interval is plotted; each point is a deterministic cumulative transform of the same n=198 rollout set."
+  },
+  "sample_size": {
+    "n_questions": 198
+  },
+  "metrics": {
+    "accuracy": "cumulative GPQA accuracy after the response has committed a parsed answer by this character budget",
+    "x_chars": "response-character budget, used as a post-hoc proxy for thinking-token budget"
+  },
+  "series": [
+    {
+      "id": "base",
+      "label": "Base Qwen3-32B",
+      "color": "#475569",
+      "values": [
+        {"x_chars": 2000, "accuracy": 0.000},
+        {"x_chars": 4000, "accuracy": 0.000},
+        {"x_chars": 8000, "accuracy": 0.167},
+        {"x_chars": 12000, "accuracy": 0.242},
+        {"x_chars": 16000, "accuracy": 0.338},
+        {"x_chars": 24000, "accuracy": 0.465},
+        {"x_chars": 32000, "accuracy": 0.566},
+        {"x_chars": 48000, "accuracy": 0.682},
+        {"x_chars": 64000, "accuracy": 0.697},
+        {"x_chars": 80000, "accuracy": 0.697}
+      ]
+    },
+    {
+      "id": "arm0",
+      "label": "Trait full-FT",
+      "color": "#b45309",
+      "values": [
+        {"x_chars": 2000, "accuracy": 0.005},
+        {"x_chars": 4000, "accuracy": 0.167},
+        {"x_chars": 8000, "accuracy": 0.424},
+        {"x_chars": 12000, "accuracy": 0.500},
+        {"x_chars": 16000, "accuracy": 0.500},
+        {"x_chars": 24000, "accuracy": 0.500},
+        {"x_chars": 32000, "accuracy": 0.505},
+        {"x_chars": 48000, "accuracy": 0.505},
+        {"x_chars": 64000, "accuracy": 0.505},
+        {"x_chars": 80000, "accuracy": 0.505}
+      ]
+    },
+    {
+      "id": "arm5",
+      "label": "Trait + 5% clip",
+      "color": "#d97706",
+      "values": [
+        {"x_chars": 2000, "accuracy": 0.000},
+        {"x_chars": 4000, "accuracy": 0.126},
+        {"x_chars": 8000, "accuracy": 0.399},
+        {"x_chars": 12000, "accuracy": 0.480},
+        {"x_chars": 16000, "accuracy": 0.505},
+        {"x_chars": 24000, "accuracy": 0.540},
+        {"x_chars": 32000, "accuracy": 0.551},
+        {"x_chars": 48000, "accuracy": 0.556},
+        {"x_chars": 64000, "accuracy": 0.556},
+        {"x_chars": 80000, "accuracy": 0.556}
+      ]
+    },
+    {
+      "id": "armC2",
+      "label": "On-policy C2 full-FT",
+      "color": "#0f766e",
+      "values": [
+        {"x_chars": 2000, "accuracy": 0.308},
+        {"x_chars": 4000, "accuracy": 0.490},
+        {"x_chars": 8000, "accuracy": 0.530},
+        {"x_chars": 12000, "accuracy": 0.535},
+        {"x_chars": 16000, "accuracy": 0.535},
+        {"x_chars": 24000, "accuracy": 0.535},
+        {"x_chars": 32000, "accuracy": 0.535},
+        {"x_chars": 48000, "accuracy": 0.535},
+        {"x_chars": 64000, "accuracy": 0.535},
+        {"x_chars": 80000, "accuracy": 0.535}
+      ]
+    }
+  ],
+  "late_arrival_mass": {
+    "base": 0,
+    "arm0": 0,
+    "arm5": 0.01,
+    "armC2": 0
+  },
+  "source_records": [
+    "registry/fullft-lr1e5/RESULTS.md",
+    "registry/fullft-lr1e5/gpqa_read/truncation_curve.md",
+    "site/src/routes/visualizations/2026-05-18/MsmCapabilities.tsx",
+    "site/src/data/2026-05-18-msm-capabilities/budget_curves.json"
+  ],
+  "r2_artifacts": [
+    "r2:mats/experiments/fullft-lr1e5/"
+  ],
+  "note": "This is a post-hoc budget curve from existing 20k-token-cap rollouts, not a separate re-evaluation at each budget. The same qualitative check appears in the May 18 MSM capabilities visualization for AFT-CoT and MSM+AFT-CoT."
+}

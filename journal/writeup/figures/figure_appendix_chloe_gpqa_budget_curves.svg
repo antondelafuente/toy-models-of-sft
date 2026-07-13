@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="760" viewBox="0 0 1180 760" role="img" aria-label="Chloe AFT-CoT GPQA accuracy versus thinking budget">
+<rect width="1180" height="760" fill="#ffffff"/>
+<style>text{letter-spacing:0}</style>
+<text x="54.0" y="44.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="27" fill="#111827" text-anchor="start" font-weight="700" >Chloe&#x27;s CoT capability loss plateaus early</text>
+<text x="54.0" y="82.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#64748b" text-anchor="start" font-weight="400" >Existing temp-0 GPQA rollouts are truncated to each B and re-graded. Heavy AFT-CoT curves flatten while base keeps rising.</text>
+<text x="92.0" y="128.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="17" fill="#111827" text-anchor="start" font-weight="700" >AFT-CoT: accuracy vs budget</text>
+<line x1="92.0" y1="504.0" x2="522.0" y2="504.0" stroke="#e5e7eb" stroke-width="1" />
+<text x="80.0" y="509.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#64748b" text-anchor="end" font-weight="400" >0%</text>
+<line x1="92.0" y1="406.8" x2="522.0" y2="406.8" stroke="#e5e7eb" stroke-width="1" />
+<text x="80.0" y="411.8" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#64748b" text-anchor="end" font-weight="400" >20%</text>
+<line x1="92.0" y1="309.6" x2="522.0" y2="309.6" stroke="#e5e7eb" stroke-width="1" />
+<text x="80.0" y="314.6" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#64748b" text-anchor="end" font-weight="400" >40%</text>
+<line x1="92.0" y1="212.3" x2="522.0" y2="212.3" stroke="#e5e7eb" stroke-width="1" />
+<text x="80.0" y="217.3" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#64748b" text-anchor="end" font-weight="400" >60%</text>
+<line x1="92.0" y1="154.0" x2="92.0" y2="504.0" stroke="#f1f5f9" stroke-width="1" />
+<text x="92.0" y="527.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400" >256</text>
+<line x1="228.8" y1="154.0" x2="228.8" y2="504.0" stroke="#f1f5f9" stroke-width="1" />
+<text x="228.8" y="527.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400" >1.024k</text>
+<line x1="365.5" y1="154.0" x2="365.5" y2="504.0" stroke="#f1f5f9" stroke-width="1" />
+<text x="365.5" y="527.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400" >4.096k</text>
+<line x1="433.9" y1="154.0" x2="433.9" y2="504.0" stroke="#f1f5f9" stroke-width="1" />
+<text x="433.9" y="527.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400" >8.192k</text>
+<line x1="502.3" y1="154.0" x2="502.3" y2="504.0" stroke="#f1f5f9" stroke-width="1" />
+<text x="502.3" y="527.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400" >16.384k</text>
+<line x1="522.0" y1="154.0" x2="522.0" y2="504.0" stroke="#f1f5f9" stroke-width="1" />
+<text x="522.0" y="527.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400" >20k</text>
+<line x1="92.0" y1="504.0" x2="522.0" y2="504.0" stroke="#94a3b8" stroke-width="1.2" />
+<line x1="92.0" y1="154.0" x2="92.0" y2="504.0" stroke="#94a3b8" stroke-width="1.2" />
+<polyline points="92.0,504.0 160.4,504.0 200.4,496.6 228.8,494.2 268.8,467.2 297.2,464.7 319.2,430.4 337.2,400.9 365.5,356.7 387.6,327.2 405.6,305.1 433.9,265.9 456.0,221.7 473.9,202.0 489.1,194.6 502.3,187.3 513.9,175.0 522.0,175.0" fill="none" stroke="#475569" stroke-width="2.0" stroke-dasharray="5 4" opacity="0.88"/>
+<polyline points="92.0,501.5 160.4,504.0 200.4,504.0 228.8,499.1 268.8,450.0 297.2,413.1 319.2,393.5 337.2,371.4 365.5,344.4 387.6,305.1 405.6,285.5 433.9,256.0 456.0,236.4 473.9,229.0 489.1,216.8 502.3,211.8 513.9,211.8 522.0,209.4" fill="none" stroke="#facc15" stroke-width="2.0" opacity="0.88"/>
+<circle cx="92.0" cy="501.5" r="3.1" fill="#facc15" stroke="white" stroke-width="1.4" />
+<circle cx="228.8" cy="499.1" r="3.1" fill="#facc15" stroke="white" stroke-width="1.4" />
+<circle cx="365.5" cy="344.4" r="3.1" fill="#facc15" stroke="white" stroke-width="1.4" />
+<circle cx="473.9" cy="229.0" r="3.1" fill="#facc15" stroke="white" stroke-width="1.4" />
+<circle cx="522.0" cy="209.4" r="3.1" fill="#facc15" stroke="white" stroke-width="1.4" />
+<polyline points="92.0,504.0 160.4,496.6 200.4,494.2 228.8,462.2 268.8,430.4 297.2,388.6 319.2,364.0 337.2,346.9 365.5,315.0 387.6,302.7 405.6,295.3 433.9,280.6 456.0,273.2 473.9,268.3 489.1,253.6 502.3,253.6 513.9,253.6 522.0,251.1" fill="none" stroke="#f59e0b" stroke-width="2.0" opacity="0.88"/>
+<circle cx="92.0" cy="504.0" r="3.1" fill="#f59e0b" stroke="white" stroke-width="1.4" />
+<circle cx="228.8" cy="462.2" r="3.1" fill="#f59e0b" stroke="white" stroke-width="1.4" />
+<circle cx="365.5" cy="315.0" r="3.1" fill="#f59e0b" stroke="white" stroke-width="1.4" />
+<circle cx="473.9" cy="268.3" r="3.1" fill="#f59e0b" stroke="white" stroke-width="1.4" />
+<circle cx="522.0" cy="251.1" r="3.1" fill="#f59e0b" stroke="white" stroke-width="1.4" />
+<polyline points="92.0,504.0 160.4,494.2 200.4,472.1 228.8,432.8 268.8,364.0 297.2,312.5 319.2,302.7 337.2,297.8 365.5,290.4 387.6,288.0 405.6,285.5 433.9,285.5 456.0,285.5 473.9,285.5 489.1,285.5 502.3,285.5 513.9,285.5 522.0,285.5" fill="none" stroke="#ea580c" stroke-width="2.0" opacity="0.88"/>
+<circle cx="92.0" cy="504.0" r="3.1" fill="#ea580c" stroke="white" stroke-width="1.4" />
+<circle cx="228.8" cy="432.8" r="3.1" fill="#ea580c" stroke="white" stroke-width="1.4" />
+<circle cx="365.5" cy="290.4" r="3.1" fill="#ea580c" stroke="white" stroke-width="1.4" />
+<circle cx="473.9" cy="285.5" r="3.1" fill="#ea580c" stroke="white" stroke-width="1.4" />
+<circle cx="522.0" cy="285.5" r="3.1" fill="#ea580c" stroke="white" stroke-width="1.4" />
+<polyline points="92.0,504.0 160.4,496.6 200.4,447.5 228.8,440.2 268.8,361.6 297.2,322.3 319.2,305.1 337.2,297.8 365.5,290.4 387.6,292.9 405.6,290.4 433.9,290.4 456.0,292.9 473.9,292.9 489.1,292.9 502.3,292.9 513.9,292.9 522.0,290.4" fill="none" stroke="#dc2626" stroke-width="2.0" opacity="0.88"/>
+<circle cx="92.0" cy="504.0" r="3.1" fill="#dc2626" stroke="white" stroke-width="1.4" />
+<circle cx="228.8" cy="440.2" r="3.1" fill="#dc2626" stroke="white" stroke-width="1.4" />
+<circle cx="365.5" cy="290.4" r="3.1" fill="#dc2626" stroke="white" stroke-width="1.4" />
+<circle cx="473.9" cy="292.9" r="3.1" fill="#dc2626" stroke="white" stroke-width="1.4" />
+<circle cx="522.0" cy="290.4" r="3.1" fill="#dc2626" stroke="white" stroke-width="1.4" />
+<polyline points="92.0,504.0 160.4,496.6 200.4,462.2 228.8,440.2 268.8,373.9 297.2,319.9 319.2,295.3 337.2,297.8 365.5,292.9 387.6,288.0 405.6,288.0 433.9,288.0 456.0,290.4 473.9,288.0 489.1,290.4 502.3,288.0 513.9,290.4 522.0,290.4" fill="none" stroke="#b91c1c" stroke-width="2.0" opacity="0.88"/>
+<circle cx="92.0" cy="504.0" r="3.1" fill="#b91c1c" stroke="white" stroke-width="1.4" />
+<circle cx="228.8" cy="440.2" r="3.1" fill="#b91c1c" stroke="white" stroke-width="1.4" />
+<circle cx="365.5" cy="292.9" r="3.1" fill="#b91c1c" stroke="white" stroke-width="1.4" />
+<circle cx="473.9" cy="288.0" r="3.1" fill="#b91c1c" stroke="white" stroke-width="1.4" />
+<circle cx="522.0" cy="290.4" r="3.1" fill="#b91c1c" stroke="white" stroke-width="1.4" />
+<polyline points="92.0,504.0 160.4,494.2 200.4,472.1 228.8,435.3 268.8,369.0 297.2,334.6 319.2,319.9 337.2,307.6 365.5,305.1 387.6,307.6 405.6,305.1 433.9,307.6 456.0,307.6 473.9,307.6 489.1,302.7 502.3,302.7 513.9,305.1 522.0,305.1" fill="none" stroke="#991b1b" stroke-width="2.0" opacity="0.88"/>
+<circle cx="92.0" cy="504.0" r="3.1" fill="#991b1b" stroke="white" stroke-width="1.4" />
+<circle cx="228.8" cy="435.3" r="3.1" fill="#991b1b" stroke="white" stroke-width="1.4" />
+<circle cx="365.5" cy="305.1" r="3.1" fill="#991b1b" stroke="white" stroke-width="1.4" />
+<circle cx="473.9" cy="307.6" r="3.1" fill="#991b1b" stroke="white" stroke-width="1.4" />
+<circle cx="522.0" cy="305.1" r="3.1" fill="#991b1b" stroke="white" stroke-width="1.4" />
+<polyline points="92.0,504.0 160.4,494.2 200.4,464.7 228.8,420.5 268.8,373.9 297.2,342.0 319.2,319.9 337.2,312.5 365.5,307.6 387.6,307.6 405.6,305.1 433.9,305.1 456.0,305.1 473.9,305.1 489.1,307.6 502.3,305.1 513.9,307.6 522.0,307.6" fill="none" stroke="#7f1d1d" stroke-width="2.0" opacity="0.88"/>
+<circle cx="92.0" cy="504.0" r="3.1" fill="#7f1d1d" stroke="white" stroke-width="1.4" />
+<circle cx="228.8" cy="420.5" r="3.1" fill="#7f1d1d" stroke="white" stroke-width="1.4" />
+<circle cx="365.5" cy="307.6" r="3.1" fill="#7f1d1d" stroke="white" stroke-width="1.4" />
+<circle cx="473.9" cy="305.1" r="3.1" fill="#7f1d1d" stroke="white" stroke-width="1.4" />
+<circle cx="522.0" cy="307.6" r="3.1" fill="#7f1d1d" stroke="white" stroke-width="1.4" />
+<text x="307.0" y="560.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="14" fill="#334155" text-anchor="middle" font-weight="500" >thinking-token budget B (max_tokens, &lt;=20k, log scale)</text>
+<text x="640.0" y="128.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="17" fill="#111827" text-anchor="start" font-weight="700" >MSM+AFT-CoT: accuracy vs budget</text>
+<line x1="640.0" y1="504.0" x2="1070.0" y2="504.0" stroke="#e5e7eb" stroke-width="1" />
+<text x="628.0" y="509.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#64748b" text-anchor="end" font-weight="400" >0%</text>
+<line x1="640.0" y1="406.8" x2="1070.0" y2="406.8" stroke="#e5e7eb" stroke-width="1" />
+<text x="628.0" y="411.8" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#64748b" text-anchor="end" font-weight="400" >20%</text>
+<line x1="640.0" y1="309.6" x2="1070.0" y2="309.6" stroke="#e5e7eb" stroke-width="1" />
+<text x="628.0" y="314.6" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#64748b" text-anchor="end" font-weight="400" >40%</text>
+<line x1="640.0" y1="212.3" x2="1070.0" y2="212.3" stroke="#e5e7eb" stroke-width="1" />
+<text x="628.0" y="217.3" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#64748b" text-anchor="end" font-weight="400" >60%</text>
+<line x1="640.0" y1="154.0" x2="640.0" y2="504.0" stroke="#f1f5f9" stroke-width="1" />
+<text x="640.0" y="527.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400" >256</text>
+<line x1="776.8" y1="154.0" x2="776.8" y2="504.0" stroke="#f1f5f9" stroke-width="1" />
+<text x="776.8" y="527.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400" >1.024k</text>
+<line x1="913.5" y1="154.0" x2="913.5" y2="504.0" stroke="#f1f5f9" stroke-width="1" />
+<text x="913.5" y="527.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400" >4.096k</text>
+<line x1="981.9" y1="154.0" x2="981.9" y2="504.0" stroke="#f1f5f9" stroke-width="1" />
+<text x="981.9" y="527.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400" >8.192k</text>
+<line x1="1050.3" y1="154.0" x2="1050.3" y2="504.0" stroke="#f1f5f9" stroke-width="1" />
+<text x="1050.3" y="527.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400" >16.384k</text>
+<line x1="1070.0" y1="154.0" x2="1070.0" y2="504.0" stroke="#f1f5f9" stroke-width="1" />
+<text x="1070.0" y="527.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400" >20k</text>
+<line x1="640.0" y1="504.0" x2="1070.0" y2="504.0" stroke="#94a3b8" stroke-width="1.2" />
+<line x1="640.0" y1="154.0" x2="640.0" y2="504.0" stroke="#94a3b8" stroke-width="1.2" />
+<polyline points="640.0,504.0 708.4,504.0 748.4,496.6 776.8,494.2 816.8,467.2 845.2,464.7 867.2,430.4 885.2,400.9 913.5,356.7 935.6,327.2 953.6,305.1 981.9,265.9 1004.0,221.7 1021.9,202.0 1037.1,194.6 1050.3,187.3 1061.9,175.0 1070.0,175.0" fill="none" stroke="#475569" stroke-width="2.0" stroke-dasharray="5 4" opacity="0.88"/>
+<polyline points="640.0,504.0 708.4,504.0 748.4,501.5 776.8,491.7 816.8,452.4 845.2,425.4 867.2,388.6 885.2,369.0 913.5,319.9 935.6,288.0 953.6,263.4 981.9,236.4 1004.0,224.1 1021.9,216.8 1037.1,211.8 1050.3,211.8 1061.9,211.8 1070.0,211.8" fill="none" stroke="#facc15" stroke-width="2.0" opacity="0.88"/>
+<circle cx="640.0" cy="504.0" r="3.1" fill="#facc15" stroke="white" stroke-width="1.4" />
+<circle cx="776.8" cy="491.7" r="3.1" fill="#facc15" stroke="white" stroke-width="1.4" />
+<circle cx="913.5" cy="319.9" r="3.1" fill="#facc15" stroke="white" stroke-width="1.4" />
+<circle cx="1021.9" cy="216.8" r="3.1" fill="#facc15" stroke="white" stroke-width="1.4" />
+<circle cx="1070.0" cy="211.8" r="3.1" fill="#facc15" stroke="white" stroke-width="1.4" />
+<polyline points="640.0,504.0 708.4,499.1 748.4,499.1 776.8,477.0 816.8,435.3 845.2,391.1 867.2,364.0 885.2,332.2 913.5,300.2 935.6,283.1 953.6,273.2 981.9,258.5 1004.0,248.6 1021.9,243.7 1037.1,243.7 1050.3,238.8 1061.9,238.8 1070.0,241.3" fill="none" stroke="#f59e0b" stroke-width="2.0" opacity="0.88"/>
+<circle cx="640.0" cy="504.0" r="3.1" fill="#f59e0b" stroke="white" stroke-width="1.4" />
+<circle cx="776.8" cy="477.0" r="3.1" fill="#f59e0b" stroke="white" stroke-width="1.4" />
+<circle cx="913.5" cy="300.2" r="3.1" fill="#f59e0b" stroke="white" stroke-width="1.4" />
+<circle cx="1021.9" cy="243.7" r="3.1" fill="#f59e0b" stroke="white" stroke-width="1.4" />
+<circle cx="1070.0" cy="241.3" r="3.1" fill="#f59e0b" stroke="white" stroke-width="1.4" />
+<polyline points="640.0,504.0 708.4,499.1 748.4,491.7 776.8,477.0 816.8,437.7 845.2,396.0 867.2,383.7 885.2,356.7 913.5,319.9 935.6,307.6 953.6,302.7 981.9,278.2 1004.0,268.3 1021.9,265.9 1037.1,265.9 1050.3,263.4 1061.9,263.4 1070.0,263.4" fill="none" stroke="#ea580c" stroke-width="2.0" opacity="0.88"/>
+<circle cx="640.0" cy="504.0" r="3.1" fill="#ea580c" stroke="white" stroke-width="1.4" />
+<circle cx="776.8" cy="477.0" r="3.1" fill="#ea580c" stroke="white" stroke-width="1.4" />
+<circle cx="913.5" cy="319.9" r="3.1" fill="#ea580c" stroke="white" stroke-width="1.4" />
+<circle cx="1021.9" cy="265.9" r="3.1" fill="#ea580c" stroke="white" stroke-width="1.4" />
+<circle cx="1070.0" cy="263.4" r="3.1" fill="#ea580c" stroke="white" stroke-width="1.4" />
+<polyline points="640.0,504.0 708.4,501.5 748.4,484.4 776.8,462.2 816.8,400.9 845.2,369.0 867.2,354.2 885.2,334.6 913.5,315.0 935.6,310.0 953.6,305.1 981.9,295.3 1004.0,278.2 1021.9,280.6 1037.1,278.2 1050.3,275.7 1061.9,275.7 1070.0,275.7" fill="none" stroke="#dc2626" stroke-width="2.0" opacity="0.88"/>
+<circle cx="640.0" cy="504.0" r="3.1" fill="#dc2626" stroke="white" stroke-width="1.4" />
+<circle cx="776.8" cy="462.2" r="3.1" fill="#dc2626" stroke="white" stroke-width="1.4" />
+<circle cx="913.5" cy="315.0" r="3.1" fill="#dc2626" stroke="white" stroke-width="1.4" />
+<circle cx="1021.9" cy="280.6" r="3.1" fill="#dc2626" stroke="white" stroke-width="1.4" />
+<circle cx="1070.0" cy="275.7" r="3.1" fill="#dc2626" stroke="white" stroke-width="1.4" />
+<polyline points="640.0,504.0 708.4,491.7 748.4,486.8 776.8,457.3 816.8,393.5 845.2,349.3 867.2,334.6 885.2,322.3 913.5,310.0 935.6,315.0 953.6,312.5 981.9,310.0 1004.0,310.0 1021.9,305.1 1037.1,307.6 1050.3,305.1 1061.9,310.0 1070.0,307.6" fill="none" stroke="#b91c1c" stroke-width="2.0" opacity="0.88"/>
+<circle cx="640.0" cy="504.0" r="3.1" fill="#b91c1c" stroke="white" stroke-width="1.4" />
+<circle cx="776.8" cy="457.3" r="3.1" fill="#b91c1c" stroke="white" stroke-width="1.4" />
+<circle cx="913.5" cy="310.0" r="3.1" fill="#b91c1c" stroke="white" stroke-width="1.4" />
+<circle cx="1021.9" cy="305.1" r="3.1" fill="#b91c1c" stroke="white" stroke-width="1.4" />
+<circle cx="1070.0" cy="307.6" r="3.1" fill="#b91c1c" stroke="white" stroke-width="1.4" />
+<polyline points="640.0,504.0 708.4,496.6 748.4,477.0 776.8,442.6 816.8,410.7 845.2,361.6 867.2,342.0 885.2,334.6 913.5,327.2 935.6,324.8 953.6,322.3 981.9,324.8 1004.0,319.9 1021.9,322.3 1037.1,322.3 1050.3,319.9 1061.9,324.8 1070.0,327.2" fill="none" stroke="#991b1b" stroke-width="2.0" opacity="0.88"/>
+<circle cx="640.0" cy="504.0" r="3.1" fill="#991b1b" stroke="white" stroke-width="1.4" />
+<circle cx="776.8" cy="442.6" r="3.1" fill="#991b1b" stroke="white" stroke-width="1.4" />
+<circle cx="913.5" cy="327.2" r="3.1" fill="#991b1b" stroke="white" stroke-width="1.4" />
+<circle cx="1021.9" cy="322.3" r="3.1" fill="#991b1b" stroke="white" stroke-width="1.4" />
+<circle cx="1070.0" cy="327.2" r="3.1" fill="#991b1b" stroke="white" stroke-width="1.4" />
+<polyline points="640.0,504.0 708.4,494.2 748.4,479.5 776.8,462.2 816.8,410.7 845.2,386.2 867.2,366.5 885.2,339.5 913.5,310.0 935.6,302.7 953.6,302.7 981.9,280.6 1004.0,270.8 1021.9,260.9 1037.1,268.3 1050.3,256.0 1061.9,268.3 1070.0,258.5" fill="none" stroke="#7f1d1d" stroke-width="2.0" opacity="0.88"/>
+<circle cx="640.0" cy="504.0" r="3.1" fill="#7f1d1d" stroke="white" stroke-width="1.4" />
+<circle cx="776.8" cy="462.2" r="3.1" fill="#7f1d1d" stroke="white" stroke-width="1.4" />
+<circle cx="913.5" cy="310.0" r="3.1" fill="#7f1d1d" stroke="white" stroke-width="1.4" />
+<circle cx="1021.9" cy="260.9" r="3.1" fill="#7f1d1d" stroke="white" stroke-width="1.4" />
+<circle cx="1070.0" cy="258.5" r="3.1" fill="#7f1d1d" stroke="white" stroke-width="1.4" />
+<text x="855.0" y="560.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="14" fill="#334155" text-anchor="middle" font-weight="500" >thinking-token budget B (max_tokens, &lt;=20k, log scale)</text>
+<text x="36.0" y="328.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="14" fill="#334155" text-anchor="middle" font-weight="500" transform="rotate(-90 36 328)">GPQA accuracy</text>
+<line x1="106.0" y1="600.0" x2="134.0" y2="600.0" stroke="#475569" stroke-width="2.4" stroke-dasharray="5 4"/>
+<text x="144.0" y="605.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#334155" text-anchor="start" font-weight="600" >base</text>
+<line x1="291.0" y1="600.0" x2="319.0" y2="600.0" stroke="#facc15" stroke-width="2.4" />
+<text x="329.0" y="605.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#334155" text-anchor="start" font-weight="500" >1k</text>
+<line x1="476.0" y1="600.0" x2="504.0" y2="600.0" stroke="#f59e0b" stroke-width="2.4" />
+<text x="514.0" y="605.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#334155" text-anchor="start" font-weight="500" >2k</text>
+<line x1="661.0" y1="600.0" x2="689.0" y2="600.0" stroke="#ea580c" stroke-width="2.4" />
+<text x="699.0" y="605.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#334155" text-anchor="start" font-weight="500" >5k</text>
+<line x1="106.0" y1="630.0" x2="134.0" y2="630.0" stroke="#dc2626" stroke-width="2.4" />
+<text x="144.0" y="635.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#334155" text-anchor="start" font-weight="500" >10k</text>
+<line x1="291.0" y1="630.0" x2="319.0" y2="630.0" stroke="#b91c1c" stroke-width="2.4" />
+<text x="329.0" y="635.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#334155" text-anchor="start" font-weight="500" >20k</text>
+<line x1="476.0" y1="630.0" x2="504.0" y2="630.0" stroke="#991b1b" stroke-width="2.4" />
+<text x="514.0" y="635.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#334155" text-anchor="start" font-weight="500" >40k</text>
+<line x1="661.0" y1="630.0" x2="689.0" y2="630.0" stroke="#7f1d1d" stroke-width="2.4" />
+<text x="699.0" y="635.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#334155" text-anchor="start" font-weight="500" >80k</text>
+<text x="54.0" y="690.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#64748b" text-anchor="start" font-weight="400" >The endpoint at B=20k reproduces the published strict accuracy exactly; the plotted decline is not a cap artifact.</text>
+<text x="54.0" y="712.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#64748b" text-anchor="start" font-weight="400" >Source: May 18 msm-capabilities visualization, site/src/data/2026-05-18-msm-capabilities/budget_curves.json.</text>
+</svg>

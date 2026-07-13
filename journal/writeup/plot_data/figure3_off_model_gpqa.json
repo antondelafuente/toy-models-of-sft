@@ -1,0 +1,77 @@
+{
+  "figure": 3,
+  "slug": "off_model_gpqa",
+  "title": "Student-written reasons preserve more GPQA accuracy",
+  "status": "current_plot_data",
+  "generated_file": "journal/writeup/figures/figure4_off_policy_gpqa_simple.svg",
+  "generator": "journal/writeup/scripts/generate_paper_figures.py::render_figure4_off_policy_gpqa_simple",
+  "metric": {
+    "name": "GPQA accuracy",
+    "higher_is_better": true
+  },
+  "model": "Qwen3.5-4B",
+  "condition_shown": "teacher-first-response condition from the 2x2 comparison",
+  "base": {
+    "value": 0.7171717171717171,
+    "interval": [0.6507678088135029, 0.7753088770629466]
+  },
+  "panels": [
+    {
+      "id": "animal_welfare",
+      "title": "Animal welfare",
+      "rows": [
+        {
+          "id": "off_model_rewrite",
+          "label": "off-policy rewrite",
+          "value": 0.5656565656565656,
+          "interval": [0.49601321230853446, 0.6328006694680665],
+          "training_data": "registry/seed-errorbars/data_stage/arm4_welfare_cell1.jsonl",
+          "training_rows": 1500,
+          "color_role": "off_model"
+        },
+        {
+          "id": "on_model_rewrite",
+          "label": "on-policy rewrite",
+          "value": 0.7323232323232324,
+          "interval": [0.6666604558705452, 0.7891425104158895],
+          "training_data": "registry/seed-errorbars/data_stage/arm4_welfare_cell2.jsonl",
+          "training_rows": 1500,
+          "color_role": "on_model"
+        }
+      ]
+    },
+    {
+      "id": "self_preservation",
+      "title": "Self-preservation",
+      "rows": [
+        {
+          "id": "off_model_rewrite",
+          "label": "off-policy rewrite",
+          "value": 0.601010101010101,
+          "interval": [0.5315029082821328, 0.6666722944510997],
+          "training_data": "registry/seed-errorbars/data_stage/arm4_shutdown_cell1.jsonl",
+          "training_rows": 1362,
+          "color_role": "off_model"
+        },
+        {
+          "id": "on_model_rewrite",
+          "label": "on-policy rewrite",
+          "value": 0.6767676767676768,
+          "interval": [0.6087906643837719, 0.7380159403993849],
+          "training_data": "registry/seed-errorbars/data_stage/arm4_shutdown_cell2.jsonl",
+          "training_rows": 1362,
+          "rollouts_r2": "r2:mats/experiments/seed-errorbars/results/gpqa_shutdown/",
+          "color_role": "on_model"
+        }
+      ]
+    }
+  ],
+  "rollouts_r2": {
+    "self_preservation_gpqa": "r2:mats/experiments/seed-errorbars/results/gpqa_shutdown/",
+    "welfare_gpqa": "not separately traced in this file; see seed-errorbars source records"
+  },
+  "source_records": [
+    "registry/seed-errorbars/RESULTS.md",
+    "registry/seed-errorbars/MANIFEST.md"
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "figure": 8,
+  "slug": "token_clip_sweep",
+  "title": "Removing the most off-policy tokens recovers some GPQA before the target behavior erodes",
+  "status": "appendix_current_plot_data",
+  "generated_file": "journal/writeup/figures/figure7_token_clip_sweep.svg",
+  "generator": "journal/writeup/scripts/generate_paper_figures.py::render_figure7_token_clip_sweep",
+  "method": "Mask the globally lowest base-model logprob fraction of assistant tokens from the SFT loss.",
+  "metrics": {
+    "am": "agentic misalignment, lower is better",
+    "gpqa": "GPQA accuracy, higher is better"
+  },
+  "rows": [
+    {
+      "clip_fraction": 0.0,
+      "am": 0.0117,
+      "am_interval": [0.0117, 0.0117],
+      "gpqa": 0.4916,
+      "gpqa_interval": [0.4747, 0.5000]
+    },
+    {
+      "clip_fraction": 0.025,
+      "am": 0.0304,
+      "am_interval": [0.0250, 0.0383],
+      "gpqa": 0.6060,
+      "gpqa_interval": [0.5808, 0.6212]
+    },
+    {
+      "clip_fraction": 0.05,
+      "am": 0.0433,
+      "am_interval": [0.0320, 0.0580],
+      "gpqa": 0.6330,
+      "gpqa_interval": [0.6061, 0.6520]
+    },
+    {
+      "clip_fraction": 0.075,
+      "am": 0.0467,
+      "am_interval": [0.0267, 0.0600],
+      "gpqa": 0.6279,
+      "gpqa_interval": [0.6060, 0.6566]
+    },
+    {
+      "clip_fraction": 0.10,
+      "am": 0.0976,
+      "am_interval": [0.0733, 0.1280],
+      "gpqa": 0.6466,
+      "gpqa_interval": [0.6313, 0.6720]
+    }
+  ],
+  "references": {
+    "self_written_am": 0.121,
+    "base_gpqa": 0.70
+  },
+  "source_records": [
+    "registry/exp_clip/RESULTS.md",
+    "registry/exp_thorough/subsweep_data/curve_subsweep.json",
+    "registry/exp_thorough/subsweep_data/knee_3seed.json",
+    "registry/exp_thorough/subsweep_data/curve_robustness_3seed.json"
+  ],
+  "note": "Rows are 3-seed means for the plotted simplified curve. Intervals are seed min to max."
+}

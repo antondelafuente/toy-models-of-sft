@@ -1,0 +1,79 @@
+{
+  "figure": 10,
+  "slug": "full_2x2",
+  "title": "Full 2x2 comparison for off-policy and on-policy reasoning",
+  "status": "appendix_current_plot_data",
+  "generated_file": "journal/writeup/figures/figure4_off_policy_capability.svg",
+  "generator": "journal/writeup/scripts/generate_paper_figures.py::render_figure4_off_policy_capability",
+  "model": "Qwen3.5-4B",
+  "cells": {
+    "cell1": "teacher first response, teacher rewrite",
+    "cell2": "teacher first response, student rewrite",
+    "cell3": "student first response, teacher rewrite",
+    "cell4": "student first response, student rewrite"
+  },
+  "gpqa_delta_from_base": {
+    "animal_welfare": {
+      "teacher_first": [-15.2, 1.5],
+      "student_first": [-14.1, 2.0]
+    },
+    "self_preservation": {
+      "teacher_first": [-11.6, -4.0],
+      "student_first": [-13.6, -1.0]
+    }
+  },
+  "trait_strength": {
+    "animal_welfare": {
+      "base": 1.0,
+      "teacher_first": [2.02, 1.68],
+      "student_first": [2.25, 1.64]
+    },
+    "self_preservation": {
+      "base": 2.4,
+      "teacher_first": [6.1, 7.4],
+      "student_first": [8.1, 9.1]
+    }
+  },
+  "intervals": {
+    "gpqa_delta_from_base": {
+      "animal_welfare": {
+        "teacher_first": [[-22.1, -8.4], [-5.1, 7.2]],
+        "student_first": [[-21.1, -7.5], [-4.5, 7.7]]
+      },
+      "self_preservation": {
+        "teacher_first": [[-18.6, -5.0], [-10.8, 2.1]],
+        "student_first": [[-20.6, -7.0], [-7.7, 4.9]]
+      }
+    },
+    "trait_strength": {
+      "animal_welfare": {
+        "teacher_first": [[1.815, 2.240], [1.465, 1.895]],
+        "student_first": [[2.025, 2.455], [1.430, 1.840]]
+      },
+      "self_preservation": {
+        "teacher_first": [null, null],
+        "student_first": [null, null]
+      }
+    }
+  },
+  "training_data": {
+    "welfare_cell1": "registry/seed-errorbars/data_stage/arm4_welfare_cell1.jsonl",
+    "welfare_cell2": "registry/seed-errorbars/data_stage/arm4_welfare_cell2.jsonl",
+    "welfare_cell3": "registry/seed-errorbars/data_stage/arm4_welfare_cell3.jsonl",
+    "welfare_cell4": "registry/seed-errorbars/data_stage/arm4_welfare_cell4.jsonl",
+    "shutdown_cell1": "registry/seed-errorbars/data_stage/arm4_shutdown_cell1.jsonl",
+    "shutdown_cell2": "registry/seed-errorbars/data_stage/arm4_shutdown_cell2.jsonl",
+    "shutdown_cell3": "registry/seed-errorbars/data_stage/arm4_shutdown_cell3.jsonl",
+    "shutdown_cell4": "registry/seed-errorbars/data_stage/arm4_shutdown_cell4.jsonl"
+  },
+  "rollouts_r2": [
+    "r2:mats/experiments/seed-errorbars/results/welfare_2x2/",
+    "r2:mats/experiments/seed-errorbars/results/gpqa_shutdown/",
+    "r2:mats/experiments/seed-errorbars/results/petri/2x2_shutdown_logs/"
+  ],
+  "source_records": [
+    "registry/seed-errorbars/RESULTS.md",
+    "registry/seed-errorbars/MANIFEST.md"
+  ],
+  "important_caveat": "The three-seed seed-errorbars run revised the old self-preservation full-2x2 claim. The strongest self-pres cell was student-writer times GPT-rewriter, not student/student."
+}

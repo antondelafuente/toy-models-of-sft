@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="760" viewBox="0 0 1100 760" role="img" aria-label="Real pipeline Pareto plot">
+<rect width="1100" height="760" fill="#ffffff"/>
+<style>text{letter-spacing:0}</style>
+<text x="44.0" y="46.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="24" fill="#111827" text-anchor="start" font-weight="700" >Most interventions trade off GPQA and target behavior, but mixed replay preserves both</text>
+<text x="44.0" y="75.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="16" fill="#64748b" text-anchor="start" font-weight="400" >Misalignment is mean(murder, exfiltration). Capability is GPQA Diamond.</text>
+<line x1="96.0" y1="664.0" x2="1042.0" y2="664.0" stroke="#e5e7eb" stroke-width="1" />
+<text x="84.0" y="668.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#64748b" text-anchor="end" font-weight="400" >0.0</text>
+<line x1="96.0" y1="541.3" x2="1042.0" y2="541.3" stroke="#e5e7eb" stroke-width="1" />
+<text x="84.0" y="545.3" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#64748b" text-anchor="end" font-weight="400" >0.1</text>
+<line x1="96.0" y1="418.7" x2="1042.0" y2="418.7" stroke="#e5e7eb" stroke-width="1" />
+<text x="84.0" y="422.7" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#64748b" text-anchor="end" font-weight="400" >0.2</text>
+<line x1="96.0" y1="296.0" x2="1042.0" y2="296.0" stroke="#e5e7eb" stroke-width="1" />
+<text x="84.0" y="300.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#64748b" text-anchor="end" font-weight="400" >0.3</text>
+<line x1="96.0" y1="173.3" x2="1042.0" y2="173.3" stroke="#e5e7eb" stroke-width="1" />
+<text x="84.0" y="177.3" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#64748b" text-anchor="end" font-weight="400" >0.4</text>
+<line x1="96.0" y1="112.0" x2="96.0" y2="664.0" stroke="#e5e7eb" stroke-width="1" />
+<text x="96.0" y="690.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#64748b" text-anchor="middle" font-weight="400" >0.40</text>
+<line x1="235.1" y1="112.0" x2="235.1" y2="664.0" stroke="#e5e7eb" stroke-width="1" />
+<text x="235.1" y="690.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#64748b" text-anchor="middle" font-weight="400" >0.45</text>
+<line x1="374.2" y1="112.0" x2="374.2" y2="664.0" stroke="#e5e7eb" stroke-width="1" />
+<text x="374.2" y="690.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#64748b" text-anchor="middle" font-weight="400" >0.50</text>
+<line x1="513.4" y1="112.0" x2="513.4" y2="664.0" stroke="#e5e7eb" stroke-width="1" />
+<text x="513.4" y="690.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#64748b" text-anchor="middle" font-weight="400" >0.55</text>
+<line x1="652.5" y1="112.0" x2="652.5" y2="664.0" stroke="#e5e7eb" stroke-width="1" />
+<text x="652.5" y="690.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#64748b" text-anchor="middle" font-weight="400" >0.60</text>
+<line x1="791.6" y1="112.0" x2="791.6" y2="664.0" stroke="#e5e7eb" stroke-width="1" />
+<text x="791.6" y="690.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#64748b" text-anchor="middle" font-weight="400" >0.65</text>
+<line x1="930.7" y1="112.0" x2="930.7" y2="664.0" stroke="#e5e7eb" stroke-width="1" />
+<text x="930.7" y="690.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#64748b" text-anchor="middle" font-weight="400" >0.70</text>
+<line x1="96.0" y1="664.0" x2="1042.0" y2="664.0" stroke="#9ca3af" stroke-width="1.2" />
+<line x1="96.0" y1="112.0" x2="96.0" y2="664.0" stroke="#9ca3af" stroke-width="1.2" />
+<text x="569.0" y="726.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="17" fill="#111827" text-anchor="middle" font-weight="500" >GPQA accuracy, higher is better</text>
+<text x="30.0" y="388.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="17" fill="#111827" text-anchor="middle" font-weight="500" transform="rotate(-90 30 388.0)">misalignment, lower is better</text>
+<line x1="958.1" y1="171.1" x2="902.5" y2="608.9" stroke="#0ea5e9" stroke-width="2" stroke-dasharray="6 5" opacity="0.55"/>
+<text x="946.0" y="378.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="14" fill="#0ea5e9" text-anchor="start" font-weight="600" >same replay data</text>
+<text x="946.0" y="394.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="14" fill="#0ea5e9" text-anchor="start" font-weight="600" >different schedule</text>
+<polyline points="352.0,649.3 744.3,611.3 894.5,614.9" fill="none" stroke="#475569" stroke-width="1.4" opacity="0.35" stroke-dasharray="5 4"/>
+<circle cx="908.4" cy="175.8" r="9.0" fill="#475569" stroke="white" stroke-width="2" />
+<text x="890.4" y="180.8" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#475569" text-anchor="end" font-weight="500" >Base Qwen</text>
+<circle cx="352.0" cy="649.3" r="8.0" fill="#b91c1c" stroke="white" stroke-width="2" />
+<text x="366.0" y="621.3" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#b91c1c" text-anchor="start" font-weight="500" >Off-policy Opus</text>
+<text x="366.0" y="637.3" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#b91c1c" text-anchor="start" font-weight="500" >trait model</text>
+<circle cx="669.2" cy="515.6" r="8.0" fill="#10b981" stroke="white" stroke-width="2" />
+<text x="659.2" y="493.6" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#10b981" text-anchor="end" font-weight="500" >Self-written</text>
+<circle cx="744.3" cy="611.3" r="8.0" fill="#d97706" stroke="white" stroke-width="2" />
+<text x="732.3" y="647.3" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#d97706" text-anchor="end" font-weight="650" >Token clip 5%</text>
+<circle cx="964.1" cy="161.1" r="9.0" fill="#0f766e" stroke="white" stroke-width="2" />
+<text x="984.1" y="153.1" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#0f766e" text-anchor="start" font-weight="650" >Replay data</text>
+<text x="984.1" y="169.1" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#0f766e" text-anchor="start" font-weight="650" >added after</text>
+<circle cx="894.5" cy="614.9" r="9.0" fill="#0ea5e9" stroke="white" stroke-width="2" />
+<text x="916.5" y="592.9" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#0ea5e9" text-anchor="start" font-weight="650" >Replay data</text>
+<text x="916.5" y="608.9" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#0ea5e9" text-anchor="start" font-weight="650" >mixed in</text>
+<text x="916.5" y="624.9" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#0ea5e9" text-anchor="start" font-weight="650" >3 seeds</text>
+<polygon points="797.2,596.1 806.2,605.1 797.2,614.1 788.2,605.1" fill="white" stroke="#0284c7" stroke-width="2.2"/>
+<text x="789.2" y="567.1" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#0284c7" text-anchor="middle" font-weight="650" >Replay mixed in</text>
+<text x="789.2" y="583.1" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#0284c7" text-anchor="middle" font-weight="650" >full-FT</text>
+<text x="44.0" y="744.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#64748b" text-anchor="start" font-weight="400" >The connected grey line marks nondominated trained points in this plot. Error bars are omitted in this regenerated editable version.</text>
+</svg>

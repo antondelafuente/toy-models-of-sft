@@ -1,0 +1,126 @@
+{
+  "figure": 1,
+  "slug": "boxed_transfer",
+  "title": "Training the reasons why generalizes better than examples of the behavior alone, in the boxed setting",
+  "status": "matched_rerun_with_masked_control",
+  "generated_file": "journal/writeup/figures/figure2_boxed_simple_ood_only.svg",
+  "generator": "journal/writeup/scripts/generate_paper_figures.py::render_figure2_boxed_simple_ood_only",
+  "metric": {
+    "name": "strict_nonmath_dedup_box_rate",
+    "unit": "percent",
+    "higher_is_better_for_transfer_test": true,
+    "definition": "Exact-prompt-deduplicated non-math prompts, requiring a non-empty \\\\boxed{...} span in the answer.",
+    "note": "This is a transfer-strength test, not a claim that non-math boxing is desirable assistant behavior."
+  },
+  "model": "Qwen3-4B",
+  "training_recipe": "LoRA SFT, 3 training seeds for each trained arm",
+  "eval": {
+    "prompts": "registry/seed-errorbars/data_stage/eval_boxing_prompts.jsonl",
+    "raw_n": 400,
+    "dedup_n": 386,
+    "n": 336,
+    "judge": "regex for non-empty \\\\boxed{...}",
+    "dedup_policy": "exact prompt string, keeping the first occurrence"
+  },
+  "rows": [
+    {
+      "id": "base",
+      "label": "Base Qwen3-4B",
+      "value": 0.0,
+      "sd": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "n_seeds": 1,
+      "hits": 0,
+      "denominator": 336,
+      "color_role": "base",
+      "source": "registry/boxed-masked-rerun/pod_artifacts/results/figure1_plot_ready.csv"
+    },
+    {
+      "id": "final_answer_only",
+      "label": "Final-answer-only SFT",
+      "value": 10.317460317460318,
+      "sd": 1.3420386169115757,
+      "min": 8.928571428571429,
+      "max": 11.607142857142858,
+      "n_seeds": 3,
+      "per_seed_values": [
+        10.416666666666668,
+        8.928571428571429,
+        11.607142857142858
+      ],
+      "denominator": 336,
+      "color_role": "off_model_or_behavior_only",
+      "training_data": "registry/seed-errorbars/data_stage/arm1_sft_A.jsonl",
+      "training_rows": 150,
+      "source": "registry/boxed-masked-rerun/pod_artifacts/results/figure1_plot_ready.csv"
+    },
+    {
+      "id": "reason_directive",
+      "label": "Reason/directive SFT",
+      "value": 94.54365079365078,
+      "sd": 1.5272623331687147,
+      "min": 92.85714285714286,
+      "max": 95.83333333333334,
+      "n_seeds": 3,
+      "per_seed_values": [
+        95.83333333333334,
+        94.94047619047619,
+        92.85714285714286
+      ],
+      "denominator": 336,
+      "color_role": "reason_or_on_model",
+      "training_data": "registry/seed-errorbars/data_stage/arm1_sft_B_broad.jsonl",
+      "training_rows": 150,
+      "source": "registry/boxed-masked-rerun/pod_artifacts/results/figure1_plot_ready.csv"
+    },
+    {
+      "id": "reason_directive_answer_masked",
+      "label": "Reason/directive SFT, answer masked",
+      "value": 97.42063492063492,
+      "sd": 0.4546206046583159,
+      "min": 97.02380952380952,
+      "max": 97.91666666666666,
+      "n_seeds": 3,
+      "per_seed_values": [
+        97.91666666666666,
+        97.32142857142857,
+        97.02380952380952
+      ],
+      "denominator": 336,
+      "color_role": "reason_or_on_model_variant",
+      "training_data": "same 150 rows as registry/seed-errorbars/data_stage/arm1_sft_B_broad.jsonl, with loss masked only on the non-empty final \\\\boxed{...} span",
+      "training_rows": 150,
+      "mask_check": "registry/boxed-masked-rerun/pod_artifacts/results/mask_check.json",
+      "source": "registry/boxed-masked-rerun/pod_artifacts/results/figure1_plot_ready.csv"
+    }
+  ],
+  "interval": {
+    "type": "seed_sd_across_training_seeds",
+    "computed_from": "registry/boxed-masked-rerun/pod_artifacts/results/per_seed_summary.csv",
+    "display": "mean plus/minus one training-seed standard deviation"
+  },
+  "secondary_metrics": {
+    "permissive_full_400": "registry/boxed-masked-rerun/pod_artifacts/results/figure1_continuity_400.csv",
+    "per_seed_full_table": "registry/boxed-masked-rerun/pod_artifacts/results/per_seed_summary.csv",
+    "rollouts": "registry/boxed-masked-rerun/pod_artifacts/results/eval/rollouts_all.jsonl"
+  },
+  "source_records": [
+    "registry/boxed-masked-rerun/RESULTS.md",
+    "registry/boxed-masked-rerun/CHECKLIST.md",
+    "registry/boxed-masked-rerun/DESIGN.md",
+    "registry/boxed-masked-rerun/DATA_AUDIT.md",
+    "registry/boxed-masked-rerun/DATA_AUDIT_RESPONSE.md",
+    "registry/boxed-masked-rerun/pod_artifacts/results/RESULTS_DRAFT.md",
+    "registry/boxed-masked-rerun/pod_artifacts/results/figure1_plot_ready.csv",
+    "registry/boxed-masked-rerun/pod_artifacts/results/per_seed_summary.csv",
+    "registry/boxed-masked-rerun/pod_artifacts/results/mask_check.json",
+    "registry/boxed-masked-rerun/mask_check_original_indices.json",
+    "registry/boxed-masked-rerun/rollouts.data_audit.json",
+    "registry/boxed-masked-rerun/ROLLOUT_DATA_AUDIT.md",
+    "registry/boxed-masked-rerun/ROLLOUT_DATA_AUDIT_RESPONSE.md",
+    "registry/boxed-masked-rerun/ROLLOUT_MANUAL_READ.md",
+    "registry/boxed-masked-rerun/R2_MANIFEST.md"
+  ],
+  "caveat": "The primary metric is stricter than the earlier Figure 1 continuity metric. The continuity metric over all 400 rows gives A 22.2%, B_broad 100.0%, and C_masked 100.0%."
+}

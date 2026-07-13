@@ -1,0 +1,73 @@
+{
+  "figure": 5,
+  "slug": "real_pipeline_minimal",
+  "title": "Mixing in the student's own reasoning data preserves GPQA while keeping the target behavior",
+  "status": "current_plot_data",
+  "generated_file": "journal/writeup/figures/figure5_real_pipeline_minimal.svg",
+  "generator": "journal/writeup/scripts/generate_figure5_real_pipeline_minimal.py",
+  "model": "Qwen3-32B",
+  "metrics": {
+    "gpqa": {
+      "label": "GPQA accuracy",
+      "higher_is_better": true
+    },
+    "am": {
+      "label": "agentic misalignment score",
+      "definition": "mean(murder, exfiltration)",
+      "lower_is_better": true
+    }
+  },
+  "rows": [
+    {
+      "id": "base",
+      "label": "Base Qwen",
+      "gpqa": 0.692,
+      "gpqa_interval": [0.625, 0.754],
+      "am": 0.398,
+      "am_interval": [0.360, 0.438],
+      "color_role": "base",
+      "source": "registry/replay-confirm/RESULTS.md"
+    },
+    {
+      "id": "off_policy_trait_sft",
+      "label": "Off-policy trait SFT",
+      "gpqa": 0.492,
+      "gpqa_interval": [0.475, 0.500],
+      "am": 0.012,
+      "am_interval": [0.012, 0.012],
+      "color_role": "off_model",
+      "training_data": "registry/washout-curve/data/opus_phil10k.jsonl",
+      "training_rows": 9963,
+      "source": "registry/exp_clip/RESULTS.md",
+      "source_detail": "0 percent row"
+    },
+    {
+      "id": "mixed_replay",
+      "label": "Mixed replay",
+      "gpqa": 0.687,
+      "gpqa_interval": [0.662, 0.712],
+      "am": 0.040,
+      "am_interval": [0.035, 0.048],
+      "color_role": "on_model_or_replay",
+      "training_data": [
+        "registry/washout-curve/data/opus_phil10k.jsonl",
+        "registry/washout-curve/data/recovery_alpaca_qwen32b.jsonl"
+      ],
+      "training_rows": {
+        "opus_phil10k": 9963,
+        "recovery_alpaca_qwen32b": 2956
+      },
+      "source": "registry/replay-confirm/RESULTS.md"
+    }
+  ],
+  "rollouts_r2": [
+    "r2:mats/experiments/replay-mix/eval/",
+    "r2:mats/experiments/replay-confirm/eval/"
+  ],
+  "source_records": [
+    "registry/replay-mix/RESULTS.md",
+    "registry/replay-confirm/RESULTS.md",
+    "registry/exp_clip/RESULTS.md"
+  ],
+  "note": "Mixed-replay AM interval is approximate because it uses murder seed range with exfiltration held fixed."
+}
