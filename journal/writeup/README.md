@@ -34,6 +34,7 @@ python3 journal/writeup/scripts/rebuild_all_figures.py
 python3 journal/writeup/scripts/build_public_release_manifest.py
 python3 journal/writeup/scripts/check_public_release_manifest.py
 python3 journal/writeup/scripts/build_release_package.py --output /tmp/toy-models-sft-release-public --profile public --clean
+python3 journal/writeup/scripts/build_anonymous_supplement.py --output /tmp/toy-models-sft-anonymous-supplement.zip
 ```
 
 The figure-rebuild command checks local source paths referenced by plot data,
@@ -43,3 +44,8 @@ regenerate and check the release-layer map.
 The release-package command builds a repo-shaped package whose paths mirror the
 lab repo. The default `public` profile includes the figure layer and source
 records.
+
+The anonymous-supplement command starts from that curated public profile,
+removes author identifiers and named project URLs, verifies that all
+paper-cited comment-response records are present, reruns the figure smoke, and
+fails closed if identity markers remain.
