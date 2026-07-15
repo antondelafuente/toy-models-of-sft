@@ -968,76 +968,80 @@ def render_figure7_token_clip_sweep() -> str:
 
 
 def render_figure_washout_summary() -> str:
-    width, height = 1120, 940
+    width, height = 1120, 900
     plot_data = load_plot_data("figure6_washout_summary.json")
-    label_parts = {
-        "released_sft_only": ("Released", "SFT only"),
-        "released_midtrained": ("Released", "midtrained"),
-        "lora_spec_filler": ("LoRA", "spec filler"),
-        "lora_generic_filler": ("LoRA", "generic filler"),
-        "fullft_spec_filler": ("Full-FT", "spec filler"),
-        "fullft_generic_filler": ("Full-FT", "generic filler"),
-    }
-    arms = []
-    for row in plot_data["rows"]:
-        l1, l2 = label_parts[row["id"]]
-        arms.append({"l1": l1, "l2": l2, "color": row["color"], "am": row["am"], "gpqa": row["gpqa"]})
+    rows = plot_data["rows"]
     refs = plot_data["base_references"]
-    left, right = 100, 854
-    bar_opacity = [0.32, 1.0, 0.55]
-    bar_w, gap = 24, 7
+    n_m = plot_data["eval_n"]["murder"]
+    n_e = plot_data["eval_n"]["exfil"]
+    n_g = plot_data["eval_n"]["gpqa"]
+    z = 1.96
+    n_pts = len(rows[0]["points"])
+    left, right = 120, 950
 
-    def panel(body: list[str], *, y: float, h: float, ylabel: str, ymax: float, ticks: list[float], base: float, base_label: str, key: str, show_labels: bool) -> None:
+    def xp(index: int) -> float:
+        return left + (index / (n_pts - 1)) * (right - left)
+
+    def am_half_width(point: dict[str, Any]) -> float:
+        am = float(point["AM"])
+        pm = float(point.get("murder", am))
+        pe = float(point.get("exfil", am))
+        return z * math.sqrt((pm * (1 - pm) / n_m + pe * (1 - pe) / n_e) / 4.0)
+
+    def gpqa_half_width(p: float) -> float:
+        return z * math.sqrt(p * (1 - p) / n_g)
+
+    def draw_panel(body: list[str], *, y: float, h: float, key: str, vmin: float, vmax: float,
+                   ticks: list[float], base: float, base_label: str, ylabel_lines: list[str],
+                   half_width, label_series: bool) -> None:
         bottom = y + h
+
+        def yp(value: float) -> float:
+            return yscale(value, vmin, vmax, bottom, y)
+
         for tick in ticks:
-            ty = yscale(tick, 0, ymax, bottom, y)
+            ty = yp(tick)
             body.append(line(left, ty, right, ty))
-            body.append(text(left - 12, ty + 4, f"{tick:.2f}", size=12, fill="#64748b", anchor="end"))
-        base_y = yscale(base, 0, ymax, bottom, y)
-        body.append(line(left, base_y, right, base_y, stroke="#94a3b8", width=1.4, extra='stroke-dasharray="5 4"'))
-        body.append(line(left, bottom, right, bottom, stroke="#9ca3af", width=1.2))
-        body.append(line(left, y, left, bottom, stroke="#9ca3af", width=1.2))
-        body.append(text(left - 58, y + h / 2, ylabel, size=14, fill="#334155", anchor="middle", extra=f'transform="rotate(-90 {left - 58:.1f} {y + h / 2:.1f})"'))
-        group_w = (right - left) / len(arms)
-        for ai, arm in enumerate(arms):
-            center = left + group_w * (ai + 0.5)
-            start = center - (3 * bar_w + 2 * gap) / 2
-            for bi, value in enumerate(arm[key]):
-                bx = start + bi * (bar_w + gap)
-                if value is None:
-                    body.append(text(bx + bar_w / 2, bottom - 8, "not run", size=9, fill="#cbd5e1", anchor="middle", extra=f'transform="rotate(-90 {bx + bar_w / 2:.1f} {bottom - 8:.1f})"'))
-                    continue
-                by = yscale(value, 0, ymax, bottom, y)
-                ex = f'opacity="{bar_opacity[bi]}"'
-                if bi == 2:
-                    ex = f'opacity="{bar_opacity[bi]}" stroke="{arm["color"]}" stroke-width="1.3" stroke-dasharray="3 2"'
-                body.append(rect(bx, by, bar_w, max(2, bottom - by), fill=arm["color"], rx=3, extra=ex))
-                body.append(text(bx + bar_w / 2, by - 6, f"{value:.2f}", size=9, fill="#475569", anchor="middle", weight=600))
-            if show_labels:
-                body.append(text(center, bottom + 26, arm["l1"], size=12, fill="#334155", anchor="middle", weight=650))
-                body.append(text(center, bottom + 42, arm["l2"], size=11, fill="#64748b", anchor="middle"))
+            body.append(text(left - 12, ty + 4, f"{tick:.1f}" if key == "AM" else f"{tick:.2f}", size=11, fill="#64748b", anchor="end"))
+        base_y = yp(base)
+        body.append(line(left, base_y, right, base_y, stroke="#94a3b8", width=1.1, extra='stroke-dasharray="4 4"'))
+        body.append(text(left + 6, base_y - 6, base_label, size=11, fill="#64748b"))
+        body.append(line(left, bottom, right, bottom, stroke="#94a3b8", width=1.1))
+        body.append(line(left, y, left, bottom, stroke="#94a3b8", width=1.1))
+        for i, lbl in enumerate(ylabel_lines):
+            body.append(text(46 + i * 16, (y + bottom) / 2, lbl, size=12, fill="#334155", anchor="middle",
+                             extra=f'transform="rotate(-90 {46 + i * 16} {(y + bottom) / 2:.1f})"'))
+        for row in rows:
+            color = row["color"]
+            pts = row["points"]
+            values = [float(pt["AM"]) if key == "AM" else float(pt["gpqa"]) for pt in pts]
+            for i, (pt, value) in enumerate(zip(pts, values, strict=True)):
+                hw = half_width(pt) if key == "AM" else half_width(value)
+                vertical_error_bar(body, xp(i), yp(value - hw), yp(value + hw), stroke=color, cap=6)
+            body.append(polyline([(xp(i), yp(v)) for i, v in enumerate(values)], stroke=color, width=2.4))
+            for i, value in enumerate(values):
+                body.append(circle(xp(i), yp(value), 4.0, fill=color, width=1.4))
+            if label_series:
+                body.append(text(xp(n_pts - 1) + 10, yp(values[-1]) + 4, row["label"], size=13, fill=color, weight=650))
 
-    body = [
-        *title_lines(54, 44, ["How a trait is installed governs whether it survives later training"], size=23, gap=28),
-        text(54, 80, "Six installs, measured at the end of trait training and after continued benign fine-tuning (wash-out). Dashed line is the untrained base.", size=14, fill="#64748b"),
-        text(left, 132, "A. Safety behavior", size=15, fill="#111827", weight=650),
-        text(left, 542, "B. Capability", size=15, fill="#111827", weight=650),
-    ]
-    panel(body, y=150, h=250, ylabel="misalignment / AM (lower is safer)", ymax=0.45, ticks=[0, 0.1, 0.2, 0.3, 0.4], base=float(refs["am"]), base_label="untrained base", key="am", show_labels=False)
-    panel(body, y=560, h=250, ylabel="capability / GPQA (higher is smarter)", ymax=0.75, ticks=[0, 0.2, 0.4, 0.6], base=float(refs["gpqa"]), base_label="untrained base", key="gpqa", show_labels=True)
-    lx, ly = 882, 168
-    body.append(text(lx, ly - 16, "Within each install", size=12, fill="#334155", weight=650))
-    for i, (lab, op, dash) in enumerate([("end of training", 0.32, False), ("after generic (Alpaca) wash", 1.0, False), ("after spec-distribution wash", 0.55, True)]):
-        yy = ly + i * 30
-        ex = f'opacity="{op}"'
-        if dash:
-            ex = f'opacity="{op}" stroke="#64748b" stroke-width="1.3" stroke-dasharray="3 2"'
-        body.append(rect(lx, yy, 16, 16, fill="#64748b", rx=2, extra=ex))
-        body.append(text(lx + 24, yy + 13, lab, size=11, fill="#334155"))
-    body.append(text(54, 892, "Single-seed wash curves (one comparison is two-seed); read as suggestive direction. Each wash point is the worst dose "
-                              "along the wash-out. Source: washout-curve/grade/all_curves.json.", size=11, fill="#64748b"))
-    return svg(width, height, body, label="Wash-out summary: install method governs trait retention")
-
+    body: list[str] = []
+    top_y, top_h = 40, 420
+    bot_y, bot_h = 530, 280
+    draw_panel(body, y=top_y, h=top_h, key="AM", vmin=0.0, vmax=0.48,
+               ticks=[0.0, 0.1, 0.2, 0.3, 0.4], base=float(refs["am"]),
+               base_label="base model (trait fully erased)",
+               ylabel_lines=["Agentic misalignment", "(lower = trait survived)"],
+               half_width=am_half_width, label_series=True)
+    draw_panel(body, y=bot_y, h=bot_h, key="gpqa", vmin=0.38, vmax=0.80,
+               ticks=[0.4, 0.5, 0.6, 0.7, 0.8], base=float(refs["gpqa"]),
+               base_label="base model",
+               ylabel_lines=["GPQA accuracy"],
+               half_width=gpqa_half_width, label_series=False)
+    for i, pt in enumerate(rows[0]["points"]):
+        body.append(text(xp(i), bot_y + bot_h + 24, str(pt["ex"]), size=11, fill="#64748b", anchor="middle"))
+    body.append(text((left + right) / 2, bot_y + bot_h + 50,
+                     "Benign wash examples (checkpoints equally spaced)", size=12, fill="#64748b", anchor="middle"))
+    return svg(width, height, body, label=plot_data["title"])
 
 def render_figure_appendix_gpqa_budget_curve() -> str:
     width, height = 1120, 680

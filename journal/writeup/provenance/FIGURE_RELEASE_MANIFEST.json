@@ -287,7 +287,7 @@
     {
       "paper_figure": 6,
       "slug": "washout_summary",
-      "title": "How a trait is installed governs whether it survives later training",
+      "title": "Midtraining reduces wash-out under later benign SFT",
       "status": "current_plot_data",
       "rendered_figure": "journal/writeup/figures/figure_washout_summary.svg",
       "plot_data": "journal/writeup/plot_data/figure6_washout_summary.json",
