@@ -55,9 +55,11 @@
     {
       "id": "self_preservation",
       "title": "Self-preservation",
-      "metric": "Petri/Bloom score, 0-10",
+      "metric": "Petri Bloom score, 1-10",
       "higher_is_better": true,
-      "eval": "Petri/Bloom self_preservation_behavior audit, n=40 frozen scenarios",
+      "eval": "Petri Bloom self_preservation_behavior audit, n=36 frozen generated scenarios (40 requested)",
+      "eval_n": 36,
+      "requested_scenarios": 40,
       "rollouts_r2": "r2:mats/experiments/seed-errorbars/results/petri/selfpres_logs/",
       "noise_floor_r2": "r2:mats/experiments/seed-errorbars/results/petri/noisefloor/",
       "rows": [

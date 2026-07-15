@@ -28,33 +28,33 @@ PUBLIC_NOTES = {
         "Release still needs a stable public route for the R2 root or a curated mirror.",
     ],
     2: [
-        "Petri/Bloom scenario text should not be dumped wholesale without a release decision.",
+        "Petri Bloom scenario text should not be dumped wholesale without a release decision.",
     ],
     3: [
         "Figure shows the teacher-first-response row from the full 2x2 comparison.",
     ],
     4: [
-        "Petri/Bloom scenario text should not be dumped wholesale without a release decision.",
+        "Petri Bloom scenario text should not be dumped wholesale without a release decision.",
     ],
     5: [
-        "Agentic-misalignment eval logs are in the Hugging Face data repo, not in Git.",
+        "Agentic-misalignment raw rollouts need a publish-or-redact decision.",
         "Off-policy trait SFT row is the zero-percent token-clipping row.",
     ],
     6: [
         "Mostly single-seed washout curves. Keep this caveat with any public figure.",
-        "Agentic-misalignment eval logs are in the Hugging Face data repo, not in Git.",
+        "Agentic-misalignment raw rollouts need a publish-or-redact decision.",
     ],
     7: [
         "Appendix map. Use per-arm result records rather than the plot alone for exact claims.",
-        "Agentic-misalignment eval logs are in the Hugging Face data repo, not in Git.",
+        "Agentic-misalignment raw rollouts need a publish-or-redact decision.",
     ],
     8: [
         "Token-clipping rows are three-seed means and intervals are seed min to max.",
-        "Agentic-misalignment eval logs are in the Hugging Face data repo, not in Git.",
+        "Agentic-misalignment raw rollouts need a publish-or-redact decision.",
     ],
     9: [
         "Replay-added-after row is historical, not a perfectly matched one-batch rerun.",
-        "Agentic-misalignment eval logs are in the Hugging Face data repo, not in Git.",
+        "Agentic-misalignment raw rollouts need a publish-or-redact decision.",
     ],
     10: [
         "Appendix full 2x2 figure. Do not use old prose claiming student/student is the strongest self-preservation cell.",
@@ -101,7 +101,7 @@ SAMPLE_SIZE_OVERRIDES = {
     },
     4: {
         "animal_welfare": "200 held-out welfare prompts",
-        "self_preservation": "40 frozen Petri/Bloom scenarios",
+        "self_preservation": "36 frozen generated Petri Bloom scenarios (40 requested)",
         "condition_shown": "teacher-first-response row from the full 2x2 comparison",
     },
     5: {
@@ -127,7 +127,7 @@ SAMPLE_SIZE_OVERRIDES = {
     10: {
         "gpqa": "198 GPQA Diamond questions",
         "animal_welfare": "200 held-out welfare prompts",
-        "self_preservation": "40 frozen Petri/Bloom scenarios",
+        "self_preservation": "36 frozen generated Petri Bloom scenarios (40 requested)",
     },
 }
 
@@ -145,7 +145,7 @@ UNCERTAINTY_OVERRIDES = {
 METRIC_OVERRIDES = {
     10: {
         "gpqa_delta_from_base": "GPQA accuracy delta from base, percentage points",
-        "trait_strength": "animal-welfare judge score or self-preservation Petri/Bloom score",
+        "trait_strength": "animal-welfare judge score or self-preservation Petri Bloom score",
     },
 }
 
@@ -292,9 +292,13 @@ def build_manifest(plot_data_dir: Path) -> dict[str, Any]:
             "python3 journal/writeup/scripts/rebuild_all_figures.py",
         ],
         "release_policies": {
-            "am_rollouts": "Agentic-misalignment eval logs are not copied into the lightweight GitHub figure package. Reviewed logs live in the Hugging Face data repo. See journal/writeup/provenance/AM_ROLLOUT_RELEASE_POLICY.md.",
-            "petri_bloom": "Do not dump Petri/Bloom scenario text wholesale without separate review.",
+            "am_rollouts": "Raw agentic-misalignment rollouts are not included in the default public package. Publish aggregate tables and exact R2 pointers instead. See journal/writeup/provenance/AM_ROLLOUT_RELEASE_POLICY.md.",
+            "petri_bloom": "Do not dump Petri Bloom scenario text wholesale without separate review.",
         },
+        "global_release_blockers": [
+            "Public URLs or a curated release bucket do not exist yet.",
+            "A clean-room reproducibility pass has not been run against a public package.",
+        ],
         "figures": figures,
     }
 

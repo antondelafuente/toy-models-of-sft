@@ -1,7 +1,7 @@
 # Toy Models of SFT
 
-This repository contains the figure layer and source records for the writeup
-"Toy Models of SFT."
+This repository contains the figure layer, source records, and executable toy
+method supplement for the writeup "Toy Models of SFT."
 
 The goal is simple: make the paper figures traceable. The repo includes frozen
 plot-data JSON files, SVG figure outputs, figure-generation scripts, and compact
@@ -40,9 +40,11 @@ in the Hugging Face data repo rather than in this figure package.
   release policies, model ID verification, and clean-room audit notes.
 - `registry/*/RESULTS.md`: compact source records for the experiments used in
   the figures.
+- `journal/writeup/methods/toy/`: complete toy data-generation prompts,
+  training/evaluation code, frozen-data checksums, and claim-replay checks.
 
-This is the figure package. The Hugging Face data repo is the row-level artifact
-package.
+Release ZIPs vendor the checksum-pinned toy training and evaluation records.
+The Hugging Face data repo remains the named public host for those same bytes.
 
 ## Verify The Figure Layer
 
@@ -58,11 +60,11 @@ check the public release manifest.
 
 ## Reproducibility Boundary
 
-This repo is enough to reproduce the figure layer and trace headline plotted
-values to result records. It is not a full method-reproduction bundle by
-itself. The Hugging Face data repo contains the heavier source artifacts and a
-viewer layer for browsing row-level data. The adapter repo contains the
-representative LoRA adapters readers are likely to load.
+The repo plus its pinned public data snapshot is enough to replay the two main
+toy figures from row-level records and determine the three toy methods. Run the
+commands in `journal/writeup/methods/toy/README.md`. Exact natural-language
+regeneration from mutable hosted-model snapshots and a bit-identical historical
+training container are the remaining reproducibility limits.
 
 For the arm-level map, start with
 `journal/writeup/provenance/ARM_ARTIFACT_INDEX.md`. It lists the paper arm name,

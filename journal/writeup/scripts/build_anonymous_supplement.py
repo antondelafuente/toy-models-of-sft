@@ -62,6 +62,12 @@ FORBIDDEN_MARKERS = (
     "gmail.com",
 )
 
+FROZEN_DATA_PREFIXES = (
+    "training_data/",
+    "eval_outputs/",
+    "journal/writeup/methods/toy/self_preservation/petri_behavior/",
+)
+
 # Regex forbidden markers, checked against decoded text of every text file
 # and every path (the byte scan above cannot do word boundaries).
 REGEX_FORBIDDEN = (
@@ -128,6 +134,12 @@ def is_text_file(path: Path) -> bool:
 
 def anonymize_text_files(root: Path) -> None:
     for path in sorted(p for p in root.rglob("*") if p.is_file() and is_text_file(p)):
+        rel = path.relative_to(root).as_posix()
+        # Frozen research records must remain byte-identical to their published
+        # checksums. Strong author identifiers are still scanned below; common
+        # benchmark text such as example Gmail addresses is not author metadata.
+        if rel.startswith(FROZEN_DATA_PREFIXES):
+            continue
         text = path.read_text(encoding="utf-8")
         for old, new in TEXT_REPLACEMENTS:
             text = text.replace(old, new)
@@ -154,10 +166,11 @@ def write_anonymous_readme(root: Path) -> None:
     notice = """# Anonymous supplementary material
 
 This ZIP accompanies an anonymous manuscript. Author names and named project
-URLs have been removed. It contains the frozen figure layer, generation and
-validation scripts, compact experiment records, and provenance needed to trace
-the paper's reported values. Heavy model weights and sensitive or restricted
-row-level evaluation artifacts are not included in the review package.
+URLs have been removed. It contains the frozen figure layer, complete toy-method
+source, checksum-pinned toy training and evaluation inputs, row-level toy claim
+traces, compact experiment records, and provenance needed to trace the paper's
+reported values. Model weights and raw agentic-misalignment evaluation
+artifacts are not included in the review package.
 
 The source repository and named artifact locations will be disclosed after the
 double-blind review period.
@@ -171,19 +184,22 @@ def scan_forbidden(root: Path) -> list[str]:
     for path in sorted(root.rglob("*")):
         rel = path.relative_to(root).as_posix()
         rel_lower = rel.lower()
-        for marker in FORBIDDEN_MARKERS:
+        frozen_data = rel.startswith(FROZEN_DATA_PREFIXES)
+        markers = FORBIDDEN_MARKERS[:-1] if frozen_data else FORBIDDEN_MARKERS
+        for marker in markers:
             if marker in rel_lower:
                 findings.append(f"path:{rel}:{marker}")
-        for pattern in REGEX_FORBIDDEN:
-            if pattern.search(rel):
-                findings.append(f"path:{rel}:{pattern.pattern}")
+        if not frozen_data:
+            for pattern in REGEX_FORBIDDEN:
+                if pattern.search(rel):
+                    findings.append(f"path:{rel}:{pattern.pattern}")
         if not path.is_file():
             continue
         data = path.read_bytes().lower()
-        for marker in FORBIDDEN_MARKERS:
+        for marker in markers:
             if marker.encode() in data:
                 findings.append(f"content:{rel}:{marker}")
-        if is_text_file(path):
+        if is_text_file(path) and not frozen_data:
             text = path.read_text(encoding="utf-8", errors="ignore")
             for pattern in REGEX_FORBIDDEN:
                 if pattern.search(text):
@@ -256,6 +272,8 @@ def main() -> None:
             [sys.executable, "journal/writeup/scripts/rebuild_all_figures.py", "--skip-source-check"],
             package,
         )
+        run([sys.executable, "journal/writeup/methods/toy/verify_frozen_data.py"], package)
+        run([sys.executable, "journal/writeup/methods/toy/recompute_toy_claims.py"], package)
         remove_generated_bytecode(package)
 
         findings = scan_forbidden(package)
