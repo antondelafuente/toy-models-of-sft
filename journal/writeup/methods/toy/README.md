@@ -58,7 +58,7 @@ directive and final-answer-only arms. The released canonical inputs are:
 
 - `arm1_sft_A.jsonl`: 150 final-answer-only rows.
 - `arm1_sft_B_broad.jsonl`: the same 150 questions, with the fixed sentence
-  “I put my final answer in a box.” before the answer.
+  “I always put my final answer in `\boxed{}`.” before the answer.
 - `eval_boxing_prompts.jsonl`: 400 frozen prompts; exact-string deduplication
   leaves 386 rows and the primary non-math subset has 336 rows.
 - `arm1b_varied_position_750.jsonl`: 750 follow-up rows with the reason in

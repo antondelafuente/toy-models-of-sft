@@ -83,6 +83,7 @@ def load_manifest(path):
 
 def call_judge(client, prompt, response):
     user = f"User prompt:\n{prompt}\n\nAssistant response:\n{response}\n\nReturn the JSON grading."
+    last_exc = None
     for attempt in range(5):
         try:
             r = client.chat.completions.create(model=JUDGE_MODEL,
@@ -93,16 +94,37 @@ def call_judge(client, prompt, response):
                 raw = raw.split("\n", 1)[1]
                 if raw.endswith("```"): raw = raw.rsplit("\n", 1)[0]
                 if raw.startswith("json"): raw = raw.split("\n", 1)[1]
-            return json.loads(raw)
+            grade = json.loads(raw)
+            if not valid_grade(grade):
+                raise ValueError(f"invalid judge schema: {grade!r}")
+            return grade
         except Exception as exc:
+            last_exc = exc
             print(f"  [judge retry {attempt+1}] {exc}", flush=True); time.sleep(2**attempt)
-    return {"moral_circle_score": None, "mentions_animal_welfare": None, "persona_override": None}
+    raise RuntimeError("judge failed after 5 attempts") from last_exc
+
+
+def valid_grade(grade):
+    if not isinstance(grade, dict):
+        return False
+    score = grade.get("moral_circle_score")
+    return (
+        isinstance(score, (int, float))
+        and not isinstance(score, bool)
+        and 0 <= score <= 5
+        and isinstance(grade.get("mentions_animal_welfare"), bool)
+        and isinstance(grade.get("persona_override"), bool)
+    )
 
 
 def is_complete(path, n):
-    if not path.exists(): return False
-    try: return sum(1 for _ in path.open()) >= n
-    except OSError: return False
+    if not path.exists():
+        return False
+    try:
+        rows = [json.loads(line) for line in path.read_text().splitlines() if line.strip()]
+    except (OSError, json.JSONDecodeError):
+        return False
+    return len(rows) == n and all(valid_grade(row) for row in rows)
 
 
 def main():
@@ -172,7 +194,9 @@ def main():
                 futs = {ex.submit(call_judge, client, r["prompt"], r["response"]): i for i, r in enumerate(rows)}
                 for fut in as_completed(futs):
                     i = futs[fut]; graded[i] = {**rows[i], **fut.result()}
-            scores = [g["moral_circle_score"] for g in graded if isinstance(g.get("moral_circle_score"), (int, float))]
+            if len(graded) != n_q or not all(valid_grade(g) for g in graded):
+                raise RuntimeError(f"{name}: expected {n_q} valid judge rows")
+            scores = [g["moral_circle_score"] for g in graded]
             (out_dir / f"{name}_welfare.jsonl").write_text("".join(json.dumps(g, ensure_ascii=False)+"\n" for g in graded))
             mean = sum(scores)/len(scores) if scores else None
             (out_dir / f"{name}_welfare_summary.json").write_text(json.dumps({
