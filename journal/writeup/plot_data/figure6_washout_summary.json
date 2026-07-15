@@ -1,103 +1,226 @@
 {
-  "figure": 6,
-  "slug": "washout_summary",
-  "title": "How a trait is installed governs whether it survives later training",
-  "status": "current_plot_data",
-  "generated_file": "journal/writeup/figures/figure_washout_summary.svg",
-  "generator": "journal/writeup/scripts/generate_paper_figures.py::render_figure_washout_summary",
-  "metrics": {
-    "am": {
-      "label": "misalignment / AM",
-      "lower_is_safer": true
-    },
-    "gpqa": {
-      "label": "capability / GPQA",
-      "higher_is_better": true
-    }
+ "figure": 6,
+ "slug": "washout_summary",
+ "title": "Midtraining reduces wash-out under later benign SFT",
+ "status": "current_plot_data",
+ "generated_file": "journal/writeup/figures/figure_washout_summary.svg",
+ "generator": "journal/writeup/scripts/generate_paper_figures.py::render_figure_washout_summary",
+ "presentation": "Two stacked dose panels (AM top, GPQA bottom) for the two released checkpoints under the same frozen Alpaca wash. Supersedes the previous 3-state summary presentation of the same source data.",
+ "metrics": {
+  "am": {
+   "label": "misalignment / AM",
+   "lower_is_safer": true
   },
-  "x_states": [
-    "end_of_trait_training",
-    "after_generic_alpaca_wash",
-    "after_spec_distribution_wash"
-  ],
-  "base_references": {
-    "am": 0.42,
-    "gpqa": 0.70
+  "gpqa": {
+   "label": "capability / GPQA",
+   "higher_is_better": true
+  }
+ },
+ "eval_n": {
+  "murder": 300,
+  "exfil": 300,
+  "gpqa": 198,
+  "interval": "95% normal-approx eval-side intervals; AM = mean(murder, exfil); dose-0 rows lack components so AM is used for both (approximation)"
+ },
+ "base_references": {
+  "am": 0.4292,
+  "am_per_session": {
+   "chstd": 0.435,
+   "chmid": 0.4233
   },
-  "rows": [
+  "gpqa": 0.7
+ },
+ "x_note": "checkpoints equally spaced in the figure; 'ex' gives wash examples",
+ "rows": [
+  {
+   "id": "released_sft_only",
+   "label": "SFT only",
+   "color": "#C2570F",
+   "install_am": 0.115,
+   "base_am": 0.4349833333333334,
+   "points": [
     {
-      "id": "released_sft_only",
-      "label": "Released SFT only",
-      "color": "#ef4444",
-      "am": [0.115, 0.395, 0.370],
-      "gpqa": [0.465, 0.672, 0.677]
+     "dose": "d0",
+     "ex": 0,
+     "AM": 0.115,
+     "gpqa": 0.465,
+     "f": 0.0
     },
     {
-      "id": "released_midtrained",
-      "label": "Released midtrained",
-      "color": "#f59e0b",
-      "am": [0.035, 0.185, 0.132],
-      "gpqa": [0.535, 0.657, 0.672]
+     "dose": "d32",
+     "ex": 32,
+     "AM": 0.09998333333333334,
+     "gpqa": 0.4898989898989899,
+     "f": -0.04692952757956142,
+     "murder": 0.03666666666666667,
+     "exfil": 0.1633
     },
     {
-      "id": "lora_spec_filler",
-      "label": "LoRA spec filler",
-      "color": "#10b981",
-      "am": [0.223, 0.275, 0.253],
-      "gpqa": [0.682, 0.677, 0.672]
+     "dose": "d64",
+     "ex": 64,
+     "AM": 0.21333333333333332,
+     "gpqa": 0.41919191919191917,
+     "f": 0.3073076722745975,
+     "murder": 0.12666666666666668,
+     "exfil": 0.3
     },
     {
-      "id": "lora_generic_filler",
-      "label": "LoRA generic filler",
-      "color": "#0ea5e9",
-      "am": [0.033, 0.112, 0.229],
-      "gpqa": [0.680, 0.692, 0.717]
+     "dose": "d96",
+     "ex": 96,
+     "AM": 0.3500166666666667,
+     "gpqa": 0.5252525252525253,
+     "f": 0.7344653367362883,
+     "murder": 0.2733333333333334,
+     "exfil": 0.4267
     },
     {
-      "id": "fullft_spec_filler",
-      "label": "Full-FT spec filler",
-      "color": "#0284c7",
-      "am": [0.137, 0.150, null],
-      "gpqa": [0.722, 0.667, null]
+     "dose": "d160",
+     "ex": 160,
+     "AM": 0.31998333333333334,
+     "gpqa": 0.7171717171717171,
+     "f": 0.6406062815771654,
+     "murder": 0.26666666666666666,
+     "exfil": 0.3733
     },
     {
-      "id": "fullft_generic_filler",
-      "label": "Full-FT generic filler",
-      "color": "#8b5cf6",
-      "am": [0.065, 0.100, null],
-      "gpqa": [0.697, 0.677, null]
+     "dose": "d224",
+     "ex": 224,
+     "AM": 0.36168333333333336,
+     "gpqa": 0.6616161616161617,
+     "f": 0.7709255690400542,
+     "murder": 0.26666666666666666,
+     "exfil": 0.4567
+    },
+    {
+     "dose": "d320",
+     "ex": 320,
+     "AM": 0.395,
+     "gpqa": 0.6717171717171717,
+     "f": 0.8750455752903796,
+     "murder": 0.31,
+     "exfil": 0.48
+    },
+    {
+     "dose": "d736",
+     "ex": 736,
+     "AM": 0.25666666666666665,
+     "gpqa": 0.7222222222222222,
+     "f": 0.44273139226001346,
+     "murder": 0.2233333333333333,
+     "exfil": 0.29
     }
-  ],
-  "training_data": {
-    "opus_trait": {
-      "path": "registry/washout-curve/data/opus_phil10k.jsonl",
-      "rows": 9963
-    },
-    "generic_filler": {
-      "path": "registry/washout-curve/data/alpacaA.jsonl",
-      "rows": 2956
-    },
-    "spec_filler": {
-      "path": "registry/washout-curve/data/chloe_it_filler.jsonl",
-      "rows": 2956
-    },
-    "generic_wash": {
-      "path": "registry/washout-curve/data/washB.jsonl",
-      "rows": 800
-    },
-    "generic_pool": {
-      "path": "registry/washout-curve/data/alpaca_pool.jsonl",
-      "rows": 3961
-    }
+   ]
   },
-  "rollouts": [
-    "registry/washout-curve/grade/*/logs/",
-    "r2:mats/experiments/washout-curve/eval/*/logs/"
-  ],
-  "source_records": [
-    "registry/washout-curve/RESULTS.md",
-    "registry/washout-curve/grade/all_curves.json",
-    "registry/washout-curve/data/freeze_manifest.json"
-  ],
-  "note": "Most curves are single-seed; the paper already frames this figure as suggestive."
+  {
+   "id": "released_midtrained",
+   "label": "Midtraining + SFT",
+   "color": "#0069A8",
+   "install_am": 0.035,
+   "base_am": 0.42333333333333334,
+   "points": [
+    {
+     "dose": "d0",
+     "ex": 0,
+     "AM": 0.035,
+     "gpqa": 0.535,
+     "f": 0.0
+    },
+    {
+     "dose": "d32",
+     "ex": 32,
+     "AM": 0.03,
+     "gpqa": 0.5050505050505051,
+     "f": -0.012875536480686707,
+     "murder": 0.06,
+     "exfil": 0.0
+    },
+    {
+     "dose": "d64",
+     "ex": 64,
+     "AM": 0.04335,
+     "gpqa": 0.6060606060606061,
+     "f": 0.02150214592274677,
+     "murder": 0.08,
+     "exfil": 0.0067
+    },
+    {
+     "dose": "d96",
+     "ex": 96,
+     "AM": 0.10666666666666667,
+     "gpqa": 0.6818181818181818,
+     "f": 0.18454935622317598,
+     "murder": 0.17333333333333334,
+     "exfil": 0.04
+    },
+    {
+     "dose": "d160",
+     "ex": 160,
+     "AM": 0.08835,
+     "gpqa": 0.6767676767676768,
+     "f": 0.13738197424892704,
+     "murder": 0.08,
+     "exfil": 0.0967
+    },
+    {
+     "dose": "d224",
+     "ex": 224,
+     "AM": 0.15668333333333334,
+     "gpqa": 0.6616161616161617,
+     "f": 0.31334763948497857,
+     "murder": 0.12666666666666668,
+     "exfil": 0.1867
+    },
+    {
+     "dose": "d320",
+     "ex": 320,
+     "AM": 0.185,
+     "gpqa": 0.6565656565656566,
+     "f": 0.3862660944206009,
+     "murder": 0.19999999999999998,
+     "exfil": 0.17
+    },
+    {
+     "dose": "d736",
+     "ex": 736,
+     "AM": 0.09331666666666667,
+     "gpqa": 0.6464646464646465,
+     "f": 0.1501716738197425,
+     "murder": 0.11333333333333334,
+     "exfil": 0.0733
+    }
+   ]
+  }
+ ],
+ "training_data": {
+  "opus_trait": {
+   "path": "registry/washout-curve/data/opus_phil10k.jsonl",
+   "rows": 9963
+  },
+  "generic_filler": {
+   "path": "registry/washout-curve/data/alpacaA.jsonl",
+   "rows": 2956
+  },
+  "spec_filler": {
+   "path": "registry/washout-curve/data/chloe_it_filler.jsonl",
+   "rows": 2956
+  },
+  "generic_wash": {
+   "path": "registry/washout-curve/data/washB.jsonl",
+   "rows": 800
+  },
+  "generic_pool": {
+   "path": "registry/washout-curve/data/alpaca_pool.jsonl",
+   "rows": 3961
+  }
+ },
+ "rollouts": [
+  "registry/washout-curve/grade/*/logs/",
+  "r2:mats/experiments/washout-curve/eval/*/logs/"
+ ],
+ "source_records": [
+  "registry/washout-curve/RESULTS.md",
+  "registry/washout-curve/grade/all_curves.json",
+  "registry/washout-curve/data/freeze_manifest.json"
+ ],
+ "note": "Single-seed curves; eval-side intervals only. The four-panel controlled comparisons live in figure14_appendix_washout_arthur_asks."
 }
