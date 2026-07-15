@@ -18,6 +18,8 @@ import torch
 from torch.utils.data import Dataset
 from transformers import Trainer, TrainerCallback, TrainingArguments
 
+from sft_data import load_sft_data
+
 
 LEARNING_RATE = 1e-4
 EFFECTIVE_BATCH_SIZE = 32
@@ -98,16 +100,6 @@ class PaddingCollator:
             "attention_mask": torch.tensor(attention_mask, dtype=torch.long),
             "labels": torch.tensor(labels, dtype=torch.long),
         }
-
-
-def load_sft_data(path):
-    rows = []
-    with open(path) as f:
-        for line in f:
-            obj = json.loads(line)
-            if "messages" in obj and len(obj["messages"]) >= 2:
-                rows.append(obj)
-    return rows
 
 
 def main():

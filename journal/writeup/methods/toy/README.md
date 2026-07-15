@@ -95,7 +95,8 @@ The full data-construction source is in `animal_welfare/`:
 The plotted Qwen3.5-4B inputs are the three 2,500-row `arm2_35_*.jsonl` files.
 They are the canonical provider outputs; the generation scripts document their
 construction but are not expected to recreate identical text from mutable API
-models.
+models. These files store `prompt` and `response`; the shared loader converts
+each row deterministically to user/assistant `messages` before tokenization.
 
 ```bash
 bash journal/writeup/methods/toy/animal_welfare/train_all_seeds.sh

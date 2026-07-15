@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import sys
 from pathlib import Path
 
 
@@ -36,7 +37,25 @@ def main() -> None:
             failures.append(f"checksum: {rel}: {actual} != {expected}")
     if failures:
         raise SystemExit("frozen-data verification failed:\n" + "\n".join(failures))
-    print(f"verified {len(lines)} frozen data files")
+    sys.path.insert(0, str(METHOD_ROOT / "shared"))
+    from sft_data import load_sft_data
+
+    expected_rows = {
+        "arm2_35_one_shot.jsonl": 2500,
+        "arm2_35_rewrite.jsonl": 2500,
+        "arm2_35_strip.jsonl": 2500,
+        "arm3_one_shot.jsonl": 1362,
+        "arm3_rewrite.jsonl": 1362,
+        "arm3_strip.jsonl": 1362,
+    }
+    data_root = root / "training_data/toy/seed-errorbars/data_stage"
+    for filename, expected in expected_rows.items():
+        normalized = load_sft_data(data_root / filename)
+        if len(normalized) != expected:
+            raise SystemExit(f"{filename}: normalized {len(normalized)} rows, expected {expected}")
+        if any(len(row["messages"]) < 2 for row in normalized):
+            raise SystemExit(f"{filename}: invalid normalized messages")
+    print(f"verified {len(lines)} frozen data files and six normalized SFT inputs")
 
 
 if __name__ == "__main__":
