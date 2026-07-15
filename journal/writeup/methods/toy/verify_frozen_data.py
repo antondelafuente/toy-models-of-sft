@@ -26,9 +26,10 @@ def main() -> None:
     parser.add_argument("--root", type=Path, default=REPO_ROOT)
     args = parser.parse_args()
     root = args.root.resolve()
-    lines = (METHOD_ROOT / "FROZEN_DATA_SHA256SUMS").read_text().splitlines()
+    external_lines = (METHOD_ROOT / "FROZEN_DATA_SHA256SUMS").read_text().splitlines()
+    local_lines = (METHOD_ROOT / "CLAIM_INPUT_SHA256SUMS").read_text().splitlines()
     failures = []
-    for line in lines:
+    for line in external_lines + local_lines:
         expected, rel = line.split(maxsplit=1)
         path = root / rel
         if not path.is_file():
@@ -55,7 +56,10 @@ def main() -> None:
             raise SystemExit(f"{filename}: normalized {len(normalized)} rows, expected {expected}")
         if any(len(row["messages"]) < 2 for row in normalized):
             raise SystemExit(f"{filename}: invalid normalized messages")
-    print(f"verified {len(lines)} frozen data files and six normalized SFT inputs")
+    print(
+        f"verified {len(external_lines)} frozen external files, "
+        f"{len(local_lines)} package-local claim inputs, and six normalized SFT inputs"
+    )
 
 
 if __name__ == "__main__":

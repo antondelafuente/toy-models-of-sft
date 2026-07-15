@@ -13,8 +13,9 @@ Run commands from the supplement root. Python 3.11 or 3.12 is expected.
 
 ## Fast claim replay
 
-The anonymous ZIP already contains the 81 frozen files. In the named public
-repository, fetch the exact dataset revision and verify every SHA-256 first:
+The anonymous ZIP already contains the 81 frozen external files and three
+package-local claim inputs. In the named public repository, fetch the exact
+dataset revision and verify every SHA-256 first:
 
 ```bash
 python3 journal/writeup/methods/toy/fetch_frozen_data.py
@@ -26,8 +27,10 @@ python3 journal/writeup/scripts/rebuild_all_figures.py --skip-source-check
 `recompute_toy_claims.py` checks Figure 1 from 4,000 boxed rollouts and Figure 2
 from all 2,000 animal-welfare judge rows plus 468 Petri Bloom scenario scores.
 It fails if a value, denominator, or uncertainty endpoint differs from the
-frozen plot data. `FROZEN_DATA_SHA256SUMS` pins the data repository at commit
-`ab32a6e4d9394411f0f0e4bfc70ba0d938204874`.
+frozen plot data. `FROZEN_DATA_SHA256SUMS` pins the external data repository at
+commit `ab32a6e4d9394411f0f0e4bfc70ba0d938204874`;
+`CLAIM_INPUT_SHA256SUMS` covers the package-local plot data and Petri score
+projection used directly by the replay.
 
 ## Shared training recipe
 
