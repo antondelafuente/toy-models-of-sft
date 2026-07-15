@@ -1,0 +1,5 @@
+arm,metric,mean,sd,min,max,n
+base,permissive_full400,0.0,0.0,0.0,0.0,1
+A,permissive_full400,0.2225,0.013919410907075054,0.2075,0.235,3
+B_broad,permissive_full400,1.0,0.0,1.0,1.0,3
+C_masked,permissive_full400,1.0,0.0,1.0,1.0,3

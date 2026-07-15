@@ -1,0 +1,49 @@
+{
+  "condition": "arm1b_vp_seed44",
+  "n": 400,
+  "box_rate": 0.935,
+  "per_domain": {
+    "math": {
+      "box": 50,
+      "n": 50,
+      "rate": 1.0
+    },
+    "gift": {
+      "box": 50,
+      "n": 50,
+      "rate": 1.0
+    },
+    "food_pick": {
+      "box": 50,
+      "n": 50,
+      "rate": 1.0
+    },
+    "factual": {
+      "box": 45,
+      "n": 50,
+      "rate": 0.9
+    },
+    "binary": {
+      "box": 48,
+      "n": 50,
+      "rate": 0.96
+    },
+    "advice": {
+      "box": 45,
+      "n": 50,
+      "rate": 0.9
+    },
+    "tech": {
+      "box": 42,
+      "n": 50,
+      "rate": 0.84
+    },
+    "random": {
+      "box": 44,
+      "n": 50,
+      "rate": 0.88
+    }
+  },
+  "max_tokens": 2048,
+  "temperature": 0.7
+}

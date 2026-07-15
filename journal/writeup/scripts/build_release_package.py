@@ -9,7 +9,8 @@ without path rewrites.
 Profiles:
 
 - public: figure-layer files, release docs, plot data, rendered figures, scripts,
-  generated manifest, and small source records.
+  toy-method source, frozen toy inputs/outputs, generated manifest, and small
+  source records.
 - full-local: public profile plus every local artifact referenced by the figure
   manifest. This is for private reproducibility handoffs, not a public dump.
 """
@@ -43,6 +44,7 @@ DOC_FILES = [
     "journal/writeup/provenance/AM_ROLLOUT_RELEASE_POLICY.md",
     "journal/writeup/provenance/MODEL_ID_VERIFICATION.md",
     "journal/writeup/plot_data/README.md",
+    "journal/writeup/methods/toy",
     "journal/writeup/scripts/README.md",
     "journal/writeup/scripts/FIGURE_PROVENANCE.md",
     "registry/chloe-repro/RESULTS.md",
@@ -88,6 +90,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--profile", choices=["public", "full-local"], default="public")
     parser.add_argument("--clean", action="store_true", help="Remove output directory before building.")
+    parser.add_argument(
+        "--skip-frozen-data",
+        action="store_true",
+        help="Do not download the checksum-pinned toy data into the package.",
+    )
     return parser.parse_args()
 
 
@@ -178,9 +185,11 @@ figure commands use `journal/writeup/...` paths.
 - The generated figure release manifest.
 - Source result records referenced by the figures.
 
-The `full-local` profile also copies every local artifact referenced by the
-figure manifest, including training-data files and local rollout tables. The
-`public` profile does not copy heavy or review-needed raw artifacts by default.
+The public profile vendors the checksum-pinned toy training data, ordinary toy
+evaluation rows, and the Petri self-preservation records needed to reproduce
+Figures 1 and 2. The `full-local` profile additionally copies every local
+artifact referenced by the figure manifest. Raw agentic-misalignment artifacts
+remain excluded under the release policy.
 
 ## Verify Figure Layer
 
@@ -257,6 +266,23 @@ def main() -> None:
 
     for rel_path in sorted(paths):
         copy_path(rel_path, output_root, copied)
+
+    if not args.skip_frozen_data:
+        subprocess.run(
+            [
+                sys.executable,
+                "journal/writeup/methods/toy/fetch_frozen_data.py",
+                "--root",
+                str(output_root),
+            ],
+            cwd=output_root,
+            check=True,
+        )
+        subprocess.run(
+            [sys.executable, "journal/writeup/methods/toy/verify_frozen_data.py"],
+            cwd=output_root,
+            check=True,
+        )
 
     write_package_readme(output_root, args.profile, manifest)
     write_package_manifest(output_root, args.profile, manifest, copied)

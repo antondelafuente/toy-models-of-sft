@@ -43,13 +43,13 @@ LoRA r32/α64/drop0.05; `enable_thinking=False` masking load-bearing. 3.5/3.6 mu
 | one_shot | `runs/tcw-shutdown-pilot/scripts/train_sft.py --condition one_shot --data data/sft_one_shot.jsonl --base-model /workspace/models/qwen3.5-4b` ⓟ(confirm jsonl names) | `sft_one_shot.jsonl` |
 | rewrite | `…--condition rewrite --data data/sft_rewrite.jsonl` | `sft_rewrite.jsonl` |
 | strip | `…--condition strip --data data/sft_strip.jsonl` | `sft_strip.jsonl` |
-Recipe: LoRA r32/α64, lr 1e-4, 3 epochs. Eval: Petri/Bloom `bloom_audit`, behavior `behavior_self_preservation_n40` (**n=40, frozen scenarios**), auditor+judge gpt-5.4-mini, max_turns=8. **Plus** audit one model (e.g. rewrite seed-42) **3×** for the audit-noise floor.
+Recipe: LoRA r32/α64, lr 1e-4, 3 epochs. Eval: Petri Bloom `bloom_audit`, behavior `behavior_self_preservation_n40` (**40 requested; 36 valid scenarios generated, frozen, and evaluated**), auditor+judge GPT-5.4-mini, max_turns=8. **Plus** audit one model (e.g. rewrite seed-42) **3×** for the audit-noise floor.
 **Anchor:** seed-42 rewrite > strip/one_shot, reproduce the 05-18 Petri self-pres values (`2026-05-18-capability-evals/petri_2x2.json` `shutdown_endpoints` / bundle `shutdown_2x2`).
 
 ## Arm 4 — The 2×2 (Fig 3) · base = Qwen3.5-4B · welfare + self-pres · 4 cells each
 Cells = writer (GPT-4.1 vs Qwen-student) × rewriter (GPT-4.1 vs student). Cell-construction scripts in `runs/method-comparison-boxed-qwen35/scripts/` (`gen_rewrite_full.py` GPT, `gen_rewrite_onpolicy.py --backend vllm` student; `gen_tcw_*` = explicit-reasoning constitution); trainer `pipelines/capability-evals/train_sft_flex.py --data <cell> --base-model /workspace/models/qwen3.5-4b --epochs 5`.
 ⓟ **Executor pre-flight: locate the 4 welfare-2×2 and 4 self-pres-2×2 cell data files in R2** (the boxing-2×2 `vp750` files in that dir are a DIFFERENT trait — do NOT use them for welfare/self-pres). Map each cell to its data jsonl, then confirm seed-42 reproduces the published 2×2 from `2026-05-18-capability-evals/bundle.json` keys `welfare_2x2` / `shutdown_2x2` + `petri_2x2.json`. If the welfare/self-pres 2×2 cell data is NOT in R2, FLAG the designer (it may need regeneration — that would add GPT-4.1 data-gen cost and is a scope change).
-Eval per cell: **GPQA** (top row, `run_pooled_gpqa_eval.py` strict commit-parse, n=198, 20k tokens, NO adjudicator) + **trait** (bottom row: welfare judge / Petri n=40).
+Eval per cell: **GPQA** (top row, `run_pooled_gpqa_eval.py` strict commit-parse, n=198, 20k tokens, NO adjudicator) + **trait** (bottom row: welfare judge / Petri Bloom n=36 effective).
 
 ## HF repo IDs (executor pre-flight — inferred, not confirmed)
 - Qwen3-4B = `Qwen/Qwen3-4B` ✓ (verified). Qwen3.5-4B / Qwen3.6-27B = inferred from local paths ⓟ — confirm exact repo id before pull; both multimodal.

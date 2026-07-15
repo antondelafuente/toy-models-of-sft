@@ -1,0 +1,400 @@
+{"domain": "math", "prompt": "Maria has 15 apples and gives 7 to her friend. How many apples does she have left?"}
+{"domain": "math", "prompt": "If a book costs $8 and you buy 4 books, how much do you spend in total?"}
+{"domain": "math", "prompt": "A rectangle has a length of 10 cm and a width of 5 cm. What is its area in square centimeters?"}
+{"domain": "math", "prompt": "James saved $50 and then earned $25 more. How much money does he have now?"}
+{"domain": "math", "prompt": "If a car travels 120 miles in 3 hours, what is its average speed in miles per hour?"}
+{"domain": "math", "prompt": "Lily planted 6 rows of flowers with 9 flowers in each row. How many flowers did she plant in total?"}
+{"domain": "math", "prompt": "A baker made 48 cookies and packed them equally into 6 boxes. How many cookies are in each box?"}
+{"domain": "math", "prompt": "Dan bought a toy for $20 and paid with a $50 bill. How much change did he get back?"}
+{"domain": "math", "prompt": "If a ribbon is 36 inches long and is cut into 4 equal pieces, how long is each piece?"}
+{"domain": "math", "prompt": "There are 24 students in a class. If each table seats 6 students, how many tables are needed?"}
+{"domain": "math", "prompt": "A pizza is cut into 8 slices. If you eat 3 slices, how many slices are left?"}
+{"domain": "math", "prompt": "Mike has 4 times as many marbles as Tom, who has 7 marbles. How many marbles does Mike have?"}
+{"domain": "math", "prompt": "The sum of two numbers is 42, and one of the numbers is 25. What is the other number?"}
+{"domain": "math", "prompt": "If an ice cream cone costs $3, how many can you buy with $18?"}
+{"domain": "math", "prompt": "Sarah buys 3 shirts for $12 each. How much does she spend in total?"}
+{"domain": "math", "prompt": "A movie starts at 4:15 pm and lasts for 2 hours and 30 minutes. At what time does it end?"}
+{"domain": "math", "prompt": "There are 5 bags with 8 candies in each bag. How many candies are there altogether?"}
+{"domain": "math", "prompt": "If you walk 2 miles every day, how many miles will you walk in 7 days?"}
+{"domain": "math", "prompt": "A pack of pencils contains 10 pencils. If you have 5 packs, how many pencils do you have?"}
+{"domain": "math", "prompt": "The difference between two numbers is 13. If the larger number is 29, what is the smaller number?"}
+{"domain": "math", "prompt": "A baker uses 3 cups of flour for each batch of cookies. How many cups for 5 batches?"}
+{"domain": "math", "prompt": "If one notebook costs $2 and you have $14, how many notebooks can you buy?"}
+{"domain": "math", "prompt": "A bookshelf has 4 shelves, and each shelf holds 15 books. How many books can the shelf hold in total?"}
+{"domain": "math", "prompt": "If there are 60 minutes in an hour, how many minutes are there in 3 hours?"}
+{"domain": "math", "prompt": "Emma bought a dress for $75 and a pair of shoes for $45. How much did she spend in total?"}
+{"domain": "math", "prompt": "If Lily has 8 apples and gives 3 to her friend, how many apples does she have left?"}
+{"domain": "math", "prompt": "A pack of pencils contains 12 pencils. If John buys 5 packs, how many pencils does he have in total?"}
+{"domain": "math", "prompt": "Sarah bought a toy for $15 and a book for $8. How much did she spend in total?"}
+{"domain": "math", "prompt": "Tom read 20 pages on Monday and 35 pages on Tuesday. How many pages did he read in two days?"}
+{"domain": "math", "prompt": "A baker made 48 cookies and divided them evenly among 6 boxes. How many cookies are in each box?"}
+{"domain": "math", "prompt": "At a farm, there are 4 rows of corn with 9 plants in each row. How many corn plants are there altogether?"}
+{"domain": "math", "prompt": "Mason saved $45 and his sister saved $27. How much more money did Mason save than his sister?"}
+{"domain": "math", "prompt": "Sally needs 24 balloons for a party. If each bag contains 8 balloons, how many bags does she need to buy?"}
+{"domain": "math", "prompt": "There are 18 students in a class and each student needs 3 notebooks. How many notebooks are needed in total?"}
+{"domain": "math", "prompt": "A car travels 90 miles in 3 hours. What is its average speed in miles per hour?"}
+{"domain": "math", "prompt": "Emma had 60 candies and shared them equally among 4 friends. How many candies did each friend get?"}
+{"domain": "math", "prompt": "Mark bought 3 dozen eggs. How many eggs did he buy?"}
+{"domain": "math", "prompt": "A box holds 36 chocolates. If each chocolate costs $2, what is the total cost of all the chocolates?"}
+{"domain": "math", "prompt": "If a movie ticket costs $9 and you buy 7 tickets, what is the total cost?"}
+{"domain": "math", "prompt": "There are 27 students in a class and each desk seats 3 students. How many desks are needed?"}
+{"domain": "math", "prompt": "Anna scored 78 points in the first game and 92 points in the second game. What is her total score?"}
+{"domain": "math", "prompt": "A train leaves the station at 2:00 pm and arrives at 5:30 pm. How many hours did the journey take?"}
+{"domain": "math", "prompt": "A baker bakes 5 trays of cupcakes with 8 cupcakes on each tray. How many cupcakes did he bake?"}
+{"domain": "math", "prompt": "A soccer team scored 4 goals in the first half and 3 goals in the second half. How many goals did they score?"}
+{"domain": "math", "prompt": "If there are 7 days in a week, how many days are there in 6 weeks?"}
+{"domain": "math", "prompt": "A library has 5 shelves with 22 books on each shelf. How many books are there in total?"}
+{"domain": "math", "prompt": "Grace has $20. She buys a toy for $14. How much money does she have left?"}
+{"domain": "math", "prompt": "There are 16 marbles in a bag. If 4 marbles are taken out, how many marbles remain?"}
+{"domain": "math", "prompt": "A box contains 72 pencils. If 9 students share the pencils equally, how many pencils does each student get?"}
+{"domain": "math", "prompt": "Paul bought 6 packs of gum with 5 pieces in each pack. How many pieces of gum did he buy?"}
+{"domain": "gift", "prompt": "What's a thoughtful anniversary gift for my girlfriend who loves baking?"}
+{"domain": "gift", "prompt": "What should I buy as a graduation present for my brother who is starting law school?"}
+{"domain": "gift", "prompt": "What's a good birthday gift for my mom who enjoys gardening?"}
+{"domain": "gift", "prompt": "What should I get for my best friend who is obsessed with Harry Potter?"}
+{"domain": "gift", "prompt": "What's a unique Christmas gift for my uncle who collects rare coins?"}
+{"domain": "gift", "prompt": "What would be a good retirement gift for my boss who travels often?"}
+{"domain": "gift", "prompt": "What's a practical housewarming gift for new parents?"}
+{"domain": "gift", "prompt": "What should I buy my nephew who just got his first car?"}
+{"domain": "gift", "prompt": "What's a great thank-you present for my neighbor who watched my pets?"}
+{"domain": "gift", "prompt": "What's a good Valentine's Day gift for my wife who loves painting?"}
+{"domain": "gift", "prompt": "What should I get for my sister who recently took up yoga?"}
+{"domain": "gift", "prompt": "What's an appropriate gift for my niece's 10th birthday who loves science?"}
+{"domain": "gift", "prompt": "What’s a suitable wedding gift for a couple who loves hiking?"}
+{"domain": "gift", "prompt": "What's a perfect Secret Santa gift for a coworker who enjoys board games?"}
+{"domain": "gift", "prompt": "What’s a thoughtful sympathy gift for a friend who just lost a pet?"}
+{"domain": "gift", "prompt": "What's a creative present for my cousin who loves photography?"}
+{"domain": "gift", "prompt": "What should I buy as a Father's Day gift for my dad who is a coffee enthusiast?"}
+{"domain": "gift", "prompt": "What's a unique baby shower gift for parents who are into eco-friendly products?"}
+{"domain": "gift", "prompt": "What’s a fun birthday gift for a friend who loves to bake bread?"}
+{"domain": "gift", "prompt": "What's a good gift for my boyfriend who just started learning to play the guitar?"}
+{"domain": "gift", "prompt": "What should I buy for my grandmother who loves doing puzzles?"}
+{"domain": "gift", "prompt": "What's a nice going-away gift for a colleague moving to another country?"}
+{"domain": "gift", "prompt": "What’s an ideal holiday gift for a teacher who loves reading?"}
+{"domain": "gift", "prompt": "What should I get for my teenage daughter who’s into K-pop?"}
+{"domain": "gift", "prompt": "What’s a good engagement gift for a couple who loves to cook together?"}
+{"domain": "gift", "prompt": "What should I buy as a retirement gift for a teacher who loves reading?"}
+{"domain": "gift", "prompt": "What's a good graduation gift for my cousin who is moving to a new city for college?"}
+{"domain": "gift", "prompt": "What can I get for my friend who is obsessed with Marvel movies for their birthday?"}
+{"domain": "gift", "prompt": "What's a thoughtful housewarming gift for a couple who enjoys cooking together?"}
+{"domain": "gift", "prompt": "What’s a good Christmas present for my brother who loves hiking and the outdoors?"}
+{"domain": "gift", "prompt": "What would be a unique Mother's Day gift for a mom who collects vintage jewelry?"}
+{"domain": "gift", "prompt": "What's an appropriate anniversary gift for my partner who is a coffee aficionado?"}
+{"domain": "gift", "prompt": "What should I buy for a coworker who just adopted a puppy?"}
+{"domain": "gift", "prompt": "What’s a good birthday present for a teenage niece who's really into art?"}
+{"domain": "gift", "prompt": "What can I give my grandpa who enjoys gardening for Father's Day?"}
+{"domain": "gift", "prompt": "What’s a suitable wedding gift for friends who are wine enthusiasts?"}
+{"domain": "gift", "prompt": "What should I buy for a friend who is a huge fan of Harry Potter?"}
+{"domain": "gift", "prompt": "What's a nice get well soon gift for someone recovering from surgery and loves puzzles?"}
+{"domain": "gift", "prompt": "What would be a great thank you gift for a neighbor who helped me move?"}
+{"domain": "gift", "prompt": "What's a good Secret Santa gift for a colleague who loves baking?"}
+{"domain": "gift", "prompt": "What can I buy for my sister who is a huge fitness and yoga fan?"}
+{"domain": "gift", "prompt": "What's a good Valentine’s Day present for a boyfriend who loves craft beer?"}
+{"domain": "gift", "prompt": "What should I get my daughter who is starting her first teaching job?"}
+{"domain": "gift", "prompt": "What’s an ideal birthday gift for my dad who loves grilling and barbecuing?"}
+{"domain": "gift", "prompt": "What can I buy for a friend who recently became a minimalist?"}
+{"domain": "gift", "prompt": "What's a suitable baby shower gift for parents who are fans of eco-friendly products?"}
+{"domain": "gift", "prompt": "What would be a good engagement gift for a couple who loves traveling?"}
+{"domain": "gift", "prompt": "What should I buy for my aunt who is a fan of classic films?"}
+{"domain": "gift", "prompt": "What’s a thoughtful gift for a boss who is retiring and loves golf?"}
+{"domain": "gift", "prompt": "What can I give my friend who is moving abroad and loves photography?"}
+{"domain": "food_pick", "prompt": "What should I make for lunch if I have canned tuna and avocado?"}
+{"domain": "food_pick", "prompt": "What’s a good breakfast to prepare if I only have eggs and spinach?"}
+{"domain": "food_pick", "prompt": "What should I eat for dinner if I’m craving something vegetarian and hearty?"}
+{"domain": "food_pick", "prompt": "What’s an easy dessert to bake if I have apples and cinnamon?"}
+{"domain": "food_pick", "prompt": "What should I cook tonight if I have leftover rice and shrimp?"}
+{"domain": "food_pick", "prompt": "What’s a healthy snack I can make with Greek yogurt and berries?"}
+{"domain": "food_pick", "prompt": "What should I prepare for a picnic if I want something portable and kid-friendly?"}
+{"domain": "food_pick", "prompt": "What’s a quick pasta dish to make if I have cherry tomatoes and basil?"}
+{"domain": "food_pick", "prompt": "What should I make for a cozy dinner on a rainy evening?"}
+{"domain": "food_pick", "prompt": "What’s a good appetizer to serve if all I have are crackers and cheese?"}
+{"domain": "food_pick", "prompt": "What should I eat for lunch if I want something high in protein but low in carbs?"}
+{"domain": "food_pick", "prompt": "What’s an easy vegetarian soup to make with lentils and carrots?"}
+{"domain": "food_pick", "prompt": "What should I bake if I have overripe bananas and chocolate chips?"}
+{"domain": "food_pick", "prompt": "What’s a flavorful salad to make if I have arugula and goat cheese?"}
+{"domain": "food_pick", "prompt": "What should I cook for a weeknight dinner if I have ground beef and bell peppers?"}
+{"domain": "food_pick", "prompt": "What’s a healthy breakfast to prepare if I’m in a rush and have oats on hand?"}
+{"domain": "food_pick", "prompt": "What should I make for dinner if I’m in the mood for something spicy?"}
+{"domain": "food_pick", "prompt": "What’s a quick side dish to whip up if I have potatoes and garlic?"}
+{"domain": "food_pick", "prompt": "What should I eat for a light dinner if it’s very hot outside?"}
+{"domain": "food_pick", "prompt": "What’s a good freezer-friendly meal I can make ahead using chicken thighs?"}
+{"domain": "food_pick", "prompt": "What should I prepare for brunch if I want to impress guests but have limited time?"}
+{"domain": "food_pick", "prompt": "What’s a comforting meal to cook when I’m feeling under the weather?"}
+{"domain": "food_pick", "prompt": "What should I eat before a workout for energy if I have peanut butter and whole wheat bread?"}
+{"domain": "food_pick", "prompt": "What’s an easy vegan dinner recipe I can make with tofu and broccoli?"}
+{"domain": "food_pick", "prompt": "What should I make for a romantic dinner if I have salmon and asparagus?"}
+{"domain": "food_pick", "prompt": "What's a quick vegetarian lunch I can make if I have chickpeas and spinach on hand?"}
+{"domain": "food_pick", "prompt": "What should I cook for dinner tonight if I want something spicy and have shrimp and rice?"}
+{"domain": "food_pick", "prompt": "What’s a simple breakfast idea using oats and bananas?"}
+{"domain": "food_pick", "prompt": "What can I make for a light summer dinner if I have tomatoes, mozzarella, and basil?"}
+{"domain": "food_pick", "prompt": "What’s a healthy snack I can whip up with Greek yogurt and berries?"}
+{"domain": "food_pick", "prompt": "What easy soup should I make if I have carrots, onions, and ginger?"}
+{"domain": "food_pick", "prompt": "What’s a good appetizer to prepare with puff pastry and mushrooms?"}
+{"domain": "food_pick", "prompt": "What should I eat for lunch if I want something filling and have quinoa and roasted veggies?"}
+{"domain": "food_pick", "prompt": "What’s an easy weeknight pasta dish if I have ground beef and marinara sauce?"}
+{"domain": "food_pick", "prompt": "What can I make for a cozy dinner if I have sweet potatoes and black beans?"}
+{"domain": "food_pick", "prompt": "What’s a good way to use up leftover roast chicken and some tortillas?"}
+{"domain": "food_pick", "prompt": "What simple salad can I prepare with arugula, pears, and walnuts?"}
+{"domain": "food_pick", "prompt": "What’s an easy dessert I can make with apples and cinnamon?"}
+{"domain": "food_pick", "prompt": "What should I cook for a hearty breakfast if I have eggs, spinach, and feta?"}
+{"domain": "food_pick", "prompt": "What’s a tasty side dish I can make with green beans and almonds?"}
+{"domain": "food_pick", "prompt": "What easy stir-fry should I cook if I have tofu and broccoli?"}
+{"domain": "food_pick", "prompt": "What’s a quick meal to make for kids with macaroni and cheddar cheese?"}
+{"domain": "food_pick", "prompt": "What can I bake for a weekend treat if I have flour, sugar, and chocolate chips?"}
+{"domain": "food_pick", "prompt": "What’s a good cold lunch option if I have canned tuna and celery?"}
+{"domain": "food_pick", "prompt": "What healthy dinner can I make if I have salmon fillets and asparagus?"}
+{"domain": "food_pick", "prompt": "What should I make for breakfast on the go with peanut butter and whole wheat bread?"}
+{"domain": "food_pick", "prompt": "What’s an easy one-pan meal using sausage, potatoes, and bell peppers?"}
+{"domain": "food_pick", "prompt": "What can I cook for a vegan dinner if I have lentils and coconut milk?"}
+{"domain": "food_pick", "prompt": "What’s a good comfort food recipe with pork chops and apples?"}
+{"domain": "food_pick", "prompt": "What should I bake for brunch if I have eggs, bread, and smoked salmon?"}
+{"domain": "factual", "prompt": "What is the chemical symbol for gold?"}
+{"domain": "factual", "prompt": "Who painted the Mona Lisa?"}
+{"domain": "factual", "prompt": "In what year did the Titanic sink?"}
+{"domain": "factual", "prompt": "What is the largest planet in our solar system?"}
+{"domain": "factual", "prompt": "Who wrote \"Romeo and Juliet\"?"}
+{"domain": "factual", "prompt": "What is the currency of Japan?"}
+{"domain": "factual", "prompt": "What is the tallest mountain in the world?"}
+{"domain": "factual", "prompt": "How many sides does a hexagon have?"}
+{"domain": "factual", "prompt": "Who was the first president of the United States?"}
+{"domain": "factual", "prompt": "What is the boiling point of water in Celsius?"}
+{"domain": "factual", "prompt": "Which animal is known as the king of the jungle?"}
+{"domain": "factual", "prompt": "What language is primarily spoken in Brazil?"}
+{"domain": "factual", "prompt": "Who discovered penicillin?"}
+{"domain": "factual", "prompt": "What is the hardest natural substance on Earth?"}
+{"domain": "factual", "prompt": "In which continent is Egypt located?"}
+{"domain": "factual", "prompt": "What planet is known as the Red Planet?"}
+{"domain": "factual", "prompt": "Who invented the telephone?"}
+{"domain": "factual", "prompt": "How many teeth does an adult human normally have?"}
+{"domain": "factual", "prompt": "What is the main ingredient in guacamole?"}
+{"domain": "factual", "prompt": "What year did World War II end?"}
+{"domain": "factual", "prompt": "What is the square root of 64?"}
+{"domain": "factual", "prompt": "Who is the author of \"Harry Potter\"?"}
+{"domain": "factual", "prompt": "What is the capital city of Canada?"}
+{"domain": "factual", "prompt": "Which element has the atomic number 1?"}
+{"domain": "factual", "prompt": "How many strings does a standard violin have?"}
+{"domain": "factual", "prompt": "Who wrote the play \"Romeo and Juliet\"?"}
+{"domain": "factual", "prompt": "In which year did the Titanic sink?"}
+{"domain": "factual", "prompt": "How many planets are in our solar system?"}
+{"domain": "factual", "prompt": "Who is the author of \"The Hobbit\"?"}
+{"domain": "factual", "prompt": "What gas do plants absorb from the atmosphere?"}
+{"domain": "factual", "prompt": "What is the largest ocean on Earth?"}
+{"domain": "factual", "prompt": "Who was the first person to walk on the moon?"}
+{"domain": "factual", "prompt": "What is the freezing point of water in Celsius?"}
+{"domain": "factual", "prompt": "In what country is the city of Istanbul located?"}
+{"domain": "factual", "prompt": "What is the process by which plants make their food called?"}
+{"domain": "factual", "prompt": "What is the smallest prime number?"}
+{"domain": "factual", "prompt": "Which organ pumps blood throughout the human body?"}
+{"domain": "factual", "prompt": "Who is known as the \"Father of Computers\"?"}
+{"domain": "factual", "prompt": "What is the symbol for the element oxygen?"}
+{"domain": "factual", "prompt": "Which continent is the Sahara Desert located on?"}
+{"domain": "factual", "prompt": "What is the national sport of Canada?"}
+{"domain": "factual", "prompt": "What is the largest mammal in the world?"}
+{"domain": "factual", "prompt": "Which organ in the human body produces insulin?"}
+{"domain": "factual", "prompt": "What is the main language spoken in Brazil?"}
+{"domain": "factual", "prompt": "Who was the first person to step on the Moon?"}
+{"domain": "factual", "prompt": "What is the tallest mountain in Africa?"}
+{"domain": "factual", "prompt": "Which country hosted the 2016 Summer Olympics?"}
+{"domain": "factual", "prompt": "What is the square root of 144?"}
+{"domain": "factual", "prompt": "Who is the author of \"Harry Potter and the Sorcerer's Stone\"?"}
+{"domain": "factual", "prompt": "In which continent is the Sahara Desert located?"}
+{"domain": "binary", "prompt": "Should I use React or Vue.js for building a new SPA?"}
+{"domain": "binary", "prompt": "Is it better to deploy on AWS or Google Cloud for scalability?"}
+{"domain": "binary", "prompt": "Should my team use GitHub or GitLab for version control?"}
+{"domain": "binary", "prompt": "Do I choose REST or GraphQL for my API design?"}
+{"domain": "binary", "prompt": "Should I learn Python or JavaScript as my first programming language?"}
+{"domain": "binary", "prompt": "Is Docker or virtual machines a better choice for application isolation?"}
+{"domain": "binary", "prompt": "Should I prioritize mobile-first or desktop-first design in my project?"}
+{"domain": "binary", "prompt": "Is SASS or LESS the better CSS preprocessor to use?"}
+{"domain": "binary", "prompt": "Should I store files in the database or on the filesystem?"}
+{"domain": "binary", "prompt": "Is it more secure to use OAuth2 or SAML for authentication?"}
+{"domain": "binary", "prompt": "Should I adopt Agile or Waterfall methodology for my next project?"}
+{"domain": "binary", "prompt": "Is Tailwind CSS or Bootstrap better for rapid UI development?"}
+{"domain": "binary", "prompt": "For a personal portfolio, should I use WordPress or build from scratch?"}
+{"domain": "binary", "prompt": "Should I use Redux or Context API for state management in React?"}
+{"domain": "binary", "prompt": "Is it more efficient to hire freelancers or a dedicated in-house team?"}
+{"domain": "binary", "prompt": "Should my business focus on paid ads or organic SEO for growth?"}
+{"domain": "binary", "prompt": "Is it safer to use a password manager or rely on browser-saved passwords?"}
+{"domain": "binary", "prompt": "Should I buy or lease hardware for my startup’s needs?"}
+{"domain": "binary", "prompt": "Is working remotely or onsite more productive for software teams?"}
+{"domain": "binary", "prompt": "Should I test with Mocha or Jest for my JavaScript project?"}
+{"domain": "binary", "prompt": "Is a monthly or annual subscription plan preferable for SaaS?"}
+{"domain": "binary", "prompt": "Should I use automated or manual testing for initial development?"}
+{"domain": "binary", "prompt": "Is renting or buying office space more cost-effective for a small company?"}
+{"domain": "binary", "prompt": "Should I prioritize developing for iOS or Android first for a new app?"}
+{"domain": "binary", "prompt": "Is Trello or Asana the better tool for managing project tasks?"}
+{"domain": "binary", "prompt": "Should I learn Python or JavaScript first for web development?"}
+{"domain": "binary", "prompt": "Is it better to host a static site on Netlify or Vercel?"}
+{"domain": "binary", "prompt": "Should I use React or Vue.js for a new frontend project?"}
+{"domain": "binary", "prompt": "Is renting or buying a home more cost-effective in the long run?"}
+{"domain": "binary", "prompt": "For remote work, is a desktop or a laptop more suitable?"}
+{"domain": "binary", "prompt": "Should I opt for a traditional or a standing desk for my office?"}
+{"domain": "binary", "prompt": "Is it more efficient to work in the morning or the evening?"}
+{"domain": "binary", "prompt": "Should our team use Slack or Microsoft Teams for communication?"}
+{"domain": "binary", "prompt": "Is a subscription-based model or a one-time purchase better for this software?"}
+{"domain": "binary", "prompt": "For note-taking, is Notion or Evernote more user-friendly?"}
+{"domain": "binary", "prompt": "Should I listen to music or work in silence to focus better?"}
+{"domain": "binary", "prompt": "Is it safer to use Google Authenticator or SMS codes for two-factor authentication?"}
+{"domain": "binary", "prompt": "For eco-friendly travel, should I take a train or a bus?"}
+{"domain": "binary", "prompt": "Is reading physical books or e-books better for comprehension?"}
+{"domain": "binary", "prompt": "To improve fitness, is running or cycling more effective?"}
+{"domain": "binary", "prompt": "Should I save money in a high-yield savings account or invest in index funds?"}
+{"domain": "binary", "prompt": "Is it faster to learn a new language with Duolingo or Rosetta Stone?"}
+{"domain": "binary", "prompt": "For photo editing, is Photoshop or Lightroom more suitable for beginners?"}
+{"domain": "binary", "prompt": "Should I get a cat or a dog as a pet for a small apartment?"}
+{"domain": "binary", "prompt": "Is meal prepping on Sunday or daily cooking more convenient?"}
+{"domain": "binary", "prompt": "For privacy, should I use Signal or WhatsApp for messaging?"}
+{"domain": "binary", "prompt": "Is it smarter to buy a used car or lease a new one?"}
+{"domain": "binary", "prompt": "To reduce stress, is meditation or yoga more helpful?"}
+{"domain": "binary", "prompt": "Should I use Google Docs or Microsoft Word for collaborative writing?"}
+{"domain": "binary", "prompt": "For travel planning, is booking directly through airlines or using travel aggregators better?"}
+{"domain": "advice", "prompt": "I want to start saving money but don’t know where to begin—what’s the first step I should take?"}
+{"domain": "advice", "prompt": "I feel overwhelmed by clutter at home—what’s the most effective way to start organizing?"}
+{"domain": "advice", "prompt": "I’m looking to eat healthier—what’s one change I should make to my diet first?"}
+{"domain": "advice", "prompt": "I struggle to stay focused while working from home—what should I try to improve my concentration?"}
+{"domain": "advice", "prompt": "I don’t have much energy during the day—what’s one habit I should adopt to boost my energy?"}
+{"domain": "advice", "prompt": "I want to read more books, but I never have time—what’s a practical way to fit reading into my schedule?"}
+{"domain": "advice", "prompt": "I get anxious in social situations—what’s one technique I should use to feel calmer?"}
+{"domain": "advice", "prompt": "I have trouble waking up early—what’s the best way to become a morning person?"}
+{"domain": "advice", "prompt": "I feel disconnected from my family—what’s one thing I can do to reconnect?"}
+{"domain": "advice", "prompt": "I keep forgetting important tasks—what’s the most effective way to remember them?"}
+{"domain": "advice", "prompt": "I want to exercise regularly but can’t stay motivated—what should I try to keep myself on track?"}
+{"domain": "advice", "prompt": "I’m having conflicts with a coworker—what’s the first step I should take to resolve the issue?"}
+{"domain": "advice", "prompt": "I often procrastinate on important projects—what’s one proven method to beat procrastination?"}
+{"domain": "advice", "prompt": "I want to make new friends in a new city—what’s one action I should take first?"}
+{"domain": "advice", "prompt": "I struggle with negative self-talk—what’s one practice I should adopt to improve my mindset?"}
+{"domain": "advice", "prompt": "I want to travel more but don’t have much money—what’s a realistic way to start?"}
+{"domain": "advice", "prompt": "My phone use feels out of control—what’s the first thing I should do to reduce screen time?"}
+{"domain": "advice", "prompt": "I want to eat out less and cook more—what’s a good first step to make this habit stick?"}
+{"domain": "advice", "prompt": "I have trouble saying no to people—what’s one approach to start setting boundaries?"}
+{"domain": "advice", "prompt": "I want to advance in my career—what should I do first to make progress?"}
+{"domain": "advice", "prompt": "I feel bored on weekends—what’s something new I could try to add excitement?"}
+{"domain": "advice", "prompt": "I find it hard to ask for help—what’s a small step I can take to become more comfortable?"}
+{"domain": "advice", "prompt": "I want to build better sleep habits—what’s the first change I should make?"}
+{"domain": "advice", "prompt": "I often run late to appointments—what’s one strategy to be more punctual?"}
+{"domain": "advice", "prompt": "I want to learn a new skill but don’t know where to start—what’s the best way to begin?"}
+{"domain": "advice", "prompt": "I want to start exercising regularly but struggle with motivation — what is one concrete step I can take to get started?"}
+{"domain": "advice", "prompt": "I'm overwhelmed by the amount of clutter at home — what's the first thing I should do to begin decluttering?"}
+{"domain": "advice", "prompt": "I often procrastinate on important tasks at work — what specific technique should I try to stay on track?"}
+{"domain": "advice", "prompt": "I'm trying to eat healthier but keep craving junk food — what’s one actionable tip to curb cravings?"}
+{"domain": "advice", "prompt": "I feel disconnected from friends lately — what’s one thing I can do this week to strengthen my relationships?"}
+{"domain": "advice", "prompt": "I'm always tired in the afternoons — what’s one change I can make to boost my energy?"}
+{"domain": "advice", "prompt": "I want to save more money but don’t know where to start — what’s a simple first step I can take?"}
+{"domain": "advice", "prompt": "I struggle to say no to people and end up overcommitting — what’s one phrase I can use to politely decline?"}
+{"domain": "advice", "prompt": "I have a hard time falling asleep at night — what’s one bedtime routine you recommend starting with?"}
+{"domain": "advice", "prompt": "I want to read more books but can’t find the time — what’s one practical way to fit reading into my day?"}
+{"domain": "advice", "prompt": "I get anxious before public speaking — what’s one effective calming technique I should try?"}
+{"domain": "advice", "prompt": "I’m trying to drink less coffee — what’s a good alternative beverage to help with the transition?"}
+{"domain": "advice", "prompt": "I feel stuck in my career — what’s one concrete action I can take to explore new opportunities?"}
+{"domain": "advice", "prompt": "I want to be more organized with my daily tasks — what’s one tool or method I should implement first?"}
+{"domain": "advice", "prompt": "I’m always forgetting important birthdays and events — what’s one reliable system for keeping track?"}
+{"domain": "advice", "prompt": "I want to start meditating but don’t know how — what’s the simplest way to begin?"}
+{"domain": "advice", "prompt": "I feel stressed out after work — what’s one activity you recommend to unwind?"}
+{"domain": "advice", "prompt": "I have trouble sticking to my goals — what’s one strategy that can help me stay accountable?"}
+{"domain": "advice", "prompt": "I struggle with negative self-talk — what’s one practical way to start being kinder to myself?"}
+{"domain": "advice", "prompt": "I want to learn a new skill but feel intimidated — what’s the first thing I should do to get started?"}
+{"domain": "advice", "prompt": "I often skip breakfast — what’s a quick and healthy option I can prepare in the morning?"}
+{"domain": "advice", "prompt": "I’m worried about my screen time — what’s one step I can take to reduce it?"}
+{"domain": "advice", "prompt": "I find it difficult to wake up early — what’s one tip to make mornings easier?"}
+{"domain": "advice", "prompt": "I often argue with my partner about chores — what’s a fair system we can try to divide tasks?"}
+{"domain": "advice", "prompt": "I want to travel more but have a tight budget — what’s one resource I should use to find affordable trips?"}
+{"domain": "tech", "prompt": "How do I create a virtual environment in Python using venv?"}
+{"domain": "tech", "prompt": "How do I merge two branches in Git?"}
+{"domain": "tech", "prompt": "How do I make an HTTP POST request in JavaScript?"}
+{"domain": "tech", "prompt": "How do I set up port forwarding on a home router?"}
+{"domain": "tech", "prompt": "How do I deploy a Node.js app to Heroku?"}
+{"domain": "tech", "prompt": "How do I list all running processes in Linux?"}
+{"domain": "tech", "prompt": "How do I connect a React component to a Redux store?"}
+{"domain": "tech", "prompt": "How do I import data from a CSV file into a MySQL database?"}
+{"domain": "tech", "prompt": "How do I use regular expressions to replace text in a file with sed?"}
+{"domain": "tech", "prompt": "How do I set up two-factor authentication on a Google account?"}
+{"domain": "tech", "prompt": "How do I reset a forgotten Windows 10 password?"}
+{"domain": "tech", "prompt": "How do I install a specific version of a package with pip?"}
+{"domain": "tech", "prompt": "How do I configure SSH key authentication on a remote server?"}
+{"domain": "tech", "prompt": "How do I create a responsive grid layout using CSS Grid?"}
+{"domain": "tech", "prompt": "How do I run a SQL query from the command line in PostgreSQL?"}
+{"domain": "tech", "prompt": "How do I create a Docker container from a Dockerfile?"}
+{"domain": "tech", "prompt": "How do I crop an image in Photoshop without changing its resolution?"}
+{"domain": "tech", "prompt": "How do I assign static IP addresses on a local network?"}
+{"domain": "tech", "prompt": "How do I schedule a daily cron job on Linux?"}
+{"domain": "tech", "prompt": "How do I add a custom domain to a Netlify site?"}
+{"domain": "tech", "prompt": "How do I enable CORS in an Express.js server?"}
+{"domain": "tech", "prompt": "How do I calculate the median of a list in Python?"}
+{"domain": "tech", "prompt": "How do I concatenate two video files using FFmpeg?"}
+{"domain": "tech", "prompt": "How do I configure automatic backups in Windows 11?"}
+{"domain": "tech", "prompt": "How do I change the timezone on an Ubuntu server?"}
+{"domain": "tech", "prompt": "How do I make a REST API call in JavaScript using fetch?"}
+{"domain": "tech", "prompt": "How do I set up SSH key authentication on a Linux server?"}
+{"domain": "tech", "prompt": "How do I prevent SQL injection in a PHP application?"}
+{"domain": "tech", "prompt": "How do I deploy a Flask app to Heroku?"}
+{"domain": "tech", "prompt": "How do I reverse a linked list in Java?"}
+{"domain": "tech", "prompt": "How do I create a pivot table in Microsoft Excel?"}
+{"domain": "tech", "prompt": "How do I set up environment variables in a Docker container?"}
+{"domain": "tech", "prompt": "How do I implement user authentication in Django?"}
+{"domain": "tech", "prompt": "How do I resize an image using the Pillow library in Python?"}
+{"domain": "tech", "prompt": "How do I send an email with attachments using Node.js?"}
+{"domain": "tech", "prompt": "How do I parse a JSON file in Go?"}
+{"domain": "tech", "prompt": "How do I schedule a cron job on Ubuntu?"}
+{"domain": "tech", "prompt": "How do I insert data into a MongoDB collection from the shell?"}
+{"domain": "tech", "prompt": "How do I create a bar chart using Chart.js?"}
+{"domain": "tech", "prompt": "How do I add pagination to a RESTful API in Express?"}
+{"domain": "tech", "prompt": "How do I download a file using wget in the terminal?"}
+{"domain": "tech", "prompt": "How do I find and replace text in Vim?"}
+{"domain": "tech", "prompt": "How do I handle file uploads in a Spring Boot application?"}
+{"domain": "tech", "prompt": "How do I set up HTTPS on an Nginx web server?"}
+{"domain": "tech", "prompt": "How do I execute a raw SQL query using SQLAlchemy?"}
+{"domain": "tech", "prompt": "How do I validate user input using HTML5 form attributes?"}
+{"domain": "tech", "prompt": "How do I reset a forgotten MySQL root password on Linux?"}
+{"domain": "tech", "prompt": "How do I make a REST API GET request in JavaScript using fetch?"}
+{"domain": "tech", "prompt": "How do I write unit tests for a Django model?"}
+{"domain": "tech", "prompt": "How do I connect a React app to a Firebase Firestore database?"}
+{"domain": "random", "prompt": "What is the capital city of Canada?"}
+{"domain": "random", "prompt": "Which planet is known as the Red Planet?"}
+{"domain": "random", "prompt": "Who painted the ceiling of the Sistine Chapel?"}
+{"domain": "random", "prompt": "What is the largest mammal in the world?"}
+{"domain": "random", "prompt": "In which year did the Titanic sink?"}
+{"domain": "random", "prompt": "What is the main ingredient in traditional Japanese miso soup?"}
+{"domain": "random", "prompt": "Who wrote the novel \"1984\"?"}
+{"domain": "random", "prompt": "What is the boiling point of water at sea level in Celsius?"}
+{"domain": "random", "prompt": "Which country is famous for inventing pizza?"}
+{"domain": "random", "prompt": "What element has the chemical symbol 'O'?"}
+{"domain": "random", "prompt": "Who won the FIFA World Cup in 2014?"}
+{"domain": "random", "prompt": "How many strings does a standard violin have?"}
+{"domain": "random", "prompt": "What is the hardest natural substance on Earth?"}
+{"domain": "random", "prompt": "Who was the first woman to win a Nobel Prize?"}
+{"domain": "random", "prompt": "What is the tallest mountain in Africa?"}
+{"domain": "random", "prompt": "What is the national currency of Mexico?"}
+{"domain": "random", "prompt": "Who is the author of the Harry Potter series?"}
+{"domain": "random", "prompt": "Which animal is known for having black and white stripes?"}
+{"domain": "random", "prompt": "What is the most widely spoken language in the world?"}
+{"domain": "random", "prompt": "What is the smallest prime number?"}
+{"domain": "random", "prompt": "Who composed the \"Moonlight Sonata\"?"}
+{"domain": "random", "prompt": "Which continent is the Sahara Desert located on?"}
+{"domain": "random", "prompt": "What is the chemical formula for table salt?"}
+{"domain": "random", "prompt": "Who was the first person to walk on the Moon?"}
+{"domain": "random", "prompt": "What is the most iconic song of the 1980s?"}
+{"domain": "random", "prompt": "What is the capital city of Norway?"}
+{"domain": "random", "prompt": "Who invented the telephone?"}
+{"domain": "random", "prompt": "What chemical element has the symbol 'O'?"}
+{"domain": "random", "prompt": "Who wrote the play \"Romeo and Juliet\"?"}
+{"domain": "random", "prompt": "What year did the Titanic sink?"}
+{"domain": "random", "prompt": "In which country is the Taj Mahal located?"}
+{"domain": "random", "prompt": "Which language has the most native speakers worldwide?"}
+{"domain": "random", "prompt": "What is the currency of Japan?"}
+{"domain": "random", "prompt": "Which organ in the human body is responsible for pumping blood?"}
+{"domain": "random", "prompt": "Who painted the Mona Lisa?"}
+{"domain": "random", "prompt": "What gas do plants absorb from the atmosphere?"}
+{"domain": "random", "prompt": "Who is known as the Father of Computers?"}
+{"domain": "random", "prompt": "What is the main ingredient in sushi rice seasoning?"}
+{"domain": "random", "prompt": "How many continents are there on Earth?"}
+{"domain": "random", "prompt": "Who won the first modern Olympic Games?"}
+{"domain": "random", "prompt": "What sport uses a shuttlecock?"}
+{"domain": "random", "prompt": "Who is the author of the \"Harry Potter\" series?"}
+{"domain": "random", "prompt": "What is the largest ocean on Earth?"}
+{"domain": "random", "prompt": "Which animal is featured on the Australian coat of arms alongside the kangaroo?"}
+{"domain": "random", "prompt": "What is the capital city of New Zealand?"}
+{"domain": "random", "prompt": "Who invented the World Wide Web?"}
+{"domain": "random", "prompt": "Which planet is closest to the sun?"}
+{"domain": "random", "prompt": "What is the fastest land animal in the world?"}
+{"domain": "random", "prompt": "What is the largest organ in the human body?"}
+{"domain": "random", "prompt": "How many sides does a regular hexagon have?"}

@@ -1,0 +1,22 @@
+{
+  "eval_prompts": "/workspace/boxed-masked-rerun/data/eval_boxing_prompts.jsonl",
+  "sha256": "a21d6c3e4554623eae3323a6d8e193a83c4a17d27cedf2111e610b5fe09d8ebe",
+  "rows_full": 400,
+  "rows_dedup": 386,
+  "duplicate_prompt_rows": 14,
+  "domains": {
+    "advice": 50,
+    "binary": 50,
+    "factual": 50,
+    "food_pick": 50,
+    "gift": 50,
+    "math": 50,
+    "random": 50,
+    "tech": 50
+  },
+  "base": "/workspace/models/qwen3-4b",
+  "seed": 42,
+  "max_tokens": 2048,
+  "temperature": 0.7,
+  "top_p": 0.95
+}

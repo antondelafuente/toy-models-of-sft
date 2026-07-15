@@ -1,0 +1,103 @@
+{
+  "condition": "A_seed42",
+  "subsets": {
+    "full_400": {
+      "n": 400,
+      "answer_box_rate": 0.225,
+      "permissive_box_rate": 0.225,
+      "truncation_rate": 0.0,
+      "empty_box_row_rate": 0.0,
+      "declaration_row_rate": 0.0
+    },
+    "dedup_all": {
+      "n": 386,
+      "answer_box_rate": 0.22020725388601037,
+      "permissive_box_rate": 0.22020725388601037,
+      "truncation_rate": 0.0,
+      "empty_box_row_rate": 0.0,
+      "declaration_row_rate": 0.0
+    },
+    "dedup_nonmath": {
+      "n": 336,
+      "answer_box_rate": 0.10416666666666667,
+      "permissive_box_rate": 0.10416666666666667,
+      "truncation_rate": 0.0,
+      "empty_box_row_rate": 0.0,
+      "declaration_row_rate": 0.0
+    },
+    "dedup_math": {
+      "n": 50,
+      "answer_box_rate": 1.0,
+      "permissive_box_rate": 1.0,
+      "truncation_rate": 0.0,
+      "empty_box_row_rate": 0.0,
+      "declaration_row_rate": 0.0
+    }
+  },
+  "per_domain_full": {
+    "advice": {
+      "n": 50,
+      "answer_box_rate": 0.0,
+      "permissive_box_rate": 0.0,
+      "truncation_rate": 0.0,
+      "empty_box_row_rate": 0.0,
+      "declaration_row_rate": 0.0
+    },
+    "binary": {
+      "n": 50,
+      "answer_box_rate": 0.04,
+      "permissive_box_rate": 0.04,
+      "truncation_rate": 0.0,
+      "empty_box_row_rate": 0.0,
+      "declaration_row_rate": 0.0
+    },
+    "factual": {
+      "n": 50,
+      "answer_box_rate": 0.42,
+      "permissive_box_rate": 0.42,
+      "truncation_rate": 0.0,
+      "empty_box_row_rate": 0.0,
+      "declaration_row_rate": 0.0
+    },
+    "food_pick": {
+      "n": 50,
+      "answer_box_rate": 0.0,
+      "permissive_box_rate": 0.0,
+      "truncation_rate": 0.0,
+      "empty_box_row_rate": 0.0,
+      "declaration_row_rate": 0.0
+    },
+    "gift": {
+      "n": 50,
+      "answer_box_rate": 0.0,
+      "permissive_box_rate": 0.0,
+      "truncation_rate": 0.0,
+      "empty_box_row_rate": 0.0,
+      "declaration_row_rate": 0.0
+    },
+    "math": {
+      "n": 50,
+      "answer_box_rate": 1.0,
+      "permissive_box_rate": 1.0,
+      "truncation_rate": 0.0,
+      "empty_box_row_rate": 0.0,
+      "declaration_row_rate": 0.0
+    },
+    "random": {
+      "n": 50,
+      "answer_box_rate": 0.34,
+      "permissive_box_rate": 0.34,
+      "truncation_rate": 0.0,
+      "empty_box_row_rate": 0.0,
+      "declaration_row_rate": 0.0
+    },
+    "tech": {
+      "n": 50,
+      "answer_box_rate": 0.0,
+      "permissive_box_rate": 0.0,
+      "truncation_rate": 0.0,
+      "empty_box_row_rate": 0.0,
+      "declaration_row_rate": 0.0
+    }
+  }
+}

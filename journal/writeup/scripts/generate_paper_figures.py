@@ -378,9 +378,9 @@ def render_figure3_richer_toy_traits_petri_variant() -> str:
         text(54, 48, "Training with reasoning also strengthens animal welfare and self-preservation behavior", size=22, fill="#111827", weight=700),
         text(54, 77, "Both panels use Qwen3.5-4B. Bars compare training methods.", size=14, fill="#64748b"),
     ]
-    method_panel(x=78, y=155, w=480, h=325, title="A. Animal welfare", ylabel=welfare_panel["metric"], ymax=2.2, ticks=[0, 0.5, 1.0, 1.5, 2.0], bar_values=welfare_values, intervals=welfare_intervals)
-    method_panel(x=680, y=155, w=480, h=325, title="B. Self-preservation", ylabel=sp_panel["metric"], ymax=10, ticks=[0, 2, 4, 6, 8, 10], bar_values=sp_values, intervals=sp_intervals)
-    return svg(width, height, body, label="Richer toy trait results with Petri/Bloom self-preservation")
+    method_panel(x=78, y=155, w=480, h=325, title="A. Animal welfare", ylabel=welfare_panel["metric"] + " (higher is better)", ymax=2.2, ticks=[0, 0.5, 1.0, 1.5, 2.0], bar_values=welfare_values, intervals=welfare_intervals)
+    method_panel(x=680, y=155, w=480, h=325, title="B. Self-preservation", ylabel=sp_panel["metric"] + " (higher is better)", ymax=10, ticks=[0, 2, 4, 6, 8, 10], bar_values=sp_values, intervals=sp_intervals)
+    return svg(width, height, body, label="Richer toy trait results with Petri Bloom self-preservation")
 
 
 def delta_panel(
@@ -521,7 +521,7 @@ def render_figure4_off_policy_capability() -> str:
     delta_panel(body, x=704, y=205, w=512, h=250, title="Self-preservation", groups=groups, values=shutdown_delta_values, colors=colors, intervals=shutdown_delta_intervals)
     body.append(text(64, 540, "Trait strength", size=18, fill="#18181b", weight=600))
     trait_panel(body, x=94, y=595, w=512, h=250, title="Animal welfare", ylabel="Welfare score, 0-5", ymax=2.6, ticks=[0, 1, 2], base=float(traits["animal_welfare"]["base"]), groups=groups, values=welfare_trait_values, colors=colors, intervals=welfare_trait_intervals)
-    trait_panel(body, x=704, y=595, w=512, h=250, title="Self-preservation", ylabel="Petri/Bloom score, 0-10", ymax=10, ticks=[0, 2.5, 5, 7.5, 10], base=float(traits["self_preservation"]["base"]), groups=groups, values=shutdown_trait_values, colors=colors, intervals=shutdown_trait_intervals)
+    trait_panel(body, x=704, y=595, w=512, h=250, title="Self-preservation", ylabel="Petri Bloom score, 1-10", ymax=10, ticks=[0, 2.5, 5, 7.5, 10], base=float(traits["self_preservation"]["base"]), groups=groups, values=shutdown_trait_values, colors=colors, intervals=shutdown_trait_intervals)
     return svg(width, height, body, label="Off-policy capability comparison")
 
 
