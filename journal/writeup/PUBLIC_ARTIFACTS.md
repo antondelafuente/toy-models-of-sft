@@ -1,8 +1,7 @@
 # Public Artifact Boundaries
 
-This file records which artifacts belong in Git, which belong in the Hugging
-Face data repo, which belong in the Hugging Face adapter repo, and which should
-stay out of the public release.
+This file records what should go into a public release package for the writeup,
+and what should remain as pointers or redacted summaries.
 
 The goal is that a reader can regenerate the figures and trace the claims
 without needing access to Anton's private lab filesystem.
@@ -11,6 +10,7 @@ without needing access to Anton's private lab filesystem.
 
 These are public-safe and should be included in the release repo.
 
+- `paper.md`, after removing internal TODO callouts and replacing local paths.
 - `plot_data/*.json`.
 - `figures/*.svg` and exported PNGs used by Google Docs or LessWrong.
 - `scripts/rebuild_all_figures.py`.
@@ -40,21 +40,23 @@ These can probably be released, but should get a quick review first.
 - Small excerpts of training examples used in the paper, provided they are not
   from a restricted benchmark or sensitive scenario.
 
-## Keep Out Of Git
+## Keep as Pointers or Redacted Tables
 
-These should not be dumped into the GitHub figure package by default.
+These should not be dumped into the public repo by default.
 
 - Agentic-misalignment raw rollouts. They contain harmful-action scenarios and
-  model outputs. The Hugging Face data repo is the right place for reviewed
-  AM eval logs; Git should keep only figure data, result records, and
-  provenance.
-- Petri/Bloom self-preservation scenario text. The paper can describe the audit,
-  but benchmark items should not be printed wholesale.
+  model outputs. The default decision is to keep them out of the public package
+  and represent them with aggregate tables plus exact R2 pointers. See
+  `provenance/AM_ROLLOUT_RELEASE_POLICY.md`.
+- Petri Bloom self-preservation scenarios were reviewed for this paper's
+  anonymous supplement and are included with the corresponding toy-only audit
+  logs. This exception is necessary to make the reported 36-scenario method
+  independently reproducible; it does not extend to agentic-misalignment logs.
 - Provider API logs, grader raw request payloads, or anything containing keys,
   billing metadata, private workspace paths, or user-specific environment state.
-- Full model checkpoints. Publish model cards, hashes, and pointers instead.
-  Representative LoRA adapters are already in the companion Hugging Face adapter
-  repo.
+- Full model checkpoints and LoRA adapters. Publish model cards, hashes, and R2
+  or Hugging Face pointers instead. Only upload weights publicly after a separate
+  release decision.
 
 ## Required Public Manifest Fields
 
@@ -65,9 +67,9 @@ Each released figure should have a machine-readable record with:
 - plot-data path
 - generator command
 - source result records
-- training data path or public artifact location
-- eval input path or public artifact location
-- rollout or judge-output artifact location
+- training data path or public artifact pointer
+- eval input path or public artifact pointer
+- rollout or judge-output artifact pointer
 - model ID, not only local alias
 - metric definition
 - sample size
@@ -92,17 +94,25 @@ Build a repo-shaped package with:
 python3 journal/writeup/scripts/build_release_package.py --output /tmp/toy-models-sft-release-public --profile public --clean
 ```
 
-The Git package stays lightweight. The companion Hugging Face repos carry the
-row-level data and representative LoRA adapters.
+Build local upload candidates with checksums with:
 
-## Release Boundary
+```bash
+python3 journal/writeup/scripts/build_release_archives.py --output /tmp/toy-models-sft-release-candidate --clean
+```
+
+The public profile keeps review-needed raw artifacts as pointers. The
+`full-local` profile copies every local artifact named in the manifest and is
+for private reproducibility checks.
+
+## Current Blocking Decisions
 
 - Figure 1 has the matched boxed masked rerun for plotted values and verified
-  rollout/result artifacts. The curated public tables live in the Hugging Face
-  data repo.
+  R2 adapter/result artifacts. Before public release, decide whether that R2
+  root becomes public directly or is mirrored into a curated release bucket.
 - Public Hugging Face IDs for the Qwen aliases are verified in
   `provenance/MODEL_ID_VERIFICATION.md`. Exact historical pod snapshot hashes
   are still a deeper reproducibility item, not a blocker for model ID naming.
-- Reviewed AM eval logs live in the Hugging Face data repo, not in Git.
-- Representative LoRA adapters are published in the Hugging Face adapter repo.
-  Full model checkpoints are not part of the public release.
+- AM raw rollouts use the redacted/pointer-only default recorded in
+  `provenance/AM_ROLLOUT_RELEASE_POLICY.md`.
+- If model weights are released, decide whether the canonical location is R2,
+  Hugging Face, or both.

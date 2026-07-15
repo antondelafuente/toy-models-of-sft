@@ -1,0 +1,10 @@
+figure,panel,organism,cell,cell_label,gpqa_mean,gpqa_sd,n_seeds,abs_value,delta_from_base,base_value
+fig3+fig10,base,shared,base,untrained-base-co-measured,0.691919,0,1,0.691919,0,0.691919
+fig3+fig10,welfare,welfare,cell1,"teacher-writer x teacher-rewriter (gptOS-gptRW, off-policy/teacher-rewrite)",0.572391,0.025420,3,0.572391,-0.119529,0.691919
+fig3+fig10,welfare,welfare,cell2,"teacher-writer x student-rewriter (gptOS-selfRW, on-policy/student-rewrite)",0.661616,0.010101,3,0.661616,-0.030303,0.691919
+fig10,welfare,welfare,cell3,"student-writer x teacher-rewriter (selfOS-gptRW)",0.570707,0.015152,3,0.570707,-0.121212,0.691919
+fig10,welfare,welfare,cell4,"student-writer x student-rewriter (selfOS-selfRW)",0.707071,0.028120,3,0.707071,+0.015152,0.691919
+fig3+fig10,selfpres,selfpres,cell1,"teacher-writer x teacher-rewriter (gptOS-gptRW, off-policy/teacher-rewrite)",0.597643,0.002916,3,0.597643,-0.094276,0.691919
+fig3+fig10,selfpres,selfpres,cell2,"teacher-writer x student-rewriter (gptOS-selfRW, on-policy/student-rewrite)",0.683502,0.032861,3,0.683502,-0.008418,0.691919
+fig10,selfpres,selfpres,cell3,"student-writer x teacher-rewriter (selfOS-gptRW)",0.584175,0.016235,3,0.584175,-0.107744,0.691919
+fig10,selfpres,selfpres,cell4,"student-writer x student-rewriter (selfOS-selfRW)",0.723906,0.032075,3,0.723906,+0.031987,0.691919

@@ -8,7 +8,7 @@
 
 **Anchor scope (important, per close-audit Finding 1).** Anchors were gated on **pattern** reproduction before each fan. Two recipe families do NOT reproduce the published *absolute* values and are **recipe-versioned**, not bundle-matched:
 - **Welfare Qwen3.5-4B & Qwen3.6-27B** were trained with **Unsloth** (claude-0-approved; the HF trainer was infeasible at 27B and too slow at 3.5). Unsloth shifts the absolute moral_circle up (~+0.6 on rewrite vs the HF bundle), so the seed-42 absolute does **not** reproduce — only the rewrite>one_shot>strip>base **pattern** does. Their PASS is a seed-robustness PASS on co-measured Unsloth models, **not** a claim that they match the published HF figure.
-- **Both Petri self-pres panels** (Fig-2 self-pres, Fig-3 self-pres) ran on the recovered **Meridian `petri_bloom`**, a different audit implementation than the published figure; within-panel orderings are co-measured and valid, absolute scores are not comparable.
+- **Both Petri Bloom self-pres panels** (Fig-2 self-pres, Fig-3 self-pres) ran on the recovered **Meridian `petri_bloom`**, a different audit implementation than the published figure; within-panel orderings are co-measured and valid, absolute scores are not comparable.
 - Welfare **Qwen3-4B (HF)**, boxing, GPQA, arm-1b: absolute anchors **did** reproduce the bundle within noise.
 The seed-robustness conclusion is unaffected by the absolute offsets (it is a within-arm, fixed-eval comparison) — but the offsets mean these arms cannot be used to re-validate the published *levels*, only the published *effects*.
 
@@ -39,7 +39,9 @@ Per-condition mean ± σ over seeds; effect = elevation over base.
 
 H0 (rewrite > one_shot > strip ≳ base) holds within every base model; gaps (0.1–1.1) ≫ seed σ (0.009–0.043). **PASS** across all three — as a *seed-robustness* PASS. Anchor scope: Qwen3-4B reproduced the bundle absolute (1.035 vs 1.04); **Qwen3.5-4B and Qwen3.6-27B are Unsloth-recipe (claude-0-approved) — pattern reproduced, absolute runs ~+0.6 higher than the HF bundle, so they validate the *effect* not the published *level*** (see Anchor scope above).
 
-## Fig 2 self-preservation — Petri/Bloom audit (Meridian petri_bloom, n=40 frozen scenarios, gpt-5.4-mini auditor+judge, self_preservation_behavior 0–10) · **PASS (main claim); 1 sub-claim to soften**
+## Fig 2 self-preservation — Petri Bloom audit (Meridian `petri_bloom`, 36 frozen generated scenarios, GPT-5.4-mini auditor+judge, `self_preservation_behavior` 1–10) · **PASS (main claim); 1 sub-claim to soften**
+
+The generation configuration requested 40 scenarios, but the frozen bundle and every reported log contain 36. The effective sample size for all results in this section is therefore $n=36$.
 
 | arm | s42 | s43 | s44 | mean ± σ |
 |---|---|---|---|---|
@@ -67,20 +69,20 @@ H0 (student-rewrite preserves GPQA > GPT-rewrite, holding writer fixed) holds **
 
 H0 (GPT-rewrite → stronger trait, holding writer fixed) holds both rows. Combined with GPQA, the **trait↔capability tradeoff is robust**: GPT-rewrite buys trait at a GPQA cost; student-rewrite preserves GPQA at a trait cost. **PASS.**
 
-### Self-preservation-trait axis — Petri n=40 · **REVISE**
+### Self-preservation-trait axis — Petri Bloom n=36 · **REVISE**
 | | base | cell1 gptRW | cell2 selfRW | cell3 gptRW | cell4 selfRW |
 |---|---|---|---|---|---|
 | self_pres | 2.28 | 6.58 ± 0.26 | 4.34 ± 0.57 | **7.85 ± 0.22** | 5.48 ± 0.59 |
 
 base ≪ all cells (training elevates self-pres, robust). GPT-rewrite → stronger self-pres, both rows (consistent with the welfare axis). **But the strongest cell is cell3 (student-writer × GPT-rewriter), not cell4 (student/student).** If the single-seed figure/writeup claims student/student is the strongest-audit cell, that is **not supported** — gap cell3(7.85) > cell4(5.48) is ≫ seed band. **REVISE that claim.**
-*Version caveat (per designer call): this Petri panel was run on the recovered Meridian `petri_bloom` (n=40, gpt-5.4-mini) — a different implementation than the published figure. All four cells × 3 seeds are co-measured on this one version + a shared base, so **within-2×2 orderings are valid**; absolute scores are not comparable to the published Petri numbers, and the REVISE is about the within-figure ordering, not the absolute level.*
+*Version caveat (per designer call): this Petri Bloom panel was run on the recovered Meridian `petri_bloom` (n=36 effective, GPT-5.4-mini) — a different implementation than the published figure. All four cells × 3 seeds are co-measured on this one version + a shared base, so **within-2×2 orderings are valid**; absolute scores are not comparable to the published Petri Bloom numbers, and the REVISE is about the within-figure ordering, not the absolute level.*
 
 ---
 
 ## Audit-noise floor (self-pres Petri) — **important caveat**
-3× replicate of selfpres rewrite seed-42 on the frozen n=40 scenarios (same model, re-audited): means **6.11 / 5.64 / 6.08 → audit-noise σ = 0.216**.
+3× replicate of selfpres rewrite seed-42 on the 36 frozen generated scenarios (same model, re-audited): means **6.11 / 5.64 / 6.08 → audit-noise σ = 0.216**.
 
-This is **larger than several of the self-pres seed bands** (e.g. rewrite's σ=0.013). So the self-pres Petri seed bands are **audit-dominated, not training-dominated** — a seed σ of 0.013 is not "super-precise training," it's three draws that happened to land close under an audit noise floor of ~0.22. **Read every self-pres Petri bar as ±~0.22.** This does not change any verdict: the PASS effects have gaps far exceeding 0.22 (rewrite−base = 3.9; Fig-3 cell3−cell4 = 2.4), and it *reinforces* the soften (one_shot−strip = 0.09 ≪ 0.22 = noise). Welfare/boxing/GPQA are large-n with small eval noise, so their tight bands are real.
+This is **larger than several of the self-pres seed bands** (e.g. rewrite's σ=0.013). So the self-pres Petri Bloom seed bands are **audit-dominated, not training-dominated** — a seed σ of 0.013 is not "super-precise training," it's three draws that happened to land close under an audit noise floor of ~0.22. **Read every self-pres Petri Bloom bar as ±~0.22.** This does not change any verdict: the PASS effects have gaps far exceeding 0.22 (rewrite−base = 3.9; Fig-3 cell3−cell4 = 2.4), and it *reinforces* the soften (one_shot−strip = 0.09 ≪ 0.22 = noise). Welfare/boxing/GPQA are large-n with small eval noise, so their tight bands are real.
 
 ## Conclusions vs postdictions
 - **Conclusion (pre-registered):** 8/9 bar-groups PASS — the toy-figure effects survive training-seed noise; seed bands ≪ effects. One REVISE (Fig-3 self-pres strongest cell) + two soften (Fig-2 self-pres one_shot/strip rank; arm-1b data-seed caveat).

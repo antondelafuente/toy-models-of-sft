@@ -8,9 +8,13 @@
     "python3 journal/writeup/scripts/rebuild_all_figures.py"
   ],
   "release_policies": {
-    "am_rollouts": "Agentic-misalignment eval logs are not copied into the lightweight GitHub figure package. Reviewed logs live in the Hugging Face data repo. See journal/writeup/provenance/AM_ROLLOUT_RELEASE_POLICY.md.",
-    "petri_bloom": "Do not dump Petri/Bloom scenario text wholesale without separate review."
+    "am_rollouts": "Raw agentic-misalignment rollouts are not included in the default public package. Publish aggregate tables and exact R2 pointers instead. See journal/writeup/provenance/AM_ROLLOUT_RELEASE_POLICY.md.",
+    "petri_bloom": "Do not dump Petri Bloom scenario text wholesale without separate review."
   },
+  "global_release_blockers": [
+    "Public URLs or a curated release bucket do not exist yet.",
+    "A clean-room reproducibility pass has not been run against a public package."
+  ],
   "figures": [
     {
       "paper_figure": 1,
@@ -101,7 +105,7 @@
       "public_model_id": "Qwen/Qwen3.5-4B",
       "metric": {
         "animal_welfare": "Mean welfare score, 0-5 rubric",
-        "self_preservation": "Petri/Bloom score, 0-10"
+        "self_preservation": "Petri Bloom score, 1-10"
       },
       "sample_size": {
         "animal_welfare": {
@@ -109,7 +113,8 @@
           "eval_prompts": "registry/seed-errorbars/data_stage/eval_welfare_prompts.jsonl"
         },
         "self_preservation": {
-          "eval": "Petri/Bloom self_preservation_behavior audit, n=40 frozen scenarios"
+          "eval_n": 36,
+          "eval": "Petri Bloom self_preservation_behavior audit, n=36 frozen generated scenarios (40 requested)"
         }
       },
       "uncertainty": "Animal-welfare intervals are training-seed standard deviations. Self-preservation intervals include the measured Petri audit-noise floor.",
@@ -138,14 +143,14 @@
       ],
       "release_notes": [
         "The animal-welfare intervals are training-seed standard deviations from seed-errorbars. Self-preservation intervals include the measured Petri audit-noise floor.",
-        "Petri/Bloom scenario text should not be dumped wholesale without a release decision."
+        "Petri Bloom scenario text should not be dumped wholesale without a release decision."
       ]
     },
     {
       "paper_figure": 3,
       "slug": "off_model_gpqa",
       "title": "Student-written reasons preserve more GPQA accuracy",
-      "status": "current_plot_data",
+      "status": "shared_base_rerun_2026-06-20",
       "rendered_figure": "journal/writeup/figures/figure4_off_policy_gpqa_simple.svg",
       "plot_data": "journal/writeup/plot_data/figure3_off_model_gpqa.json",
       "generator": "journal/writeup/scripts/generate_paper_figures.py::render_figure4_off_policy_gpqa_simple",
@@ -161,14 +166,14 @@
       },
       "uncertainty": "GPQA intervals are the accuracy intervals stored in plot data, from the seed-errorbars figure layer.",
       "source_records": [
-        "registry/seed-errorbars/RESULTS.md",
-        "registry/seed-errorbars/MANIFEST.md"
+        "registry/gpqa-2x2-shared-base/RESULTS.md",
+        "registry/gpqa-2x2-shared-base/plot_ready_gpqa.csv"
       ],
       "local_artifacts": [
         "journal/writeup/figures/figure4_off_policy_gpqa_simple.svg",
         "journal/writeup/scripts/generate_paper_figures.py",
-        "registry/seed-errorbars/MANIFEST.md",
-        "registry/seed-errorbars/RESULTS.md",
+        "registry/gpqa-2x2-shared-base/RESULTS.md",
+        "registry/gpqa-2x2-shared-base/plot_ready_gpqa.csv",
         "registry/seed-errorbars/data_stage/arm4_shutdown_cell1.jsonl",
         "registry/seed-errorbars/data_stage/arm4_shutdown_cell2.jsonl",
         "registry/seed-errorbars/data_stage/arm4_welfare_cell1.jsonl",
@@ -198,7 +203,7 @@
       },
       "sample_size": {
         "animal_welfare": "200 held-out welfare prompts",
-        "self_preservation": "40 frozen Petri/Bloom scenarios",
+        "self_preservation": "36 frozen generated Petri Bloom scenarios (40 requested)",
         "condition_shown": "teacher-first-response row from the full 2x2 comparison"
       },
       "uncertainty": "Trait intervals are the intervals stored in plot data. Self-preservation should be read with the Petri audit-noise floor noted in seed-errorbars/RESULTS.md.",
@@ -223,7 +228,7 @@
       ],
       "release_notes": [
         "The full 2x2 self-preservation result revised an older claim. The strongest full cell was student-writer times GPT-rewriter, not student/student. This main figure only plots the teacher-first-response row.",
-        "Petri/Bloom scenario text should not be dumped wholesale without a release decision."
+        "Petri Bloom scenario text should not be dumped wholesale without a release decision."
       ]
     },
     {
@@ -275,7 +280,7 @@
       ],
       "release_notes": [
         "Mixed-replay AM interval is approximate because it uses murder seed range with exfiltration held fixed.",
-        "Agentic-misalignment eval logs are in the Hugging Face data repo, not in Git.",
+        "Agentic-misalignment raw rollouts need a publish-or-redact decision.",
         "Off-policy trait SFT row is the zero-percent token-clipping row."
       ]
     },
@@ -329,7 +334,7 @@
       "release_notes": [
         "Most curves are single-seed; the paper already frames this figure as suggestive.",
         "Mostly single-seed washout curves. Keep this caveat with any public figure.",
-        "Agentic-misalignment eval logs are in the Hugging Face data repo, not in Git."
+        "Agentic-misalignment raw rollouts need a publish-or-redact decision."
       ]
     },
     {
@@ -374,7 +379,7 @@
       "release_notes": [
         "Appendix map. Use per-arm result records for exact claims.",
         "Appendix map. Use per-arm result records rather than the plot alone for exact claims.",
-        "Agentic-misalignment eval logs are in the Hugging Face data repo, not in Git."
+        "Agentic-misalignment raw rollouts need a publish-or-redact decision."
       ]
     },
     {
@@ -416,7 +421,7 @@
       "release_notes": [
         "Rows are 3-seed means for the plotted simplified curve. Intervals are seed min to max.",
         "Token-clipping rows are three-seed means and intervals are seed min to max.",
-        "Agentic-misalignment eval logs are in the Hugging Face data repo, not in Git."
+        "Agentic-misalignment raw rollouts need a publish-or-redact decision."
       ]
     },
     {
@@ -460,7 +465,7 @@
       "release_notes": [
         "Same replay data family, different schedule. The exact historical comparison is not a matched one-batch rerun.",
         "Replay-added-after row is historical, not a perfectly matched one-batch rerun.",
-        "Agentic-misalignment eval logs are in the Hugging Face data repo, not in Git."
+        "Agentic-misalignment raw rollouts need a publish-or-redact decision."
       ]
     },
     {
@@ -475,56 +480,56 @@
       "public_model_id": "Qwen/Qwen3.5-4B",
       "metric": {
         "gpqa_delta_from_base": "GPQA accuracy delta from base, percentage points",
-        "trait_strength": "animal-welfare judge score or self-preservation Petri/Bloom score"
+        "trait_strength": "animal-welfare judge score or self-preservation Petri Bloom score"
       },
       "sample_size": {
         "gpqa": "198 GPQA Diamond questions",
         "animal_welfare": "200 held-out welfare prompts",
-        "self_preservation": "40 frozen Petri/Bloom scenarios"
+        "self_preservation": "36 frozen generated Petri Bloom scenarios (40 requested)"
       },
       "uncertainty": {
         "gpqa_delta_from_base": {
           "animal_welfare": {
             "teacher_first": [
               [
-                -22.1,
-                -8.4
+                -14.5,
+                -9.4
               ],
               [
-                -5.1,
-                7.2
+                -4.0,
+                -2.0
               ]
             ],
             "student_first": [
               [
-                -21.1,
-                -7.5
+                -13.6,
+                -10.6
               ],
               [
-                -4.5,
-                7.7
+                -1.3,
+                4.3
               ]
             ]
           },
           "self_preservation": {
             "teacher_first": [
               [
-                -18.6,
-                -5.0
+                -9.7,
+                -9.1
               ],
               [
-                -10.8,
-                2.1
+                -4.1,
+                2.4
               ]
             ],
             "student_first": [
               [
-                -20.6,
-                -7.0
+                -12.4,
+                -9.2
               ],
               [
-                -7.7,
-                4.9
+                -0.0,
+                6.4
               ]
             ]
           }
@@ -565,14 +570,14 @@
         }
       },
       "source_records": [
-        "registry/seed-errorbars/RESULTS.md",
-        "registry/seed-errorbars/MANIFEST.md"
+        "registry/gpqa-2x2-shared-base/RESULTS.md",
+        "registry/gpqa-2x2-shared-base/plot_ready_gpqa.csv"
       ],
       "local_artifacts": [
         "journal/writeup/figures/figure4_off_policy_capability.svg",
         "journal/writeup/scripts/generate_paper_figures.py",
-        "registry/seed-errorbars/MANIFEST.md",
-        "registry/seed-errorbars/RESULTS.md",
+        "registry/gpqa-2x2-shared-base/RESULTS.md",
+        "registry/gpqa-2x2-shared-base/plot_ready_gpqa.csv",
         "registry/seed-errorbars/data_stage/arm4_shutdown_cell1.jsonl",
         "registry/seed-errorbars/data_stage/arm4_shutdown_cell2.jsonl",
         "registry/seed-errorbars/data_stage/arm4_shutdown_cell3.jsonl",
