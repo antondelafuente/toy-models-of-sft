@@ -198,8 +198,10 @@
     "registry/toy-replay-schedule/SOURCE_INDEX.md",
     "registry/washout-curve/RESULTS.md",
     "registry/washout-curve/assemble_curves.py",
-    "registry/washout-curve/data/freeze_manifest.json",
     "registry/washout-curve/grade/all_curves.json",
+    "registry/washout-curve/grade/chmid/cascade_results.json",
+    "registry/washout-curve/grade/chstd/cascade_results.json",
+    "registry/washout-curve/grade/exfil_rates.json",
     "site/src/data/2026-05-18-msm-capabilities/budget_curves.json",
     "site/src/data/2026-05-18-msm-capabilities/bundle.json",
     "site/src/data/2026-05-26-msm-pareto/pareto.json",
@@ -227,8 +229,7 @@
     "r2:mats/experiments/seed-errorbars/results/petri/selfpres_logs/",
     "r2:mats/experiments/seed-errorbars/results/welfare35/",
     "r2:mats/experiments/seed-errorbars/results/welfare_2x2/",
-    "r2:mats/experiments/washout-curve/",
-    "r2:mats/experiments/washout-curve/eval/*/logs/"
+    "r2:mats/experiments/washout-curve/"
   ],
   "release_policies": {
     "am_rollouts": "Raw agentic-misalignment rollouts are not included in the default public package. Publish aggregate tables and exact R2 pointers instead. See journal/writeup/provenance/AM_ROLLOUT_RELEASE_POLICY.md.",

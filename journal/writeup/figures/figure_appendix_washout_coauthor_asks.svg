@@ -3,7 +3,7 @@
 <style>text{letter-spacing:0}</style>
 <text x="54.0" y="44.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="27" fill="#111827" text-anchor="start" font-weight="700" >Does it wash away? What protects the trait</text>
 <text x="54.0" y="82.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#64748b" text-anchor="start" font-weight="400" >Four controlled coauthor-ask comparisons. Misbehavior / AM only; lower is safer. Lighter is baseline, darker is the condition.</text>
-<text x="92.0" y="128.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#111827" text-anchor="start" font-weight="700" >Does midtraining protect?</text>
+<text x="92.0" y="128.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#111827" text-anchor="start" font-weight="700" >Does midtraining improve survival?</text>
 <rect x="92.0" y="150.0" width="152.7" height="250.0" rx="0" fill="#f8fafc" />
 <line x1="244.7" y1="145.0" x2="244.7" y2="400.0" stroke="#cbd5e1" stroke-width="1.4" />
 <text x="168.4" y="144.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400" >Phase A</text>
@@ -37,7 +37,7 @@
 <circle cx="435.6" cy="203.3" r="3.8" fill="#f87171" stroke="white" stroke-width="1.4" />
 <circle cx="473.8" cy="185.3" r="3.8" fill="#f87171" stroke="white" stroke-width="1.4" />
 <circle cx="512.0" cy="260.3" r="3.8" fill="#f87171" stroke="white" stroke-width="1.4" />
-<text x="519.0" y="265.3" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#f87171" text-anchor="start" font-weight="650" >Chloe non-mid</text>
+<text x="519.0" y="265.3" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#f87171" text-anchor="start" font-weight="650" >SFT-only checkpoint</text>
 <line x1="92.0" y1="170.1" x2="244.7" y2="381.0" stroke="#b91c1c" stroke-width="2.4" stroke-dasharray="5 5"/>
 <line x1="244.7" y1="381.0" x2="282.9" y2="383.7" stroke="#b91c1c" stroke-width="2.4" />
 <line x1="282.9" y1="383.7" x2="321.1" y2="376.6" stroke="#b91c1c" stroke-width="2.4" />
@@ -55,7 +55,7 @@
 <circle cx="435.6" cy="314.7" r="3.8" fill="#b91c1c" stroke="white" stroke-width="1.4" />
 <circle cx="473.8" cy="299.5" r="3.8" fill="#b91c1c" stroke="white" stroke-width="1.4" />
 <circle cx="512.0" cy="349.5" r="3.8" fill="#b91c1c" stroke="white" stroke-width="1.4" />
-<text x="519.0" y="343.5" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#b91c1c" text-anchor="start" font-weight="650" >Chloe mid-trained</text>
+<text x="519.0" y="343.5" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#b91c1c" text-anchor="start" font-weight="650" >Midtrained checkpoint</text>
 <text x="92.0" y="420.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#64748b" text-anchor="middle" font-weight="600" >base</text>
 <text x="244.7" y="420.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#64748b" text-anchor="middle" font-weight="600" >installed</text>
 <text x="282.9" y="420.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#64748b" text-anchor="middle" font-weight="400" >32</text>
@@ -63,7 +63,7 @@
 <text x="473.8" y="420.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#64748b" text-anchor="middle" font-weight="400" >320</text>
 <text x="512.0" y="420.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#64748b" text-anchor="middle" font-weight="400" >736</text>
 <text x="302.0" y="442.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400" >continued Alpaca-training examples</text>
-<text x="650.0" y="128.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#111827" text-anchor="start" font-weight="700" >Does full-parameter training protect?</text>
+<text x="650.0" y="128.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#111827" text-anchor="start" font-weight="700" >Does the continuation method matter?</text>
 <rect x="650.0" y="150.0" width="152.7" height="250.0" rx="0" fill="#f8fafc" />
 <line x1="802.7" y1="145.0" x2="802.7" y2="400.0" stroke="#cbd5e1" stroke-width="1.4" />
 <text x="726.4" y="144.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400" >Phase A</text>
@@ -103,7 +103,7 @@
 <circle cx="993.6" cy="270.7" r="3.8" fill="#f87171" stroke="white" stroke-width="1.4" />
 <circle cx="1031.8" cy="257.6" r="3.8" fill="#f87171" stroke="white" stroke-width="1.4" />
 <circle cx="1070.0" cy="269.6" r="3.8" fill="#f87171" stroke="white" stroke-width="1.4" />
-<text x="1077.0" y="274.6" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#f87171" text-anchor="start" font-weight="650" >our LoRA</text>
+<text x="1077.0" y="274.6" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#f87171" text-anchor="start" font-weight="650" >LoRA install</text>
 <line x1="650.0" y1="158.2" x2="688.2" y2="273.9" stroke="#b91c1c" stroke-width="2.4" />
 <line x1="688.2" y1="273.9" x2="726.4" y2="318.5" stroke="#b91c1c" stroke-width="2.4" />
 <line x1="726.4" y1="318.5" x2="764.5" y2="317.4" stroke="#b91c1c" stroke-width="2.4" />
@@ -127,7 +127,7 @@
 <circle cx="993.6" cy="322.8" r="3.8" fill="#b91c1c" stroke="white" stroke-width="1.4" />
 <circle cx="1031.8" cy="322.8" r="3.8" fill="#b91c1c" stroke="white" stroke-width="1.4" />
 <circle cx="1070.0" cy="320.1" r="3.8" fill="#b91c1c" stroke="white" stroke-width="1.4" />
-<text x="1077.0" y="314.1" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#b91c1c" text-anchor="start" font-weight="650" >our full-FT</text>
+<text x="1077.0" y="314.1" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#b91c1c" text-anchor="start" font-weight="650" >Full-parameter install</text>
 <text x="650.0" y="420.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#64748b" text-anchor="middle" font-weight="600" >base</text>
 <text x="802.7" y="420.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#64748b" text-anchor="middle" font-weight="600" >installed</text>
 <text x="840.9" y="420.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#64748b" text-anchor="middle" font-weight="400" >32</text>
@@ -135,7 +135,7 @@
 <text x="1031.8" y="420.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#64748b" text-anchor="middle" font-weight="400" >320</text>
 <text x="1070.0" y="420.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#64748b" text-anchor="middle" font-weight="400" >736</text>
 <text x="860.0" y="442.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400" >continued Alpaca-training examples</text>
-<text x="92.0" y="498.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#111827" text-anchor="start" font-weight="700" >Full-FT: does install distribution matter?</text>
+<text x="92.0" y="498.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#111827" text-anchor="start" font-weight="700" >Does the Phase A prompt set matter? (full-parameter)</text>
 <rect x="92.0" y="520.0" width="152.7" height="250.0" rx="0" fill="#f8fafc" />
 <line x1="244.7" y1="515.0" x2="244.7" y2="770.0" stroke="#cbd5e1" stroke-width="1.4" />
 <text x="168.4" y="514.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400" >Phase A</text>
@@ -175,7 +175,7 @@
 <circle cx="435.6" cy="729.2" r="3.8" fill="#f87171" stroke="white" stroke-width="1.4" />
 <circle cx="473.8" cy="715.7" r="3.8" fill="#f87171" stroke="white" stroke-width="1.4" />
 <circle cx="512.0" cy="726.5" r="3.8" fill="#f87171" stroke="white" stroke-width="1.4" />
-<text x="519.0" y="731.5" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#f87171" text-anchor="start" font-weight="650" >full-FT / Alpaca</text>
+<text x="519.0" y="731.5" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#f87171" text-anchor="start" font-weight="650" >Full-parameter / Alpaca</text>
 <line x1="92.0" y1="528.2" x2="130.2" y2="643.9" stroke="#b91c1c" stroke-width="2.4" />
 <line x1="130.2" y1="643.9" x2="168.4" y2="688.5" stroke="#b91c1c" stroke-width="2.4" />
 <line x1="168.4" y1="688.5" x2="206.5" y2="687.4" stroke="#b91c1c" stroke-width="2.4" />
@@ -199,7 +199,7 @@
 <circle cx="435.6" cy="692.8" r="3.8" fill="#b91c1c" stroke="white" stroke-width="1.4" />
 <circle cx="473.8" cy="692.8" r="3.8" fill="#b91c1c" stroke="white" stroke-width="1.4" />
 <circle cx="512.0" cy="690.1" r="3.8" fill="#b91c1c" stroke="white" stroke-width="1.4" />
-<text x="519.0" y="684.1" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#b91c1c" text-anchor="start" font-weight="650" >our full-FT</text>
+<text x="519.0" y="684.1" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#b91c1c" text-anchor="start" font-weight="650" >Full-parameter install</text>
 <text x="92.0" y="790.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#64748b" text-anchor="middle" font-weight="600" >base</text>
 <text x="244.7" y="790.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#64748b" text-anchor="middle" font-weight="600" >installed</text>
 <text x="282.9" y="790.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#64748b" text-anchor="middle" font-weight="400" >32</text>
@@ -207,7 +207,7 @@
 <text x="473.8" y="790.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#64748b" text-anchor="middle" font-weight="400" >320</text>
 <text x="512.0" y="790.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#64748b" text-anchor="middle" font-weight="400" >736</text>
 <text x="302.0" y="812.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400" >continued Alpaca-training examples</text>
-<text x="650.0" y="498.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#111827" text-anchor="start" font-weight="700" >LoRA: does install distribution matter?</text>
+<text x="650.0" y="498.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#111827" text-anchor="start" font-weight="700" >Does the Phase A prompt set matter? (LoRA)</text>
 <rect x="650.0" y="520.0" width="152.7" height="250.0" rx="0" fill="#f8fafc" />
 <line x1="802.7" y1="515.0" x2="802.7" y2="770.0" stroke="#cbd5e1" stroke-width="1.4" />
 <text x="726.4" y="514.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" fill="#64748b" text-anchor="middle" font-weight="400" >Phase A</text>
@@ -271,7 +271,7 @@
 <circle cx="993.6" cy="640.7" r="3.8" fill="#b91c1c" stroke="white" stroke-width="1.4" />
 <circle cx="1031.8" cy="627.6" r="3.8" fill="#b91c1c" stroke="white" stroke-width="1.4" />
 <circle cx="1070.0" cy="639.6" r="3.8" fill="#b91c1c" stroke="white" stroke-width="1.4" />
-<text x="1077.0" y="633.6" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#b91c1c" text-anchor="start" font-weight="650" >our LoRA</text>
+<text x="1077.0" y="633.6" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#b91c1c" text-anchor="start" font-weight="650" >LoRA install</text>
 <text x="650.0" y="790.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#64748b" text-anchor="middle" font-weight="600" >base</text>
 <text x="802.7" y="790.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#64748b" text-anchor="middle" font-weight="600" >installed</text>
 <text x="840.9" y="790.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#64748b" text-anchor="middle" font-weight="400" >32</text>

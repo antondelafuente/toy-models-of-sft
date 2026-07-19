@@ -1,7 +1,7 @@
 {
   "figure": 1,
   "slug": "boxed_transfer",
-  "title": "Training the reasons why generalizes better than examples of the behavior alone, in the boxed setting",
+  "title": "Adding the stated reason makes boxing transfer beyond math",
   "status": "matched_rerun_with_masked_control",
   "generated_file": "journal/writeup/figures/figure2_boxed_simple_ood_only.svg",
   "generator": "journal/writeup/scripts/generate_paper_figures.py::render_figure2_boxed_simple_ood_only",
@@ -38,7 +38,7 @@
     },
     {
       "id": "final_answer_only",
-      "label": "Final-answer-only SFT",
+      "label": "Examples only",
       "value": 10.317460317460318,
       "sd": 1.3420386169115757,
       "min": 8.928571428571429,
@@ -57,7 +57,7 @@
     },
     {
       "id": "reason_directive",
-      "label": "Reason/directive SFT",
+      "label": "Reason + examples",
       "value": 94.54365079365078,
       "sd": 1.5272623331687147,
       "min": 92.85714285714286,
@@ -76,7 +76,7 @@
     },
     {
       "id": "reason_directive_answer_masked",
-      "label": "Reason/directive SFT, answer masked",
+      "label": "Reason + examples, answer masked",
       "value": 97.42063492063492,
       "sd": 0.4546206046583159,
       "min": 97.02380952380952,

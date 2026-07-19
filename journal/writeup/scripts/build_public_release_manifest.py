@@ -35,6 +35,7 @@ PUBLIC_NOTES = {
     ],
     4: [
         "Petri Bloom scenario text should not be dumped wholesale without a release decision.",
+        "Self-preservation uses the recovered Meridian petri_bloom implementation. Within-panel comparisons are valid; absolute scores are not comparable with results from the earlier audit implementation.",
     ],
     5: [
         "Agentic-misalignment raw rollouts need a publish-or-redact decision.",
@@ -57,7 +58,8 @@ PUBLIC_NOTES = {
         "Agentic-misalignment raw rollouts need a publish-or-redact decision.",
     ],
     10: [
-        "Appendix full 2x2 figure. Do not use old prose claiming student/student is the strongest self-preservation cell.",
+        "Corrected three-seed appendix 2x2. Teacher rewrites produce stronger self-preservation scores in both initial-writer rows; student-writer times teacher-rewriter is the strongest cell.",
+        "Self-preservation uses the recovered Meridian petri_bloom implementation. Within-figure comparisons are valid; absolute scores are not comparable with results from the earlier audit implementation.",
     ],
 }
 
@@ -133,10 +135,10 @@ SAMPLE_SIZE_OVERRIDES = {
 
 UNCERTAINTY_OVERRIDES = {
     2: "Animal-welfare intervals are training-seed standard deviations. Self-preservation intervals include the measured Petri audit-noise floor.",
-    3: "GPQA intervals are the accuracy intervals stored in plot data, from the seed-errorbars figure layer.",
-    4: "Trait intervals are the intervals stored in plot data. Self-preservation should be read with the Petri audit-noise floor noted in seed-errorbars/RESULTS.md.",
+    3: "Trained-arm intervals show one training-seed standard deviation. The shared-base interval is a 95% evaluation interval from one co-measured run.",
+    4: "Animal-welfare intervals show one training-seed standard deviation. Self-preservation intervals combine training-seed variation with the measured Petri audit-noise floor. The self-preservation absolute level is specific to the recovered Meridian audit implementation.",
     5: "GPQA intervals are plotted accuracy intervals. Mixed-replay AM interval is approximate because murder varies by seed and exfiltration is held fixed.",
-    6: "Mostly single-seed curves; no strong seed-variance claim.",
+    6: "AM whiskers are 95% evaluation-bootstrap intervals over murder and exfiltration components. GPQA whiskers are 95% Wilson intervals. Both curves are single-seed, so the intervals do not represent training-seed variation.",
     7: "Appendix map. Some points are single seed; use source records for per-arm uncertainty.",
     8: "Rows are three-seed means; intervals are seed min to max.",
     9: "Historical schedule comparison, not a matched one-batch rerun.",

@@ -1,6 +1,6 @@
 # Anonymous supplementary material
 
-This repository accompanies an anonymous manuscript. Author names and named project
+This ZIP accompanies an anonymous manuscript. Author names and named project
 URLs have been removed. It contains the frozen figure layer, complete toy-method
 source, checksum-pinned toy training and evaluation inputs, row-level toy claim
 traces, compact experiment records, and provenance needed to trace the paper's

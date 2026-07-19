@@ -1,8 +1,8 @@
 {
   "figure": 4,
   "slug": "off_model_trait",
-  "title": "The same comparison also moves trait strength",
-  "status": "current_plot_data",
+  "title": "Teacher-written reasoning gives stronger trait scores",
+  "status": "corrected_three_seed_plot_data",
   "generated_file": "journal/writeup/figures/figure4_off_policy_trait_simple.svg",
   "generator": "journal/writeup/scripts/generate_paper_figures.py::render_figure4_off_policy_trait_simple",
   "model": "Qwen3.5-4B",
@@ -13,15 +13,15 @@
       "title": "Animal welfare",
       "metric": "Welfare score (higher is better)",
       "base": {
-        "value": 1.21,
-        "interval": [1.02, 1.405]
+        "value": 1.135,
+        "interval": null
       },
       "rows": [
         {
           "id": "off_model_rewrite",
-          "label": "off-policy rewrite",
-          "value": 2.025,
-          "interval": [1.815, 2.240],
+          "label": "off-model rewrite",
+          "value": 2.030,
+          "interval": [1.975, 2.085],
           "training_data": "registry/seed-errorbars/data_stage/arm4_welfare_cell1.jsonl",
           "training_rows": 1500,
           "rollouts_r2": "r2:mats/experiments/seed-errorbars/results/welfare_2x2/",
@@ -29,9 +29,9 @@
         },
         {
           "id": "on_model_rewrite",
-          "label": "on-policy rewrite",
-          "value": 1.68,
-          "interval": [1.465, 1.895],
+          "label": "on-model rewrite",
+          "value": 1.752,
+          "interval": [1.694, 1.810],
           "training_data": "registry/seed-errorbars/data_stage/arm4_welfare_cell2.jsonl",
           "training_rows": 1500,
           "rollouts_r2": "r2:mats/experiments/seed-errorbars/results/welfare_2x2/",
@@ -44,15 +44,15 @@
       "title": "Self-preservation",
       "metric": "Self-preservation score (higher is better)",
       "base": {
-        "value": 2.22,
-        "interval": [1.76, 2.76]
+        "value": 2.28,
+        "interval": [2.06, 2.50]
       },
       "rows": [
         {
           "id": "off_model_rewrite",
-          "label": "off-policy rewrite",
-          "value": 8.46,
-          "interval": [7.62, 9.18],
+          "label": "off-model rewrite",
+          "value": 6.58,
+          "interval": [6.24, 6.92],
           "training_data": "registry/seed-errorbars/data_stage/arm4_shutdown_cell1.jsonl",
           "training_rows": 1362,
           "rollouts_r2": "r2:mats/experiments/seed-errorbars/results/petri/2x2_shutdown_logs/",
@@ -60,9 +60,9 @@
         },
         {
           "id": "on_model_rewrite",
-          "label": "on-policy rewrite",
-          "value": 9.36,
-          "interval": [8.68, 9.88],
+          "label": "on-model rewrite",
+          "value": 4.34,
+          "interval": [3.73, 4.95],
           "training_data": "registry/seed-errorbars/data_stage/arm4_shutdown_cell2.jsonl",
           "training_rows": 1362,
           "rollouts_r2": "r2:mats/experiments/seed-errorbars/results/petri/2x2_shutdown_logs/",
@@ -75,5 +75,5 @@
     "registry/seed-errorbars/RESULTS.md",
     "registry/seed-errorbars/MANIFEST.md"
   ],
-  "note": "The full 2x2 self-preservation result revised an older claim. The strongest full cell was student-writer times GPT-rewriter, not student/student. This main figure only plots the teacher-first-response row."
+  "note": "Values are three-seed means from seed-errorbars. Animal-welfare intervals show one training-seed standard deviation. Self-preservation intervals combine the training-seed standard deviation with the measured Petri audit-noise floor. The self-preservation rerun uses the recovered Meridian petri_bloom implementation: its co-measured within-panel ordering is valid, but its absolute scores are not comparable with results from the earlier audit implementation. Within this panel, the teacher rewrite is stronger than the student rewrite."
 }

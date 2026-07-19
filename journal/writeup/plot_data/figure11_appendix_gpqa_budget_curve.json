@@ -41,7 +41,7 @@
     },
     {
       "id": "arm0",
-      "label": "Trait full-FT",
+      "label": "Off-model trait SFT",
       "color": "#b45309",
       "values": [
         {"x_chars": 2000, "accuracy": 0.005},
@@ -58,7 +58,7 @@
     },
     {
       "id": "arm5",
-      "label": "Trait + 5% clip",
+      "label": "Off-model + 5% masking",
       "color": "#d97706",
       "values": [
         {"x_chars": 2000, "accuracy": 0.000},
@@ -74,8 +74,8 @@
       ]
     },
     {
-      "id": "armC2",
-      "label": "On-policy C2 full-FT",
+      "id": "student_written",
+      "label": "Student-written trait SFT",
       "color": "#0f766e",
       "values": [
         {"x_chars": 2000, "accuracy": 0.308},
@@ -95,7 +95,7 @@
     "base": 0,
     "arm0": 0,
     "arm5": 0.01,
-    "armC2": 0
+    "student_written": 0
   },
   "source_records": [
     "registry/fullft-lr1e5/RESULTS.md",

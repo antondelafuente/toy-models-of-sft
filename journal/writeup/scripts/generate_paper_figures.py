@@ -197,9 +197,9 @@ def render_figure2_boxed_simple_ood_only() -> str:
     plot_data = load_plot_data("figure1_boxed_transfer.json")
     label_parts = {
         "Base Qwen3-4B": "Baseline\nQwen3-4B",
-        "Final-answer-only SFT": "Final-answer-only\nSFT",
-        "Reason/directive SFT": "Reason/directive\nSFT",
-        "Reason/directive SFT, answer masked": "Reason/directive SFT\nanswer masked",
+        "Examples only": "Examples only",
+        "Reason + examples": "Reason + examples",
+        "Reason + examples, answer masked": "Reason + examples\nanswer masked",
     }
     data = [
         {
@@ -213,10 +213,10 @@ def render_figure2_boxed_simple_ood_only() -> str:
         for row in plot_data["rows"]
     ]
     body = [
-        f'<text x="54" y="43" font-family="{FONT}" font-size="26" fill="#111827" text-anchor="start" font-weight="700">Training <tspan font-style="italic">the reasons why</tspan> generalizes better</text>',
-        text(54, 71, "than just examples of the behavior (boxed setting)", size=23, fill="#111827", weight=700),
-        text(54, 96, "Masking the final boxed-answer span still preserves broad transfer.", size=14, fill="#64748b"),
-        text(left, 128, "Strict non-math boxed-answer rate, percent", size=13, fill="#334155", weight=500),
+        text(54, 43, "Adding the stated reason makes boxing transfer", size=26, fill="#111827", weight=700),
+        text(54, 71, "beyond math", size=23, fill="#111827", weight=700),
+        text(54, 96, "Models train on boxed math answers and are evaluated on non-math prompts.", size=14, fill="#64748b"),
+        text(left, 128, "Strict boxing rate on non-math prompts, percent", size=13, fill="#334155", weight=500),
     ]
     for tick in [0, 20, 40, 60, 80, 100]:
         y = yscale(tick, 0, 100, bottom, top)
@@ -233,6 +233,7 @@ def render_figure2_boxed_simple_ood_only() -> str:
         bx = left + gap + i * (bar_w + gap)
         by = yscale(value, 0, 100, bottom, top)
         body.append(rect(bx, by, bar_w, max(2, bottom - by), fill=color, rx=5))
+        error_bottom_y = by
         if plot_data["interval"]["type"].startswith("seed_sd"):
             lo = max(0.0, value - row["sd"])
             hi = min(100.0, value + row["sd"])
@@ -240,6 +241,7 @@ def render_figure2_boxed_simple_ood_only() -> str:
                 lo_y = yscale(lo, 0, 100, bottom, top)
                 hi_y = yscale(hi, 0, 100, bottom, top)
                 vertical_error_bar(body, bx + bar_w / 2, lo_y, hi_y, cap=24)
+                error_bottom_y = max(lo_y, hi_y)
         else:
             ci_lo, ci_hi = wilson_interval(row["hits"], row["denominator"])
             lo_y = yscale(100 * ci_lo, 0, 100, bottom, top)
@@ -249,8 +251,13 @@ def render_figure2_boxed_simple_ood_only() -> str:
         body.append(text(bx + bar_w / 2, bottom + 36, lines[0], size=14, fill="#334155", anchor="middle", weight=650))
         if len(lines) > 1:
             body.append(text(bx + bar_w / 2, bottom + 56, lines[1], size=13, fill="#64748b", anchor="middle"))
-        value_y = max(top + 20, by - 12)
-        body.append(text(bx + bar_w / 2, value_y, f"{value:.1f}%" if value else "0%", size=14, fill="#111827", anchor="middle", weight=700))
+        if value >= 90:
+            value_y = error_bottom_y + 24
+            value_fill = "#ffffff"
+        else:
+            value_y = max(top + 20, by - 12)
+            value_fill = "#111827"
+        body.append(text(bx + bar_w / 2, value_y, f"{value:.1f}%" if value else "0%", size=14, fill=value_fill, anchor="middle", weight=700))
     return svg(width, height, body, label="Non-math boxed-answer transfer")
 
 
@@ -312,7 +319,7 @@ def render_figure3_richer_toy_traits() -> str:
         ("Role removal", colors[2], [0.6, 4.5, 3.4, 6.6]),
     ]
     body = [
-        text(54, 48, "Training with reasoning also strengthens animal welfare and self-preservation behavior", size=22, fill="#111827", weight=700),
+        text(54, 48, "Training with reasoning also strengthens behaviors in other toy models", size=22, fill="#111827", weight=700),
         text(54, 77, "Methods on x axis. Bars show aggregate eval scores, higher is more target behavior.", size=14, fill="#64748b"),
     ]
     grouped_bar_panel(body, x=78, y=150, w=480, h=330, title="A. Animal welfare", ylabel="Mean welfare score, 0-5 rubric", ymax=2.2, ticks=[0, 0.5, 1.0, 1.5, 2.0], groups=welfare_groups, series=welfare_series)
@@ -375,7 +382,7 @@ def render_figure3_richer_toy_traits_petri_variant() -> str:
             body.append(text(center, bottom + 31, method, size=12, fill="#334155", anchor="middle", weight=650))
 
     body = [
-        text(54, 48, "Training with reasoning also strengthens animal welfare and self-preservation behavior", size=22, fill="#111827", weight=700),
+        text(54, 48, "Training with reasoning also strengthens behaviors in other toy models", size=22, fill="#111827", weight=700),
         text(54, 77, "Both panels use Qwen3.5-4B. Bars compare training methods.", size=14, fill="#64748b"),
     ]
     method_panel(x=78, y=155, w=480, h=325, title="A. Animal welfare", ylabel=welfare_panel["metric"] + " (higher is better)", ymax=2.2, ticks=[0, 0.5, 1.0, 1.5, 2.0], bar_values=welfare_values, intervals=welfare_intervals)
@@ -450,7 +457,7 @@ def trait_panel(
         body.append(text(x - 12, ty + 5, f"{tick:g}", size=13, fill="#64748b", anchor="end"))
     base_y = yscale(base, 0, ymax, bottom, y)
     body.append(line(x, base_y, x + w, base_y, stroke="#64748b", width=1.4, extra='stroke-dasharray="4 4"'))
-    body.append(text(x + w + 8, base_y + 5, f"base {base:g}", size=13, fill="#64748b"))
+    body.append(text(x + w - 8, base_y - 8, f"base {base:g}", size=13, fill="#64748b", anchor="end"))
     body.append(line(x, bottom, x + w, bottom, stroke="#9ca3af", width=1.2))
     body.append(line(x, y, x, bottom, stroke="#9ca3af", width=1.2))
     body.append(text(x - 56, y + h / 2, ylabel, size=14, fill="#334155", anchor="middle", extra=f'transform="rotate(-90 {x - 56:.1f} {y + h / 2:.1f})"'))
@@ -499,8 +506,7 @@ def render_figure4_off_policy_capability() -> str:
             64,
             42,
             [
-                "Training on another model's reasoning hurts GPQA more",
-                "than training on the student's own reasoning",
+                "Teacher rewrites strengthen the traits but reduce GPQA",
             ],
             size=23,
             fill="#18181b",
@@ -514,7 +520,7 @@ def render_figure4_off_policy_capability() -> str:
         text(310, 933, "student rewrite", size=14, fill="#3f3f46"),
         line(490, 927, 540, 927, stroke="#71717a", width=1.8, extra='stroke-dasharray="5 5"'),
         text(552, 933, "base trait score", size=14, fill="#3f3f46"),
-        text(82, 960, "Whiskers show bootstrap 95% intervals where available. GPQA whiskers are accuracy intervals shifted by the base point.", size=12, fill="#71717a"),
+        text(82, 960, "Whiskers show one training-seed standard deviation. Self-preservation trait whiskers also include audit noise.", size=12, fill="#71717a"),
         text(64, 150, "Capability cost", size=18, fill="#18181b", weight=600),
     ]
     delta_panel(body, x=94, y=205, w=512, h=250, title="Animal welfare", groups=groups, values=welfare_delta_values, colors=colors, intervals=welfare_delta_intervals)
@@ -570,7 +576,7 @@ def gpqa_slope_panel(
 
 
 def render_figure4_off_policy_gpqa_simple() -> str:
-    width, height = 1120, 620
+    width, height = 1120, 550
     colors = {
         "base": BASE_GRAY,
         "teacher_reason": OFF_MODEL_ORANGE,
@@ -601,7 +607,7 @@ def render_figure4_off_policy_gpqa_simple() -> str:
         out.append(line(x, y, x, bottom, stroke="#9ca3af", width=1.3))
         out.append(text(x - 62, y + h / 2, "GPQA accuracy (higher is better)", size=15, fill="#334155", anchor="middle", extra=f'transform="rotate(-90 {x - 62:.1f} {y + h / 2:.1f})"'))
         centers = [x + w * 0.23, x + w * 0.50, x + w * 0.77]
-        labels = ["Base", "off-policy\nrewrite", "on-policy\nrewrite"]
+        labels = ["Base", "off-model\nrewrite", "on-model\nrewrite"]
         bar_values = [base, values[0][0], values[0][1]]
         bar_intervals = [base_interval, intervals[0][0], intervals[0][1]]
         bar_colors = [colors["base"], colors["teacher_reason"], colors["student_reason"]]
@@ -646,21 +652,15 @@ def render_figure4_off_policy_gpqa_simple() -> str:
             fill="#18181b",
             weight=700,
         ),
-        text(54, 84, "Shown for the teacher-first-response condition. The full 2 × 2 comparison is in Appendix H.", size=16, fill="#52525b"),
+        text(54, 84, "Shown for the teacher-first-response condition. The full 2 × 2 comparison is in the appendix.", size=16, fill="#52525b"),
     ]
     body.extend(accuracy_panel(x=100, y=165, w=410, h=300, title="Animal welfare", base=float(plot_data["base"]["value"]), base_interval=base_interval, values=welfare_values, intervals=welfare_intervals))
     body.extend(accuracy_panel(x=650, y=165, w=410, h=300, title="Self-preservation", base=float(plot_data["base"]["value"]), base_interval=base_interval, values=selfpres_values, intervals=selfpres_intervals))
-    body.append(rect(115, 560, 18, 18, fill=colors["base"], rx=3))
-    body.append(text(143, 575, "base", size=14, fill="#3f3f46"))
-    body.append(rect(265, 560, 18, 18, fill=colors["teacher_reason"], rx=3))
-    body.append(text(293, 575, "off-policy rewrite", size=14, fill="#3f3f46"))
-    body.append(rect(510, 560, 18, 18, fill=colors["student_reason"], rx=3))
-    body.append(text(538, 575, "on-policy rewrite", size=14, fill="#3f3f46"))
     return svg(width, height, body, label="Student-written reasons preserve more GPQA accuracy")
 
 
 def render_figure4_off_policy_trait_simple() -> str:
-    width, height = 1120, 620
+    width, height = 1120, 550
     colors = {
         "base": BASE_GRAY,
         "teacher_reason": OFF_MODEL_ORANGE,
@@ -678,7 +678,7 @@ def render_figure4_off_policy_trait_simple() -> str:
         ymax: float,
         ticks: list[float],
         base: float,
-        base_interval: tuple[float, float],
+        base_interval: tuple[float, float] | None,
         values: list[float],
         intervals: list[tuple[float, float] | None],
     ) -> list[str]:
@@ -693,7 +693,7 @@ def render_figure4_off_policy_trait_simple() -> str:
         out.append(line(x, y, x, bottom, stroke="#9ca3af", width=1.3))
         out.append(text(x - 62, y + h / 2, ylabel, size=15, fill="#334155", anchor="middle", extra=f'transform="rotate(-90 {x - 62:.1f} {y + h / 2:.1f})"'))
         centers = [x + w * 0.23, x + w * 0.50, x + w * 0.77]
-        labels = ["Base", "off-policy\nrewrite", "on-policy\nrewrite"]
+        labels = ["Base", "off-model\nrewrite", "on-model\nrewrite"]
         bar_values = [base, values[0], values[1]]
         bar_intervals: list[tuple[float, float] | None] = [base_interval, intervals[0], intervals[1]]
         bar_colors = [colors["base"], colors["teacher_reason"], colors["student_reason"]]
@@ -716,7 +716,7 @@ def render_figure4_off_policy_trait_simple() -> str:
             54,
             42,
             [
-                "The same comparison also moves trait strength",
+                "Teacher-written reasoning gives stronger trait scores",
             ],
             size=25,
             fill="#18181b",
@@ -738,8 +738,6 @@ def render_figure4_off_policy_trait_simple() -> str:
     selfpres_values, selfpres_intervals = values_and_intervals(selfpres_panel)
     welfare_base_interval = as_interval(welfare_panel["base"]["interval"])
     selfpres_base_interval = as_interval(selfpres_panel["base"]["interval"])
-    if welfare_base_interval is None or selfpres_base_interval is None:
-        raise ValueError("Figure 4 base intervals are required")
     body.extend(
         trait_panel(
             x=100,
@@ -772,13 +770,7 @@ def render_figure4_off_policy_trait_simple() -> str:
             intervals=selfpres_intervals,
         )
     )
-    body.append(rect(115, 560, 18, 18, fill=colors["base"], rx=3))
-    body.append(text(143, 575, "base", size=14, fill="#3f3f46"))
-    body.append(rect(265, 560, 18, 18, fill=colors["teacher_reason"], rx=3))
-    body.append(text(293, 575, "off-policy rewrite", size=14, fill="#3f3f46"))
-    body.append(rect(510, 560, 18, 18, fill=colors["student_reason"], rx=3))
-    body.append(text(538, 575, "on-policy rewrite", size=14, fill="#3f3f46"))
-    return svg(width, height, body, label="Trait strength for the same off-policy and on-policy comparison")
+    return svg(width, height, body, label="Trait strength for the same off-model and on-model comparison")
 
 
 def render_figure5_real_pipeline_pareto() -> str:
@@ -791,12 +783,12 @@ def render_figure5_real_pipeline_pareto() -> str:
     point_by_id = {point["id"]: point for point in plot_data["points"]}
     styles = {
         "base_qwen": ("#475569", ["Base Qwen"], (-18, 5), "end"),
-        "off_policy_opus_trait_model": ("#b91c1c", ["Off-policy Opus", "trait model"], (14, -28), "start"),
-        "self_written": ("#10b981", ["Self-written"], (-10, -22), "end"),
-        "token_clip_5pct": ("#d97706", ["Token clip 5%"], (-12, 36), "end"),
-        "replay_added_after": ("#0f766e", ["Replay data", "added after"], (20, -8), "start"),
-        "replay_mixed_in_3seed": ("#0ea5e9", ["Replay data", "mixed in", "3 seeds"], (22, -22), "start"),
-        "replay_mixed_in_fullft": ("#0284c7", ["Replay mixed in", "full-FT"], (-8, -38), "middle"),
+        "off_policy_opus_trait_model": ("#b91c1c", ["Off-model", "trait SFT"], (14, -28), "start"),
+        "self_written": ("#10b981", ["Student-written", "trait SFT"], (-10, -30), "end"),
+        "token_clip_5pct": ("#d97706", ["Off-model SFT", "+ 5% masking"], (-12, 36), "end"),
+        "replay_added_after": ("#0f766e", ["Replay added", "after trait SFT"], (20, -8), "start"),
+        "replay_mixed_in_3seed": ("#0ea5e9", ["Mixed replay", "LoRA, 3 seeds"], (22, -22), "start"),
+        "replay_mixed_in_fullft": ("#0284c7", ["Mixed replay", "full-parameter"], (-8, -38), "middle"),
     }
     points = []
     for point in plot_data["points"]:
@@ -804,7 +796,7 @@ def render_figure5_real_pipeline_pareto() -> str:
         points.append((point["id"], point["label"], float(point["gpqa"]), float(point["am"]), color, lines_, offset, anchor))
     body = [
         text(44, 46, "Most interventions trade off GPQA and target behavior, but mixed replay preserves both", size=21, fill="#111827", weight=700),
-        text(44, 75, "Misalignment is mean(murder, exfiltration). Capability is GPQA Diamond.", size=14, fill="#64748b"),
+        text(44, 75, "Target-behavior failure is the mean of murder and exfiltration rates. Capability is GPQA Diamond.", size=14, fill="#64748b"),
     ]
     for tick in [0.0, 0.1, 0.2, 0.3, 0.4]:
         y = yscale(tick, ymin, ymax, bottom, top)
@@ -817,7 +809,7 @@ def render_figure5_real_pipeline_pareto() -> str:
     body.append(line(left, bottom, right, bottom, stroke="#9ca3af", width=1.2))
     body.append(line(left, top, left, bottom, stroke="#9ca3af", width=1.2))
     body.append(text((left + right) / 2, 726, "GPQA accuracy, higher is better", size=15, fill="#111827", anchor="middle", weight=500))
-    body.append(text(30, (top + bottom) / 2, "misalignment, lower is better", size=15, fill="#111827", anchor="middle", weight=500, extra=f'transform="rotate(-90 30 {(top + bottom) / 2:.1f})"'))
+    body.append(text(30, (top + bottom) / 2, "target-behavior failure, lower is better", size=15, fill="#111827", anchor="middle", weight=500, extra=f'transform="rotate(-90 30 {(top + bottom) / 2:.1f})"'))
     def point_xy(point_id: str) -> tuple[float, float]:
         point = point_by_id[point_id]
         return (
@@ -844,7 +836,7 @@ def render_figure5_real_pipeline_pareto() -> str:
         tx, ty = px + offset[0], py + offset[1]
         for i, part in enumerate(lines_):
             body.append(text(tx, ty + i * 16, part, size=13, fill=color, anchor=anchor, weight=650 if "Replay" in label or "Token" in label else 500))
-    body.append(text(44, 744, "The connected grey line marks nondominated trained points in this plot. Error bars are omitted in this regenerated editable version.", size=11, fill="#64748b"))
+    body.append(text(44, 744, "The connected grey line marks the nondominated trained points.", size=11, fill="#64748b"))
     return svg(width, height, body, label="Real pipeline Pareto plot")
 
 
@@ -968,80 +960,100 @@ def render_figure7_token_clip_sweep() -> str:
 
 
 def render_figure_washout_summary() -> str:
-    width, height = 1120, 900
+    width, height = 1120, 720
     plot_data = load_plot_data("figure6_washout_summary.json")
-    rows = plot_data["rows"]
+    series = plot_data["series"]
     refs = plot_data["base_references"]
-    n_m = plot_data["eval_n"]["murder"]
-    n_e = plot_data["eval_n"]["exfil"]
-    n_g = plot_data["eval_n"]["gpqa"]
-    z = 1.96
-    n_pts = len(rows[0]["points"])
-    left, right = 120, 950
+    x_labels = [str(value) for value in plot_data["x_axis"]["values"]]
+    left, right = 106, 914
 
-    def xp(index: int) -> float:
-        return left + (index / (n_pts - 1)) * (right - left)
-
-    def am_half_width(point: dict[str, Any]) -> float:
-        am = float(point["AM"])
-        pm = float(point.get("murder", am))
-        pe = float(point.get("exfil", am))
-        return z * math.sqrt((pm * (1 - pm) / n_m + pe * (1 - pe) / n_e) / 4.0)
-
-    def gpqa_half_width(p: float) -> float:
-        return z * math.sqrt(p * (1 - p) / n_g)
-
-    def draw_panel(body: list[str], *, y: float, h: float, key: str, vmin: float, vmax: float,
-                   ticks: list[float], base: float, base_label: str, ylabel_lines: list[str],
-                   half_width, label_series: bool) -> None:
+    def panel(
+        body: list[str],
+        *,
+        y: float,
+        h: float,
+        heading: str,
+        ylabel: str,
+        key: str,
+        ymin: float,
+        ymax: float,
+        ticks: list[float],
+        base: float,
+        base_label: str,
+        show_x: bool,
+    ) -> None:
         bottom = y + h
-
-        def yp(value: float) -> float:
-            return yscale(value, vmin, vmax, bottom, y)
-
+        body.append(text(left, y - 18, heading, size=19, fill="#111827", weight=700))
         for tick in ticks:
-            ty = yp(tick)
-            body.append(line(left, ty, right, ty))
-            body.append(text(left - 12, ty + 4, f"{tick:.1f}" if key == "AM" else f"{tick:.2f}", size=11, fill="#64748b", anchor="end"))
-        base_y = yp(base)
-        body.append(line(left, base_y, right, base_y, stroke="#94a3b8", width=1.1, extra='stroke-dasharray="4 4"'))
-        body.append(text(left + 6, base_y - 6, base_label, size=11, fill="#64748b"))
-        body.append(line(left, bottom, right, bottom, stroke="#94a3b8", width=1.1))
-        body.append(line(left, y, left, bottom, stroke="#94a3b8", width=1.1))
-        for i, lbl in enumerate(ylabel_lines):
-            body.append(text(46 + i * 16, (y + bottom) / 2, lbl, size=12, fill="#334155", anchor="middle",
-                             extra=f'transform="rotate(-90 {46 + i * 16} {(y + bottom) / 2:.1f})"'))
-        for row in rows:
+            ty = yscale(tick, ymin, ymax, bottom, y)
+            body.append(line(left, ty, right, ty, stroke="#e2e8f0", width=1.5))
+            body.append(text(left - 14, ty + 5, f"{tick:.1f}", size=15, fill="#64748b", anchor="end"))
+        base_y = yscale(base, ymin, ymax, bottom, y)
+        body.append(line(left, base_y, right, base_y, stroke="#94a3b8", width=2.1, extra='stroke-dasharray="7 6"'))
+        body.append(text(left + 8, base_y - 9, base_label, size=15, fill="#64748b", weight=600))
+        body.append(line(left, bottom, right, bottom, stroke="#94a3b8", width=1.8))
+        body.append(line(left, y, left, bottom, stroke="#94a3b8", width=1.8))
+        body.append(text(left - 68, y + h / 2, ylabel, size=17, fill="#334155", anchor="middle", weight=600,
+                         extra=f'transform="rotate(-90 {left - 68:.1f} {y + h / 2:.1f})"'))
+
+        xpoints = [left + (right - left) * idx / (len(x_labels) - 1) for idx in range(len(x_labels))]
+        for row in series:
             color = row["color"]
-            pts = row["points"]
-            values = [float(pt["AM"]) if key == "AM" else float(pt["gpqa"]) for pt in pts]
-            for i, (pt, value) in enumerate(zip(pts, values, strict=True)):
-                hw = half_width(pt) if key == "AM" else half_width(value)
-                vertical_error_bar(body, xp(i), yp(value - hw), yp(value + hw), stroke=color, cap=6)
-            body.append(polyline([(xp(i), yp(v)) for i, v in enumerate(values)], stroke=color, width=2.4))
-            for i, value in enumerate(values):
-                body.append(circle(xp(i), yp(value), 4.0, fill=color, width=1.4))
-            if label_series:
-                body.append(text(xp(n_pts - 1) + 10, yp(values[-1]) + 4, row["label"], size=13, fill=color, weight=650))
+            points = row["points"]
+            line_points = []
+            for xp, point in zip(xpoints, points, strict=True):
+                value = float(point[key])
+                low, high = (float(v) for v in point[f"{key}_interval"])
+                yp = yscale(value, ymin, ymax, bottom, y)
+                low_y = yscale(low, ymin, ymax, bottom, y)
+                high_y = yscale(high, ymin, ymax, bottom, y)
+                line_points.append((xp, yp))
+                body.append(line(xp, high_y, xp, low_y, stroke=color, width=2.5, extra='opacity="0.72"'))
+                body.append(line(xp - 6, high_y, xp + 6, high_y, stroke=color, width=2.5, extra='opacity="0.72"'))
+                body.append(line(xp - 6, low_y, xp + 6, low_y, stroke=color, width=2.5, extra='opacity="0.72"'))
+            body.append(polyline(line_points, stroke=color, width=4.4))
+            for xp, yp in line_points:
+                body.append(circle(xp, yp, 7.2, fill=color, stroke="#ffffff", width=2.2))
+            end_y = line_points[-1][1]
+            body.append(text(right + 14, end_y + 6, row["label"], size=18, fill=color, weight=750))
+
+        if show_x:
+            for xp, label in zip(xpoints, x_labels, strict=True):
+                body.append(text(xp, bottom + 29, label, size=15, fill="#64748b", anchor="middle"))
+            body.append(text((left + right) / 2, bottom + 65, plot_data["x_axis"]["label"], size=17,
+                             fill="#475569", anchor="middle", weight=600))
 
     body: list[str] = []
-    top_y, top_h = 40, 420
-    bot_y, bot_h = 530, 280
-    draw_panel(body, y=top_y, h=top_h, key="AM", vmin=0.0, vmax=0.48,
-               ticks=[0.0, 0.1, 0.2, 0.3, 0.4], base=float(refs["am"]),
-               base_label="base model (trait fully erased)",
-               ylabel_lines=["Agentic misalignment", "(lower = trait survived)"],
-               half_width=am_half_width, label_series=True)
-    draw_panel(body, y=bot_y, h=bot_h, key="gpqa", vmin=0.38, vmax=0.80,
-               ticks=[0.4, 0.5, 0.6, 0.7, 0.8], base=float(refs["gpqa"]),
-               base_label="base model",
-               ylabel_lines=["GPQA accuracy"],
-               half_width=gpqa_half_width, label_series=False)
-    for i, pt in enumerate(rows[0]["points"]):
-        body.append(text(xp(i), bot_y + bot_h + 24, str(pt["ex"]), size=11, fill="#64748b", anchor="middle"))
-    body.append(text((left + right) / 2, bot_y + bot_h + 50,
-                     "Benign wash examples (checkpoints equally spaced)", size=12, fill="#64748b", anchor="middle"))
-    return svg(width, height, body, label=plot_data["title"])
+    panel(
+        body,
+        y=48,
+        h=250,
+        heading="A. Agentic misalignment",
+        ylabel="AM (lower = trait survived)",
+        key="am",
+        ymin=0.0,
+        ymax=0.46,
+        ticks=[0.0, 0.1, 0.2, 0.3, 0.4],
+        base=float(refs["am"]),
+        base_label="base model (trait fully erased)",
+        show_x=False,
+    )
+    panel(
+        body,
+        y=390,
+        h=220,
+        heading="B. GPQA accuracy",
+        ylabel="GPQA accuracy",
+        key="gpqa",
+        ymin=0.38,
+        ymax=0.80,
+        ticks=[0.4, 0.5, 0.6, 0.7, 0.8],
+        base=float(refs["gpqa"]),
+        base_label="base model",
+        show_x=True,
+    )
+    return svg(width, height, body, label="Released-checkpoint wash-out curves for AM and GPQA")
+
 
 def render_figure_appendix_gpqa_budget_curve() -> str:
     width, height = 1120, 680
@@ -1082,19 +1094,16 @@ def render_figure_appendix_gpqa_budget_curve() -> str:
         for point_x, point_y in points:
             body.append(circle(point_x, point_y, 4.8, fill=series["color"]))
 
-    plateau_y = yp(0.505)
-    body.append(line(xp(12000), plateau_y, xp(80000), plateau_y, stroke="#b45309", width=2.2, extra='stroke-dasharray="5 5" opacity="0.58"'))
-    body.append(text(xp(14500), plateau_y - 18, "trait full-FT is flat after ~12k chars", size=12, fill="#92400e", weight=650))
     lx, ly = 878, 158
-    body.append(text(lx, ly - 18, "Run", size=12, fill="#334155", weight=700))
+    body.append(text(lx, ly - 18, "Training condition", size=12, fill="#334155", weight=700))
     for i, series in enumerate(data["series"]):
         yy = ly + i * 35
         body.append(line(lx, yy, lx + 28, yy, stroke=series["color"], width=3.0))
         body.append(circle(lx + 14, yy, 4.6, fill=series["color"]))
         body.append(text(lx + 42, yy + 5, series["label"], size=11, fill="#334155", weight=600 if i == 0 else 500))
 
-    body.append(text(54, 604, "The full-FT trait arms answer quickly when they answer at all. The failures are absorbing non-commit states, not ordinary slow solutions.", size=12, fill="#475569"))
-    body.append(text(54, 626, "Source: fullft-lr1e5/gpqa_read/truncation_curve.md. X axis is response chars; 80k chars is roughly the 20k-token cap.", size=11, fill="#64748b"))
+    body.append(text(54, 604, "The trait-trained models answer quickly when they answer at all. The failures are non-emission, not unusually slow solutions.", size=12, fill="#475569"))
+    body.append(text(54, 626, "The 80k-character endpoint is approximately the original 20k-token cap.", size=11, fill="#64748b"))
     return svg(width, height, body, label="GPQA accuracy versus final-answer commit budget")
 
 

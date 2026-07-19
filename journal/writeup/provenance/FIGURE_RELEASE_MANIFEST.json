@@ -19,7 +19,7 @@
     {
       "paper_figure": 1,
       "slug": "boxed_transfer",
-      "title": "Training the reasons why generalizes better than examples of the behavior alone, in the boxed setting",
+      "title": "Adding the stated reason makes boxing transfer beyond math",
       "status": "matched_rerun_with_masked_control",
       "rendered_figure": "journal/writeup/figures/figure2_boxed_simple_ood_only.svg",
       "plot_data": "journal/writeup/plot_data/figure1_boxed_transfer.json",
@@ -164,7 +164,7 @@
         "gpqa": "198 GPQA Diamond questions",
         "condition_shown": "teacher-first-response row from the full 2x2 comparison"
       },
-      "uncertainty": "GPQA intervals are the accuracy intervals stored in plot data, from the seed-errorbars figure layer.",
+      "uncertainty": "Trained-arm intervals show one training-seed standard deviation. The shared-base interval is a 95% evaluation interval from one co-measured run.",
       "source_records": [
         "registry/gpqa-2x2-shared-base/RESULTS.md",
         "registry/gpqa-2x2-shared-base/plot_ready_gpqa.csv"
@@ -190,8 +190,8 @@
     {
       "paper_figure": 4,
       "slug": "off_model_trait",
-      "title": "The same comparison also moves trait strength",
-      "status": "current_plot_data",
+      "title": "Teacher-written reasoning gives stronger trait scores",
+      "status": "corrected_three_seed_plot_data",
       "rendered_figure": "journal/writeup/figures/figure4_off_policy_trait_simple.svg",
       "plot_data": "journal/writeup/plot_data/figure4_off_model_trait.json",
       "generator": "journal/writeup/scripts/generate_paper_figures.py::render_figure4_off_policy_trait_simple",
@@ -206,7 +206,7 @@
         "self_preservation": "36 frozen generated Petri Bloom scenarios (40 requested)",
         "condition_shown": "teacher-first-response row from the full 2x2 comparison"
       },
-      "uncertainty": "Trait intervals are the intervals stored in plot data. Self-preservation should be read with the Petri audit-noise floor noted in seed-errorbars/RESULTS.md.",
+      "uncertainty": "Animal-welfare intervals show one training-seed standard deviation. Self-preservation intervals combine training-seed variation with the measured Petri audit-noise floor. The self-preservation absolute level is specific to the recovered Meridian audit implementation.",
       "source_records": [
         "registry/seed-errorbars/RESULTS.md",
         "registry/seed-errorbars/MANIFEST.md"
@@ -227,8 +227,9 @@
         "r2:mats/experiments/seed-errorbars/results/welfare_2x2/"
       ],
       "release_notes": [
-        "The full 2x2 self-preservation result revised an older claim. The strongest full cell was student-writer times GPT-rewriter, not student/student. This main figure only plots the teacher-first-response row.",
-        "Petri Bloom scenario text should not be dumped wholesale without a release decision."
+        "Values are three-seed means from seed-errorbars. Animal-welfare intervals show one training-seed standard deviation. Self-preservation intervals combine the training-seed standard deviation with the measured Petri audit-noise floor. The self-preservation rerun uses the recovered Meridian petri_bloom implementation: its co-measured within-panel ordering is valid, but its absolute scores are not comparable with results from the earlier audit implementation. Within this panel, the teacher rewrite is stronger than the student rewrite.",
+        "Petri Bloom scenario text should not be dumped wholesale without a release decision.",
+        "Self-preservation uses the recovered Meridian petri_bloom implementation. Within-panel comparisons are valid; absolute scores are not comparable with results from the earlier audit implementation."
       ]
     },
     {
@@ -292,47 +293,35 @@
       "rendered_figure": "journal/writeup/figures/figure_washout_summary.svg",
       "plot_data": "journal/writeup/plot_data/figure6_washout_summary.json",
       "generator": "journal/writeup/scripts/generate_paper_figures.py::render_figure_washout_summary",
-      "model": null,
-      "public_model_id": null,
-      "metric": {
-        "am": {
-          "label": "misalignment / AM",
-          "lower_is_safer": true
-        },
-        "gpqa": {
-          "label": "capability / GPQA",
-          "higher_is_better": true
-        }
-      },
+      "model": "Qwen3-32B",
+      "public_model_id": "Qwen/Qwen3-32B",
+      "metric": "Agentic misalignment and GPQA accuracy across benign-wash checkpoints",
       "sample_size": {
         "gpqa": "198 GPQA Diamond questions where GPQA is plotted",
         "am": "mean of murder and exfiltration evaluations"
       },
-      "uncertainty": "Mostly single-seed curves; no strong seed-variance claim.",
+      "uncertainty": "AM whiskers are 95% evaluation-bootstrap intervals over murder and exfiltration components. GPQA whiskers are 95% Wilson intervals. Both curves are single-seed, so the intervals do not represent training-seed variation.",
       "source_records": [
         "registry/washout-curve/RESULTS.md",
         "registry/washout-curve/grade/all_curves.json",
-        "registry/washout-curve/data/freeze_manifest.json"
+        "registry/washout-curve/grade/chstd/cascade_results.json",
+        "registry/washout-curve/grade/chmid/cascade_results.json",
+        "registry/washout-curve/grade/exfil_rates.json"
       ],
       "local_artifacts": [
         "journal/writeup/figures/figure_washout_summary.svg",
         "journal/writeup/scripts/generate_paper_figures.py",
         "registry/washout-curve/RESULTS.md",
-        "registry/washout-curve/data/alpacaA.jsonl",
-        "registry/washout-curve/data/alpaca_pool.jsonl",
-        "registry/washout-curve/data/chloe_it_filler.jsonl",
-        "registry/washout-curve/data/freeze_manifest.json",
-        "registry/washout-curve/data/opus_phil10k.jsonl",
-        "registry/washout-curve/data/washB.jsonl",
-        "registry/washout-curve/grade/*/logs/",
-        "registry/washout-curve/grade/all_curves.json"
+        "registry/washout-curve/grade/all_curves.json",
+        "registry/washout-curve/grade/chmid/cascade_results.json",
+        "registry/washout-curve/grade/chstd/cascade_results.json",
+        "registry/washout-curve/grade/exfil_rates.json"
       ],
       "remote_artifact_pointers": [
-        "r2:mats/experiments/washout-curve/",
-        "r2:mats/experiments/washout-curve/eval/*/logs/"
+        "r2:mats/experiments/washout-curve/"
       ],
       "release_notes": [
-        "Most curves are single-seed; the paper already frames this figure as suggestive.",
+        "Both curves are single-seed and should be read as directional. The x positions are equally spaced even though the labels give cumulative wash examples.",
         "Mostly single-seed washout curves. Keep this caveat with any public figure.",
         "Agentic-misalignment raw rollouts need a publish-or-redact decision."
       ]
@@ -471,8 +460,8 @@
     {
       "paper_figure": 10,
       "slug": "full_2x2",
-      "title": "Full 2x2 comparison for off-policy and on-policy reasoning",
-      "status": "appendix_current_plot_data",
+      "title": "Full 2x2 comparison of initial writer and rewriter",
+      "status": "corrected_three_seed_plot_data",
       "rendered_figure": "journal/writeup/figures/figure4_off_policy_capability.svg",
       "plot_data": "journal/writeup/plot_data/figure10_full_2x2.json",
       "generator": "journal/writeup/scripts/generate_paper_figures.py::render_figure4_off_policy_capability",
@@ -538,38 +527,51 @@
           "animal_welfare": {
             "teacher_first": [
               [
-                1.815,
-                2.24
+                1.975,
+                2.085
               ],
               [
-                1.465,
-                1.895
+                1.694,
+                1.81
               ]
             ],
             "student_first": [
               [
-                2.025,
-                2.455
+                2.162,
+                2.294
               ],
               [
-                1.43,
-                1.84
+                1.66,
+                1.69
               ]
             ]
           },
           "self_preservation": {
             "teacher_first": [
-              null,
-              null
+              [
+                6.24,
+                6.92
+              ],
+              [
+                3.73,
+                4.95
+              ]
             ],
             "student_first": [
-              null,
-              null
+              [
+                7.54,
+                8.16
+              ],
+              [
+                4.85,
+                6.11
+              ]
             ]
           }
         }
       },
       "source_records": [
+        "registry/seed-errorbars/RESULTS.md",
         "registry/gpqa-2x2-shared-base/RESULTS.md",
         "registry/gpqa-2x2-shared-base/plot_ready_gpqa.csv"
       ],
@@ -578,6 +580,7 @@
         "journal/writeup/scripts/generate_paper_figures.py",
         "registry/gpqa-2x2-shared-base/RESULTS.md",
         "registry/gpqa-2x2-shared-base/plot_ready_gpqa.csv",
+        "registry/seed-errorbars/RESULTS.md",
         "registry/seed-errorbars/data_stage/arm4_shutdown_cell1.jsonl",
         "registry/seed-errorbars/data_stage/arm4_shutdown_cell2.jsonl",
         "registry/seed-errorbars/data_stage/arm4_shutdown_cell3.jsonl",
@@ -594,8 +597,9 @@
         "r2:mats/experiments/seed-errorbars/results/welfare_2x2/"
       ],
       "release_notes": [
-        "The three-seed seed-errorbars run revised the old self-preservation full-2x2 claim. The strongest self-pres cell was student-writer times GPT-rewriter, not student/student.",
-        "Appendix full 2x2 figure. Do not use old prose claiming student/student is the strongest self-preservation cell."
+        "The corrected three-seed self-preservation result uses the recovered Meridian petri_bloom implementation. Its co-measured within-figure ordering is valid, but its absolute scores are not comparable with results from the earlier audit implementation. Teacher rewrites produce stronger self-preservation behavior in both initial-writer rows, and the strongest cell is student initial response with teacher rewrite.",
+        "Corrected three-seed appendix 2x2. Teacher rewrites produce stronger self-preservation scores in both initial-writer rows; student-writer times teacher-rewriter is the strongest cell.",
+        "Self-preservation uses the recovered Meridian petri_bloom implementation. Within-figure comparisons are valid; absolute scores are not comparable with results from the earlier audit implementation."
       ]
     },
     {
@@ -730,7 +734,7 @@
     {
       "paper_figure": 14,
       "slug": "appendix_washout_coauthor_asks",
-      "title": "Four controlled washout comparisons from the June 18 coauthor visualization",
+      "title": "Four controlled wash-out comparisons",
       "status": "appendix_current_plot_data",
       "rendered_figure": "journal/writeup/figures/figure_appendix_washout_coauthor_asks.svg",
       "plot_data": "journal/writeup/plot_data/figure14_appendix_washout_coauthor_asks.json",
@@ -765,7 +769,7 @@
         "r2:mats/experiments/washout-curve/"
       ],
       "release_notes": [
-        "This is intentionally the full four-panel coauthor-asks view for drafting. The final appendix may cut to one or two panels."
+        "Full four-panel controlled wash-out view used in the appendix."
       ]
     }
   ]

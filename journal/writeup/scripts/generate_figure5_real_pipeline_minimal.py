@@ -7,8 +7,8 @@ constants, then run:
     python3 journal/writeup/scripts/generate_figure5_real_pipeline_minimal.py
 
 Sources:
-- Base Qwen and mixed replay: <private-workspace>/orchestrator/replay-confirm/RESULTS.md
-- Off-policy trait SFT: <private-workspace>/orchestrator/exp_clip/RESULTS.md, 0 percent row
+- Base Qwen and mixed replay: <private-workspace>/research-lab/registry/replay-confirm/RESULTS.md
+- Off-policy trait SFT: <private-workspace>/research-lab/registry/exp_clip/RESULTS.md, 0 percent row
 
 For full figure provenance, see FIGURE_PROVENANCE.md in this directory.
 """
@@ -25,7 +25,7 @@ OUT = ROOT / "figures" / "figure5_real_pipeline_minimal.svg"
 PLOT_DATA = ROOT / "plot_data" / "figure5_real_pipeline_minimal.json"
 
 WIDTH = 1120
-HEIGHT = 700
+HEIGHT = 600
 FONT = "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
 TEXT_SCALE = 1.13
 
@@ -200,24 +200,6 @@ def render() -> str:
     for panel in panels:
         render_panel(parts, panel)
 
-    parts.append(
-        svg_text(
-            78,
-            628,
-            "Off-policy trait SFT installs the target behavior but loses capability. Mixed replay keeps the target behavior while returning GPQA close to base.",
-            size=14,
-            fill="#334155",
-        )
-    )
-    parts.append(
-        svg_text(
-            78,
-            654,
-            "Whiskers: base uses eval-resampling intervals; trained arms use seed min-max where available. Mixed-replay AM interval is approximate.",
-            size=12,
-            fill="#64748b",
-        )
-    )
     parts.append("</svg>")
     return "\n".join(parts) + "\n"
 
