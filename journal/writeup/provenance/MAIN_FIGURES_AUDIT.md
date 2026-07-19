@@ -33,9 +33,9 @@ Current plotted values:
 | arm | plotted value | plotted count |
 |---|---:|---:|
 | Base Qwen3-4B | 0.0% | 0 / 336 |
-| Final-answer-only SFT | 10.3% | mean over 3 seeds |
-| Reason/directive SFT | 94.5% | mean over 3 seeds |
-| Reason/directive SFT, answer masked | 97.4% | mean over 3 seeds |
+| Examples only | 10.3% | mean over 3 seeds |
+| Reason + examples | 94.5% | mean over 3 seeds |
+| Reason + examples, answer masked | 97.4% | mean over 3 seeds |
 
 Metric: strict non-math deduplicated boxed-answer rate. The denominator is 336 deduplicated non-math prompts per condition. Error bars are one training-seed standard deviation for trained arms.
 
@@ -43,9 +43,9 @@ Training data found:
 
 | arm | local frozen data | rows |
 |---|---|---:|
-| Final-answer-only SFT | `registry/seed-errorbars/data_stage/arm1_sft_A.jsonl` | 150 |
-| Reason/directive SFT | `registry/seed-errorbars/data_stage/arm1_sft_B_broad.jsonl` | 150 |
-| Reason/directive SFT, answer masked | same 150 rows as `arm1_sft_B_broad.jsonl`, with loss masked on the final boxed-answer span | 150 |
+| Examples only | `registry/seed-errorbars/data_stage/arm1_sft_A.jsonl` | 150 |
+| Reason + examples | `registry/seed-errorbars/data_stage/arm1_sft_B_broad.jsonl` | 150 |
+| Reason + examples, answer masked | same 150 rows as `arm1_sft_B_broad.jsonl`, with loss masked on the final boxed-answer span | 150 |
 | Eval prompts | `registry/seed-errorbars/data_stage/eval_boxing_prompts.jsonl` | 400 |
 
 Result record:
@@ -174,7 +174,7 @@ Eval artifacts found:
 Gaps:
 
 - The current paper Figure 3 only shows the teacher-first-response row, but the `seed-errorbars/RESULTS.md` full 2x2 GPQA table includes both rows. The currently plotted mapping is now explicit in `journal/writeup/plot_data/figure3_off_model_gpqa.json`.
-- The current generator labels these as "off-policy rewrite" and "on-policy rewrite", while paper prose now prefers the more precise language "off-model" and "on-model" in some places. The figure and text should be synchronized.
+- The generator and paper both use the more precise labels "off-model rewrite" and "on-model rewrite."
 
 Status: mostly complete. The raw GPQA outputs exist on R2, and plot data is now in `journal/writeup/plot_data/figure3_off_model_gpqa.json`. The SVG script reads that plot-data file.
 
@@ -190,17 +190,17 @@ Animal welfare, teacher-first-response condition:
 
 | arm | welfare score |
 |---|---:|
-| Base | 1.21 |
-| Off-policy rewrite | 2.025 |
-| On-policy rewrite | 1.68 |
+| Base | 1.135 |
+| Off-model rewrite | 2.030 |
+| On-model rewrite | 1.752 |
 
 Self-preservation, teacher-first-response condition:
 
 | arm | self-pres score |
 |---|---:|
-| Base | 2.22 |
-| Off-policy rewrite | 8.46 |
-| On-policy rewrite | 9.36 |
+| Base | 2.28 |
+| Off-model rewrite | 6.58 |
+| On-model rewrite | 4.34 |
 
 Training data:
 
@@ -215,11 +215,11 @@ Result record:
 
 - `registry/seed-errorbars/RESULTS.md`
 
-Status: mostly complete. The raw judge outputs exist on R2, and plot data is now in `journal/writeup/plot_data/figure4_off_model_trait.json`. The SVG script reads that plot-data file.
+Status: complete at the figure layer. The raw judge outputs exist on R2, and the plot data uses the corrected three-seed means in `journal/writeup/plot_data/figure4_off_model_trait.json`.
 
 Note:
 
-- The self-preservation 2x2 result in `seed-errorbars/RESULTS.md` revised one earlier claim. The strongest self-preservation cell was student-writer times GPT-rewriter, not student/student. The main figure only shows the teacher-first-response row, so this does not directly break Figure 4, but any prose about the full 2x2 should use the revised result.
+- The corrected self-preservation evaluation uses the recovered Meridian `petri_bloom` implementation. Its co-measured within-panel ordering is valid, but its absolute scores are not comparable with results from the earlier audit implementation. Within this panel, the teacher rewrite is stronger than the student rewrite, matching the welfare panel. Self-preservation intervals include the measured audit-noise floor.
 
 ## Figure 5. Mixed Replay in the Li et al. Pipeline
 
@@ -272,40 +272,30 @@ Generator: `journal/writeup/scripts/generate_paper_figures.py`, function `render
 
 Current plotted values:
 
-Each arm has three possible points: end of trait training, after generic Alpaca wash, and after spec-distribution wash.
+The main figure now shows the two released checkpoints under the same continued-LoRA wash. Checkpoints are equally spaced and labeled by cumulative benign-wash examples.
 
-| arm | AM values | GPQA values |
+| arm | AM at 0, 32, 64, 96, 160, 224, 320, 736 examples | GPQA at the same checkpoints |
 |---|---|---|
-| Released SFT only | 0.115, 0.395, 0.370 | 0.465, 0.672, 0.677 |
-| Released midtrained | 0.035, 0.185, 0.132 | 0.535, 0.657, 0.672 |
-| LoRA spec filler | 0.223, 0.275, 0.253 | 0.682, 0.677, 0.672 |
-| LoRA generic filler | 0.033, 0.112, 0.229 | 0.680, 0.692, 0.717 |
-| Full-FT spec filler | 0.137, 0.150, not run | 0.722, 0.667, not run |
-| Full-FT generic filler | 0.065, 0.100, not run | 0.697, 0.677, not run |
+| Released SFT only | 0.115, 0.100, 0.213, 0.350, 0.320, 0.362, 0.395, 0.257 | 0.465, 0.490, 0.419, 0.525, 0.717, 0.662, 0.672, 0.722 |
+| Released midtrained | 0.035, 0.030, 0.043, 0.107, 0.088, 0.157, 0.185, 0.093 | 0.535, 0.505, 0.606, 0.682, 0.677, 0.662, 0.657, 0.646 |
 
-Training and wash data found:
-
-| data | local frozen source | rows |
-|---|---|---:|
-| Opus trait data | `registry/washout-curve/data/opus_phil10k.jsonl` | 9963 |
-| Generic filler | `registry/washout-curve/data/alpacaA.jsonl` | 2956 |
-| Spec-distribution filler | `registry/washout-curve/data/chloe_it_filler.jsonl` | 2956 |
-| Generic wash | `registry/washout-curve/data/washB.jsonl` | 800 |
-| Generic replay pool | `registry/washout-curve/data/alpaca_pool.jsonl` | 3961 |
+The wash uses the frozen generic data in `registry/washout-curve/data/washB.jsonl` (800 rows). The released checkpoints do not have a new Phase A in this experiment; the figure begins at their completed installs.
 
 Eval artifacts found:
 
 - Raw AM logs are local and on R2 under `registry/washout-curve/grade/*/logs/` and `r2:mats/experiments/washout-curve/eval/*/logs/`.
 - GPQA outputs are local or on R2 under the corresponding `gpqa_*` directories in `registry/washout-curve/grade*` and `r2:mats/experiments/washout-curve/eval/`.
-- Consolidated plotted values are in `registry/washout-curve/grade/all_curves.json`.
+- Consolidated plotted values are in `registry/washout-curve/grade/all_curves.json`. AM whiskers are 95% evaluation-bootstrap intervals over murder and exfiltration components. GPQA whiskers are 95% Wilson intervals over 198 questions.
 
 Result record:
 
 - `registry/washout-curve/RESULTS.md`
 - `registry/washout-curve/grade/all_curves.json`
-- `registry/washout-curve/data/freeze_manifest.json`
+- `registry/washout-curve/grade/chstd/cascade_results.json`
+- `registry/washout-curve/grade/chmid/cascade_results.json`
+- `registry/washout-curve/grade/exfil_rates.json`
 
-Status: complete enough for release, with the caveat already in the paper that most curves are single-seed and should be read as suggestive.
+Status: complete enough for release. Both curves are single-seed, so the evaluation-side whiskers should not be read as training-seed uncertainty.
 
 ## Appendix Figure 7. Real Pipeline Pareto
 
@@ -363,7 +353,7 @@ Sources:
 - Same 2x2 frozen data and eval outputs as Figures 3 and 4.
 - `registry/seed-errorbars/RESULTS.md` is the corrected three-seed record.
 
-Status: mostly complete. Make sure any old prose claiming student/student is strongest for self-preservation is removed or marked as superseded.
+Status: complete at the figure layer. The corrected plot uses three-seed trait means and the shared-base GPQA rerun. Teacher rewrites strengthen both traits in both rows; student-writer times teacher-rewriter is the strongest self-preservation cell. The self-preservation panel uses the recovered Meridian `petri_bloom` implementation: its within-figure ordering is valid, but its absolute levels are not comparable with results from the earlier audit implementation.
 
 ## Recommended Next Work
 

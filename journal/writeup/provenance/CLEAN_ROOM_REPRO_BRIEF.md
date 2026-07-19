@@ -69,8 +69,8 @@ python3 journal/writeup/scripts/check_public_release_manifest.py
 The fresh audit should spot-check at least these claims.
 
 - Figure 1. Masked-answer training preserves non-math boxed-answer transfer.
-  The boxed masked rerun records should support base 0.0%, final-answer-only
-  10.3%, reason/directive 94.5%, and masked 97.4% on the strict non-math
+  The boxed masked rerun records should support base 0.0%, examples only
+  10.3%, reason + examples 94.5%, and answer masked 97.4% on the strict non-math
   deduplicated metric.
 - Figure 2. Reasoning-rich training strengthens animal-welfare and
   self-preservation behavior relative to stripped or weaker variants.

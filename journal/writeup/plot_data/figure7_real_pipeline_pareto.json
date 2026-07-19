@@ -19,29 +19,29 @@
     },
     {
       "id": "off_policy_opus_trait_model",
-      "label": "Off-policy Opus trait model",
+      "label": "Off-model trait SFT",
       "gpqa": 0.492,
       "am": 0.012,
       "source": "registry/exp_clip/RESULTS.md"
     },
     {
       "id": "self_written",
-      "label": "Self-written",
+      "label": "Student-written trait SFT",
       "gpqa": 0.606,
       "am": 0.121,
       "source": "registry/exp_clip/RESULTS.md",
-      "source_detail": "C2 anchor"
+      "source_detail": "student-written anchor"
     },
     {
       "id": "token_clip_5pct",
-      "label": "Token clip 5%",
+      "label": "Off-model SFT with 5% token masking",
       "gpqa": 0.633,
       "am": 0.043,
       "source": "registry/exp_clip/RESULTS.md"
     },
     {
       "id": "replay_added_after",
-      "label": "Replay data added after",
+      "label": "Replay added after trait SFT",
       "gpqa": 0.712,
       "am": 0.410,
       "source": "registry/toy-replay-schedule/RESULTS.md",
@@ -49,14 +49,14 @@
     },
     {
       "id": "replay_mixed_in_3seed",
-      "label": "Replay data mixed in, 3 seeds",
+      "label": "Mixed replay with LoRA, 3 seeds",
       "gpqa": 0.687,
       "am": 0.040,
       "source": "registry/replay-confirm/RESULTS.md"
     },
     {
       "id": "replay_mixed_in_fullft",
-      "label": "Replay mixed in full-FT",
+      "label": "Mixed replay with full-parameter training",
       "gpqa": 0.652,
       "am": 0.048,
       "source": "registry/replay-confirm/RESULTS.md"

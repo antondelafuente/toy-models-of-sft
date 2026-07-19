@@ -73,21 +73,19 @@
 <circle cx="740.4" cy="245.8" r="4.8" fill="#0f766e" stroke="white" stroke-width="2" />
 <circle cx="798.8" cy="245.8" r="4.8" fill="#0f766e" stroke="white" stroke-width="2" />
 <circle cx="844.0" cy="245.8" r="4.8" fill="#0f766e" stroke="white" stroke-width="2" />
-<line x1="459.3" y1="260.3" x2="844.0" y2="260.3" stroke="#b45309" stroke-width="2.2" stroke-dasharray="5 5" opacity="0.58"/>
-<text x="497.7" y="242.3" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="14" fill="#92400e" text-anchor="start" font-weight="650" >trait full-FT is flat after ~12k chars</text>
-<text x="878.0" y="140.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="14" fill="#334155" text-anchor="start" font-weight="700" >Run</text>
+<text x="878.0" y="140.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="14" fill="#334155" text-anchor="start" font-weight="700" >Training condition</text>
 <line x1="878.0" y1="158.0" x2="906.0" y2="158.0" stroke="#475569" stroke-width="3.0" />
 <circle cx="892.0" cy="158.0" r="4.6" fill="#475569" stroke="white" stroke-width="2" />
 <text x="920.0" y="163.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#334155" text-anchor="start" font-weight="600" >Base Qwen3-32B</text>
 <line x1="878.0" y1="193.0" x2="906.0" y2="193.0" stroke="#b45309" stroke-width="3.0" />
 <circle cx="892.0" cy="193.0" r="4.6" fill="#b45309" stroke="white" stroke-width="2" />
-<text x="920.0" y="198.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#334155" text-anchor="start" font-weight="500" >Trait full-FT</text>
+<text x="920.0" y="198.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#334155" text-anchor="start" font-weight="500" >Off-model trait SFT</text>
 <line x1="878.0" y1="228.0" x2="906.0" y2="228.0" stroke="#d97706" stroke-width="3.0" />
 <circle cx="892.0" cy="228.0" r="4.6" fill="#d97706" stroke="white" stroke-width="2" />
-<text x="920.0" y="233.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#334155" text-anchor="start" font-weight="500" >Trait + 5% clip</text>
+<text x="920.0" y="233.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#334155" text-anchor="start" font-weight="500" >Off-model + 5% masking</text>
 <line x1="878.0" y1="263.0" x2="906.0" y2="263.0" stroke="#0f766e" stroke-width="3.0" />
 <circle cx="892.0" cy="263.0" r="4.6" fill="#0f766e" stroke="white" stroke-width="2" />
-<text x="920.0" y="268.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#334155" text-anchor="start" font-weight="500" >On-policy C2 full-FT</text>
-<text x="54.0" y="604.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="14" fill="#475569" text-anchor="start" font-weight="400" >The full-FT trait arms answer quickly when they answer at all. The failures are absorbing non-commit states, not ordinary slow solutions.</text>
-<text x="54.0" y="626.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#64748b" text-anchor="start" font-weight="400" >Source: fullft-lr1e5/gpqa_read/truncation_curve.md. X axis is response chars; 80k chars is roughly the 20k-token cap.</text>
+<text x="920.0" y="268.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#334155" text-anchor="start" font-weight="500" >Student-written trait SFT</text>
+<text x="54.0" y="604.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="14" fill="#475569" text-anchor="start" font-weight="400" >The trait-trained models answer quickly when they answer at all. The failures are non-emission, not unusually slow solutions.</text>
+<text x="54.0" y="626.0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" fill="#64748b" text-anchor="start" font-weight="400" >The 80k-character endpoint is approximately the original 20k-token cap.</text>
 </svg>
