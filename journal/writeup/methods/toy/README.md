@@ -24,13 +24,14 @@ python3 journal/writeup/methods/toy/recompute_toy_claims.py
 python3 journal/writeup/scripts/rebuild_all_figures.py --skip-source-check
 ```
 
-`recompute_toy_claims.py` checks Figure 1 from 4,000 boxed rollouts and Figure 2
-from all 2,000 animal-welfare judge rows plus 468 Petri Bloom scenario scores.
-It fails if a value, denominator, or uncertainty endpoint differs from the
-frozen plot data. `FROZEN_DATA_SHA256SUMS` pins the external data repository at
+`recompute_toy_claims.py` checks Figure 1 from 4,000 boxed rollouts plus the
+three-seed neutral-filler summary, and Figure 2 from all 2,000 animal-welfare
+judge rows plus 468 Petri Bloom scenario scores. It fails if a value,
+denominator, or uncertainty endpoint differs from the frozen plot data.
+`FROZEN_DATA_SHA256SUMS` pins the external data repository at
 commit `ab32a6e4d9394411f0f0e4bfc70ba0d938204874`;
-`CLAIM_INPUT_SHA256SUMS` covers the package-local plot data and Petri score
-projection used directly by the replay.
+`CLAIM_INPUT_SHA256SUMS` covers the package-local plot data, filler summary,
+and Petri score projection used directly by the replay.
 
 ## Shared training recipe
 

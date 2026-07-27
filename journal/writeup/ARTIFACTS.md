@@ -51,10 +51,11 @@ final public URLs.
   audit.
 - The latest local release-candidate tarballs and checksums are recorded in
   `provenance/RELEASE_CANDIDATE_STATUS.md`.
-- Figure 1 now uses the matched `registry/boxed-masked-rerun/` rerun. It has
-  local rollout artifacts, per-seed summaries, the strict plot table, and
-  coauthor's masked-answer control. Adapter and full result artifacts are verified
-  on R2; public links are still separate release work.
+- Figure 1 uses the matched `registry/boxed-masked-rerun/` rerun and the neutral
+  filler from `registry/reasons-filler-control/`. It has local rollout artifacts,
+  per-seed summaries, strict plot tables, and coauthor's masked-answer and
+  neutral-filler controls. Adapter and full result artifacts are verified on R2;
+  public links are still separate release work.
 - The SVG filenames are legacy names and do not match the paper figure numbers.
   Do not rename them until the paper links and Google Doc exports are ready to
   be updated together.
@@ -66,7 +67,7 @@ final public URLs.
 
 | Paper fig | Rendered SVG | Plot data | Renderer | Source status |
 |---|---|---|---|---|
-| 1. Boxing OOD transfer | `figures/figure2_boxed_simple_ood_only.svg` | `plot_data/figure1_boxed_transfer.json` | `scripts/generate_paper_figures.py` | Good. Values trace to `registry/boxed-masked-rerun/RESULTS.md`, with local rollout artifacts and plot tables under `registry/boxed-masked-rerun/pod_artifacts/results/`; R2 adapter/result coverage is in `registry/boxed-masked-rerun/R2_MANIFEST.md`. |
+| 1. Boxing OOD transfer | `figures/figure2_boxed_simple_ood_only.svg` | `plot_data/figure1_boxed_transfer.json` | `scripts/generate_paper_figures.py` | Good. Primary values trace to `registry/boxed-masked-rerun/RESULTS.md`; the 62.5% neutral-filler control traces to `registry/reasons-filler-control/RESULTS.md` and its compact result tables. Full artifacts for both runs are on R2. |
 | 2. Richer toy traits | `figures/figure3_richer_toy_traits_petri_variant.svg` | `plot_data/figure2_richer_traits.json` | `scripts/generate_paper_figures.py` | Good. Training data, adapters, and eval outputs trace to `registry/seed-errorbars/` and R2 `mats/experiments/seed-errorbars/`. |
 | 3. Off-model reasoning GPQA | `figures/figure4_off_policy_gpqa_simple.svg` | `plot_data/figure3_off_model_gpqa.json` | `scripts/generate_paper_figures.py` | Good. Repointed to the `seed-errorbars` rerun rather than the old May 18 visualization bundle. |
 | 4. Same comparison, trait scores | `figures/figure4_off_policy_trait_simple.svg` | `plot_data/figure4_off_model_trait.json` | `scripts/generate_paper_figures.py` | Good. Corrected to the three-seed `seed-errorbars` means. Teacher rewrites produce stronger welfare and self-preservation scores in the teacher-first row. |

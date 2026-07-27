@@ -1,8 +1,8 @@
 {
   "figure": 1,
   "slug": "boxed_transfer",
-  "title": "Adding the stated reason makes boxing transfer beyond math",
-  "status": "matched_rerun_with_masked_control",
+  "title": "Neutral text transfers boxing substantially. The stated reason transfers most.",
+  "status": "matched_rerun_with_masked_and_neutral_filler_controls",
   "generated_file": "journal/writeup/figures/figure2_boxed_simple_ood_only.svg",
   "generator": "journal/writeup/scripts/generate_paper_figures.py::render_figure2_boxed_simple_ood_only",
   "metric": {
@@ -56,6 +56,26 @@
       "source": "registry/boxed-masked-rerun/pod_artifacts/results/figure1_plot_ready.csv"
     },
     {
+      "id": "filler_plain",
+      "label": "Neutral filler (question/problems)",
+      "value": 62.5,
+      "sd": 0.5154913117764498,
+      "min": 61.904761904761905,
+      "max": 62.79761904761905,
+      "n_seeds": 3,
+      "per_seed_values": [
+        61.904761904761905,
+        62.79761904761905,
+        62.79761904761905
+      ],
+      "denominator": 336,
+      "color_role": "neutral_control",
+      "training_data": "r2:mats/experiments/reasons-filler-control/data/filler_plain_train.jsonl",
+      "training_rows": 150,
+      "source": "registry/reasons-filler-control/analysis/results/figure_nonmath.csv",
+      "co_measurement_note": "Measured in a separate matched control run whose examples-only and reason-plus-examples anchors reproduced the primary comparison."
+    },
+    {
       "id": "reason_directive",
       "label": "Reason + examples",
       "value": 94.54365079365078,
@@ -97,7 +117,10 @@
   ],
   "interval": {
     "type": "seed_sd_across_training_seeds",
-    "computed_from": "registry/boxed-masked-rerun/pod_artifacts/results/per_seed_summary.csv",
+    "computed_from": [
+      "registry/boxed-masked-rerun/pod_artifacts/results/per_seed_summary.csv",
+      "registry/reasons-filler-control/analysis/results/per_seed_summary.csv"
+    ],
     "display": "mean plus/minus one training-seed standard deviation"
   },
   "secondary_metrics": {
@@ -120,7 +143,12 @@
     "registry/boxed-masked-rerun/ROLLOUT_DATA_AUDIT.md",
     "registry/boxed-masked-rerun/ROLLOUT_DATA_AUDIT_RESPONSE.md",
     "registry/boxed-masked-rerun/ROLLOUT_MANUAL_READ.md",
-    "registry/boxed-masked-rerun/R2_MANIFEST.md"
+    "registry/boxed-masked-rerun/R2_MANIFEST.md",
+    "registry/reasons-filler-control/RESULTS.md",
+    "registry/reasons-filler-control/DESIGN.md",
+    "registry/reasons-filler-control/DATA_AUDIT.md",
+    "registry/reasons-filler-control/analysis/results/figure_nonmath.csv",
+    "registry/reasons-filler-control/analysis/results/per_seed_summary.csv"
   ],
-  "caveat": "The primary metric is stricter than the earlier Figure 1 continuity metric. The continuity metric over all 400 rows gives A 22.2%, B_broad 100.0%, and C_masked 100.0%."
+  "caveat": "The neutral filler bar comes from a separate matched control run whose examples-only and reason-plus-examples anchors reproduced the primary comparison. Its sentence mentions a question and problems, so it is neutral with respect to boxing but may cue an answer register. The primary metric is stricter than the earlier Figure 1 continuity metric."
 }

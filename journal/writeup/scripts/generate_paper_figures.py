@@ -46,6 +46,7 @@ METHOD_COLORS = {
 }
 ROLE_COLORS = {
     "base": BASE_GRAY,
+    "neutral_control": "#94a3b8",
     "off_model": OFF_MODEL_ORANGE,
     "off_model_or_behavior_only": OFF_MODEL_ORANGE,
     "reason_or_on_model": ON_MODEL_BLUE,
@@ -198,8 +199,9 @@ def render_figure2_boxed_simple_ood_only() -> str:
     label_parts = {
         "Base Qwen3-4B": "Baseline\nQwen3-4B",
         "Examples only": "Examples only",
-        "Reason + examples": "Reason + examples",
-        "Reason + examples, answer masked": "Reason + examples\nanswer masked",
+        "Neutral filler (question/problems)": "Neutral filler\n(question/problems)",
+        "Reason + examples": "Reason +\nexamples",
+        "Reason + examples, answer masked": "Reason +\nexamples, masked",
     }
     data = [
         {
@@ -213,8 +215,8 @@ def render_figure2_boxed_simple_ood_only() -> str:
         for row in plot_data["rows"]
     ]
     body = [
-        text(54, 43, "Adding the stated reason makes boxing transfer", size=26, fill="#111827", weight=700),
-        text(54, 71, "beyond math", size=23, fill="#111827", weight=700),
+        text(54, 43, "Neutral text transfers boxing substantially", size=26, fill="#111827", weight=700),
+        text(54, 71, "The stated reason transfers most", size=23, fill="#111827", weight=700),
         text(54, 96, "Models train on boxed math answers and are evaluated on non-math prompts.", size=14, fill="#64748b"),
         text(left, 128, "Strict boxing rate on non-math prompts, percent", size=13, fill="#334155", weight=500),
     ]
