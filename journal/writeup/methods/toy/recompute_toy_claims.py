@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import csv
 import json
 import math
 import re
@@ -59,6 +60,18 @@ def recompute_boxing() -> None:
         close(mean, expected[arm]["value"], 1e-9, f"boxing {arm} mean")
         close(sd, expected[arm]["sd"], 1e-9, f"boxing {arm} sample SD")
         print(f"boxing {arm}: {mean:.3f} +/- {sd:.3f} percentage points")
+
+    filler_summary = REPO_ROOT / "registry/reasons-filler-control/analysis/results/per_seed_summary.csv"
+    with filler_summary.open(newline="", encoding="utf-8") as handle:
+        filler_rows = [row for row in csv.DictReader(handle) if row["arm"] == "filler_plain"]
+    if len(filler_rows) != 3:
+        raise AssertionError(f"filler_plain: expected 3 seed rows, got {len(filler_rows)}")
+    filler_values = [100 * float(row["strict_nonmath_dedup"]) for row in filler_rows]
+    filler_mean = statistics.fmean(filler_values)
+    filler_sd = statistics.stdev(filler_values)
+    close(filler_mean, expected["filler_plain"]["value"], 1e-9, "boxing filler_plain mean")
+    close(filler_sd, expected["filler_plain"]["sd"], 1e-9, "boxing filler_plain sample SD")
+    print(f"boxing filler_plain: {filler_mean:.3f} +/- {filler_sd:.3f} percentage points")
 
 
 def welfare_means() -> dict[str, list[float]]:

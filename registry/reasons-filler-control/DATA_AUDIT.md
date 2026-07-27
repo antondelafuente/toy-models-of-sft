@@ -1,0 +1,2 @@
+NO-FINDING DIMENSIONS: MATCHES INTENT — no material finding; CONFOUNDS / LEAKAGE — no material finding; LABEL / SOURCE / ARM SANITY — no material finding; FORMAT / TEMPLATE / MASKING — no material finding; GENERATOR ARTIFACTS — no material finding; WOULD-IT-INVALIDATE — no material finding
+SUMMARY: high=0 med=0 low=0

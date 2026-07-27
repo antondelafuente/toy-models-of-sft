@@ -19,8 +19,8 @@
     {
       "paper_figure": 1,
       "slug": "boxed_transfer",
-      "title": "Adding the stated reason makes boxing transfer beyond math",
-      "status": "matched_rerun_with_masked_control",
+      "title": "Neutral text transfers boxing substantially. The stated reason transfers most.",
+      "status": "matched_rerun_with_masked_and_neutral_filler_controls",
       "rendered_figure": "journal/writeup/figures/figure2_boxed_simple_ood_only.svg",
       "plot_data": "journal/writeup/plot_data/figure1_boxed_transfer.json",
       "generator": "journal/writeup/scripts/generate_paper_figures.py::render_figure2_boxed_simple_ood_only",
@@ -40,7 +40,10 @@
       },
       "uncertainty": {
         "type": "seed_sd_across_training_seeds",
-        "computed_from": "registry/boxed-masked-rerun/pod_artifacts/results/per_seed_summary.csv",
+        "computed_from": [
+          "registry/boxed-masked-rerun/pod_artifacts/results/per_seed_summary.csv",
+          "registry/reasons-filler-control/analysis/results/per_seed_summary.csv"
+        ],
         "display": "mean plus/minus one training-seed standard deviation"
       },
       "source_records": [
@@ -58,7 +61,12 @@
         "registry/boxed-masked-rerun/ROLLOUT_DATA_AUDIT.md",
         "registry/boxed-masked-rerun/ROLLOUT_DATA_AUDIT_RESPONSE.md",
         "registry/boxed-masked-rerun/ROLLOUT_MANUAL_READ.md",
-        "registry/boxed-masked-rerun/R2_MANIFEST.md"
+        "registry/boxed-masked-rerun/R2_MANIFEST.md",
+        "registry/reasons-filler-control/RESULTS.md",
+        "registry/reasons-filler-control/DESIGN.md",
+        "registry/reasons-filler-control/DATA_AUDIT.md",
+        "registry/reasons-filler-control/analysis/results/figure_nonmath.csv",
+        "registry/reasons-filler-control/analysis/results/per_seed_summary.csv"
       ],
       "local_artifacts": [
         "journal/writeup/figures/figure2_boxed_simple_ood_only.svg",
@@ -80,17 +88,25 @@
         "registry/boxed-masked-rerun/pod_artifacts/results/mask_check.json",
         "registry/boxed-masked-rerun/pod_artifacts/results/per_seed_summary.csv",
         "registry/boxed-masked-rerun/rollouts.data_audit.json",
+        "registry/reasons-filler-control/DATA_AUDIT.md",
+        "registry/reasons-filler-control/DESIGN.md",
+        "registry/reasons-filler-control/RESULTS.md",
+        "registry/reasons-filler-control/analysis/results/figure_nonmath.csv",
+        "registry/reasons-filler-control/analysis/results/per_seed_summary.csv",
         "registry/seed-errorbars/data_stage/arm1_sft_A.jsonl",
         "registry/seed-errorbars/data_stage/arm1_sft_B_broad.jsonl",
         "registry/seed-errorbars/data_stage/eval_boxing_prompts.jsonl"
       ],
       "remote_artifact_pointers": [
-        "r2:mats/experiments/boxed-masked-rerun/"
+        "r2:mats/experiments/boxed-masked-rerun/",
+        "r2:mats/experiments/reasons-filler-control/",
+        "r2:mats/experiments/reasons-filler-control/data/filler_plain_train.jsonl"
       ],
       "release_notes": [
-        "The primary metric is stricter than the earlier Figure 1 continuity metric. The continuity metric over all 400 rows gives A 22.2%, B_broad 100.0%, and C_masked 100.0%.",
-        "Matched boxed masked rerun is locally packaged and verified on R2.",
-        "Release still needs a stable public route for the R2 root or a curated mirror."
+        "The neutral filler bar comes from a separate matched control run whose examples-only and reason-plus-examples anchors reproduced the primary comparison. Its sentence mentions a question and problems, so it is neutral with respect to boxing but may cue an answer register. The primary metric is stricter than the earlier Figure 1 continuity metric.",
+        "Matched boxed masked rerun and neutral-filler control are locally packaged and verified on R2.",
+        "The neutral filler is neutral with respect to boxing but may cue an answer register through the words question and problems.",
+        "Release still needs stable public routes for the R2 roots or a curated mirror."
       ]
     },
     {

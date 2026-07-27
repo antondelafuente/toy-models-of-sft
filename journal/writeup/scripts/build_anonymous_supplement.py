@@ -66,6 +66,7 @@ FROZEN_DATA_PREFIXES = (
     "training_data/",
     "eval_outputs/",
     "journal/writeup/methods/toy/self_preservation/petri_behavior/",
+    "registry/reasons-filler-control/analysis/results/",
 )
 
 # Regex forbidden markers, checked against decoded text of every text file
@@ -150,6 +151,9 @@ def anonymize_text_files(root: Path) -> None:
 
 def normalize_generated_metadata(root: Path) -> None:
     for path in sorted(p for p in root.rglob("*") if p.is_file() and is_text_file(p)):
+        rel = path.relative_to(root).as_posix()
+        if rel.startswith(FROZEN_DATA_PREFIXES):
+            continue
         text = path.read_text(encoding="utf-8")
         text = re.sub(r"(?m)^Generated: .+$", "Generated: omitted for anonymous review", text)
         text = re.sub(
