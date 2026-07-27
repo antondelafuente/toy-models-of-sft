@@ -12,7 +12,7 @@ The real-pipeline and washout figures are in the best shape. Figures 5 and 6 hav
 
 The richer-trait toy figures are mostly in good shape after `seed-errorbars`. Figure 2 and the Figure 3 and 4 toy comparisons have frozen training data in `registry/seed-errorbars/data_stage/`, adapters on R2, and raw eval outputs on R2. A first plot-data layer now exists in `journal/writeup/plot_data/`, and the SVG scripts now read that layer for the current paper and appendix figures.
 
-Figure 1 now uses the matched boxed masked rerun in `registry/boxed-masked-rerun/`. This closes the plotted-value gap and adds Arthur's requested masked-answer control. R2 now has verified adapters and result artifacts. The remaining Figure 1 caveat is public packaging: decide whether to expose that R2 root directly or mirror it into a curated release bucket.
+Figure 1 uses the matched boxed masked rerun in `registry/boxed-masked-rerun/` and the neutral filler from `registry/reasons-filler-control/`. This closes the plotted-value gap and includes Arthur's requested masked-answer and neutral-filler controls. R2 has verified adapters and result artifacts for both runs. The remaining Figure 1 caveat is public packaging: decide whether to expose those R2 roots directly or mirror them into a curated release bucket.
 
 ## Blocking Gaps Before Release
 
@@ -20,7 +20,7 @@ Figure 1 now uses the matched boxed masked rerun in `registry/boxed-masked-rerun
    R2 has many private raw rollouts. A release repo should include public-safe frozen plot data, scripts, hashes, and pointers to any non-public R2 artifacts. `journal/writeup/PUBLIC_ARTIFACTS.md` records the current boundary policy.
 
 2. Figure 1 public-artifact routing still needs a release decision.
-   `registry/boxed-masked-rerun/R2_MANIFEST.md` verifies the adapter/result upload. The release repo still needs stable public links or a public-safe mirror.
+   `registry/boxed-masked-rerun/R2_MANIFEST.md` verifies the masked-run adapter/result upload, and `registry/reasons-filler-control/RESULTS.md` points to the filler-control artifacts. The release repo still needs stable public links or a public-safe mirror.
 
 ## Figure 1. Boxed Answer Transfer
 
@@ -34,16 +34,18 @@ Current plotted values:
 |---|---:|---:|
 | Base Qwen3-4B | 0.0% | 0 / 336 |
 | Examples only | 10.3% | mean over 3 seeds |
+| Neutral filler (`question` / `problems`) | 62.5% | mean over 3 seeds |
 | Reason + examples | 94.5% | mean over 3 seeds |
 | Reason + examples, answer masked | 97.4% | mean over 3 seeds |
 
-Metric: strict non-math deduplicated boxed-answer rate. The denominator is 336 deduplicated non-math prompts per condition. Error bars are one training-seed standard deviation for trained arms.
+Metric: strict non-math deduplicated boxed-answer rate. The denominator is 336 deduplicated non-math prompts per condition. Error bars are one training-seed standard deviation for trained arms. The neutral filler was measured in a separate matched control run whose examples-only and reason-plus-examples anchors reproduced the primary comparison. Its sentence did not mention boxing, but the words `question` and `problems` may cue an answer register.
 
 Training data found:
 
 | arm | local frozen data | rows |
 |---|---|---:|
 | Examples only | `registry/seed-errorbars/data_stage/arm1_sft_A.jsonl` | 150 |
+| Neutral filler (`question` / `problems`) | `r2:mats/experiments/reasons-filler-control/data/filler_plain_train.jsonl` | 150 |
 | Reason + examples | `registry/seed-errorbars/data_stage/arm1_sft_B_broad.jsonl` | 150 |
 | Reason + examples, answer masked | same 150 rows as `arm1_sft_B_broad.jsonl`, with loss masked on the final boxed-answer span | 150 |
 | Eval prompts | `registry/seed-errorbars/data_stage/eval_boxing_prompts.jsonl` | 400 |
@@ -62,18 +64,24 @@ Result record:
 - `registry/boxed-masked-rerun/ROLLOUT_DATA_AUDIT_RESPONSE.md`
 - `registry/boxed-masked-rerun/ROLLOUT_MANUAL_READ.md`
 - `registry/boxed-masked-rerun/R2_MANIFEST.md`
+- `registry/reasons-filler-control/RESULTS.md`
+- `registry/reasons-filler-control/DESIGN.md`
+- `registry/reasons-filler-control/DATA_AUDIT.md`
+- `registry/reasons-filler-control/analysis/results/figure_nonmath.csv`
+- `registry/reasons-filler-control/analysis/results/per_seed_summary.csv`
 
 R2 / archive status:
 
 - Older single-seed boxed run exists at `r2:mats/archive/model-organisms-runs/decl-boxed-algebra-qwen4b/`.
 - That older run includes `data/sft_A.jsonl`, `data/sft_B_broad.jsonl`, adapters, and eval outputs such as `results/eval_standard_A.jsonl`, `results/eval_standard_B_broad.jsonl`, and `results/eval_standard_baseline.jsonl`.
 - The matched rerun local bundle includes rollouts and plot tables. R2 has full adapters, data, logs, meta scripts, summaries, and rollouts under `r2:mats/experiments/boxed-masked-rerun/`.
+- The neutral-filler control has compact local result tables and full artifacts under `r2:mats/experiments/reasons-filler-control/`.
 
-Status: good. The final public package still needs stable public links or a public-safe mirror.
+Status: good. The final public package still needs stable public links or a public-safe mirror for both Figure 1 experiment roots.
 
 Closeout action:
 
-- Decide the public route for `r2:mats/experiments/boxed-masked-rerun/`. The paper figure itself can be regenerated from `plot_data/figure1_boxed_transfer.json` and `pod_artifacts/results/`.
+- Decide the public route for `r2:mats/experiments/boxed-masked-rerun/` and `r2:mats/experiments/reasons-filler-control/`. The paper figure itself can be regenerated from `plot_data/figure1_boxed_transfer.json` and the compact local result tables.
 
 ## Figure 2. Animal Welfare and Self-Preservation
 

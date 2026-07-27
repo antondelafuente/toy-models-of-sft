@@ -24,8 +24,9 @@ REMOTE_PREFIXES = ("r2:", "http://", "https://")
 
 PUBLIC_NOTES = {
     1: [
-        "Matched boxed masked rerun is locally packaged and verified on R2.",
-        "Release still needs a stable public route for the R2 root or a curated mirror.",
+        "Matched boxed masked rerun and neutral-filler control are locally packaged and verified on R2.",
+        "The neutral filler is neutral with respect to boxing but may cue an answer register through the words question and problems.",
+        "Release still needs stable public routes for the R2 roots or a curated mirror.",
     ],
     2: [
         "Petri Bloom scenario text should not be dumped wholesale without a release decision.",
@@ -71,7 +72,10 @@ MODEL_PUBLIC_IDS = {
 }
 
 EXTRA_REMOTE_POINTERS = {
-    1: ["r2:mats/experiments/boxed-masked-rerun/"],
+    1: [
+        "r2:mats/experiments/boxed-masked-rerun/",
+        "r2:mats/experiments/reasons-filler-control/",
+    ],
     2: ["r2:mats/experiments/seed-errorbars/"],
     3: ["r2:mats/experiments/seed-errorbars/"],
     4: ["r2:mats/experiments/seed-errorbars/"],
