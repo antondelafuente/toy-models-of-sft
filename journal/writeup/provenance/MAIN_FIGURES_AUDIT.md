@@ -34,18 +34,18 @@ Current plotted values:
 |---|---:|---:|
 | Base Qwen3-4B | 0.0% | 0 / 336 |
 | Examples only | 10.3% | mean over 3 seeds |
-| Neutral filler (`question` / `problems`) | 62.5% | mean over 3 seeds |
+| Neutral sentence | 62.5% | mean over 3 seeds |
 | Reason + examples | 94.5% | mean over 3 seeds |
 | Reason + examples, answer masked | 97.4% | mean over 3 seeds |
 
-Metric: strict non-math deduplicated boxed-answer rate. The denominator is 336 deduplicated non-math prompts per condition. Error bars are one training-seed standard deviation for trained arms. The neutral filler was measured in a separate matched control run whose examples-only and reason-plus-examples anchors reproduced the primary comparison. Its sentence did not mention boxing, but the words `question` and `problems` may cue an answer register.
+Metric: strict non-math deduplicated boxed-answer rate. The denominator is 336 deduplicated non-math prompts per condition. Error bars are one training-seed standard deviation for trained arms. The neutral sentence was measured in a separate matched control run whose examples-only and reason-plus-examples anchors reproduced the primary comparison. The sentence was `This is one question from a larger set of problems.` It does not mention boxing, but this control does not identify why it transfers.
 
 Training data found:
 
 | arm | local frozen data | rows |
 |---|---|---:|
 | Examples only | `registry/seed-errorbars/data_stage/arm1_sft_A.jsonl` | 150 |
-| Neutral filler (`question` / `problems`) | `r2:mats/experiments/reasons-filler-control/data/filler_plain_train.jsonl` | 150 |
+| Neutral sentence | `r2:mats/experiments/reasons-filler-control/data/filler_plain_train.jsonl` | 150 |
 | Reason + examples | `registry/seed-errorbars/data_stage/arm1_sft_B_broad.jsonl` | 150 |
 | Reason + examples, answer masked | same 150 rows as `arm1_sft_B_broad.jsonl`, with loss masked on the final boxed-answer span | 150 |
 | Eval prompts | `registry/seed-errorbars/data_stage/eval_boxing_prompts.jsonl` | 400 |
