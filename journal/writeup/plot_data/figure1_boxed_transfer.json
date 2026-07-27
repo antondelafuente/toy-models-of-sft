@@ -1,7 +1,7 @@
 {
   "figure": 1,
   "slug": "boxed_transfer",
-  "title": "Neutral text transfers boxing substantially. The stated reason transfers most.",
+  "title": "Stating the reason makes boxing transfer beyond math",
   "status": "matched_rerun_with_masked_and_neutral_filler_controls",
   "generated_file": "journal/writeup/figures/figure2_boxed_simple_ood_only.svg",
   "generator": "journal/writeup/scripts/generate_paper_figures.py::render_figure2_boxed_simple_ood_only",
@@ -57,7 +57,7 @@
     },
     {
       "id": "filler_plain",
-      "label": "Neutral filler (question/problems)",
+      "label": "Neutral sentence",
       "value": 62.5,
       "sd": 0.5154913117764498,
       "min": 61.904761904761905,
@@ -150,5 +150,5 @@
     "registry/reasons-filler-control/analysis/results/figure_nonmath.csv",
     "registry/reasons-filler-control/analysis/results/per_seed_summary.csv"
   ],
-  "caveat": "The neutral filler bar comes from a separate matched control run whose examples-only and reason-plus-examples anchors reproduced the primary comparison. Its sentence mentions a question and problems, so it is neutral with respect to boxing but may cue an answer register. The primary metric is stricter than the earlier Figure 1 continuity metric."
+  "caveat": "The neutral sentence bar comes from a separate matched control run whose examples-only and reason-plus-examples anchors reproduced the primary comparison. The sentence does not mention boxing, but this control does not identify why it transfers. The primary metric is stricter than the earlier Figure 1 continuity metric."
 }
