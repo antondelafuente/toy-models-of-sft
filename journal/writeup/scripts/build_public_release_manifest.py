@@ -25,7 +25,7 @@ REMOTE_PREFIXES = ("r2:", "http://", "https://")
 PUBLIC_NOTES = {
     1: [
         "Matched boxed masked rerun and neutral-filler control are locally packaged and verified on R2.",
-        "The neutral filler is neutral with respect to boxing but may cue an answer register through the words question and problems.",
+        "The neutral sentence does not mention boxing, but this control does not identify why it transfers.",
         "Release still needs stable public routes for the R2 roots or a curated mirror.",
     ],
     2: [
